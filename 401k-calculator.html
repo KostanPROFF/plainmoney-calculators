@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>401(k) Calculator: Retirement Savings with Employer Match</title>
+<meta name="description" content="Project your 401(k) balance at retirement with employer match, salary increases, investment returns and 2026 IRS contribution limits.">
+<link rel="canonical" href="https://example.com/401k-calculator.html">
+<meta property="og:title" content="401(k) Calculator: Retirement Savings with Employer Match">
+<meta property="og:description" content="Project your 401(k) balance at retirement with employer match, salary increases, investment returns and 2026 IRS contribution limits.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "401(k) Calculator", "description": "Project your 401(k) balance at retirement with employer match, salary increases, investment returns and 2026 IRS contribution limits.", "url": "https://example.com/401k-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html" aria-current="page">401(k)</a><a href="compound-interest-calculator.html">Compound Interest</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>401(k) Calculator</h1>
+<p class="lede">See how much your 401(k) could be worth when you retire, including your employer match.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="age">Current age</label><div class="input-wrap"><input id="age" type="number" inputmode="decimal" step="1" value="30"></div></div>
+<div class="field"><label for="retire">Retirement age</label><div class="input-wrap"><input id="retire" type="number" inputmode="decimal" step="1" value="65"></div></div>
+<div class="field"><label for="salary">Annual salary</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="salary" type="number" inputmode="decimal" step="any" value="75000"></div></div>
+<div class="field"><label for="balance">Current balance</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="balance" type="number" inputmode="decimal" step="any" value="20000"></div></div>
+<div class="field"><label for="contrib">Your contribution</label><div class="input-wrap has-post"><input id="contrib" type="number" inputmode="decimal" step="any" value="8"><span class="post">%</span></div></div>
+<div class="field"><label for="raise">Annual raise</label><div class="input-wrap has-post"><input id="raise" type="number" inputmode="decimal" step="any" value="3"><span class="post">%</span></div></div>
+<div class="field"><label for="match">Employer match</label><div class="input-wrap has-post"><input id="match" type="number" inputmode="decimal" step="any" value="50"><span class="post">%</span></div><span class="hint">Of your contribution</span></div>
+<div class="field"><label for="matchCap">Match up to</label><div class="input-wrap has-post"><input id="matchCap" type="number" inputmode="decimal" step="any" value="6"><span class="post">%</span></div><span class="hint">Of salary</span></div>
+<div class="field full"><label for="ret">Expected return</label><div class="input-wrap has-post"><input id="ret" type="number" inputmode="decimal" step="any" value="7"><span class="post">%</span></div><span class="hint">Before inflation</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow" id="atLabel">Balance at retirement</span><span class="big" id="final">-</span></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:#5b8def"></span>Your contributions</dt><dd id="you">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Employer contributions</dt><dd id="emp">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Investment growth</dt><dd id="growth">-</dd>
+<dt>Today's dollars (2.5% inflation)</dt><dd id="real">-</dd>
+</dl>
+<svg class="chart" id="chart" role="img" aria-label="401(k) balance by age"></svg>
+<p class="note" id="limitNote"></p>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<section class="prose">
+<h2>2026 401(k) contribution limits</h2>
+<p>You can defer up to $24,500 of salary in 2026. Workers aged 50 and older can add an $8,000 catch-up contribution, and those aged 60 to 63 get a higher catch-up of $11,250. Employer contributions do not count toward your personal limit. This calculator caps your own contributions at these limits and holds them flat in later years.</p>
+<h3>Always get the full match</h3>
+<p>An employer match is an instant return on your money. If your plan matches 50% up to 6% of pay, contributing at least 6% is the easiest raise you will ever get.</p>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/k401.js"></script>
+</body>
+</html>

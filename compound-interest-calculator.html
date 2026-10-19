@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compound Interest Calculator with Monthly Contributions</title>
+<meta name="description" content="See how your money grows with compound interest. Add monthly contributions, pick a compounding frequency and view year-by-year growth.">
+<link rel="canonical" href="https://example.com/compound-interest-calculator.html">
+<meta property="og:title" content="Compound Interest Calculator with Monthly Contributions">
+<meta property="og:description" content="See how your money grows with compound interest. Add monthly contributions, pick a compounding frequency and view year-by-year growth.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Compound Interest Calculator", "description": "See how your money grows with compound interest. Add monthly contributions, pick a compounding frequency and view year-by-year growth.", "url": "https://example.com/compound-interest-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html" aria-current="page">Compound Interest</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>Compound Interest Calculator</h1>
+<p class="lede">Watch savings grow when interest earns interest.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="initial">Initial deposit</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="initial" type="number" inputmode="decimal" step="any" value="10000"></div></div>
+<div class="field"><label for="monthly">Monthly contribution</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="monthly" type="number" inputmode="decimal" step="any" value="500"></div></div>
+<div class="field"><label for="rate">Annual interest rate</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="7"><span class="post">%</span></div></div>
+<div class="field"><label for="years">Years</label><div class="input-wrap"><input id="years" type="number" inputmode="decimal" step="1" value="20"></div></div>
+<div class="field full"><label for="comp">Compounding</label><select id="comp"><option value="365">Daily</option><option value="12" selected>Monthly</option><option value="4">Quarterly</option><option value="1">Annually</option></select></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Future balance</span><span class="big" id="final">-</span></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:#5b8def"></span>Total deposits</dt><dd id="dep">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Interest earned</dt><dd id="int">-</dd>
+</dl>
+<svg class="chart" id="chart" role="img" aria-label="Balance by year"></svg>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<h2>Year-by-year growth</h2>
+<div class="table-scroll"><table><thead><tr><th>Year</th><th>Deposits</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="sched"></tbody></table></div>
+<section class="prose">
+<h2>The compound interest formula</h2>
+<p>For a single deposit, <code>A = P(1 + r/n)<sup>nt</sup></code>, where P is the principal, r the annual rate, n the number of compounding periods per year and t the number of years. Regular contributions are added each month and then earn interest for the rest of the period.</p>
+<h3>The rule of 72</h3>
+<p>Divide 72 by your interest rate to estimate how many years it takes to double your money. At 7%, money doubles in about 10 years.</p>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/compound.js"></script>
+</body>
+</html>

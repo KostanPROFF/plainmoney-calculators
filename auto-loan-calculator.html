@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auto Loan Calculator: Monthly Car Payment with Tax and Trade-In</title>
+<meta name="description" content="Calculate your monthly car payment with trade-in value, down payment, sales tax and fees. See total interest and the full cost of the loan.">
+<link rel="canonical" href="https://example.com/auto-loan-calculator.html">
+<meta property="og:title" content="Auto Loan Calculator: Monthly Car Payment with Tax and Trade-In">
+<meta property="og:description" content="Calculate your monthly car payment with trade-in value, down payment, sales tax and fees. See total interest and the full cost of the loan.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Auto Loan Calculator", "description": "Calculate your monthly car payment with trade-in value, down payment, sales tax and fees. See total interest and the full cost of the loan.", "url": "https://example.com/auto-loan-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html" aria-current="page">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Compound Interest</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>Auto Loan Calculator</h1>
+<p class="lede">Find the monthly payment and the true total cost of a new or used car.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="price">Vehicle price</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="price" type="number" inputmode="decimal" step="any" value="38000"></div></div>
+<div class="field"><label for="down">Down payment</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="down" type="number" inputmode="decimal" step="any" value="4000"></div></div>
+<div class="field"><label for="trade">Trade-in value</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="trade" type="number" inputmode="decimal" step="any" value="0"></div></div>
+<div class="field"><label for="owed">Owed on trade-in</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="owed" type="number" inputmode="decimal" step="any" value="0"></div></div>
+<div class="field"><label for="taxRate">Sales tax</label><div class="input-wrap has-post"><input id="taxRate" type="number" inputmode="decimal" step="any" value="6.5"><span class="post">%</span></div></div>
+<div class="field"><label for="fees">Title &amp; fees</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="fees" type="number" inputmode="decimal" step="any" value="800"></div></div>
+<div class="field"><label for="rate">Interest rate (APR)</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="7.0"><span class="post">%</span></div></div>
+<div class="field"><label for="term">Loan term</label><select id="term"><option value="36">36 months</option><option value="48">48 months</option><option value="60" selected>60 months</option><option value="72">72 months</option><option value="84">84 months</option></select></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Monthly payment</span><span class="big" id="monthly">-</span></div>
+<div class="bar" id="bar"></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:var(--accent)"></span>Amount financed</dt><dd id="financed">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Total interest</dt><dd id="interest">-</dd>
+<dt>Sales tax</dt><dd id="tax">-</dd>
+<dt class="total">Total cost of car</dt><dd class="total" id="totalCost">-</dd>
+</dl>
+<p class="note">Most states tax the price after subtracting the trade-in. Tax and fees are rolled into the loan here.</p>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<section class="prose">
+<h2>How to lower your car payment</h2>
+<p>A larger down payment and a shorter term cut total interest the most. Stretching a loan to 72 or 84 months lowers the monthly payment but often leaves you owing more than the car is worth for several years.</p>
+<h3>Compare terms</h3>
+<div class="table-scroll"><table><thead><tr><th>Term</th><th>Monthly</th><th>Total interest</th></tr></thead><tbody id="compare"></tbody></table></div>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/auto.js"></script>
+</body>
+</html>

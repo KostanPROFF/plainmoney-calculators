@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mortgage Calculator with Taxes, Insurance and PMI (2026)</title>
+<meta name="description" content="Estimate your monthly mortgage payment including property tax, homeowners insurance, PMI and HOA dues, with a year-by-year amortization schedule.">
+<link rel="canonical" href="https://example.com/mortgage-calculator.html">
+<meta property="og:title" content="Mortgage Calculator with Taxes, Insurance and PMI (2026)">
+<meta property="og:description" content="Estimate your monthly mortgage payment including property tax, homeowners insurance, PMI and HOA dues, with a year-by-year amortization schedule.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Mortgage Calculator", "description": "Estimate your monthly mortgage payment including property tax, homeowners insurance, PMI and HOA dues, with a year-by-year amortization schedule.", "url": "https://example.com/mortgage-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html" aria-current="page">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Compound Interest</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>Mortgage Calculator</h1>
+<p class="lede">See your full monthly housing payment, not just principal and interest.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="price">Home price</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="price" type="number" inputmode="decimal" step="any" value="425000"></div></div>
+<div class="field"><label for="downPct">Down payment</label><div class="input-wrap has-post"><input id="downPct" type="number" inputmode="decimal" step="any" value="20"><span class="post">%</span></div></div>
+<div class="field"><label for="rate">Interest rate</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="6.5"><span class="post">%</span></div><span class="hint">30-yr fixed average</span></div>
+<div class="field"><label for="term">Loan term</label><select id="term"><option value="30" selected>30 years</option><option value="20">20 years</option><option value="15">15 years</option><option value="10">10 years</option></select></div>
+<div class="field"><label for="taxRate">Property tax</label><div class="input-wrap has-post"><input id="taxRate" type="number" inputmode="decimal" step="any" value="1.1"><span class="post">%/yr</span></div><span class="hint">US median about 1%</span></div>
+<div class="field"><label for="insurance">Home insurance</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="insurance" type="number" inputmode="decimal" step="any" value="1800"></div><span class="hint">per year</span></div>
+<div class="field"><label for="hoa">HOA dues</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="hoa" type="number" inputmode="decimal" step="any" value="0"></div><span class="hint">per month</span></div>
+<div class="field"><label for="pmiRate">PMI rate</label><div class="input-wrap has-post"><input id="pmiRate" type="number" inputmode="decimal" step="any" value="0.5"><span class="post">%/yr</span></div><span class="hint">Applies under 20% down</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Estimated monthly payment</span><span class="big" id="total">-</span></div>
+<div class="bar" id="bar"></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:var(--accent)"></span>Principal &amp; interest</dt><dd id="pi">-</dd>
+<dt><span class="swatch" style="background:#5b8def"></span>Property tax</dt><dd id="tax">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Home insurance</dt><dd id="ins">-</dd>
+<dt><span class="swatch" style="background:#c46b9a"></span>PMI</dt><dd id="pmi">-</dd>
+<dt><span class="swatch" style="background:#8a8f8c"></span>HOA</dt><dd id="hoaOut">-</dd>
+</dl>
+<dl class="kv">
+<dt>Loan amount</dt><dd id="loan">-</dd>
+<dt>Total interest paid</dt><dd id="interest">-</dd>
+<dt>Payoff date</dt><dd id="payoff">-</dd>
+</dl>
+<p class="note" id="pmiNote"></p>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<h2>Amortization schedule</h2>
+<div class="table-scroll"><table><thead><tr><th>Year</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="sched"></tbody></table></div>
+<section class="prose">
+<h2>How your mortgage payment is calculated</h2>
+<p>Principal and interest use the standard amortization formula: <code>M = P &times; r / (1 &minus; (1 + r)<sup>&minus;n</sup>)</code>, where P is the loan amount, r is the monthly rate and n is the number of payments. Property tax, insurance and HOA dues are added on top because most lenders collect them through escrow.</p>
+<h3>When do you pay PMI?</h3>
+<p>Conventional loans usually require private mortgage insurance when you put down less than 20%. PMI typically costs 0.3% to 1.5% of the loan per year and is removed once you reach 20% equity. This calculator drops PMI automatically when the balance falls below 80% of the home price.</p>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/mortgage.js"></script>
+</body>
+</html>
