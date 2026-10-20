@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Personal Loan Calculator: Monthly Payment and True APR</title>
+<meta name="description" content="Calculate the monthly payment and total cost of a personal loan, including origination fees and the real APR you pay.">
+<link rel="canonical" href="https://plainmoneycalc.com/personal-loan-calculator.html">
+<meta property="og:title" content="Personal Loan Calculator: Monthly Payment and True APR">
+<meta property="og:description" content="Calculate the monthly payment and total cost of a personal loan, including origination fees and the real APR you pay.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Personal Loan Calculator", "description": "Calculate the monthly payment and total cost of a personal loan, including origination fees and the real APR you pay.", "url": "https://plainmoneycalc.com/personal-loan-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="./#all">All calculators</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>Personal Loan Calculator</h1>
+<p class="lede">Compare loan offers by their real cost, including the origination fee.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="amount">Loan amount</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="amount" type="number" inputmode="decimal" step="any" value="15000"></div></div>
+<div class="field"><label for="rate">Interest rate</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="12"><span class="post">%</span></div></div>
+<div class="field"><label for="term">Loan term</label><select id="term"><option value="12">12 months</option><option value="24">24 months</option><option value="36" selected>36 months</option><option value="48">48 months</option><option value="60">60 months</option><option value="72">72 months</option><option value="84">84 months</option></select></div>
+<div class="field"><label for="fee">Origination fee</label><div class="input-wrap has-post"><input id="fee" type="number" inputmode="decimal" step="any" value="5"><span class="post">%</span></div><span class="hint">Taken out of the loan</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Monthly payment</span><span class="big" id="monthly">-</span></div>
+<div class="bar" id="bar"></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:var(--accent)"></span>Principal</dt><dd id="principal">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Total interest</dt><dd id="interest">-</dd>
+<dt><span class="swatch" style="background:#c46b9a"></span>Origination fee</dt><dd id="feeOut">-</dd>
+<dt class="total">Total cost of borrowing</dt><dd class="total" id="cost">-</dd>
+</dl>
+<dl class="kv">
+<dt>Cash you receive</dt><dd id="cash">-</dd>
+<dt>True APR with fee</dt><dd id="apr">-</dd>
+</dl>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<section class="prose">
+<h2>Interest rate vs. APR</h2>
+<p>The interest rate sets your payment. The APR adds the origination fee, which lenders usually subtract from the money you receive, so you pay interest on cash you never get. When comparing offers, compare APRs. A loan at 11% with a 6% fee can cost more than one at 13% with no fee.</p>
+<h3>Typical rates</h3>
+<p>Personal loan APRs in the US range from about 7% for excellent credit to 36% for fair or poor credit. Credit unions often charge less and rarely add origination fees.</p>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/personal-loan.js"></script>
+</body>
+</html>

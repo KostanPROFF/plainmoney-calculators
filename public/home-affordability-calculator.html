@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How Much House Can I Afford? Home Affordability Calculator</title>
+<meta name="description" content="Find out how much house you can afford based on your income, debts, down payment and mortgage rate, using the 28/36 rule lenders use.">
+<link rel="canonical" href="https://plainmoneycalc.com/home-affordability-calculator.html">
+<meta property="og:title" content="How Much House Can I Afford? Home Affordability Calculator">
+<meta property="og:description" content="Find out how much house you can afford based on your income, debts, down payment and mortgage rate, using the 28/36 rule lenders use.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Home Affordability Calculator", "description": "Find out how much house you can afford based on your income, debts, down payment and mortgage rate, using the 28/36 rule lenders use.", "url": "https://plainmoneycalc.com/home-affordability-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="./#all">All calculators</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>Home Affordability Calculator</h1>
+<p class="lede">See the home price your income supports before you talk to a lender.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="income">Annual household income</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="income" type="number" inputmode="decimal" step="any" value="110000"></div><span class="hint">Before taxes</span></div>
+<div class="field"><label for="debts">Monthly debt payments</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="debts" type="number" inputmode="decimal" step="any" value="500"></div><span class="hint">Car, student loans, card minimums</span></div>
+<div class="field"><label for="down">Down payment</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="down" type="number" inputmode="decimal" step="any" value="60000"></div></div>
+<div class="field"><label for="rate">Interest rate</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="6.5"><span class="post">%</span></div></div>
+<div class="field"><label for="term">Loan term</label><select id="term"><option value="30" selected>30 years</option><option value="20">20 years</option><option value="15">15 years</option></select></div>
+<div class="field"><label for="taxRate">Property tax</label><div class="input-wrap has-post"><input id="taxRate" type="number" inputmode="decimal" step="any" value="1.1"><span class="post">%/yr</span></div></div>
+<div class="field"><label for="insurance">Home insurance</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="insurance" type="number" inputmode="decimal" step="any" value="1800"></div><span class="hint">per year</span></div>
+<div class="field"><label for="hoa">HOA dues</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="hoa" type="number" inputmode="decimal" step="any" value="0"></div><span class="hint">per month</span></div>
+<div class="field full"><label for="rule">Debt limit</label><select id="rule"><option value="36" selected>Conservative (28% / 36%)</option><option value="43">Standard max (31% / 43%)</option></select><span class="hint">Housing share / total debt share of gross income</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">You can afford a home up to</span><span class="big" id="price">-</span></div>
+<dl class="kv">
+<dt>Loan amount</dt><dd id="loan">-</dd>
+<dt>Down payment share</dt><dd id="downPct">-</dd>
+<dt class="total">Monthly housing payment</dt><dd class="total" id="monthly">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Principal &amp; interest</dt><dd id="pi">-</dd>
+<dt><span class="swatch" style="background:#5b8def"></span>Property tax</dt><dd id="tax">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Insurance &amp; HOA</dt><dd id="ins">-</dd>
+</dl>
+<p class="note" id="limitNote"></p>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<section class="prose">
+<h2>The 28/36 rule</h2>
+<p>Most lenders want your housing payment (principal, interest, taxes and insurance) to stay under 28% of gross monthly income, and all debt payments together under 36%. Some loan programs, including many FHA and conventional loans, allow a total debt ratio up to 43% or higher with strong credit. This calculator uses whichever limit is lower for you.</p>
+<h3>What raises your budget</h3>
+<p>Paying off a car loan or credit card frees room under the 36% limit dollar for dollar. A larger down payment lowers the loan, and each 1 percentage point drop in the mortgage rate adds roughly 10% to the price you can afford. Remember to keep cash for closing costs, usually 2% to 5% of the price.</p>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/affordability.js"></script>
+</body>
+</html>

@@ -17,6 +17,7 @@ NAV = [
     ("paycheck-calculator.html", "Paycheck"),
     ("401k-calculator.html", "401(k)"),
     ("compound-interest-calculator.html", "Compound Interest"),
+    ("./#all", "All calculators"),
 ]
 
 
@@ -106,26 +107,42 @@ def calc_schema(name, description, filename):
 
 
 # ---------------------------------------------------------------- Home
-CARDS = [
-    ("mortgage-calculator.html", "Mortgage Calculator", "Monthly payment with taxes, insurance, PMI and HOA, plus a full amortization schedule."),
-    ("auto-loan-calculator.html", "Auto Loan Calculator", "Car payment after trade-in, down payment and sales tax, with total interest."),
-    ("paycheck-calculator.html", "Paycheck Calculator", "Take-home pay after 2026 federal income tax, Social Security, Medicare and state tax."),
-    ("401k-calculator.html", "401(k) Calculator", "Retirement balance with employer match, salary growth and 2026 contribution limits."),
-    ("compound-interest-calculator.html", "Compound Interest Calculator", "How savings grow with monthly deposits and different compounding schedules."),
+GROUPS = [
+    ("Home &amp; loans", [
+        ("mortgage-calculator.html", "Mortgage Calculator", "Monthly payment with taxes, insurance, PMI and HOA, plus a full amortization schedule."),
+        ("home-affordability-calculator.html", "Home Affordability Calculator", "How much house you can afford on your income, using the 28/36 rule lenders apply."),
+        ("auto-loan-calculator.html", "Auto Loan Calculator", "Car payment after trade-in, down payment and sales tax, with total interest."),
+        ("personal-loan-calculator.html", "Personal Loan Calculator", "Monthly payment, total interest and the true APR after origination fees."),
+        ("credit-card-payoff-calculator.html", "Credit Card Payoff Calculator", "How long it takes to clear a balance, and the payment needed to be debt-free by a date."),
+        ("debt-to-income-calculator.html", "Debt-to-Income Calculator", "The DTI ratio lenders check before approving a mortgage or loan."),
+    ]),
+    ("Income &amp; taxes", [
+        ("paycheck-calculator.html", "Paycheck Calculator", "Take-home pay after 2026 federal income tax, Social Security, Medicare and state tax."),
+        ("salary-to-hourly-calculator.html", "Salary to Hourly Calculator", "Convert any pay rate between hourly, daily, weekly, biweekly, monthly and yearly."),
+    ]),
+    ("Saving &amp; retirement", [
+        ("401k-calculator.html", "401(k) Calculator", "Retirement balance with employer match, salary growth and 2026 contribution limits."),
+        ("compound-interest-calculator.html", "Compound Interest Calculator", "How savings grow with monthly deposits and different compounding schedules."),
+        ("savings-goal-calculator.html", "Savings Goal Calculator", "The monthly amount you need to save to reach a target by a deadline."),
+    ]),
 ]
+CARDS = [c for _, cs in GROUPS for c in cs]
 cards = "".join(
-    f'<a class="calc-card" href="{h}"><strong>{t}</strong><span>{d}</span><em>Open calculator</em></a>' for h, t, d in CARDS
+    f'<h2>{g}</h2><div class="calc-grid">'
+    + "".join(f'<a class="calc-card" href="{h}"><strong>{t}</strong><span>{d}</span><em>Open calculator</em></a>' for h, t, d in cs)
+    + "</div>"
+    for g, cs in GROUPS
 )
 page(
     "index.html",
     "Free Financial Calculators for Mortgages, Paychecks and Retirement",
-    "Free, fast calculators for mortgage payments, car loans, take-home pay, 401(k) growth and compound interest. No sign-up.",
+    "Free, fast calculators for mortgages, home affordability, car and personal loans, credit card payoff, take-home pay, 401(k) and savings. No sign-up.",
     f"""
 {ad("leaderboard")}
 <p class="eyebrow">Updated for 2026 tax year</p>
 <h1>Money math, done in seconds</h1>
-<p class="lede">Free calculators for the decisions that matter most: buying a home, financing a car, understanding your paycheck and planning for retirement. Results update as you type, and nothing you enter leaves your browser.</p>
-<div class="calc-grid">{cards}</div>
+<p class="lede">Free calculators for the decisions that matter most: buying a home, paying off debt, understanding your paycheck and planning for retirement. Results update as you type, and nothing you enter leaves your browser.</p>
+<div id="all">{cards}</div>
 {ad("inline")}
 <section class="prose">
 <h2>Why use these calculators</h2>
@@ -383,6 +400,270 @@ page(
     schema=calc_schema("Compound Interest Calculator", desc, "compound-interest-calculator.html"),
 )
 
+# ---------------------------------------------------------------- Home affordability
+desc = "Find out how much house you can afford based on your income, debts, down payment and mortgage rate, using the 28/36 rule lenders use."
+page(
+    "home-affordability-calculator.html",
+    "How Much House Can I Afford? Home Affordability Calculator",
+    desc,
+    f"""
+{ad("leaderboard")}
+<h1>Home Affordability Calculator</h1>
+<p class="lede">See the home price your income supports before you talk to a lender.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+{field("income", "Annual household income", "110000", pre="$", hint="Before taxes")}
+{field("debts", "Monthly debt payments", "500", pre="$", hint="Car, student loans, card minimums")}
+{field("down", "Down payment", "60000", pre="$")}
+{field("rate", "Interest rate", "6.5", post="%")}
+{select("term", "Loan term", [("30", "30 years"), ("20", "20 years"), ("15", "15 years")], "30")}
+{field("taxRate", "Property tax", "1.1", post="%/yr")}
+{field("insurance", "Home insurance", "1800", pre="$", hint="per year")}
+{field("hoa", "HOA dues", "0", pre="$", hint="per month")}
+{select("rule", "Debt limit", [("36", "Conservative (28% / 36%)"), ("43", "Standard max (31% / 43%)")], "36", full=True, hint="Housing share / total debt share of gross income")}
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">You can afford a home up to</span><span class="big" id="price">-</span></div>
+<dl class="kv">
+<dt>Loan amount</dt><dd id="loan">-</dd>
+<dt>Down payment share</dt><dd id="downPct">-</dd>
+<dt class="total">Monthly housing payment</dt><dd class="total" id="monthly">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Principal &amp; interest</dt><dd id="pi">-</dd>
+<dt><span class="swatch" style="background:#5b8def"></span>Property tax</dt><dd id="tax">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Insurance &amp; HOA</dt><dd id="ins">-</dd>
+</dl>
+<p class="note" id="limitNote"></p>
+</section>
+</div>
+{ad("inline")}
+<section class="prose">
+<h2>The 28/36 rule</h2>
+<p>Most lenders want your housing payment (principal, interest, taxes and insurance) to stay under 28% of gross monthly income, and all debt payments together under 36%. Some loan programs, including many FHA and conventional loans, allow a total debt ratio up to 43% or higher with strong credit. This calculator uses whichever limit is lower for you.</p>
+<h3>What raises your budget</h3>
+<p>Paying off a car loan or credit card frees room under the 36% limit dollar for dollar. A larger down payment lowers the loan, and each 1 percentage point drop in the mortgage rate adds roughly 10% to the price you can afford. Remember to keep cash for closing costs, usually 2% to 5% of the price.</p>
+</section>
+""",
+    scripts=("affordability.js",),
+    schema=calc_schema("Home Affordability Calculator", desc, "home-affordability-calculator.html"),
+)
+
+# ---------------------------------------------------------------- Personal loan
+desc = "Calculate the monthly payment and total cost of a personal loan, including origination fees and the real APR you pay."
+page(
+    "personal-loan-calculator.html",
+    "Personal Loan Calculator: Monthly Payment and True APR",
+    desc,
+    f"""
+{ad("leaderboard")}
+<h1>Personal Loan Calculator</h1>
+<p class="lede">Compare loan offers by their real cost, including the origination fee.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+{field("amount", "Loan amount", "15000", pre="$")}
+{field("rate", "Interest rate", "12", post="%")}
+{select("term", "Loan term", [(str(m), f"{m} months") for m in (12, 24, 36, 48, 60, 72, 84)], "36")}
+{field("fee", "Origination fee", "5", post="%", hint="Taken out of the loan")}
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Monthly payment</span><span class="big" id="monthly">-</span></div>
+<div class="bar" id="bar"></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:var(--accent)"></span>Principal</dt><dd id="principal">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Total interest</dt><dd id="interest">-</dd>
+<dt><span class="swatch" style="background:#c46b9a"></span>Origination fee</dt><dd id="feeOut">-</dd>
+<dt class="total">Total cost of borrowing</dt><dd class="total" id="cost">-</dd>
+</dl>
+<dl class="kv">
+<dt>Cash you receive</dt><dd id="cash">-</dd>
+<dt>True APR with fee</dt><dd id="apr">-</dd>
+</dl>
+</section>
+</div>
+{ad("inline")}
+<section class="prose">
+<h2>Interest rate vs. APR</h2>
+<p>The interest rate sets your payment. The APR adds the origination fee, which lenders usually subtract from the money you receive, so you pay interest on cash you never get. When comparing offers, compare APRs. A loan at 11% with a 6% fee can cost more than one at 13% with no fee.</p>
+<h3>Typical rates</h3>
+<p>Personal loan APRs in the US range from about 7% for excellent credit to 36% for fair or poor credit. Credit unions often charge less and rarely add origination fees.</p>
+</section>
+""",
+    scripts=("personal-loan.js",),
+    schema=calc_schema("Personal Loan Calculator", desc, "personal-loan-calculator.html"),
+)
+
+# ---------------------------------------------------------------- Credit card payoff
+desc = "See how long it will take to pay off your credit card and how much interest you will pay, or find the payment needed to be debt-free by a target date."
+page(
+    "credit-card-payoff-calculator.html",
+    "Credit Card Payoff Calculator: How Long to Pay Off Your Balance",
+    desc,
+    f"""
+{ad("leaderboard")}
+<h1>Credit Card Payoff Calculator</h1>
+<p class="lede">Find your debt-free date and what the interest is really costing you.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+{field("balance", "Card balance", "6500", pre="$")}
+{field("apr", "APR", "22.9", post="%")}
+{field("payment", "Monthly payment", "250", pre="$")}
+{field("goal", "Or pay off in", "24", post="mo", hint="Shows the payment needed")}
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Paid off in</span><span class="big" id="time">-</span></div>
+<dl class="kv">
+<dt>Debt-free date</dt><dd id="date">-</dd>
+<dt>Total interest</dt><dd id="interest">-</dd>
+<dt class="total">Total paid</dt><dd class="total" id="total">-</dd>
+</dl>
+<dl class="kv">
+<dt id="goalLabel">Payment to finish in 24 months</dt><dd id="goalPay">-</dd>
+<dt>Interest with that plan</dt><dd id="goalInt">-</dd>
+</dl>
+<p class="note" id="warn"></p>
+</section>
+</div>
+{ad("inline")}
+<h2>How your payment changes the outcome</h2>
+<div class="table-scroll"><table><thead><tr><th>Monthly payment</th><th>Months</th><th>Total interest</th></tr></thead><tbody id="compare"></tbody></table></div>
+<section class="prose">
+<h2>Why minimum payments take so long</h2>
+<p>Card minimums are usually 1% of the balance plus interest, so most of each payment goes to interest and the balance barely moves. At a 22% APR, a $6,500 balance on minimum payments can take over 15 years to clear. Adding even $50 a month cuts years off.</p>
+<h3>Ways to pay less interest</h3>
+<p>A 0% balance transfer card stops interest for 12 to 21 months, usually for a 3% to 5% fee. A personal loan at a lower rate can also replace card debt with a fixed payoff date. If you have several cards, paying the highest APR first (the avalanche method) saves the most money.</p>
+</section>
+""",
+    scripts=("credit-card.js",),
+    schema=calc_schema("Credit Card Payoff Calculator", desc, "credit-card-payoff-calculator.html"),
+)
+
+# ---------------------------------------------------------------- Debt-to-income
+desc = "Calculate your debt-to-income (DTI) ratio and see how lenders will view it for a mortgage, auto loan or personal loan."
+page(
+    "debt-to-income-calculator.html",
+    "Debt-to-Income Ratio Calculator (DTI) for Mortgages and Loans",
+    desc,
+    f"""
+{ad("leaderboard")}
+<h1>Debt-to-Income Ratio Calculator</h1>
+<p class="lede">Check the number lenders look at first when you apply for a loan.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+{field("income", "Gross monthly income", "7000", pre="$", hint="Before taxes", full=True)}
+{field("housing", "Rent or mortgage", "1900", pre="$", hint="Include tax, insurance, HOA")}
+{field("car", "Car loans", "450", pre="$")}
+{field("student", "Student loans", "300", pre="$")}
+{field("cards", "Card minimums", "120", pre="$")}
+{field("other", "Other debts", "0", pre="$", hint="Personal loans, child support")}
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Your debt-to-income ratio</span><span class="big" id="dti">-</span></div>
+<p id="verdict" class="verdict"></p>
+<dl class="kv">
+<dt>Total monthly debt</dt><dd id="total">-</dd>
+<dt>Housing ratio (front-end)</dt><dd id="front">-</dd>
+<dt>Room left under 36%</dt><dd id="room">-</dd>
+</dl>
+<div class="scale" aria-hidden="true"><span style="flex:36"></span><span style="flex:7"></span><span style="flex:7"></span><span style="flex:10"></span><i id="marker"></i></div>
+<div class="scale-labels" aria-hidden="true"><span>0%</span><span>36%</span><span>43%</span><span>50%</span><span>60%+</span></div>
+</section>
+</div>
+{ad("inline")}
+<section class="prose">
+<h2>What is a good debt-to-income ratio?</h2>
+<p><strong>36% or less</strong> is considered healthy and qualifies for the best rates. <strong>37% to 43%</strong> is acceptable for most mortgages, and 43% is the traditional limit for a qualified mortgage. <strong>44% to 49%</strong> is possible with some programs, such as FHA loans with strong credit or reserves. <strong>50% and above</strong> makes most loans hard to get.</p>
+<h3>What counts as debt</h3>
+<p>Count required monthly payments: housing, car loans, student loans, minimum card payments, personal loans, alimony and child support. Utilities, groceries, phone bills and insurance premiums are not included. Use income before taxes.</p>
+</section>
+""",
+    scripts=("dti.js",),
+    schema=calc_schema("Debt-to-Income Calculator", desc, "debt-to-income-calculator.html"),
+)
+
+# ---------------------------------------------------------------- Salary to hourly
+desc = "Convert your salary to an hourly wage or your hourly rate to an annual salary, with daily, weekly, biweekly and monthly pay."
+page(
+    "salary-to-hourly-calculator.html",
+    "Salary to Hourly Calculator: Convert Hourly Wage to Annual Salary",
+    desc,
+    f"""
+{ad("leaderboard")}
+<h1>Salary to Hourly Calculator</h1>
+<p class="lede">Convert any pay rate to every other pay period at once.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+{field("amount", "Pay amount", "65000", pre="$")}
+{select("per", "Paid per", [("hour","Hour"),("day","Day"),("week","Week"),("biweek","2 weeks"),("semimonth","Half month"),("month","Month"),("year","Year")], "year")}
+{field("hours", "Hours per week", "40")}
+{field("days", "Days per week", "5")}
+{field("weeks", "Paid weeks per year", "52", hint="Use 50 if 2 weeks are unpaid", full=True)}
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Hourly rate</span><span class="big" id="hourly">-</span></div>
+<dl class="kv">
+<dt>Daily</dt><dd id="daily">-</dd>
+<dt>Weekly</dt><dd id="weekly">-</dd>
+<dt>Every 2 weeks</dt><dd id="biweekly">-</dd>
+<dt>Twice a month</dt><dd id="semimonthly">-</dd>
+<dt>Monthly</dt><dd id="monthly">-</dd>
+<dt class="total">Yearly</dt><dd class="total" id="yearly">-</dd>
+</dl>
+<p class="note">Amounts are gross pay before taxes. See the <a href="paycheck-calculator.html">paycheck calculator</a> for take-home pay.</p>
+</section>
+</div>
+{ad("inline")}
+<section class="prose">
+<h2>Quick conversion rule</h2>
+<p>For a full-time job of 40 hours a week and 52 paid weeks, a year has 2,080 work hours. Divide a salary by 2,080 to get the hourly rate, or multiply an hourly wage by 2,080 for the annual salary. A shortcut: double the hourly rate and add three zeros. $25 an hour is about $50,000 a year.</p>
+<h3>Common salaries as hourly wages</h3>
+<div class="table-scroll"><table><thead><tr><th>Salary</th><th>Hourly (2,080 hrs)</th><th>Monthly</th></tr></thead><tbody>
+{"".join(f"<tr><td>${s:,}</td><td>${s / 2080:,.2f}</td><td>${s / 12:,.0f}</td></tr>" for s in (30000, 40000, 50000, 60000, 75000, 100000, 125000, 150000))}
+</tbody></table></div>
+</section>
+""",
+    scripts=("salary.js",),
+    schema=calc_schema("Salary to Hourly Calculator", desc, "salary-to-hourly-calculator.html"),
+)
+
+# ---------------------------------------------------------------- Savings goal
+desc = "Find out how much you need to save each month to reach a savings goal by a target date, including interest earned along the way."
+page(
+    "savings-goal-calculator.html",
+    "Savings Goal Calculator: How Much to Save Each Month",
+    desc,
+    f"""
+{ad("leaderboard")}
+<h1>Savings Goal Calculator</h1>
+<p class="lede">Turn a goal and a deadline into a monthly savings amount.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+{field("goal", "Savings goal", "30000", pre="$")}
+{field("current", "Already saved", "5000", pre="$")}
+{field("years", "Years to reach it", "4", step="0.5")}
+{field("rate", "Interest rate (APY)", "4", post="%", hint="High-yield savings")}
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Save each month</span><span class="big" id="monthly">-</span></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:#5b8def"></span>Your deposits</dt><dd id="dep">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Interest earned</dt><dd id="int">-</dd>
+<dt>Without interest you would need</dt><dd id="noInt">-</dd>
+</dl>
+<svg class="chart" id="chart" role="img" aria-label="Savings balance by month"></svg>
+<p class="note" id="note"></p>
+</section>
+</div>
+{ad("inline")}
+<section class="prose">
+<h2>Where to keep savings for a goal</h2>
+<p>For goals under five years, such as an emergency fund, a down payment or a car, a high-yield savings account or certificates of deposit keep the money safe while earning interest. Money for goals more than five years away can be invested for higher growth, with more risk.</p>
+<h3>Make it automatic</h3>
+<p>Set up an automatic transfer on payday for the amount above. Saving first and spending what is left works better than saving what remains at the end of the month.</p>
+</section>
+""",
+    scripts=("savings-goal.js",),
+    schema=calc_schema("Savings Goal Calculator", desc, "savings-goal-calculator.html"),
+)
+
 # ---------------------------------------------------------------- About / Privacy (required for AdSense review)
 page(
     "about.html",
@@ -412,7 +693,7 @@ page(
 print("Built", len(list(ROOT.glob("*.html"))), "pages")
 
 # ---------------------------------------------------------------- robots.txt / sitemap.xml
-pages = ["", *(h for h, _ in NAV), "about.html", "privacy.html"]
+pages = ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"]
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{SITE_URL}/{p}</loc></url>\n" for p in pages)

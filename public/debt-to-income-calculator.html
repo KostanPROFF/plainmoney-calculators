@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Debt-to-Income Ratio Calculator (DTI) for Mortgages and Loans</title>
+<meta name="description" content="Calculate your debt-to-income (DTI) ratio and see how lenders will view it for a mortgage, auto loan or personal loan.">
+<link rel="canonical" href="https://plainmoneycalc.com/debt-to-income-calculator.html">
+<meta property="og:title" content="Debt-to-Income Ratio Calculator (DTI) for Mortgages and Loans">
+<meta property="og:description" content="Calculate your debt-to-income (DTI) ratio and see how lenders will view it for a mortgage, auto loan or personal loan.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Debt-to-Income Calculator", "description": "Calculate your debt-to-income (DTI) ratio and see how lenders will view it for a mortgage, auto loan or personal loan.", "url": "https://plainmoneycalc.com/debt-to-income-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="./#all">All calculators</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>Debt-to-Income Ratio Calculator</h1>
+<p class="lede">Check the number lenders look at first when you apply for a loan.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field full"><label for="income">Gross monthly income</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="income" type="number" inputmode="decimal" step="any" value="7000"></div><span class="hint">Before taxes</span></div>
+<div class="field"><label for="housing">Rent or mortgage</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="housing" type="number" inputmode="decimal" step="any" value="1900"></div><span class="hint">Include tax, insurance, HOA</span></div>
+<div class="field"><label for="car">Car loans</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="car" type="number" inputmode="decimal" step="any" value="450"></div></div>
+<div class="field"><label for="student">Student loans</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="student" type="number" inputmode="decimal" step="any" value="300"></div></div>
+<div class="field"><label for="cards">Card minimums</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="cards" type="number" inputmode="decimal" step="any" value="120"></div></div>
+<div class="field"><label for="other">Other debts</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="other" type="number" inputmode="decimal" step="any" value="0"></div><span class="hint">Personal loans, child support</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Your debt-to-income ratio</span><span class="big" id="dti">-</span></div>
+<p id="verdict" class="verdict"></p>
+<dl class="kv">
+<dt>Total monthly debt</dt><dd id="total">-</dd>
+<dt>Housing ratio (front-end)</dt><dd id="front">-</dd>
+<dt>Room left under 36%</dt><dd id="room">-</dd>
+</dl>
+<div class="scale" aria-hidden="true"><span style="flex:36"></span><span style="flex:7"></span><span style="flex:7"></span><span style="flex:10"></span><i id="marker"></i></div>
+<div class="scale-labels" aria-hidden="true"><span>0%</span><span>36%</span><span>43%</span><span>50%</span><span>60%+</span></div>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<section class="prose">
+<h2>What is a good debt-to-income ratio?</h2>
+<p><strong>36% or less</strong> is considered healthy and qualifies for the best rates. <strong>37% to 43%</strong> is acceptable for most mortgages, and 43% is the traditional limit for a qualified mortgage. <strong>44% to 49%</strong> is possible with some programs, such as FHA loans with strong credit or reserves. <strong>50% and above</strong> makes most loans hard to get.</p>
+<h3>What counts as debt</h3>
+<p>Count required monthly payments: housing, car loans, student loans, minimum card payments, personal loans, alimony and child support. Utilities, groceries, phone bills and insurance premiums are not included. Use income before taxes.</p>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/dti.js"></script>
+</body>
+</html>

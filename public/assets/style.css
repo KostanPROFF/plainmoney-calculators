@@ -142,3 +142,21 @@ thead th { position: sticky; top: 0; background: var(--surface); font-weight: 60
 tbody td { font-family: var(--font-num); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* DTI verdict + scale */
+.verdict { display: inline-block; margin: 12px 0 0; padding: 4px 10px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; background: var(--accent-soft); color: var(--accent); }
+.verdict.mid { background: color-mix(in srgb, var(--warn) 15%, transparent); color: var(--warn); }
+.verdict.bad { background: color-mix(in srgb, #c0392b 15%, transparent); color: #d9534f; }
+.scale { position: relative; display: flex; height: 10px; border-radius: 5px; overflow: visible; margin-top: 20px; }
+.scale span:nth-child(1) { background: var(--accent); border-radius: 5px 0 0 5px; }
+.scale span:nth-child(2) { background: #e0c24a; }
+.scale span:nth-child(3) { background: #e0a64a; }
+.scale span:nth-child(4) { background: #d9534f; border-radius: 0 5px 5px 0; }
+.scale i { position: absolute; top: -4px; width: 4px; height: 18px; margin-left: -2px; background: var(--fg); border-radius: 2px; }
+.scale-labels { position: relative; height: 18px; font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+.scale-labels span { position: absolute; transform: translateX(-50%); }
+.scale-labels span:nth-child(1) { left: 0; transform: none; }
+.scale-labels span:nth-child(2) { left: 60%; }
+.scale-labels span:nth-child(3) { left: 71.67%; }
+.scale-labels span:nth-child(4) { left: 83.33%; }
+.scale-labels span:nth-child(5) { right: 0; transform: none; }

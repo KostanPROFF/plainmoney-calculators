@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Savings Goal Calculator: How Much to Save Each Month</title>
+<meta name="description" content="Find out how much you need to save each month to reach a savings goal by a target date, including interest earned along the way.">
+<link rel="canonical" href="https://plainmoneycalc.com/savings-goal-calculator.html">
+<meta property="og:title" content="Savings Goal Calculator: How Much to Save Each Month">
+<meta property="og:description" content="Find out how much you need to save each month to reach a savings goal by a target date, including interest earned along the way.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Savings Goal Calculator", "description": "Find out how much you need to save each month to reach a savings goal by a target date, including interest earned along the way.", "url": "https://plainmoneycalc.com/savings-goal-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculators"><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="paycheck-calculator.html">Paycheck</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="./#all">All calculators</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="ad-slot ad-leaderboard" aria-label="Advertisement">Advertisement</div>
+<h1>Savings Goal Calculator</h1>
+<p class="lede">Turn a goal and a deadline into a monthly savings amount.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="goal">Savings goal</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="goal" type="number" inputmode="decimal" step="any" value="30000"></div></div>
+<div class="field"><label for="current">Already saved</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="current" type="number" inputmode="decimal" step="any" value="5000"></div></div>
+<div class="field"><label for="years">Years to reach it</label><div class="input-wrap"><input id="years" type="number" inputmode="decimal" step="0.5" value="4"></div></div>
+<div class="field"><label for="rate">Interest rate (APY)</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="4"><span class="post">%</span></div><span class="hint">High-yield savings</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Save each month</span><span class="big" id="monthly">-</span></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:#5b8def"></span>Your deposits</dt><dd id="dep">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Interest earned</dt><dd id="int">-</dd>
+<dt>Without interest you would need</dt><dd id="noInt">-</dd>
+</dl>
+<svg class="chart" id="chart" role="img" aria-label="Savings balance by month"></svg>
+<p class="note" id="note"></p>
+</section>
+</div>
+<div class="ad-slot ad-inline" aria-label="Advertisement">Advertisement</div>
+<section class="prose">
+<h2>Where to keep savings for a goal</h2>
+<p>For goals under five years, such as an emergency fund, a down payment or a car, a high-yield savings account or certificates of deposit keep the money safe while earning interest. Money for goals more than five years away can be invested for higher growth, with more risk.</p>
+<h3>Make it automatic</h3>
+<p>Set up an automatic transfer on payday for the amount above. Saving first and spending what is left works better than saving what remains at the end of the month.</p>
+</section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Estimates only, not financial or tax advice.</span>
+<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+<script src="assets/common.js"></script><script src="assets/savings-goal.js"></script>
+</body>
+</html>
