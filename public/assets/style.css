@@ -160,3 +160,7 @@ tbody td { font-family: var(--font-num); }
 .scale-labels span:nth-child(3) { left: 71.67%; }
 .scale-labels span:nth-child(4) { left: 83.33%; }
 .scale-labels span:nth-child(5) { right: 0; transform: none; }
+
+/* Language switch sits at the end of the nav */
+.site-nav .lang-switch { border: 1px solid var(--line); border-radius: 999px; padding: 0 10px; color: var(--fg); }
+.site-nav .lang-switch:hover { border-color: var(--accent); }

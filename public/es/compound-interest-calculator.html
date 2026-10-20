@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDSEJCQ08E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NDSEJCQ08E');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de interés compuesto con aportaciones mensuales</title>
+<meta name="description" content="Descubre cómo crece tu dinero con el interés compuesto. Agrega aportaciones mensuales, elige la frecuencia de capitalización y observa el crecimiento año por año.">
+<link rel="canonical" href="https://plainmoneycalc.com/es/compound-interest-calculator.html">
+<link rel="alternate" hreflang="en" href="https://plainmoneycalc.com/compound-interest-calculator.html"><link rel="alternate" hreflang="es" href="https://plainmoneycalc.com/es/compound-interest-calculator.html"><link rel="alternate" hreflang="x-default" href="https://plainmoneycalc.com/compound-interest-calculator.html">
+<meta property="og:title" content="Calculadora de interés compuesto con aportaciones mensuales">
+<meta property="og:description" content="Descubre cómo crece tu dinero con el interés compuesto. Agrega aportaciones mensuales, elige la frecuencia de capitalización y observa el crecimiento año por año.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5321511632415174" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5321511632415174">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de interés compuesto con aportaciones mensuales", "description": "Descubre cómo crece tu dinero con el interés compuesto. Agrega aportaciones mensuales, elige la frecuencia de capitalización y observa el crecimiento año por año.", "url": "https://plainmoneycalc.com/es/compound-interest-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "es"}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculadoras"><a href="mortgage-calculator.html">Hipoteca</a><a href="auto-loan-calculator.html">Préstamo para la compra de un auto</a><a href="paycheck-calculator.html">Nómina</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html" aria-current="page">Interés compuesto</a><a href="./#all">Todas las calculadoras</a><a class="lang-switch" href="../compound-interest-calculator.html" hreflang="en" lang="en">English</a></nav>
+</div></header>
+<main class="wrap">
+<h1>Calculadora de interés compuesto</h1>
+<p class="lede">Observa cómo crecen tus ahorros cuando los intereses generan intereses.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="initial">Depósito inicial</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="initial" type="number" inputmode="decimal" step="any" value="10000"></div></div>
+<div class="field"><label for="monthly">Depósito mensual</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="monthly" type="number" inputmode="decimal" step="any" value="500"></div></div>
+<div class="field"><label for="rate">Tasa de interés anual</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="7"><span class="post">%</span></div></div>
+<div class="field"><label for="years">Años</label><div class="input-wrap"><input id="years" type="number" inputmode="decimal" step="1" value="20"></div></div>
+<div class="field full"><label for="comp">Frecuencia de capitalización</label><select id="comp"><option value="365">Diario</option><option value="12" selected>Mensual</option><option value="4">Trimestral</option><option value="1">Anualmente</option></select></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Saldo futuro</span><span class="big" id="final">-</span></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:#5b8def"></span>Depósitos totales</dt><dd id="dep">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Intereses devengados</dt><dd id="int">-</dd>
+</dl>
+<svg class="chart" id="chart" role="img" aria-label="Balance by year"></svg>
+</section>
+</div>
+
+<h2>Crecimiento año tras año</h2>
+<div class="table-scroll"><table><thead><tr><th>Año</th><th>Depósitos</th><th>Interés</th><th>Saldo</th></tr></thead><tbody id="sched"></tbody></table></div>
+<section class="prose">
+<h2>La fórmula del interés compuesto</h2>
+<p>Para un depósito único, <code>A = P(1 + r/n)<sup>nt</sup></code>, donde P es el capital, r la tasa anual, n el número de períodos de capitalización al año y t el número de años. Las aportaciones periódicas se suman cada mes y luego generan intereses durante el resto del período.</p>
+<h3>La regla del 72</h3>
+<p>Divide 72 entre tu tasa de interés para calcular cuántos años tardarás en duplicar tu dinero. A una tasa del 7 %, el dinero se duplica en unos 10 años.</p>
+</section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Son solo estimaciones; no constituyen asesoramiento financiero ni fiscal.</span>
+<nav><a href="about.html">Acerca de</a><a href="privacy.html">Política de privacidad</a></nav>
+</div></footer>
+<script src="../assets/common.js"></script><script src="../assets/i18n-es.js"></script><script src="../assets/compound.js"></script>
+</body>
+</html>

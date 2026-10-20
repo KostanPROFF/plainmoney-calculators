@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDSEJCQ08E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NDSEJCQ08E');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora 401(k): Ahorros para la jubilación con aportación complementaria del empleador</title>
+<meta name="description" content="Calcula el saldo de tu plan 401(k) al momento de la jubilación, tomando en cuenta la aportación equivalente de la empresa, los aumentos salariales, los rendimientos de las inversiones y los límites de aportación del IRS para 2026.">
+<link rel="canonical" href="https://plainmoneycalc.com/es/401k-calculator.html">
+<link rel="alternate" hreflang="en" href="https://plainmoneycalc.com/401k-calculator.html"><link rel="alternate" hreflang="es" href="https://plainmoneycalc.com/es/401k-calculator.html"><link rel="alternate" hreflang="x-default" href="https://plainmoneycalc.com/401k-calculator.html">
+<meta property="og:title" content="Calculadora 401(k): Ahorros para la jubilación con aportación complementaria del empleador">
+<meta property="og:description" content="Calcula el saldo de tu plan 401(k) al momento de la jubilación, tomando en cuenta la aportación equivalente de la empresa, los aumentos salariales, los rendimientos de las inversiones y los límites de aportación del IRS para 2026.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5321511632415174" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5321511632415174">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora 401", "description": "Calcula el saldo de tu plan 401(k) al momento de la jubilación, tomando en cuenta la aportación equivalente de la empresa, los aumentos salariales, los rendimientos de las inversiones y los límites de aportación del IRS para 2026.", "url": "https://plainmoneycalc.com/es/401k-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "es"}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculadoras"><a href="mortgage-calculator.html">Hipoteca</a><a href="auto-loan-calculator.html">Préstamo para la compra de un auto</a><a href="paycheck-calculator.html">Nómina</a><a href="401k-calculator.html" aria-current="page">401(k)</a><a href="compound-interest-calculator.html">Interés compuesto</a><a href="./#all">Todas las calculadoras</a><a class="lang-switch" href="../401k-calculator.html" hreflang="en" lang="en">English</a></nav>
+</div></header>
+<main class="wrap">
+<h1>Calculadora del plan 401(k)</h1>
+<p class="lede">Descubre cuánto podría valer tu plan 401(k) cuando te jubiles, incluyendo la aportación equivalente de tu empleador.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="age">Edad actual</label><div class="input-wrap"><input id="age" type="number" inputmode="decimal" step="1" value="30"></div></div>
+<div class="field"><label for="retire">Edad de jubilación</label><div class="input-wrap"><input id="retire" type="number" inputmode="decimal" step="1" value="65"></div></div>
+<div class="field"><label for="salary">Salario anual</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="salary" type="number" inputmode="decimal" step="any" value="75000"></div></div>
+<div class="field"><label for="balance">Saldo actual</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="balance" type="number" inputmode="decimal" step="any" value="20000"></div></div>
+<div class="field"><label for="contrib">Tu contribución</label><div class="input-wrap has-post"><input id="contrib" type="number" inputmode="decimal" step="any" value="8"><span class="post">%</span></div></div>
+<div class="field"><label for="raise">Aumento salarial anual</label><div class="input-wrap has-post"><input id="raise" type="number" inputmode="decimal" step="any" value="3"><span class="post">%</span></div></div>
+<div class="field"><label for="match">Aportación del empleador</label><div class="input-wrap has-post"><input id="match" type="number" inputmode="decimal" step="any" value="50"><span class="post">%</span></div><span class="hint">Sobre tu contribución</span></div>
+<div class="field"><label for="matchCap">La empresa aporta una cantidad equivalente hasta</label><div class="input-wrap has-post"><input id="matchCap" type="number" inputmode="decimal" step="any" value="6"><span class="post">%</span></div><span class="hint">Del salario</span></div>
+<div class="field full"><label for="ret">Rendimiento esperado</label><div class="input-wrap has-post"><input id="ret" type="number" inputmode="decimal" step="any" value="7"><span class="post">%</span></div><span class="hint">Antes de la inflación</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow" id="atLabel">Saldo al momento de la jubilación</span><span class="big" id="final">-</span></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:#5b8def"></span>Tus contribuciones</dt><dd id="you">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Aportaciones del empleador</dt><dd id="emp">-</dd>
+<dt><span class="swatch" style="background:var(--accent)"></span>Crecimiento de la inversión</dt><dd id="growth">-</dd>
+<dt>Dólares actuales (inflación del 2,5 %)</dt><dd id="real">-</dd>
+</dl>
+<svg class="chart" id="chart" role="img" aria-label="401(k) balance by age"></svg>
+<p class="note" id="limitNote"></p>
+</section>
+</div>
+
+<section class="prose">
+<h2>Límites de aportación al plan 401(k) para 2026</h2>
+<p>En 2026, puedes diferir hasta 24 500 dólares de tu salario. Los trabajadores de 50 años o más pueden agregar una contribución de recuperación de 8 000 dólares, y aquellos de entre 60 y 63 años tienen derecho a una contribución de recuperación mayor, de 11 250 dólares. Las contribuciones del empleador no cuentan para tu límite personal. Esta calculadora limita tus propias contribuciones a estos topes y las mantiene fijas en los años siguientes.</p>
+<h3>Aprovecha siempre al máximo la aportación del empleador</h3>
+<p>La aportación equivalente de la empresa es un rendimiento inmediato de tu dinero. Si tu plan ofrece una aportación equivalente del 50 % hasta un máximo del 6 % de tu salario, aportar al menos el 6 % es el aumento salarial más fácil que jamás obtendrás.</p>
+</section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Son solo estimaciones; no constituyen asesoramiento financiero ni fiscal.</span>
+<nav><a href="about.html">Acerca de</a><a href="privacy.html">Política de privacidad</a></nav>
+</div></footer>
+<script src="../assets/common.js"></script><script src="../assets/i18n-es.js"></script><script src="../assets/k401.js"></script>
+</body>
+</html>

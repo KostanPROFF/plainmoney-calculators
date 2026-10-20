@@ -6,7 +6,7 @@ function limitFor(age) {
 }
 
 Calc.bind("form", () => {
-  const { num, money, set, areaChart } = Calc;
+  const { num, money, set, areaChart, t } = Calc;
   const age = Math.round(num("age")), retire = Math.round(num("retire"));
   let salary = num("salary"), bal = num("balance");
   const pct = num("contrib") / 100, raise = num("raise") / 100, ret = num("ret") / 100;
@@ -28,15 +28,15 @@ Calc.bind("form", () => {
     sGrowth.push(Math.max(0, bal - start - you - emp));
   }
   const growth = bal - start - you - emp;
-  set("atLabel", `Balance at age ${retire}`);
+  set("atLabel", t("Balance at age {age}", { age: retire }));
   set("final", money(bal));
   set("you", money(you + start));
   set("emp", money(emp));
   set("growth", money(growth));
   set("real", money(bal / Math.pow(1.025, years)));
   set("limitNote", capped
-    ? "Your contribution hit the IRS annual limit in some years, so it was capped."
-    : "Starting balance is counted with your contributions.");
+    ? t("Your contribution hit the IRS annual limit in some years, so it was capped.")
+    : t("Starting balance is counted with your contributions."));
   areaChart(document.getElementById("chart"), xs, [
     { values: sStart.map((v, i) => v + sYou[i]), color: "#5b8def" },
     { values: sEmp, color: "#e0a64a" },

@@ -1,5 +1,5 @@
 Calc.bind("form", () => {
-  const { num, money, money2, set, areaChart } = Calc;
+  const { num, money, money2, set, areaChart, t } = Calc;
   const goal = num("goal"), current = num("current");
   const n = Math.max(1, Math.round(num("years") * 12));
   const r = Math.pow(1 + num("rate") / 100, 1 / 12) - 1; // APY to monthly rate
@@ -10,8 +10,8 @@ Calc.bind("form", () => {
   set("monthly", money2(pmt));
   set("dep", money(deposits));
   set("int", money(Math.max(0, (needed <= 0 ? current * grow : goal) - deposits)));
-  set("noInt", money2(Math.max(0, (goal - current) / n)) + "/mo");
-  set("note", needed <= 0 ? "Your current savings will reach the goal on their own with interest." : "");
+  set("noInt", t("{amount}/mo", { amount: money2(Math.max(0, (goal - current) / n)) }));
+  set("note", needed <= 0 ? t("Your current savings will reach the goal on their own with interest.") : "");
   // Monthly series, sampled to at most ~60 points for the chart.
   const xs = [], sDep = [], sInt = [];
   let bal = current, dep = current;

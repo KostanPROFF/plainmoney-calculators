@@ -1,7 +1,9 @@
 // Shared helpers for every calculator page.
 const Calc = (() => {
-  const usd = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
-  const usd2 = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const lang = document.documentElement.lang || "en";
+  const locale = lang === "es" ? "es-US" : "en-US";
+  const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   function num(id) {
     const el = document.getElementById(id);
@@ -70,5 +72,12 @@ const Calc = (() => {
     return "$" + v.toFixed(0);
   }
 
-  return { num, money, money2, set, payment, bind, areaChart };
+  // Translate an English template from window.I18N (Spanish pages load it) and fill {placeholders}.
+  function t(text, vars = {}) {
+    const out = (window.I18N && window.I18N[text]) || text;
+    return out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+  }
+  const date = (d) => d.toLocaleDateString(locale, { month: "short", year: "numeric" });
+
+  return { num, money, money2, set, payment, bind, areaChart, t, date };
 })();

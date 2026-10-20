@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDSEJCQ08E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NDSEJCQ08E');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de la relación deuda-ingresos (DTI) para hipotecas y préstamos</title>
+<meta name="description" content="Calcula tu índice de deuda a ingresos (DTI) y descubre cómo lo evaluarán las entidades crediticias al solicitar una hipoteca, un préstamo para auto o un préstamo personal.">
+<link rel="canonical" href="https://plainmoneycalc.com/es/debt-to-income-calculator.html">
+<link rel="alternate" hreflang="en" href="https://plainmoneycalc.com/debt-to-income-calculator.html"><link rel="alternate" hreflang="es" href="https://plainmoneycalc.com/es/debt-to-income-calculator.html"><link rel="alternate" hreflang="x-default" href="https://plainmoneycalc.com/debt-to-income-calculator.html">
+<meta property="og:title" content="Calculadora de la relación deuda-ingresos (DTI) para hipotecas y préstamos">
+<meta property="og:description" content="Calcula tu índice de deuda a ingresos (DTI) y descubre cómo lo evaluarán las entidades crediticias al solicitar una hipoteca, un préstamo para auto o un préstamo personal.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5321511632415174" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5321511632415174">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de la relación deuda-ingresos", "description": "Calcula tu índice de deuda a ingresos (DTI) y descubre cómo lo evaluarán las entidades crediticias al solicitar una hipoteca, un préstamo para auto o un préstamo personal.", "url": "https://plainmoneycalc.com/es/debt-to-income-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "es"}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculadoras"><a href="mortgage-calculator.html">Hipoteca</a><a href="auto-loan-calculator.html">Préstamo para la compra de un auto</a><a href="paycheck-calculator.html">Nómina</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Interés compuesto</a><a href="./#all">Todas las calculadoras</a><a class="lang-switch" href="../debt-to-income-calculator.html" hreflang="en" lang="en">English</a></nav>
+</div></header>
+<main class="wrap">
+<h1>Calculadora de la relación deuda-ingresos</h1>
+<p class="lede">Revisa el número que los prestamistas revisan primero cuando solicitas un préstamo.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field full"><label for="income">Ingresos brutos mensuales</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="income" type="number" inputmode="decimal" step="any" value="7000"></div><span class="hint">Antes de impuestos</span></div>
+<div class="field"><label for="housing">Renta o hipoteca</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="housing" type="number" inputmode="decimal" step="any" value="1900"></div><span class="hint">Incluye impuestos, seguro y cuotas de la asociación de propietarios</span></div>
+<div class="field"><label for="car">Préstamos para la compra de automóviles</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="car" type="number" inputmode="decimal" step="any" value="450"></div></div>
+<div class="field"><label for="student">Préstamos estudiantiles</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="student" type="number" inputmode="decimal" step="any" value="300"></div></div>
+<div class="field"><label for="cards">Mínimos de la tarjeta</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="cards" type="number" inputmode="decimal" step="any" value="120"></div></div>
+<div class="field"><label for="other">Otras deudas</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="other" type="number" inputmode="decimal" step="any" value="0"></div><span class="hint">Préstamos personales, manutención infantil</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Tu relación deuda-ingresos</span><span class="big" id="dti">-</span></div>
+<p id="verdict" class="verdict"></p>
+<dl class="kv">
+<dt>Deuda mensual total</dt><dd id="total">-</dd>
+<dt>Índice de vivienda (front-end)</dt><dd id="front">-</dd>
+<dt>Margen restante antes de alcanzar el 36 %</dt><dd id="room">-</dd>
+</dl>
+<div class="scale" aria-hidden="true"><span style="flex:36"></span><span style="flex:7"></span><span style="flex:7"></span><span style="flex:10"></span><i id="marker"></i></div>
+<div class="scale-labels" aria-hidden="true"><span>0%</span><span>36%</span><span>43%</span><span>50%</span><span>60%+</span></div>
+</section>
+</div>
+
+<section class="prose">
+<h2>¿Cuál es una buena relación entre deuda e ingresos?</h2>
+<p><strong>Un 36 % o menos</strong> se considera saludable y da derecho a las mejores tasas. <strong>Entre el 37 % y el 43 %</strong> es aceptable para la mayoría de las hipotecas, y el 43 % es el límite tradicional para una hipoteca calificada. <strong>Entre el 44 % y el 49 %</strong> es posible con algunos programas, como los préstamos de la FHA con un crédito sólido o reservas. <strong>Un 50 % o más</strong> dificulta la obtención de la mayoría de los préstamos.</p>
+<h3>¿Qué se considera deuda?</h3>
+<p>Suma los pagos mensuales obligatorios: vivienda, préstamos para auto, préstamos estudiantiles, pagos mínimos de tarjetas de crédito, préstamos personales, pensión alimenticia y manutención de los hijos. No se incluyen los servicios públicos, los gastos de supermercado, las facturas de teléfono ni las primas de seguro. Usa los ingresos antes de impuestos.</p>
+</section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Son solo estimaciones; no constituyen asesoramiento financiero ni fiscal.</span>
+<nav><a href="about.html">Acerca de</a><a href="privacy.html">Política de privacidad</a></nav>
+</div></footer>
+<script src="../assets/common.js"></script><script src="../assets/i18n-es.js"></script><script src="../assets/dti.js"></script>
+</body>
+</html>

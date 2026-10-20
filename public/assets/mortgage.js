@@ -1,5 +1,5 @@
 Calc.bind("form", () => {
-  const { num, money, money2, set, payment } = Calc;
+  const { num, money, money2, set, payment, t, date } = Calc;
   const price = num("price"), downPct = num("downPct"), rate = num("rate");
   const years = num("term"), months = years * 12;
   const loan = Math.max(0, price * (1 - downPct / 100));
@@ -31,10 +31,10 @@ Calc.bind("form", () => {
   set("pi", money2(pi)); set("tax", money2(tax)); set("ins", money2(ins));
   set("pmi", money2(pmi)); set("hoaOut", money2(hoa));
   set("loan", money(loan)); set("interest", money(totalInt));
-  set("payoff", end.toLocaleDateString("en-US", { month: "short", year: "numeric" }));
+  set("payoff", date(end));
   set("pmiNote", needsPmi
-    ? `PMI applies because your down payment is under 20%. It drops off after about ${Math.round(pmiMonths / 12 * 10) / 10} years, when your loan reaches 80% of the home price.`
-    : "No PMI: your down payment is 20% or more.");
+    ? t("PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.", { years: Math.round(pmiMonths / 12 * 10) / 10 })
+    : t("No PMI: your down payment is 20% or more."));
   document.getElementById("sched").innerHTML = rows;
   const parts = [[pi, "var(--accent)"], [tax, "#5b8def"], [ins, "#e0a64a"], [pmi, "#c46b9a"], [hoa, "#8a8f8c"]];
   document.getElementById("bar").innerHTML = total > 0

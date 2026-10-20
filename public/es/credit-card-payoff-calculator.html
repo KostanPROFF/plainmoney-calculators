@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDSEJCQ08E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NDSEJCQ08E');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora para saldar la deuda de la tarjeta de crédito: ¿Cuánto tiempo tardarás en saldar tu saldo?</title>
+<meta name="description" content="Averigua cuánto tiempo te llevará saldar tu tarjeta de crédito y cuánto pagarás en intereses, o calcula el pago necesario para quedar libre de deudas en una fecha determinada.">
+<link rel="canonical" href="https://plainmoneycalc.com/es/credit-card-payoff-calculator.html">
+<link rel="alternate" hreflang="en" href="https://plainmoneycalc.com/credit-card-payoff-calculator.html"><link rel="alternate" hreflang="es" href="https://plainmoneycalc.com/es/credit-card-payoff-calculator.html"><link rel="alternate" hreflang="x-default" href="https://plainmoneycalc.com/credit-card-payoff-calculator.html">
+<meta property="og:title" content="Calculadora para saldar la deuda de la tarjeta de crédito: ¿Cuánto tiempo tardarás en saldar tu saldo?">
+<meta property="og:description" content="Averigua cuánto tiempo te llevará saldar tu tarjeta de crédito y cuánto pagarás en intereses, o calcula el pago necesario para quedar libre de deudas en una fecha determinada.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5321511632415174" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5321511632415174">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora para saldar la deuda de la tarjeta de crédito", "description": "Averigua cuánto tiempo te llevará saldar tu tarjeta de crédito y cuánto pagarás en intereses, o calcula el pago necesario para quedar libre de deudas en una fecha determinada.", "url": "https://plainmoneycalc.com/es/credit-card-payoff-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "es"}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculadoras"><a href="mortgage-calculator.html">Hipoteca</a><a href="auto-loan-calculator.html">Préstamo para la compra de un auto</a><a href="paycheck-calculator.html">Nómina</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Interés compuesto</a><a href="./#all">Todas las calculadoras</a><a class="lang-switch" href="../credit-card-payoff-calculator.html" hreflang="en" lang="en">English</a></nav>
+</div></header>
+<main class="wrap">
+<h1>Calculadora para saldar la deuda de la tarjeta de crédito</h1>
+<p class="lede">Averigua cuándo estarás libre de deudas y cuánto te está costando realmente el interés.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="balance">Saldo de la tarjeta</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="balance" type="number" inputmode="decimal" step="any" value="6500"></div></div>
+<div class="field"><label for="apr">APR</label><div class="input-wrap has-post"><input id="apr" type="number" inputmode="decimal" step="any" value="22.9"><span class="post">%</span></div></div>
+<div class="field"><label for="payment">Pago mensual</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="payment" type="number" inputmode="decimal" step="any" value="250"></div></div>
+<div class="field"><label for="goal">O liquidar en</label><div class="input-wrap has-post"><input id="goal" type="number" inputmode="decimal" step="any" value="24"><span class="post">meses</span></div><span class="hint">Muestra el pago requerido</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Pagado en</span><span class="big" id="time">-</span></div>
+<dl class="kv">
+<dt>Fecha de liquidación de la deuda</dt><dd id="date">-</dd>
+<dt>Interés total</dt><dd id="interest">-</dd>
+<dt class="total">Total pagado</dt><dd class="total" id="total">-</dd>
+</dl>
+<dl class="kv">
+<dt id="goalLabel">Pago mensual necesario para saldar la deuda en 24 meses</dt><dd id="goalPay">-</dd>
+<dt>Interés en ese plan</dt><dd id="goalInt">-</dd>
+</dl>
+<p class="note" id="warn"></p>
+</section>
+</div>
+
+<h2>Cómo tu pago influye en el resultado</h2>
+<div class="table-scroll"><table><thead><tr><th>Pago mensual</th><th>Meses</th><th>Interés total</th></tr></thead><tbody id="compare"></tbody></table></div>
+<section class="prose">
+<h2>Por qué los pagos mínimos tardan tanto en saldar la deuda</h2>
+<p>Los pagos mínimos de las tarjetas suelen ser el 1 % del saldo más los intereses, por lo que la mayor parte de cada pago se destina a los intereses y el saldo apenas se reduce. Con una tasa de interés anual (APR) del 22 %, un saldo de 6,500 dólares, si solo se realizan los pagos mínimos, puede tardar más de 15 años en liquidarse. Añadir tan solo 50 dólares al mes acorta ese plazo en varios años.</p>
+<h3>Formas de pagar menos intereses</h3>
+<p>Una tarjeta con transferencia de saldo al 0 % suspende los intereses durante 12 a 21 meses, por lo general a cambio de una comisión del 3 % al 5 %. Un préstamo personal con una tasa de interés más baja también puede reemplazar la deuda de la tarjeta con una fecha fija de pago. Si tienes varias tarjetas, pagar primero la que tenga la tasa de interés anual (APR) más alta (el método de la avalancha) es la forma de ahorrar más dinero.</p>
+</section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Son solo estimaciones; no constituyen asesoramiento financiero ni fiscal.</span>
+<nav><a href="about.html">Acerca de</a><a href="privacy.html">Política de privacidad</a></nav>
+</div></footer>
+<script src="../assets/common.js"></script><script src="../assets/i18n-es.js"></script><script src="../assets/credit-card.js"></script>
+</body>
+</html>

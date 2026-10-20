@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDSEJCQ08E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NDSEJCQ08E');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de préstamos personales: pago mensual y tasa de interés anual real (APR)</title>
+<meta name="description" content="Calcula la cuota mensual y el costo total de un préstamo personal, incluyendo los cargos por apertura y la tasa de porcentaje anual (APR) real que pagas.">
+<link rel="canonical" href="https://plainmoneycalc.com/es/personal-loan-calculator.html">
+<link rel="alternate" hreflang="en" href="https://plainmoneycalc.com/personal-loan-calculator.html"><link rel="alternate" hreflang="es" href="https://plainmoneycalc.com/es/personal-loan-calculator.html"><link rel="alternate" hreflang="x-default" href="https://plainmoneycalc.com/personal-loan-calculator.html">
+<meta property="og:title" content="Calculadora de préstamos personales: pago mensual y tasa de interés anual real (APR)">
+<meta property="og:description" content="Calcula la cuota mensual y el costo total de un préstamo personal, incluyendo los cargos por apertura y la tasa de porcentaje anual (APR) real que pagas.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5321511632415174" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5321511632415174">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de préstamos personales", "description": "Calcula la cuota mensual y el costo total de un préstamo personal, incluyendo los cargos por apertura y la tasa de porcentaje anual (APR) real que pagas.", "url": "https://plainmoneycalc.com/es/personal-loan-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "es"}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculadoras"><a href="mortgage-calculator.html">Hipoteca</a><a href="auto-loan-calculator.html">Préstamo para la compra de un auto</a><a href="paycheck-calculator.html">Nómina</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Interés compuesto</a><a href="./#all">Todas las calculadoras</a><a class="lang-switch" href="../personal-loan-calculator.html" hreflang="en" lang="en">English</a></nav>
+</div></header>
+<main class="wrap">
+<h1>Calculadora de préstamos personales</h1>
+<p class="lede">Compara las ofertas de préstamos según su costo real, incluida la comisión de apertura.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="amount">Monto del préstamo</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="amount" type="number" inputmode="decimal" step="any" value="15000"></div></div>
+<div class="field"><label for="rate">Tasa de interés</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="12"><span class="post">%</span></div></div>
+<div class="field"><label for="term">Plazo del préstamo</label><select id="term"><option value="12">12 meses</option><option value="24">24 meses</option><option value="36" selected>36 meses</option><option value="48">48 meses</option><option value="60">60 meses</option><option value="72">72 meses</option><option value="84">84 meses</option></select></div>
+<div class="field"><label for="fee">Cuota de apertura</label><div class="input-wrap has-post"><input id="fee" type="number" inputmode="decimal" step="any" value="5"><span class="post">%</span></div><span class="hint">Retirado del préstamo</span></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Pago mensual</span><span class="big" id="monthly">-</span></div>
+<div class="bar" id="bar"></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:var(--accent)"></span>Capital pagado</dt><dd id="principal">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Interés total</dt><dd id="interest">-</dd>
+<dt><span class="swatch" style="background:#c46b9a"></span>Cuota de apertura</dt><dd id="feeOut">-</dd>
+<dt class="total">Costo total del crédito</dt><dd class="total" id="cost">-</dd>
+</dl>
+<dl class="kv">
+<dt>Efectivo que recibes</dt><dd id="cash">-</dd>
+<dt>Tasa de porcentaje anual (APR) real, con comisiones</dt><dd id="apr">-</dd>
+</dl>
+</section>
+</div>
+
+<section class="prose">
+<h2>Tasa de interés vs. tasa de porcentaje anual (APR)</h2>
+<p>La tasa de interés determina el monto de tu pago. La tasa anual equivalente (TAE) incluye la comisión de apertura, que los prestamistas suelen restar del dinero que recibes, por lo que pagas intereses sobre un dinero que nunca recibes. Al comparar ofertas, compara las TAE. Un préstamo al 11 % con una comisión del 6 % puede salir más caro que uno al 13 % sin comisión.</p>
+<h3>Tarifas habituales</h3>
+<p>Las tasas de interés anual (APR) de los préstamos personales en EE. UU. oscilan entre aproximadamente el 7 % para quienes tienen un historial crediticio excelente y el 36 % para quienes tienen un historial crediticio regular o deficiente. Las cooperativas de crédito suelen cobrar menos y rara vez cobran comisiones de apertura.</p>
+</section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Son solo estimaciones; no constituyen asesoramiento financiero ni fiscal.</span>
+<nav><a href="about.html">Acerca de</a><a href="privacy.html">Política de privacidad</a></nav>
+</div></footer>
+<script src="../assets/common.js"></script><script src="../assets/i18n-es.js"></script><script src="../assets/personal-loan.js"></script>
+</body>
+</html>

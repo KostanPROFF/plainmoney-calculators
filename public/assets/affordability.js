@@ -1,5 +1,5 @@
 Calc.bind("form", () => {
-  const { num, money, money2, set, payment } = Calc;
+  const { num, money, money2, set, payment, t } = Calc;
   const monthlyIncome = num("income") / 12, debts = num("debts"), down = num("down");
   const rate = num("rate"), months = num("term") * 12;
   const taxM = num("taxRate") / 100 / 12, insHoa = num("insurance") / 12 + num("hoa");
@@ -16,8 +16,10 @@ Calc.bind("form", () => {
   set("downPct", price > 0 ? (down / price * 100).toFixed(1) + "%" : "-");
   set("monthly", money2(pi + tax + insHoa));
   set("pi", money2(pi)); set("tax", money2(tax)); set("ins", money2(insHoa));
-  const limiting = back < front ? `your other debts (total debt capped at ${Math.round(backPct * 100)}% of income)` : `the housing limit (${Math.round(frontPct * 100)}% of income)`;
+  const limiting = back < front
+    ? t("Limited by your other debts (total debt capped at {pct}% of income).", { pct: Math.round(backPct * 100) })
+    : t("Limited by the housing limit ({pct}% of income).", { pct: Math.round(frontPct * 100) });
   set("limitNote", housing <= insHoa
-    ? "Your debts leave no room for a housing payment at this income. Try paying down debt first."
-    : `Limited by ${limiting}.` + (down / price < 0.2 ? " With under 20% down, expect PMI on top." : ""));
+    ? t("Your debts leave no room for a housing payment at this income. Try paying down debt first.")
+    : limiting + (down / price < 0.2 ? " " + t("With under 20% down, expect PMI on top.") : ""));
 });

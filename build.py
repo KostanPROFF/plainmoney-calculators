@@ -46,10 +46,49 @@ def select(id, label, options, selected=None, full=False, hint=""):
     return f'<div class="field{" full" if full else ""}"><label for="{id}">{label}</label><select id="{id}">{opts}</select>{hint_html}</div>'
 
 
-def page(filename, title, description, body, scripts=(), schema=None):
+# Spanish copies of every page live under /es/. Translations come from i18n/es.json, keyed by a hash of
+# the English text, so editing English copy marks that chunk as untranslated until es.json is refreshed.
+I18N_DIR = Path(__file__).parent / "i18n"
+LANGS = {"en": {"prefix": "", "locale": "en_US"}, "es": {"prefix": "es/", "locale": "es_US"}}
+UI = {
+    "footer": "Estimates only, not financial or tax advice.",
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "nav_label": "Calculators",
+}
+ES = json.loads((I18N_DIR / "es.json").read_text()) if (I18N_DIR / "es.json").exists() else {}
+SOURCE = {}  # key -> English text, everything that needs a Spanish translation
+PAGES = []  # English page args, replayed for Spanish
+
+
+def key(text):
+    import hashlib
+    return hashlib.sha1(text.encode()).hexdigest()[:12]
+
+
+def tr(text, lang):
+    """English text in `lang`; records it as needing translation. Returns None when missing."""
+    if lang == "en":
+        SOURCE[key(text)] = text
+        return text
+    return ES.get(key(text))
+
+
+def page(filename, title, description, body, scripts=(), schema=None, lang="en"):
+    if lang == "en":
+        PAGES.append((filename, title, description, body, scripts, schema))
+    parts = [tr(x, lang) for x in (title, description, body, *UI.values(), *(t for _, t in NAV))]
+    if any(x is None for x in parts):
+        return False
+    title, description, body, footer, about, privacy, nav_label, *nav_texts = parts
+    up = "../" if lang == "es" else ""
     nav = "".join(
-        f'<a href="{href}"{" aria-current=\"page\"" if href == filename else ""}>{text}</a>' for href, text in NAV
+        f'<a href="{href}"{" aria-current=\"page\"" if href == filename else ""}>{text}</a>'
+        for (href, _), text in zip(NAV, nav_texts)
     )
+    other = "es" if lang == "en" else "en"
+    switch_href = ("es/" if lang == "en" else "../") + ("" if filename == "index.html" else filename)
+    switch = f'<a class="lang-switch" href="{switch_href}" hreflang="{other}" lang="{other}">{"Español" if lang == "en" else "English"}</a>'
     adsense = (
         f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>'
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
@@ -60,45 +99,57 @@ def page(filename, title, description, body, scripts=(), schema=None):
         f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>"
         if GA_ID else ""
     )
-    canonical = f"{SITE_URL}/{'' if filename == 'index.html' else filename}"
-    ld = f'<script type="application/ld+json">{json.dumps(schema)}</script>' if schema else ""
-    js = "".join(f'<script src="assets/{s}"></script>' for s in ("common.js", *scripts))
+    path = "" if filename == "index.html" else filename
+    url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
+    alternates = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l)}">' for l in LANGS)
+    alternates += f'<link rel="alternate" hreflang="x-default" href="{url("en")}">'
+    if schema:
+        schema = {**schema, "name": title.split(":")[0].split("(")[0].strip() if lang != "en" else schema["name"],
+                  "description": description, "url": url(lang), "inLanguage": lang}
+    ld = f'<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>' if schema else ""
+    js_files = ["common.js", *(["i18n-es.js"] if lang == "es" else []), *scripts]
+    js = "".join(f'<script src="{up}assets/{s}"></script>' for s in js_files)
     html = f"""<!doctype html>
-<html lang="en">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 {analytics}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{description}">
-<link rel="canonical" href="{canonical}">
+<link rel="canonical" href="{url(lang)}">
+{alternates}
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="{LANGS[lang]['locale']}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="{up}assets/style.css">
 {adsense}
 {ld}
 </head>
 <body>
 <header class="site-header"><div class="wrap">
 <a class="logo" href="./">Plain<span>Money</span></a>
-<nav class="site-nav" aria-label="Calculators">{nav}</nav>
+<nav class="site-nav" aria-label="{nav_label}">{nav}{switch}</nav>
 </div></header>
 <main class="wrap">
 {body}
 </main>
 <footer class="site-footer"><div class="wrap">
-<span>&copy; 2026 {SITE_NAME}. Estimates only, not financial or tax advice.</span>
-<nav><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a></nav>
+<span>&copy; 2026 {SITE_NAME}. {footer}</span>
+<nav><a href="about.html">{about}</a><a href="privacy.html">{privacy}</a></nav>
 </div></footer>
 {js}
 </body>
 </html>
 """
-    (ROOT / filename).write_text(html)
+    out = ROOT / LANGS[lang]["prefix"] / filename
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html)
+    return True
 
 
 def calc_schema(name, description, filename):
@@ -698,15 +749,37 @@ page(
 </section>""",
 )
 
-print("Built", len(list(ROOT.glob("*.html"))), "pages")
+
+# ---------------------------------------------------------------- Spanish pages + script strings
+# Strings the calculator scripts show; they call Calc.t() with these exact English templates.
+JS_STRINGS = json.loads((I18N_DIR / "js-strings.json").read_text())
+for text in JS_STRINGS:
+    SOURCE[key(text)] = text
+es_built = [f for f, *rest in PAGES if page(f, *rest, lang="es")]
+js_es = {t: ES[key(t)] for t in JS_STRINGS if key(t) in ES}
+(ROOT / "assets" / "i18n-es.js").write_text(
+    "// Generated by build.py from i18n/es.json.\nwindow.I18N = " + json.dumps(js_es, ensure_ascii=False, indent=0) + ";\n"
+)
+# source.html is what goes to DeepL; each block keeps its key so translations map back.
+missing = {k: v for k, v in SOURCE.items() if k not in ES}
+(I18N_DIR / "source.html").write_text(
+    '<!doctype html><html lang="en"><head><meta charset="utf-8"></head><body>\n'
+    + "".join(f'<article id="k{k}">\n{v}\n</article>\n' for k, v in missing.items())
+    + "</body></html>\n"
+)
+if missing:
+    print(f"{len(missing)} strings need Spanish: translate i18n/source.html, then run i18n/import.py")
 
 # ---------------------------------------------------------------- robots.txt / sitemap.xml
-pages = ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"]
+pages = [p for p in ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"]]
+es_pages = [("" if f == "index.html" else f) for f in es_built]
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{SITE_URL}/{p}</loc></url>\n" for p in pages)
+    + "".join(f"  <url><loc>{SITE_URL}/es/{p}</loc></url>\n" for p in es_pages)
     + "</urlset>\n"
 )
 if ADSENSE_CLIENT:
     (ROOT / "ads.txt").write_text(f"google.com, {ADSENSE_CLIENT.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0\n")
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+print(f"Built {len(PAGES)} English and {len(es_built)} Spanish pages")

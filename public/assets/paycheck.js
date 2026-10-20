@@ -12,9 +12,9 @@ const FLAT = { AZ: 2.5, CO: 4.4, GA: 5.19, ID: 5.3, IL: 4.95, IN: 2.95, IA: 3.8,
 const APPROX = { AL: 4.0, AR: 3.5, CA: 5.0, CT: 4.5, DE: 4.8, DC: 5.5, HI: 6.0, KS: 4.5, ME: 5.0, MD: 4.7, MA: 5.0, MN: 5.5, MO: 4.0, MT: 4.5, NE: 4.5, NJ: 3.5, NM: 3.5, NY: 5.0, ND: 1.5, OH: 2.5, OK: 3.8, OR: 7.5, RI: 4.0, SC: 4.5, VT: 4.5, VA: 4.8, WV: 4.0, WI: 4.8 };
 
 function stateDefault(st) {
-  if (NO_TAX.includes(st)) return [0, "This state has no income tax on wages."];
-  if (st in FLAT) return [FLAT[st], "Flat-rate state: one rate applies to all taxable income."];
-  return [APPROX[st] ?? 4.5, "This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours."];
+  if (NO_TAX.includes(st)) return [0, Calc.t("This state has no income tax on wages.")];
+  if (st in FLAT) return [FLAT[st], Calc.t("Flat-rate state: one rate applies to all taxable income.")];
+  return [APPROX[st] ?? 4.5, Calc.t("This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.")];
 }
 
 const stateSel = document.getElementById("state");
@@ -49,7 +49,7 @@ Calc.bind("form", () => {
   set("annualNet", money(net));
   set("eff", salary > 0 ? ((fed + ss + med + st) / salary * 100).toFixed(1) + "%" : "-");
   set("marg", (marg * 100).toFixed(0) + "%");
-  set("stateNote", stateDefault(stateSel.value)[1] + " Local taxes are not included.");
+  set("stateNote", stateDefault(stateSel.value)[1] + " " + Calc.t("Local taxes are not included."));
   const parts = [[net, "var(--accent)"], [fed, "#5b8def"], [ss, "#e0a64a"], [med, "#c46b9a"], [st, "#8a6fd1"], [pre, "#8a8f8c"]];
   document.getElementById("bar").innerHTML = salary > 0
     ? parts.map(([v, c]) => `<span style="width:${Math.max(v, 0) / salary * 100}%;background:${c}"></span>`).join("") : "";

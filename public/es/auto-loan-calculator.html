@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDSEJCQ08E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NDSEJCQ08E');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de préstamos para autos: Cuota mensual del auto con impuestos y valor de intercambio</title>
+<meta name="description" content="Calcula tu cuota mensual del auto incluyendo el valor de tu auto usado, el pago inicial, el impuesto sobre las ventas y los cargos. Consulta el interés total y el costo total del préstamo.">
+<link rel="canonical" href="https://plainmoneycalc.com/es/auto-loan-calculator.html">
+<link rel="alternate" hreflang="en" href="https://plainmoneycalc.com/auto-loan-calculator.html"><link rel="alternate" hreflang="es" href="https://plainmoneycalc.com/es/auto-loan-calculator.html"><link rel="alternate" hreflang="x-default" href="https://plainmoneycalc.com/auto-loan-calculator.html">
+<meta property="og:title" content="Calculadora de préstamos para autos: Cuota mensual del auto con impuestos y valor de intercambio">
+<meta property="og:description" content="Calcula tu cuota mensual del auto incluyendo el valor de tu auto usado, el pago inicial, el impuesto sobre las ventas y los cargos. Consulta el interés total y el costo total del préstamo.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5321511632415174" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5321511632415174">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de préstamos para autos", "description": "Calcula tu cuota mensual del auto incluyendo el valor de tu auto usado, el pago inicial, el impuesto sobre las ventas y los cargos. Consulta el interés total y el costo total del préstamo.", "url": "https://plainmoneycalc.com/es/auto-loan-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "es"}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="./">Plain<span>Money</span></a>
+<nav class="site-nav" aria-label="Calculadoras"><a href="mortgage-calculator.html">Hipoteca</a><a href="auto-loan-calculator.html" aria-current="page">Préstamo para la compra de un auto</a><a href="paycheck-calculator.html">Nómina</a><a href="401k-calculator.html">401(k)</a><a href="compound-interest-calculator.html">Interés compuesto</a><a href="./#all">Todas las calculadoras</a><a class="lang-switch" href="../auto-loan-calculator.html" hreflang="en" lang="en">English</a></nav>
+</div></header>
+<main class="wrap">
+<h1>Calculadora de préstamos para automóviles</h1>
+<p class="lede">Averigua cuál es la cuota mensual y el costo total real de un auto nuevo o usado.</p>
+<div class="calc">
+<form class="panel" id="form" novalidate><div class="fields">
+<div class="field"><label for="price">Precio del vehículo</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="price" type="number" inputmode="decimal" step="any" value="38000"></div></div>
+<div class="field"><label for="down">Pago inicial</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="down" type="number" inputmode="decimal" step="any" value="4000"></div></div>
+<div class="field"><label for="trade">Valor de reventa</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="trade" type="number" inputmode="decimal" step="any" value="0"></div></div>
+<div class="field"><label for="owed">Saldo pendiente por la entrega de un vehículo usado</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="owed" type="number" inputmode="decimal" step="any" value="0"></div></div>
+<div class="field"><label for="taxRate">Impuesto sobre las ventas</label><div class="input-wrap has-post"><input id="taxRate" type="number" inputmode="decimal" step="any" value="6.5"><span class="post">%</span></div></div>
+<div class="field"><label for="fees">Título y tarifas</label><div class="input-wrap has-pre"><span class="pre">$</span><input id="fees" type="number" inputmode="decimal" step="any" value="800"></div></div>
+<div class="field"><label for="rate">Tasa de interés (APR)</label><div class="input-wrap has-post"><input id="rate" type="number" inputmode="decimal" step="any" value="7.0"><span class="post">%</span></div></div>
+<div class="field"><label for="term">Plazo del préstamo</label><select id="term"><option value="36">36 meses</option><option value="48">48 meses</option><option value="60" selected>60 meses</option><option value="72">72 meses</option><option value="84">84 meses</option></select></div>
+</div></form>
+<section class="panel" aria-live="polite">
+<div class="headline"><span class="eyebrow">Pago mensual</span><span class="big" id="monthly">-</span></div>
+<div class="bar" id="bar"></div>
+<dl class="kv">
+<dt><span class="swatch" style="background:var(--accent)"></span>Cantidad financiada</dt><dd id="financed">-</dd>
+<dt><span class="swatch" style="background:#e0a64a"></span>Interés total</dt><dd id="interest">-</dd>
+<dt>Impuesto sobre las ventas</dt><dd id="tax">-</dd>
+<dt class="total">Costo total del auto</dt><dd class="total" id="totalCost">-</dd>
+</dl>
+<p class="note">La mayoría de los estados cobran impuestos sobre el precio después de restar el valor de la entrega de un vehículo usado. Aquí, los impuestos y las cuotas se incluyen en el préstamo.</p>
+</section>
+</div>
+
+<section class="prose">
+<h2>Cómo reducir el pago mensual de tu auto</h2>
+<p>Un pago inicial más alto y un plazo más corto son lo que más reduce el interés total. Alargar el plazo del préstamo a 72 u 84 meses reduce la cuota mensual, pero a menudo te deja con una deuda superior al valor del auto durante varios años.</p>
+<h3>Compara las condiciones de los préstamos</h3>
+<div class="table-scroll"><table><thead><tr><th>Plazo del préstamo</th><th>Mensual</th><th>Interés total</th></tr></thead><tbody id="compare"></tbody></table></div>
+</section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<span>&copy; 2026 Plain Money Calculators. Son solo estimaciones; no constituyen asesoramiento financiero ni fiscal.</span>
+<nav><a href="about.html">Acerca de</a><a href="privacy.html">Política de privacidad</a></nav>
+</div></footer>
+<script src="../assets/common.js"></script><script src="../assets/i18n-es.js"></script><script src="../assets/auto.js"></script>
+</body>
+</html>
