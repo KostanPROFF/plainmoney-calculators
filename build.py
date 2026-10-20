@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generates the static HTML pages from the templates below.
 
-Run `python3 build.py`; it writes *.html next to this file. Edit content here, not in the generated HTML.
+Run `python3 build.py`; it writes the site into public/. Edit content here, not in the generated HTML.
 """
 from pathlib import Path
 import json
@@ -9,7 +9,7 @@ import json
 SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = ""  # TODO: set to "ca-pub-XXXXXXXXXXXXXXXX" after AdSense approval
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).parent / "public"
 
 NAV = [
     ("mortgage-calculator.html", "Mortgage"),
