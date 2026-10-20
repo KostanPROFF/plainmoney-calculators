@@ -9,6 +9,7 @@ import json
 SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = "ca-pub-5321511632415174"
+GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
 ROOT = Path(__file__).parent / "public"
 
 NAV = [
@@ -54,6 +55,11 @@ def page(filename, title, description, body, scripts=(), schema=None):
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
+    analytics = (
+        f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n'
+        f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>"
+        if GA_ID else ""
+    )
     canonical = f"{SITE_URL}/{'' if filename == 'index.html' else filename}"
     ld = f'<script type="application/ld+json">{json.dumps(schema)}</script>' if schema else ""
     js = "".join(f'<script src="assets/{s}"></script>' for s in ("common.js", *scripts))
@@ -61,6 +67,7 @@ def page(filename, title, description, body, scripts=(), schema=None):
 <html lang="en">
 <head>
 <meta charset="utf-8">
+{analytics}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{description}">
@@ -685,7 +692,7 @@ page(
 <h2>Advertising</h2>
 <p>We use Google AdSense to show ads. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and other sites on the internet. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" rel="nofollow">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" rel="nofollow">aboutads.info</a>.</p>
 <h2>Analytics</h2>
-<p>We may use privacy-friendly analytics to count page views. These do not identify you personally.</p>
+<p>We use Google Analytics to understand how visitors use the site, such as which pages are viewed. Google Analytics uses cookies and collects data like your approximate location, device and browser, but not the numbers you enter in calculators. You can opt out with the <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow">Google Analytics opt-out browser add-on</a>.</p>
 <h2>California residents</h2>
 <p>Under the CCPA you may request access to or deletion of personal information. Because our calculators do not collect personal data, we generally hold none about you. Contact <strong>hello@plainmoneycalc.com</strong> with any request.</p>
 </section>""",
