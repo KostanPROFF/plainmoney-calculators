@@ -7,7 +7,7 @@ from pathlib import Path
 import json
 
 SITE_NAME = "Plain Money Calculators"
-SITE_URL = "https://example.com"  # TODO: replace with the real domain before launch
+SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = ""  # TODO: set to "ca-pub-XXXXXXXXXXXXXXXX" after AdSense approval
 ROOT = Path(__file__).parent
 
@@ -391,7 +391,7 @@ page(
     f"""<section class="prose"><h1>About</h1>
 <p>{SITE_NAME} builds free, fast and private financial calculators for everyday decisions. Every calculation runs in your browser, so the numbers you type are never sent to a server.</p>
 <p>Tax figures come from IRS and Social Security Administration publications for the 2026 tax year. Results are estimates for planning and are not financial, tax or legal advice.</p>
-<p>Questions or corrections: <strong>hello@example.com</strong></p></section>""",
+<p>Questions or corrections: <strong>hello@plainmoneycalc.com</strong></p></section>""",
 )
 page(
     "privacy.html",
@@ -405,8 +405,17 @@ page(
 <h2>Analytics</h2>
 <p>We may use privacy-friendly analytics to count page views. These do not identify you personally.</p>
 <h2>California residents</h2>
-<p>Under the CCPA you may request access to or deletion of personal information. Because our calculators do not collect personal data, we generally hold none about you. Contact <strong>hello@example.com</strong> with any request.</p>
+<p>Under the CCPA you may request access to or deletion of personal information. Because our calculators do not collect personal data, we generally hold none about you. Contact <strong>hello@plainmoneycalc.com</strong> with any request.</p>
 </section>""",
 )
 
 print("Built", len(list(ROOT.glob("*.html"))), "pages")
+
+# ---------------------------------------------------------------- robots.txt / sitemap.xml
+pages = ["", *(h for h, _ in NAV), "about.html", "privacy.html"]
+(ROOT / "sitemap.xml").write_text(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    + "".join(f"  <url><loc>{SITE_URL}/{p}</loc></url>\n" for p in pages)
+    + "</urlset>\n"
+)
+(ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
