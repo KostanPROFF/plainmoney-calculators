@@ -8,7 +8,7 @@ import json
 
 SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
-ADSENSE_CLIENT = ""  # TODO: set to "ca-pub-XXXXXXXXXXXXXXXX" after AdSense approval
+ADSENSE_CLIENT = "ca-pub-5321511632415174"
 ROOT = Path(__file__).parent / "public"
 
 NAV = [
@@ -22,8 +22,8 @@ NAV = [
 
 
 def ad(kind, label="Advertisement"):
-    # Placeholder that keeps its height; swap the inner content for an <ins class="adsbygoogle"> unit.
-    return f'<div class="ad-slot ad-{kind}" aria-label="Advertisement">{label}</div>'
+    # Auto ads place units for now. Return an <ins class="adsbygoogle"> unit here once manual ad slots exist.
+    return ""
 
 
 def field(id, label, value, pre="", post="", hint="", full=False, step="any", type_="number"):
@@ -51,6 +51,7 @@ def page(filename, title, description, body, scripts=(), schema=None):
     )
     adsense = (
         f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>'
+        f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
     canonical = f"{SITE_URL}/{'' if filename == 'index.html' else filename}"
@@ -699,4 +700,6 @@ pages = ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"]
     + "".join(f"  <url><loc>{SITE_URL}/{p}</loc></url>\n" for p in pages)
     + "</urlset>\n"
 )
+if ADSENSE_CLIENT:
+    (ROOT / "ads.txt").write_text(f"google.com, {ADSENSE_CLIENT.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0\n")
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
