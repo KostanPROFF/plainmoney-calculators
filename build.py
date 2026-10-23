@@ -5,6 +5,9 @@ Run `python3 build.py`; it writes the site into public/. Edit content here, not 
 """
 from pathlib import Path
 import json
+import re
+
+from content import CONTENT
 
 SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
@@ -46,19 +49,23 @@ def select(id, label, options, selected=None, full=False, hint=""):
     return f'<div class="field{" full" if full else ""}"><label for="{id}">{label}</label><select id="{id}">{opts}</select>{hint_html}</div>'
 
 
-# Spanish copies of every page live under /es/. Translations come from i18n/es.json, keyed by a hash of
-# the English text, so editing English copy marks that chunk as untranslated until es.json is refreshed.
+# Translated copies of every page live under /es/ and /ru/. Translations come from i18n/{lang}.json, keyed by
+# a hash of the English text, so editing English copy marks that chunk as untranslated until the file is refreshed.
 I18N_DIR = Path(__file__).parent / "i18n"
-LANGS = {"en": {"prefix": "", "locale": "en_US"}, "es": {"prefix": "es/", "locale": "es_US"}}
+LANGS = {
+    "en": {"prefix": "", "locale": "en_US", "name": "English"},
+    "es": {"prefix": "es/", "locale": "es_US", "name": "Español"},
+    "ru": {"prefix": "ru/", "locale": "ru_RU", "name": "Русский"},
+}
 UI = {
     "footer": "Estimates only, not financial or tax advice.",
     "about": "About",
     "privacy": "Privacy Policy",
     "nav_label": "Calculators",
 }
-ES = json.loads((I18N_DIR / "es.json").read_text()) if (I18N_DIR / "es.json").exists() else {}
-SOURCE = {}  # key -> English text, everything that needs a Spanish translation
-PAGES = []  # English page args, replayed for Spanish
+TR = {l: json.loads(f.read_text()) if (f := I18N_DIR / f"{l}.json").exists() else {} for l in LANGS if l != "en"}
+SOURCE = {}  # key -> English text, everything that needs a translation
+PAGES = []  # English page args, replayed for each language
 
 
 def key(text):
@@ -71,7 +78,26 @@ def tr(text, lang):
     if lang == "en":
         SOURCE[key(text)] = text
         return text
-    return ES.get(key(text))
+    return TR[lang].get(key(text))
+
+
+def extras(filename, lang):
+    """Worked examples and FAQ for a calculator page, plus FAQPage structured data. None if untranslated."""
+    c = CONTENT.get(filename)
+    if not c:
+        return "", None
+    parts = [tr(x, lang) for x in ("Worked examples", "Frequently asked questions", c["examples"].strip(),
+                                   *(t for qa in c["faq"] for t in qa))]
+    if any(x is None for x in parts):
+        return None, None
+    h_ex, h_faq, examples, *qa = parts
+    faq = list(zip(qa[::2], qa[1::2]))
+    items = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>\n" for q, a in faq)
+    html_ = f'<section class="prose extras">\n<h2>{h_ex}</h2>\n{examples}\n<h2>{h_faq}</h2>\n<div class="faq">\n{items}</div>\n</section>'
+    strip = lambda t: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)).replace("&amp;", "&").strip()
+    schema = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": lang, "mainEntity": [
+        {"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]}
+    return html_, schema
 
 
 def page(filename, title, description, body, scripts=(), schema=None, lang="en"):
@@ -81,14 +107,19 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     if any(x is None for x in parts):
         return False
     title, description, body, footer, about, privacy, nav_label, *nav_texts = parts
-    up = "../" if lang == "es" else ""
+    extra, faq_schema = extras(filename, lang)
+    if extra is None:
+        return False
+    body += "\n" + extra if extra else ""
+    up = "" if lang == "en" else "../"
     nav = "".join(
         f'<a href="{href}"{" aria-current=\"page\"" if href == filename else ""}>{text}</a>'
         for (href, _), text in zip(NAV, nav_texts)
     )
-    other = "es" if lang == "en" else "en"
-    switch_href = ("es/" if lang == "en" else "../") + ("" if filename == "index.html" else filename)
-    switch = f'<a class="lang-switch" href="{switch_href}" hreflang="{other}" lang="{other}">{"Español" if lang == "en" else "English"}</a>'
+    switch = "".join(
+        f'<a class="lang-switch" href="{up}{LANGS[l]["prefix"]}{"" if filename == "index.html" else filename}" hreflang="{l}" lang="{l}">{LANGS[l]["name"]}</a>'
+        for l in LANGS if l != lang
+    )
     adsense = (
         f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>'
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
@@ -106,8 +137,8 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     if schema:
         schema = {**schema, "name": title.split(":")[0].split("(")[0].strip() if lang != "en" else schema["name"],
                   "description": description, "url": url(lang), "inLanguage": lang}
-    ld = f'<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>' if schema else ""
-    js_files = ["common.js", *(["i18n-es.js"] if lang == "es" else []), *scripts]
+    ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (schema, faq_schema) if s)
+    js_files = ["common.js", *([f"i18n-{lang}.js"] if lang != "en" else []), *scripts]
     js = "".join(f'<script src="{up}assets/{s}"></script>' for s in js_files)
     html = f"""<!doctype html>
 <html lang="{lang}">
@@ -750,36 +781,44 @@ page(
 )
 
 
-# ---------------------------------------------------------------- Spanish pages + script strings
+# ---------------------------------------------------------------- translated pages + script strings
 # Strings the calculator scripts show; they call Calc.t() with these exact English templates.
 JS_STRINGS = json.loads((I18N_DIR / "js-strings.json").read_text())
 for text in JS_STRINGS:
     SOURCE[key(text)] = text
-es_built = [f for f, *rest in PAGES if page(f, *rest, lang="es")]
-js_es = {t: ES[key(t)] for t in JS_STRINGS if key(t) in ES}
-(ROOT / "assets" / "i18n-es.js").write_text(
-    "// Generated by build.py from i18n/es.json.\nwindow.I18N = " + json.dumps(js_es, ensure_ascii=False, indent=0) + ";\n"
-)
-# source.html is what goes to DeepL; each block keeps its key so translations map back.
-missing = {k: v for k, v in SOURCE.items() if k not in ES}
-(I18N_DIR / "source.html").write_text(
-    '<!doctype html><html lang="en"><head><meta charset="utf-8"></head><body>\n'
-    + "".join(f'<article id="k{k}">\n{v}\n</article>\n' for k, v in missing.items())
-    + "</body></html>\n"
-)
-if missing:
-    print(f"{len(missing)} strings need Spanish: translate i18n/source.html, then run i18n/import.py")
+built = {}
+for lang in TR:
+    built[lang] = [f for f, *rest in PAGES if page(f, *rest, lang=lang)]
+    js_tr = {t: TR[lang][key(t)] for t in JS_STRINGS if key(t) in TR[lang]}
+    # Plural forms ({one, few, many, other}) for languages that need them; Calc.t picks one by number.
+    if (plurals := I18N_DIR / f"{lang}-plurals.json").exists():
+        js_tr.update(json.loads(plurals.read_text()))
+    (ROOT / "assets" / f"i18n-{lang}.js").write_text(
+        f"// Generated by build.py from i18n/{lang}.json.\nwindow.I18N = " + json.dumps(js_tr, ensure_ascii=False, indent=0) + ";\n"
+    )
+    # todo-{lang}.html is what goes to DeepL; each block keeps its key so translations map back.
+    missing = {k: v for k, v in SOURCE.items() if k not in TR[lang]}
+    todo = I18N_DIR / f"todo-{lang}.html"
+    if missing:
+        todo.write_text(
+            f'<!doctype html><html lang="en"><head><meta charset="utf-8"></head><body>\n'
+            + "".join(f'<article id="k{k}">\n{v}\n</article>\n' for k, v in missing.items())
+            + "</body></html>\n"
+        )
+        print(f"{len(missing)} strings need {lang}: see i18n/README.md")
+    elif todo.exists():
+        todo.unlink()
 
 # ---------------------------------------------------------------- robots.txt / sitemap.xml
 pages = [p for p in ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"]]
-es_pages = [("" if f == "index.html" else f) for f in es_built]
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{SITE_URL}/{p}</loc></url>\n" for p in pages)
-    + "".join(f"  <url><loc>{SITE_URL}/es/{p}</loc></url>\n" for p in es_pages)
+    + "".join(f"  <url><loc>{SITE_URL}/{lang}/{'' if f == 'index.html' else f}</loc></url>\n"
+              for lang, files in built.items() for f in files)
     + "</urlset>\n"
 )
 if ADSENSE_CLIENT:
     (ROOT / "ads.txt").write_text(f"google.com, {ADSENSE_CLIENT.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0\n")
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
-print(f"Built {len(PAGES)} English and {len(es_built)} Spanish pages")
+print(f"Built {len(PAGES)} English pages; " + ", ".join(f"{len(v)} {k}" for k, v in built.items()))

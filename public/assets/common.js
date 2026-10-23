@@ -1,7 +1,7 @@
 // Shared helpers for every calculator page.
 const Calc = (() => {
   const lang = document.documentElement.lang || "en";
-  const locale = lang === "es" ? "es-US" : "en-US";
+  const locale = { es: "es-US", ru: "ru-RU" }[lang] || "en-US";
   const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -72,10 +72,16 @@ const Calc = (() => {
     return "$" + v.toFixed(0);
   }
 
-  // Translate an English template from window.I18N (Spanish pages load it) and fill {placeholders}.
+  // Translate an English template from window.I18N (translated pages load it) and fill {placeholders}.
+  // A translation can be {one, few, many, other} plural forms, picked by the first numeric placeholder.
+  const plural = new Intl.PluralRules(locale);
   function t(text, vars = {}) {
-    const out = (window.I18N && window.I18N[text]) || text;
-    return out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+    let out = (window.I18N && window.I18N[text]) || text;
+    if (typeof out === "object") {
+      const n = Object.values(vars).find((v) => typeof v === "number");
+      out = out[plural.select(n)] || out.other;
+    }
+    return out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? (typeof vars[k] === "number" ? vars[k].toLocaleString(locale) : vars[k]) : m));
   }
   const date = (d) => d.toLocaleDateString(locale, { month: "short", year: "numeric" });
 

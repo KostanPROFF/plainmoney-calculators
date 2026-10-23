@@ -164,3 +164,14 @@ tbody td { font-family: var(--font-num); }
 /* Language switch sits at the end of the nav */
 .site-nav .lang-switch { border: 1px solid var(--line); border-radius: 999px; padding: 0 10px; color: var(--fg); }
 .site-nav .lang-switch:hover { border-color: var(--accent); }
+
+/* Worked examples + FAQ */
+.extras { margin-top: 40px; }
+.extras h3 { font-size: 1.1rem; margin: 20px 0 6px; }
+.faq { border-top: 1px solid var(--line); margin-top: 12px; }
+.faq details { border-bottom: 1px solid var(--line); padding: 4px 0; }
+.faq summary { cursor: pointer; font-weight: 600; padding: 10px 28px 10px 0; position: relative; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 8px; font-size: 1.2rem; color: var(--accent); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { margin: 0 0 12px; }

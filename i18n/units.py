@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Splits i18n/source.html into translatable text units and puts translations back.
+"""Splits i18n/todo-{lang}.html into translatable text units and puts translations back.
 
-  python3 i18n/units.py extract            -> i18n/units.json  (list of English strings)
-  python3 i18n/units.py apply units.es.json -> i18n/source.es.html (same order as units.json)
+  python3 i18n/units.py extract ru            -> i18n/units-ru.json  (list of English strings)
+  python3 i18n/units.py apply ru translated.json -> i18n/done-ru.html (same order as units-ru.json)
 
 Inline tags inside a unit become [[n]]...[[/n]] markers so the translator sees whole sentences.
 """
@@ -112,15 +112,16 @@ def from_marked(text, tags, lead, trail):
 
 
 def main():
-    src = (HERE / "source.html").read_text()
+    mode, lang = sys.argv[1], sys.argv[2]
+    src = (HERE / f"todo-{lang}.html").read_text()
     pieces = list(runs(src))
-    if sys.argv[1] == "extract":
+    if mode == "extract":
         units = list(dict.fromkeys(to_marked(h)[0] for k, h in pieces if k == "unit" and has_words(h)))
-        (HERE / "units.json").write_text(json.dumps(units, ensure_ascii=False, indent=1))
+        (HERE / f"units-{lang}.json").write_text(json.dumps(units, ensure_ascii=False, indent=1))
         print(len(units), "units,", sum(len(u) for u in units), "chars")
     else:
-        en = json.loads((HERE / "units.json").read_text())
-        es = dict(zip(en, json.loads(Path(sys.argv[2]).read_text())))
+        en = json.loads((HERE / f"units-{lang}.json").read_text())
+        es = dict(zip(en, json.loads(Path(sys.argv[3]).read_text())))
         out, bad = [], 0
         for k, h in pieces:
             if k == "unit" and has_words(h):
@@ -134,7 +135,7 @@ def main():
                 out.append(from_marked(tr, tags, lead, trail) if tags else lead + html.escape(tr, quote=False) + trail)
             else:
                 out.append(h)
-        (HERE / "source.es.html").write_text("".join(out))
+        (HERE / f"done-{lang}.html").write_text("".join(out))
         print("applied;", bad, "marker mismatches")
 
 
