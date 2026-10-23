@@ -1,3 +1,5 @@
+linkStateTax("taxRate", 1);
+
 Calc.bind("form", () => {
   const { num, money, money2, set, payment, t } = Calc;
   const monthlyIncome = num("income") / 12, debts = num("debts"), down = num("down");

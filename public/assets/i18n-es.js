@@ -3,6 +3,7 @@ window.I18N = {
 "1 mo": "1 mes",
 "1 yr": "1 año",
 "Balance at age {age}": "Saldo a la edad de {age}",
+"Detected from your location": "Detectado desde tu ubicación",
 "Flat-rate state: one rate applies to all taxable income.": "Régimen de tasa única: se aplica una sola tasa a todos los ingresos sujetos a impuestos.",
 "Healthy: qualifies for most loans": "Sólida: cumple con los requisitos para la mayoría de los préstamos",
 "High: only some loan programs allow this": "Alto: solo algunos programas de préstamos lo permiten",

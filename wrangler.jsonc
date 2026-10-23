@@ -1,8 +1,9 @@
 {
   "name": "plainmoney-calculators",
   "compatibility_date": "2026-10-01",
-  // Static site: everything in public/ is served as-is.
-  "assets": { "directory": "./public" },
+  // Static site from public/; src/worker.js only runs for paths with no matching file (e.g. /api/geo).
+  "main": "src/worker.js",
+  "assets": { "directory": "./public", "binding": "ASSETS" },
   "routes": [
     { "pattern": "plainmoneycalc.com", "custom_domain": true },
     { "pattern": "www.plainmoneycalc.com", "custom_domain": true }

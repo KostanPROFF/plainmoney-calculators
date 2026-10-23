@@ -1,3 +1,5 @@
+linkStateTax("taxRate", 1);
+
 Calc.bind("form", () => {
   const { num, money, money2, set, payment, t, date } = Calc;
   const price = num("price"), downPct = num("downPct"), rate = num("rate");

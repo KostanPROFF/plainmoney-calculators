@@ -85,5 +85,32 @@ const Calc = (() => {
   }
   const date = (d) => d.toLocaleDateString(locale, { month: "short", year: "numeric" });
 
+  // Preselect the visitor's US state in #state from /api/geo (Cloudflare IP geolocation), unless they
+  // already picked one. The lookup is cached for the session; any failure just keeps the default.
+  async function detectState() {
+    const sel = document.getElementById("state");
+    if (!sel) return;
+    let touched = false;
+    sel.addEventListener("change", (e) => { if (e.isTrusted) touched = true; });
+    let geo = null;
+    try { geo = JSON.parse(sessionStorage.getItem("geo")); } catch (e) {}
+    if (!geo) {
+      try {
+        const r = await fetch("/api/geo");
+        if (r.ok) geo = await r.json();
+        try { sessionStorage.setItem("geo", JSON.stringify(geo)); } catch (e) {}
+      } catch (e) { return; }
+    }
+    const code = geo && geo.region;
+    if (touched || !code || !sel.querySelector(`option[value="${code}"]`)) return;
+    sel.value = code;
+    sel.dispatchEvent(new Event("change", { bubbles: true }));
+    let hint = sel.parentElement.querySelector(".hint");
+    if (!hint) { hint = document.createElement("span"); hint.className = "hint"; sel.parentElement.append(hint); }
+    hint.textContent = t("Detected from your location");
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", detectState);
+  else setTimeout(detectState);
+
   return { num, money, money2, set, payment, bind, areaChart, t, date };
 })();

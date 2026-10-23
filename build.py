@@ -253,6 +253,20 @@ page(
 """,
 )
 
+# US states for the calculators that prefill state taxes (auto-detected from the visitor's IP).
+STATES = [
+    ("AL","Alabama"),("AK","Alaska"),("AZ","Arizona"),("AR","Arkansas"),("CA","California"),("CO","Colorado"),
+    ("CT","Connecticut"),("DE","Delaware"),("DC","District of Columbia"),("FL","Florida"),("GA","Georgia"),
+    ("HI","Hawaii"),("ID","Idaho"),("IL","Illinois"),("IN","Indiana"),("IA","Iowa"),("KS","Kansas"),
+    ("KY","Kentucky"),("LA","Louisiana"),("ME","Maine"),("MD","Maryland"),("MA","Massachusetts"),
+    ("MI","Michigan"),("MN","Minnesota"),("MS","Mississippi"),("MO","Missouri"),("MT","Montana"),
+    ("NE","Nebraska"),("NV","Nevada"),("NH","New Hampshire"),("NJ","New Jersey"),("NM","New Mexico"),
+    ("NY","New York"),("NC","North Carolina"),("ND","North Dakota"),("OH","Ohio"),("OK","Oklahoma"),
+    ("OR","Oregon"),("PA","Pennsylvania"),("RI","Rhode Island"),("SC","South Carolina"),("SD","South Dakota"),
+    ("TN","Tennessee"),("TX","Texas"),("UT","Utah"),("VT","Vermont"),("VA","Virginia"),("WA","Washington"),
+    ("WV","West Virginia"),("WI","Wisconsin"),("WY","Wyoming"),
+]
+
 # ---------------------------------------------------------------- Mortgage
 desc = "Estimate your monthly mortgage payment including property tax, homeowners insurance, PMI and HOA dues, with a year-by-year amortization schedule."
 page(
@@ -269,7 +283,8 @@ page(
 {field("downPct", "Down payment", "20", post="%")}
 {field("rate", "Interest rate", "6.5", post="%", hint="30-yr fixed average")}
 {select("term", "Loan term", [("30", "30 years"), ("20", "20 years"), ("15", "15 years"), ("10", "10 years")], "30")}
-{field("taxRate", "Property tax", "1.1", post="%/yr", hint="US median about 1%")}
+{select("state", "State", STATES, "TX")}
+{field("taxRate", "Property tax", "1.58", post="%/yr", hint="Average for your state; edit if you know yours")}
 {field("insurance", "Home insurance", "1800", pre="$", hint="per year")}
 {field("hoa", "HOA dues", "0", pre="$", hint="per month")}
 {field("pmiRate", "PMI rate", "0.5", post="%/yr", hint="Applies under 20% down")}
@@ -302,7 +317,7 @@ page(
 <p>Conventional loans usually require private mortgage insurance when you put down less than 20%. PMI typically costs 0.3% to 1.5% of the loan per year and is removed once you reach 20% equity. This calculator drops PMI automatically when the balance falls below 80% of the home price.</p>
 </section>
 """,
-    scripts=("mortgage.js",),
+    scripts=("states.js", "mortgage.js"),
     schema=calc_schema("Mortgage Calculator", desc, "mortgage-calculator.html"),
 )
 
@@ -322,7 +337,8 @@ page(
 {field("down", "Down payment", "4000", pre="$")}
 {field("trade", "Trade-in value", "0", pre="$")}
 {field("owed", "Owed on trade-in", "0", pre="$")}
-{field("taxRate", "Sales tax", "6.5", post="%")}
+{select("state", "State", STATES, "TX")}
+{field("taxRate", "Sales tax", "8.2", post="%", hint="State plus average local rate; edit if yours differs")}
 {field("fees", "Title &amp; fees", "800", pre="$")}
 {field("rate", "Interest rate (APR)", "7.0", post="%")}
 {select("term", "Loan term", [(str(m), f"{m} months") for m in (36, 48, 60, 72, 84)], "60")}
@@ -347,23 +363,11 @@ page(
 <div class="table-scroll"><table><thead><tr><th>Term</th><th>Monthly</th><th>Total interest</th></tr></thead><tbody id="compare"></tbody></table></div>
 </section>
 """,
-    scripts=("auto.js",),
+    scripts=("states.js", "auto.js"),
     schema=calc_schema("Auto Loan Calculator", desc, "auto-loan-calculator.html"),
 )
 
 # ---------------------------------------------------------------- Paycheck
-STATES = [
-    ("AL","Alabama"),("AK","Alaska"),("AZ","Arizona"),("AR","Arkansas"),("CA","California"),("CO","Colorado"),
-    ("CT","Connecticut"),("DE","Delaware"),("DC","District of Columbia"),("FL","Florida"),("GA","Georgia"),
-    ("HI","Hawaii"),("ID","Idaho"),("IL","Illinois"),("IN","Indiana"),("IA","Iowa"),("KS","Kansas"),
-    ("KY","Kentucky"),("LA","Louisiana"),("ME","Maine"),("MD","Maryland"),("MA","Massachusetts"),
-    ("MI","Michigan"),("MN","Minnesota"),("MS","Mississippi"),("MO","Missouri"),("MT","Montana"),
-    ("NE","Nebraska"),("NV","Nevada"),("NH","New Hampshire"),("NJ","New Jersey"),("NM","New Mexico"),
-    ("NY","New York"),("NC","North Carolina"),("ND","North Dakota"),("OH","Ohio"),("OK","Oklahoma"),
-    ("OR","Oregon"),("PA","Pennsylvania"),("RI","Rhode Island"),("SC","South Carolina"),("SD","South Dakota"),
-    ("TN","Tennessee"),("TX","Texas"),("UT","Utah"),("VT","Vermont"),("VA","Virginia"),("WA","Washington"),
-    ("WV","West Virginia"),("WI","Wisconsin"),("WY","Wyoming"),
-]
 desc = "Estimate take-home pay after 2026 federal income tax, Social Security, Medicare, state income tax and 401(k) contributions for any US state."
 page(
     "paycheck-calculator.html",
@@ -519,7 +523,8 @@ page(
 {field("down", "Down payment", "60000", pre="$")}
 {field("rate", "Interest rate", "6.5", post="%")}
 {select("term", "Loan term", [("30", "30 years"), ("20", "20 years"), ("15", "15 years")], "30")}
-{field("taxRate", "Property tax", "1.1", post="%/yr")}
+{select("state", "State", STATES, "TX")}
+{field("taxRate", "Property tax", "1.58", post="%/yr", hint="Average for your state; edit if you know yours")}
 {field("insurance", "Home insurance", "1800", pre="$", hint="per year")}
 {field("hoa", "HOA dues", "0", pre="$", hint="per month")}
 {select("rule", "Debt limit", [("36", "Conservative (28% / 36%)"), ("43", "Standard max (31% / 43%)")], "36", full=True, hint="Housing share / total debt share of gross income")}
@@ -545,7 +550,7 @@ page(
 <p>Paying off a car loan or credit card frees room under the 36% limit dollar for dollar. A larger down payment lowers the loan, and each 1 percentage point drop in the mortgage rate adds roughly 10% to the price you can afford. Remember to keep cash for closing costs, usually 2% to 5% of the price.</p>
 </section>
 """,
-    scripts=("affordability.js",),
+    scripts=("states.js", "affordability.js"),
     schema=calc_schema("Home Affordability Calculator", desc, "home-affordability-calculator.html"),
 )
 
