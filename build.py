@@ -7,6 +7,7 @@ from pathlib import Path
 import json
 import re
 
+from art import ART
 from content import CONTENT
 
 SITE_NAME = "Plain Money Calculators"
@@ -111,6 +112,12 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     if extra is None:
         return False
     body += "\n" + extra if extra else ""
+    # Illustrations go in after translation so they never change the translated text.
+    if filename in ART:
+        body = re.sub(r'<h1>(.*?)</h1>\s*<p class="lede">(.*?)</p>',
+                      lambda m: f'<header class="calc-hero"><div><h1>{m[1]}</h1><p class="lede">{m[2]}</p></div>{ART[filename]}</header>',
+                      body, count=1, flags=re.S)
+    body = re.sub(r'(<a class="calc-card" href="([^"]+)">)', lambda m: m[1] + ART.get(m[2], ""), body)
     up = "" if lang == "en" else "../"
     nav = "".join(
         f'<a href="{href}"{" aria-current=\"page\"" if href == filename else ""}>{text}</a>'
