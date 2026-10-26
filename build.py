@@ -137,7 +137,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>"
         if GA_ID else ""
     )
-    path = "" if filename == "index.html" else filename
+    path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
     alternates = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l)}">' for l in LANGS)
     alternates += f'<link rel="alternate" hreflang="x-default" href="{url("en")}">'
@@ -191,8 +191,15 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 """
     out = ROOT / LANGS[lang]["prefix"] / filename
     out.parent.mkdir(parents=True, exist_ok=True)
+    # Cloudflare serves foo.html at /foo (and redirects /foo.html there), so every link uses that form.
+    html = re.sub(r'href="((?:\.\./)?(?:[a-z]{2}/)?)([a-z0-9-]+)\.html', lambda m: f'href="{m[1] or ""}{clean(m[2] + ".html")}' if m[2] != "index" else f'href="{m[1] or "./"}', html)
     out.write_text(html)
     return True
+
+
+def clean(filename):
+    """Public path of a page: Cloudflare serves foo.html as /foo and index.html as the folder."""
+    return "" if filename == "index.html" else filename.removesuffix(".html")
 
 
 def calc_schema(name, description, filename):
@@ -201,7 +208,7 @@ def calc_schema(name, description, filename):
         "@type": "WebApplication",
         "name": name,
         "description": description,
-        "url": f"{SITE_URL}/{filename}",
+        "url": f"{SITE_URL}/{clean(filename)}",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Any",
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
@@ -830,8 +837,8 @@ for lang in TR:
 pages = [p for p in ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"]]
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    + "".join(f"  <url><loc>{SITE_URL}/{p}</loc></url>\n" for p in pages)
-    + "".join(f"  <url><loc>{SITE_URL}/{lang}/{'' if f == 'index.html' else f}</loc></url>\n"
+    + "".join(f"  <url><loc>{SITE_URL}/{p.removesuffix('.html')}</loc></url>\n" for p in pages)
+    + "".join(f"  <url><loc>{SITE_URL}/{lang}/{clean(f)}</loc></url>\n"
               for lang, files in built.items() for f in files)
     + "</urlset>\n"
 )
