@@ -146,7 +146,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
                   "description": description, "url": url(lang), "inLanguage": lang}
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (schema, faq_schema) if s)
     js_files = ["common.js", *([f"i18n-{lang}.js"] if lang != "en" else []), *scripts]
-    js = "".join(f'<script src="{up}assets/{s}"></script>' for s in js_files)
+    js = "".join(f'<script defer src="/assets/{s}?v={asset_version(s, lang)}"></script>' for s in js_files)
     html = f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -161,15 +161,14 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="{LANGS[lang]['locale']}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="preload" href="/assets/fonts/PublicSans-5-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Archivo-0-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0d6b4f">
-<link rel="stylesheet" href="{up}assets/style.css">
+<style>{CSS}</style>
 {adsense}
 {ld}
 </head>
@@ -195,6 +194,20 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     html = re.sub(r'href="((?:\.\./)?(?:[a-z]{2}/)?)([a-z0-9-]+)\.html', lambda m: f'href="{m[1] or ""}{clean(m[2] + ".html")}' if m[2] != "index" else f'href="{m[1] or "./"}', html)
     out.write_text(html)
     return True
+
+
+# Fonts are self-hosted and the stylesheet is inlined, so nothing blocks the first paint.
+CSS = re.sub(r"\s*\n\s*", "", (ROOT / "assets" / "fonts.css").read_text() + (ROOT / "assets" / "style.css").read_text())
+
+
+def asset_version(name, lang):
+    """Short content hash for cache busting; /assets/* is cached for a year (see public/_headers)."""
+    import hashlib
+    if name.startswith("i18n-"):
+        src = b"".join(f.read_bytes() for f in sorted(I18N_DIR.glob(f"{lang}*.json")) + [I18N_DIR / "js-strings.json"])
+    else:
+        src = (ROOT / "assets" / name).read_bytes()
+    return hashlib.sha1(src).hexdigest()[:8]
 
 
 def clean(filename):
