@@ -14,6 +14,7 @@ SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = "ca-pub-5321511632415174"
 GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
+GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
 ROOT = Path(__file__).parent / "public"
 
 NAV = [
@@ -132,10 +133,12 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
+    # GA4 and Tag Manager share one dataLayer, initialised once.
     analytics = (
-        f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n'
-        f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>"
-        if GA_ID else ""
+        (f'<script async src="https://www.googletagmanager.com/gtm.js?id={GTM_ID}"></script>\n' if GTM_ID else "")
+        + (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n' if GA_ID else "")
+        + "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());"
+        + (f"gtag('config','{GA_ID}');" if GA_ID else "") + "</script>"
     )
     path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
