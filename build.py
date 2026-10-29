@@ -16,6 +16,7 @@ ADSENSE_CLIENT = "ca-pub-5321511632415174"
 GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
 GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
 ROOT = Path(__file__).parent / "public"
+WRITTEN = set()  # pages produced by this run; anything else under public/*.html is stale
 
 NAV = [
     ("mortgage-calculator.html", "Mortgage"),
@@ -135,12 +136,18 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
-    # GA4 and Tag Manager share one dataLayer, initialised once.
+    # GA4 is loaded directly with gtag.js. The Tag Manager container is for extra tags only: a GA4
+    # config tag inside it would send every page view twice, because gtag already sends it here.
     analytics = (
         (f'<script async src="https://www.googletagmanager.com/gtm.js?id={GTM_ID}"></script>\n' if GTM_ID else "")
         + (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n' if GA_ID else "")
         + "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());"
         + (f"gtag('config','{GA_ID}');" if GA_ID else "") + "</script>"
+    )
+    # Standard GTM fallback for visitors without JavaScript.
+    gtm_noscript = (
+        f'<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n'
+        if GTM_ID else ""
     )
     path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
@@ -178,6 +185,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 {ld}
 </head>
 <body>
+{gtm_noscript}
 <header class="site-header"><div class="wrap">
 <a class="logo" href="./">Plain<span>Money</span></a>
 <nav class="site-nav" aria-label="{nav_label}">{nav}{switch}</nav>
@@ -198,6 +206,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     # Cloudflare serves foo.html at /foo (and redirects /foo.html there), so every link uses that form.
     html = re.sub(r'href="((?:\.\./)?(?:[a-z]{2}/)?)([a-z0-9-]+)\.html', lambda m: f'href="{m[1] or ""}{clean(m[2] + ".html")}' if m[2] != "index" else f'href="{m[1] or "./"}', html)
     out.write_text(html)
+    WRITTEN.add(out.resolve())
     return True
 
 
@@ -469,7 +478,7 @@ page(
 <section class="panel" aria-live="polite">
 <div class="headline"><span class="eyebrow" id="atLabel">Balance at retirement</span><span class="big" id="final">-</span></div>
 <dl class="kv">
-<dt><span class="swatch" style="background:#5b8def"></span>Your contributions</dt><dd id="you">-</dd>
+<dt><span class="swatch" style="background:#5b8def"></span>Your contributions &amp; starting balance</dt><dd id="you">-</dd>
 <dt><span class="swatch" style="background:#e0a64a"></span>Employer contributions</dt><dd id="emp">-</dd>
 <dt><span class="swatch" style="background:var(--accent)"></span>Investment growth</dt><dd id="growth">-</dd>
 <dt>Today's dollars (2.5% inflation)</dt><dd id="real">-</dd>
@@ -812,13 +821,23 @@ page(
     f"Privacy policy for {SITE_NAME}.",
     f"""<section class="prose"><h1>Privacy Policy</h1>
 <p>Last updated: October 2026.</p>
-<p>The numbers you enter in our calculators stay in your browser and are not collected or stored by us.</p>
+<p>The numbers you enter in our calculators stay in your browser and are never sent to us. No account is needed.</p>
+<h2>Information we collect</h2>
+<p>We do not ask for names, email addresses or financial details. Like most websites, we use cookies and similar technologies through Google Analytics and Google AdSense, which collect data such as your approximate location, device, browser, referring page and the pages you view. If a calculator preselects a state, our server reads the country and region that Cloudflare reports for your IP address; we do not store that value.</p>
 <h2>Advertising</h2>
 <p>We use Google AdSense to show ads. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and other sites on the internet. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" rel="nofollow">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" rel="nofollow">aboutads.info</a>.</p>
+<h2>Cookies and consent</h2>
+<p>Analytics and advertising cookies are set by Google, not by us. Where consent is required, a message from Google's certified consent management platform asks for your choice before those cookies are used, and you can change or withdraw it at any time. Elsewhere you can block or delete cookies in your browser settings; the calculators keep working without them.</p>
 <h2>Analytics</h2>
 <p>We use Google Analytics to understand how visitors use the site, such as which pages are viewed. Google Analytics uses cookies and collects data like your approximate location, device and browser, but not the numbers you enter in calculators. You can opt out with the <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow">Google Analytics opt-out browser add-on</a>.</p>
-<h2>California residents</h2>
-<p>Under the CCPA you may request access to or deletion of personal information. Because our calculators do not collect personal data, we generally hold none about you. Contact <strong>hello@plainmoneycalc.com</strong> with any request.</p>
+<h2>Your rights</h2>
+<p>If you are in the European Economic Area, the United Kingdom or Switzerland, the GDPR gives you the right to access, correct, delete or restrict the processing of your personal data, to object to it and to complain to your local supervisory authority. If you are a California resident, the CCPA and CPRA give you the right to know, delete and correct personal information and to opt out of its sale or sharing; we do not sell personal information. To make a request, contact <strong>hello@plainmoneycalc.com</strong>.</p>
+<h2>Data retention and processors</h2>
+<p>Google retains analytics and advertising data according to its own settings. Google acts as our processor for analytics and as an independent controller for ad personalization; see <a href="https://policies.google.com/privacy" rel="nofollow">Google's Privacy Policy</a>.</p>
+<h2>Children</h2>
+<p>This site is not directed to children under 13, and we do not knowingly collect their data.</p>
+<h2>Changes and contact</h2>
+<p>We will update this page if our practices change and revise the date above. Questions about this policy: <strong>hello@plainmoneycalc.com</strong>.</p>
 </section>""",
 )
 
@@ -863,4 +882,11 @@ pages = [p for p in ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"
 if ADSENSE_CLIENT:
     (ROOT / "ads.txt").write_text(f"google.com, {ADSENSE_CLIENT.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0\n")
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+
+# Drop pages this run did not produce: renamed or deleted pages, and translations that no longer exist.
+for stale in sorted(ROOT.rglob("*.html")):
+    if stale.resolve() not in WRITTEN:
+        stale.unlink()
+        print(f"Removed stale {stale.relative_to(ROOT)}")
+
 print(f"Built {len(PAGES)} English pages; " + ", ".join(f"{len(v)} {k}" for k, v in built.items()))

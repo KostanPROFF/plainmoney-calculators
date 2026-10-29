@@ -106,8 +106,10 @@ const Calc = (() => {
     if (!geo) {
       try {
         const r = await fetch("/api/geo");
-        if (r.ok) geo = await r.json();
-        try { sessionStorage.setItem("geo", JSON.stringify(geo)); } catch (e) {}
+        if (r.ok) {
+          geo = await r.json();
+          try { sessionStorage.setItem("geo", JSON.stringify(geo)); } catch (e) {}
+        }
       } catch (e) { return; }
     }
     const code = geo && geo.region;

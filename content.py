@@ -169,7 +169,7 @@ CONTENT = {
         "examples": """
 <h3>Example: $5,000 plus $200 a month at 6%</h3>
 <p>Starting with $5,000 and adding $200 every month at 6% compounded monthly, you would have about $160,900 after 25 years. You deposit $65,000, so about $95,900 is interest.</p>
-<p>After 15 years the same plan holds about $70,400, of which $29,400 is interest. The last ten years add more than twice as much as the first fifteen, which is compounding at work.</p>
+<p>After 15 years the same plan holds about $70,400, of which $29,400 is interest. The last ten years alone add about $66,500 of growth, more than twice the interest earned in the first fifteen.</p>
 """,
         "faq": [
             ("What is compound interest?",
