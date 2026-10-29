@@ -198,3 +198,10 @@ tbody td { font-family: var(--font-num); }
 .bmi-labels span:nth-child(2) { left: 14%; }
 .bmi-labels span:nth-child(3) { left: 40%; }
 .bmi-labels span:nth-child(4) { left: 60%; }
+
+/* Explanatory tables in the text wrap their cells instead of scrolling sideways; data tables get tighter on phones */
+.prose td, .prose th { white-space: normal; font-family: inherit; text-align: left; }
+@media (max-width: 480px) {
+  th, td { padding: 6px 8px; font-size: 0.82rem; }
+  th { white-space: normal; }
+}
