@@ -145,7 +145,7 @@ tbody td { font-family: var(--font-num); }
 
 /* DTI verdict + scale */
 .verdict { display: inline-block; margin: 12px 0 0; padding: 4px 10px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; background: var(--accent-soft); color: var(--accent); }
-.verdict.mid { background: color-mix(in srgb, var(--warn) 15%, transparent); color: var(--warn); }
+.verdict.mid { background: color-mix(in srgb, var(--warn) 15%, transparent); color: color-mix(in srgb, var(--warn) 75%, var(--fg)); }
 .verdict.bad { background: color-mix(in srgb, #c0392b 15%, transparent); color: #d9534f; }
 .scale { position: relative; display: flex; height: 10px; border-radius: 5px; overflow: visible; margin-top: 20px; }
 .scale span:nth-child(1) { background: var(--accent); border-radius: 5px 0 0 5px; }

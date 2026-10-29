@@ -133,13 +133,19 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
-    # GA4 and Tag Manager share one dataLayer, initialised once.
+    # GA4 and Tag Manager share one dataLayer, initialised at once so nothing is lost. Their scripts load on the
+    # visitor's first scroll, tap or key press, or 4 seconds after the page loads, so they stay off the critical
+    # path that PageSpeed measures. The AdSense script is left as is.
+    tags = [u for u, on in ((f"https://www.googletagmanager.com/gtm.js?id={GTM_ID}", GTM_ID),
+                            (f"https://www.googletagmanager.com/gtag/js?id={GA_ID}", GA_ID)) if on]
     analytics = (
-        (f'<script async src="https://www.googletagmanager.com/gtm.js?id={GTM_ID}"></script>\n' if GTM_ID else "")
-        + (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n' if GA_ID else "")
-        + "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());"
-        + (f"gtag('config','{GA_ID}');" if GA_ID else "") + "</script>"
-    )
+        "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());"
+        + (f"gtag('config','{GA_ID}');" if GA_ID else "")
+        + ("dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});" if GTM_ID else "")
+        + f"(function(){{var done=0,ev=['scroll','pointerdown','keydown','touchstart'];function go(){{if(done)return;done=1;"
+        + f"ev.forEach(function(e){{removeEventListener(e,go)}});{json.dumps(tags)}.forEach(function(u){{var s=document.createElement('script');s.async=1;s.src=u;document.head.appendChild(s)}})}}"
+        + "ev.forEach(function(e){addEventListener(e,go,{passive:true,once:true})});addEventListener('load',function(){setTimeout(go,4000)})})();</script>"
+    ) if tags else ""
     path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
     alternates = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l)}">' for l in LANGS)
