@@ -145,7 +145,7 @@ tbody td { font-family: var(--font-num); }
 
 /* DTI verdict + scale */
 .verdict { display: inline-block; margin: 12px 0 0; padding: 4px 10px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; background: var(--accent-soft); color: var(--accent); }
-.verdict.mid { background: color-mix(in srgb, var(--warn) 15%, transparent); color: var(--warn); }
+.verdict.mid { background: color-mix(in srgb, var(--warn) 15%, transparent); color: color-mix(in srgb, var(--warn) 75%, var(--fg)); }
 .verdict.bad { background: color-mix(in srgb, #c0392b 15%, transparent); color: #d9534f; }
 .scale { position: relative; display: flex; height: 10px; border-radius: 5px; overflow: visible; margin-top: 20px; }
 .scale span:nth-child(1) { background: var(--accent); border-radius: 5px 0 0 5px; }
@@ -198,3 +198,10 @@ tbody td { font-family: var(--font-num); }
 .bmi-labels span:nth-child(2) { left: 14%; }
 .bmi-labels span:nth-child(3) { left: 40%; }
 .bmi-labels span:nth-child(4) { left: 60%; }
+
+/* Explanatory tables in the text wrap their cells instead of scrolling sideways; data tables get tighter on phones */
+.prose td, .prose th { white-space: normal; font-family: inherit; text-align: left; }
+@media (max-width: 480px) {
+  th, td { padding: 6px 8px; font-size: 0.82rem; }
+  th { white-space: normal; }
+}

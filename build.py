@@ -133,13 +133,19 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
-    # GA4 and Tag Manager share one dataLayer, initialised once.
+    # GA4 and Tag Manager share one dataLayer, initialised at once so nothing is lost. Their scripts load on the
+    # visitor's first scroll, tap or key press, or 4 seconds after the page loads, so they stay off the critical
+    # path that PageSpeed measures. The AdSense script is left as is.
+    tags = [u for u, on in ((f"https://www.googletagmanager.com/gtm.js?id={GTM_ID}", GTM_ID),
+                            (f"https://www.googletagmanager.com/gtag/js?id={GA_ID}", GA_ID)) if on]
     analytics = (
-        (f'<script async src="https://www.googletagmanager.com/gtm.js?id={GTM_ID}"></script>\n' if GTM_ID else "")
-        + (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n' if GA_ID else "")
-        + "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());"
-        + (f"gtag('config','{GA_ID}');" if GA_ID else "") + "</script>"
-    )
+        "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());"
+        + (f"gtag('config','{GA_ID}');" if GA_ID else "")
+        + ("dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});" if GTM_ID else "")
+        + f"(function(){{var done=0,ev=['scroll','pointerdown','keydown','touchstart'];function go(){{if(done)return;done=1;"
+        + f"ev.forEach(function(e){{removeEventListener(e,go)}});{json.dumps(tags)}.forEach(function(u){{var s=document.createElement('script');s.async=1;s.src=u;document.head.appendChild(s)}})}}"
+        + "ev.forEach(function(e){addEventListener(e,go,{passive:true,once:true})});addEventListener('load',function(){setTimeout(go,4000)})})();</script>"
+    ) if tags else ""
     path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
     alternates = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l)}">' for l in LANGS)
@@ -417,7 +423,7 @@ page(
 {select("freq", "Pay frequency", [("52","Weekly"),("26","Every 2 weeks"),("24","Twice a month"),("12","Monthly")], "26")}
 {select("status", "Filing status", [("single","Single"),("mfj","Married filing jointly"),("hoh","Head of household")], "single")}
 {select("state", "State", STATES, "TX")}
-{field("stateRate", "State tax rate", "0", post="%", hint="Filled in from your state; edit if you know your rate", full=True)}
+{field("stateRate", "Your own state tax rate", "", post="%", hint="Optional: leave blank to use your state's 2026 brackets", full=True)}
 {field("k401", "401(k) contribution", "6", post="%", hint="Pre-tax, traditional")}
 {field("health", "Health premium", "0", pre="$", hint="Pre-tax, per paycheck")}
 </div></form>
@@ -446,7 +452,7 @@ page(
 <h2>What comes out of your paycheck</h2>
 <p><strong>Federal income tax</strong> is calculated on your salary minus pre-tax deductions and the 2026 standard deduction ($16,100 single, $32,200 married filing jointly, $24,150 head of household), using the 2026 brackets from 10% to 37%.</p>
 <p><strong>FICA</strong> is 6.2% for Social Security on wages up to $184,500 in 2026, plus 1.45% for Medicare on all wages and an extra 0.9% above $200,000 ($250,000 for joint filers).</p>
-<p><strong>State income tax</strong> varies. Nine states have no wage income tax: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington and Wyoming. Flat-tax states use their single rate. For states with graduated brackets this version uses an approximate effective rate that you can override. Local and city taxes are not included.</p>
+<p><strong>State income tax</strong> varies. Nine states have no wage income tax: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington and Wyoming. For every other state the calculator applies the 2026 state brackets, standard deduction and personal exemptions, using the single-filer brackets for heads of household. You can enter your own effective rate instead. Local and city taxes, such as those in New York City and Maryland counties, are not included.</p>
 </section>
 """,
     scripts=("paycheck.js",),

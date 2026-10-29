@@ -113,7 +113,7 @@ CONTENT = {
         "examples": """
 <h3>Example: $60,000 salary paid every two weeks</h3>
 <p>A single filer contributes 5% ($3,000 a year) to a traditional 401(k). Federal taxable income is $60,000 minus $3,000 minus the $16,100 standard deduction, or $40,900, which gives about $4,660 in federal income tax. Social Security takes $3,720 and Medicare $870. In Texas, with no state income tax, take-home pay is about $47,750 a year, or $1,836.54 per paycheck.</p>
-<p>The same salary in Illinois, at a flat 4.95%, adds about $2,820 in state tax, so each paycheck drops to about $1,728.</p>
+<p>The same salary in Illinois, at a flat 4.95% after the $2,925 personal exemption, adds about $2,680 in state tax, so each paycheck drops to about $1,734.</p>
 """,
         "faq": [
             ("Why is my paycheck different from this estimate?",
