@@ -200,4 +200,131 @@ CONTENT = {
              "No. Interest from savings accounts is taxable income, so your real growth will be slightly lower. The difference is small at typical savings rates."),
         ],
     },
+    "bmi-calculator.html": {
+        "examples": """
+<h3>Example 1: 5 feet 4 inches and 145 pounds</h3>
+<p>Height is 64 inches, so BMI is 703 &times; 145 / 64<sup>2</sup> = 24.9, at the top of the healthy range. For this height, a healthy weight runs from about 108 to 145 pounds.</p>
+<h3>Example 2: 6 feet and 220 pounds</h3>
+<p>At 72 inches, BMI is 703 &times; 220 / 72<sup>2</sup> = 29.8, which falls in the overweight range. The healthy range for this height is about 136 to 184 pounds, so reaching it means losing about 37 pounds.</p>
+""",
+        "faq": [
+            ("What is a healthy BMI?",
+             "For adults, the CDC defines a BMI from 18.5 to 24.9 as a healthy weight. Below 18.5 is underweight, 25 to 29.9 is overweight, and 30 or higher is obesity."),
+            ("Is BMI accurate?",
+             "BMI is a useful screening tool for groups of people, but it can mislead for individuals. It cannot tell muscle from fat, so muscular people may show a high BMI, and older adults with little muscle may show a normal BMI with excess fat."),
+            ("Is BMI different for men and women?",
+             "No. Adults use the same formula and the same categories regardless of sex. Women tend to carry more body fat than men at the same BMI, which is one of the limits of the measure."),
+            ("Can children use this calculator?",
+             "No. For children and teens aged 2 to 19, BMI is compared with others of the same age and sex using growth charts, so the adult categories do not apply."),
+        ],
+    },
+    "calorie-calculator.html": {
+        "examples": """
+<h3>Example 1: a moderately active 40-year-old man</h3>
+<p>A man who is 40 years old, 5 feet 10 inches tall and weighs 190 pounds has a BMR of about 1,780 calories. With exercise 3 to 5 days a week (factor 1.55), he burns about 2,760 calories a day. Eating about 2,260 calories a day would put him on track to lose about 1 pound a week.</p>
+<h3>Example 2: a sedentary 28-year-old woman</h3>
+<p>A woman who is 28, 5 feet 4 inches tall and weighs 140 pounds has a BMR of about 1,350 calories and maintains her weight on about 1,620 calories a day with little exercise. A 500-calorie deficit would drop her below 1,200 calories, so the calculator holds the target at 1,200. Adding activity is a safer way to widen the gap.</p>
+""",
+        "faq": [
+            ("How many calories should I eat to lose weight?",
+             "Start from the calories that maintain your weight and subtract 250 to 500 a day. That usually leads to a loss of about half a pound to 1 pound a week, a pace that is easier to keep up and preserves more muscle."),
+            ("What is the difference between BMR and TDEE?",
+             "BMR, basal metabolic rate, is what your body burns at complete rest to keep you alive. TDEE, total daily energy expenditure, adds digestion and every kind of movement, from walking around the house to workouts. Your diet should be planned around TDEE."),
+            ("Which activity level should I choose?",
+             "Pick the level that matches a typical week, not your best week. Most people with desk jobs who exercise a few times a week fit the light or moderate level. Overestimating activity is the most common reason weight loss stalls."),
+            ("How accurate is the Mifflin-St Jeor equation?",
+             "Studies find it is the most accurate of the common formulas for most adults, usually within about 10% of measured values. Treat the result as a starting point and adjust after two to three weeks based on how your weight actually changes."),
+        ],
+    },
+    "due-date-calculator.html": {
+        "examples": """
+<h3>Example 1: a 28-day cycle</h3>
+<p>If the first day of your last period was March 1, 2026, adding 280 days gives an estimated due date of December 6, 2026. Conception most likely happened around March 15.</p>
+<h3>Example 2: a longer cycle</h3>
+<p>With the same start date but a 33-day cycle, ovulation comes about 5 days later than in a 28-day cycle, so the due date moves to December 11, 2026.</p>
+""",
+        "faq": [
+            ("How is my due date calculated?",
+             "Your due date is 280 days, or 40 weeks, after the first day of your last menstrual period. If your cycle is longer or shorter than 28 days, the date moves by the same number of days."),
+            ("Why am I counted as pregnant before conception?",
+             "Doctors count from your last period because that date is usually known, while the exact day of conception rarely is. So in the first two weeks of the 40 you are not yet pregnant."),
+            ("Can my due date change?",
+             "Yes. An early ultrasound is the most accurate way to date a pregnancy, especially if your cycles are irregular or you are unsure of your last period. Your provider may update the due date after the first scan."),
+            ("What if I conceived through IVF?",
+             "With IVF the transfer date is known, so the due date is counted from it instead: about 261 days after a 5-day embryo transfer or 263 days after a 3-day transfer. Ask your clinic for your exact date."),
+        ],
+    },
+    "percentage-calculator.html": {
+        "examples": """
+<h3>Example 1: a sale price</h3>
+<p>A $79.99 jacket is 25% off. The discount is 79.99 &times; 25 / 100 = $20.00, so you pay $59.99.</p>
+<h3>Example 2: a raise</h3>
+<p>Your salary goes from $52,000 to $55,640. The increase is $3,640, and 3,640 / 52,000 &times; 100 = a 7% raise.</p>
+<h3>Example 3: a test score</h3>
+<p>You answered 42 of 48 questions correctly. 42 / 48 &times; 100 = 87.5%.</p>
+""",
+        "faq": [
+            ("How do I calculate a percentage of a number?",
+             "Convert the percent to a decimal by dividing by 100, then multiply. For 20% of 150, multiply 150 by 0.20 to get 30."),
+            ("How do I calculate percent increase?",
+             "Subtract the original value from the new value, divide by the original value and multiply by 100. A price that goes from $40 to $50 rose by 10 / 40 &times; 100 = 25%."),
+            ("Why does a 50% drop need a 100% gain to recover?",
+             "Percent change is measured from the starting value. If $100 falls 50% to $50, getting back to $100 means adding $50, which is 100% of the new $50 base."),
+            ("How do I add a percentage to a number?",
+             "Multiply by 1 plus the percent as a decimal. To add 8% sales tax to $25, multiply 25 by 1.08 to get $27."),
+        ],
+    },
+    "tip-calculator.html": {
+        "examples": """
+<h3>Example 1: dinner for four</h3>
+<p>The bill is $68.40 and you tip 20%. The tip is $13.68, the total is $82.08, and each of the four people pays $20.52.</p>
+<p>If everyone rounds up to $21, the group pays $84.00, which works out to a tip of about 22.8%.</p>
+<h3>Example 2: a $112 bill at 15%</h3>
+<p>A 15% tip is $16.80, for a total of $128.80.</p>
+""",
+        "faq": [
+            ("Should I tip on the bill before or after tax?",
+             "Etiquette guides say to tip on the pre-tax amount, which is what this calculator expects. Tipping on the total after tax is also common and simply adds a little more for the server."),
+            ("How much should I tip at a restaurant?",
+             "In the US, 15% to 20% is standard for sit-down service, with 20% now common for good service. Servers often earn a lower base wage and rely on tips for most of their income."),
+            ("Do I need to tip if a service charge is included?",
+             "Check the receipt. Many restaurants add an automatic gratuity of about 18% for large groups. If it is there, no additional tip is expected unless the service was exceptional."),
+            ("How do I split a bill with a different tip for each person?",
+             "Run the calculator once for each person's share of the bill with their chosen tip and a party size of one. For equal shares, enter the full bill and the number of people."),
+        ],
+    },
+    "age-calculator.html": {
+        "examples": """
+<h3>Example: born December 3, 1985</h3>
+<p>On October 29, 2026, this person is 40 years, 10 months and 26 days old. Their 41st birthday is 35 days away.</p>
+<p>The last full month ended on October 3, so the remaining 26 days are counted from that date.</p>
+""",
+        "faq": [
+            ("How do I calculate my age?",
+             "Subtract your birth year from the current year, then subtract one if your birthday has not happened yet this year. For months and days, count the full months since your last birthday and then the remaining days."),
+            ("How many days old am I?",
+             "Enter your date of birth and the calculator shows your age in days, counting leap years. Someone who has just turned 30 has lived about 10,957 days."),
+            ("Can I find someone's age on a past or future date?",
+             "Yes. Change the second date to any day, such as a wedding date or a future retirement date, to see the age on that day."),
+            ("What day of the week was I born?",
+             "The calculator shows it under the results. It uses the standard Gregorian calendar used in the US since 1752."),
+        ],
+    },
+    "gpa-calculator.html": {
+        "examples": """
+<h3>Example: a 12-credit semester</h3>
+<p>You take four classes: an A in a 4-credit class (16 points), a B+ in a 3-credit class (9.9 points), an A- in a 3-credit class (11.1 points) and a C in a 2-credit class (4 points). That is 41 grade points over 12 credits, a semester GPA of 3.42.</p>
+<p>If you came into the semester with a 3.20 GPA over 45 credits, you had 144 grade points. The new cumulative GPA is (144 + 41) / 57 = 3.25.</p>
+""",
+        "faq": [
+            ("What is a good GPA?",
+             "A 3.0 is a common minimum for scholarships and many graduate programs, and 3.5 or higher is considered strong. Competitive programs and employers in some fields look for 3.7 and up."),
+            ("How do I raise my GPA?",
+             "Classes with more credit hours move your GPA the most, so focus on doing well in them. The more credits you have already completed, the more slowly your cumulative GPA changes, so early semesters matter a lot."),
+            ("Does a pass/fail class count toward GPA?",
+             "Usually not. Pass, credit or satisfactory grades give credit hours but no grade points, so leave those classes out. A failed pass/fail class may count as an F at some schools."),
+            ("What if my school uses a different scale?",
+             "Some schools count an A+ as 4.3 or do not use minus grades. Check your registrar's grading table and adjust the grades you enter, since this calculator uses the most common 4.0 scale."),
+        ],
+    },
 }

@@ -1,0 +1,5 @@
+{
+ "{n} days": {"one": "{n} día", "other": "{n} días"},
+ "{n} years": {"one": "{n} año", "other": "{n} años"},
+ "{y} years, {m} months, {d} days": {"one": "{y} año, {m} meses y {d} días", "other": "{y} años, {m} meses y {d} días"}
+}

@@ -12,6 +12,8 @@ const Calc = (() => {
   }
   const money = (v) => usd.format(Math.round(v));
   const money2 = (v) => usd2.format(v);
+  // Plain number in the page language, with exactly `digits` decimals when given (up to 4 otherwise).
+  const fmt = (v, digits) => v.toLocaleString(locale, digits === undefined ? { maximumFractionDigits: 4 } : { minimumFractionDigits: digits, maximumFractionDigits: digits });
   const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
 
   // Standard amortized payment.
@@ -84,6 +86,7 @@ const Calc = (() => {
     return out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? (typeof vars[k] === "number" ? vars[k].toLocaleString(locale) : vars[k]) : m));
   }
   const date = (d) => d.toLocaleDateString(locale, { month: "short", year: "numeric" });
+  const longDate = (d) => d.toLocaleDateString(locale, { month: "long", day: "numeric", year: "numeric" });
 
   // Preselect the visitor's US state in #state from /api/geo (Cloudflare IP geolocation), unless they
   // already picked one. The lookup is cached for the session; any failure just keeps the default.
@@ -112,5 +115,5 @@ const Calc = (() => {
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", detectState);
   else setTimeout(detectState);
 
-  return { num, money, money2, set, payment, bind, areaChart, t, date };
+  return { num, money, money2, fmt, set, payment, bind, areaChart, t, date, longDate, locale };
 })();

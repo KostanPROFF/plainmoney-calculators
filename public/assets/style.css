@@ -190,3 +190,11 @@ tbody td { font-family: var(--font-num); }
 .calc-hero .art { width: 180px; flex: none; margin-top: 16px; }
 .calc-card .art { width: 96px; height: 77px; margin: -6px 0 6px -10px; }
 @media (max-width: 560px) { .calc-hero .art { width: 90px; } }
+
+/* BMI scale: 15 to 40, with breaks at 18.5, 25 and 30 */
+.bmi-scale span:nth-child(1) { background: #e0c24a; border-radius: 5px 0 0 5px; }
+.bmi-scale span:nth-child(2) { background: var(--accent); border-radius: 0; }
+.bmi-scale span:nth-child(3) { background: #e0a64a; }
+.bmi-labels span:nth-child(2) { left: 14%; }
+.bmi-labels span:nth-child(3) { left: 40%; }
+.bmi-labels span:nth-child(4) { left: 60%; }
