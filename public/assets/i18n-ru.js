@@ -4,37 +4,69 @@ window.I18N = {
 "1 yr": "1 год",
 "Balance at age {age}": "Остаток на счету в возрасте {age}",
 "Detected from your location": "Ваш штат был определен автоматически на основе вашего местоположения",
+"First": "Первый",
 "Flat-rate state: one rate applies to all taxable income.": "Система фиксированной ставки: ко всем видам налогооблагаемого дохода применяется единая ставка.",
+"Gain {n} lb": {
+"one": "Набрать {n} фунт",
+"few": "Набрать {n} фунта",
+"many": "Набрать {n} фунтов",
+"other": "Набрать {n} фунта"
+},
+"Healthy weight": "Нормальный вес",
 "Healthy: qualifies for most loans": "Хорошее финансовое положение: соответствует требованиям для получения большинства кредитов",
 "High: only some loan programs allow this": "Высокий коэффициент: это допускается лишь в рамках некоторых кредитных программ",
 "Limited by the housing limit ({pct}% of income).": "Ограничено пределом на жилье ({pct} % от дохода).",
 "Limited by your other debts (total debt capped at {pct}% of income).": "С учетом ваших других долгов (общая сумма задолженности не должна превышать {pct} % от дохода).",
 "Local taxes are not included.": "Местные налоги не включены.",
+"Lose {n} lb": {
+"one": "Сбросить {n} фунт",
+"few": "Сбросить {n} фунта",
+"many": "Сбросить {n} фунтов",
+"other": "Сбросить {n} фунта"
+},
 "Manageable: within most mortgage limits": "Доступно: укладывается в рамки большинства ипотечных лимитов",
 "Never": "Никогда",
 "No PMI: your down payment is 20% or more.": "Без PMI: ваш первоначальный взнос составляет 20 % или более.",
+"Obesity": "Ожирение",
+"Overweight": "Избыточный вес",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
 "one": "Страхование PMI применяется, поскольку ваш первоначальный взнос составляет менее 20 %. Оно прекращается примерно через {years} год, когда сумма кредита достигнет 80 % от стоимости жилья.",
 "few": "Страхование PMI применяется, поскольку ваш первоначальный взнос составляет менее 20 %. Оно прекращается примерно через {years} года, когда сумма кредита достигнет 80 % от стоимости жилья.",
 "many": "Страхование PMI применяется, поскольку ваш первоначальный взнос составляет менее 20 %. Оно прекращается примерно через {years} лет, когда сумма кредита достигнет 80 % от стоимости жилья.",
 "other": "Страхование PMI применяется, поскольку ваш первоначальный взнос составляет менее 20 %. Оно прекращается примерно через {years} года, когда сумма кредита достигнет 80 % от стоимости жилья."
 },
+"Past 42 weeks": "Более 42 недель",
 "Payment to finish in {n} months": {
 "one": "Ежемесячный платеж, позволяющий полностью погасить задолженность за {n} месяц",
 "few": "Ежемесячный платеж, позволяющий полностью погасить задолженность за {n} месяца",
 "many": "Ежемесячный платеж, позволяющий полностью погасить задолженность за {n} месяцев",
 "other": "Ежемесячный платеж, позволяющий полностью погасить задолженность за {n} месяца"
 },
+"Second": "Второй",
 "Starting balance is counted with your contributions.": "Начальный баланс рассчитывается с учетом ваших взносов.",
+"Third": "Третий",
 "This state has no income tax on wages.": "В этом штате не взимается подоходный налог с заработной платы.",
 "This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "В этом штате применяется прогрессивная шкала налогообложения. Указанная ставка является приблизительной эффективной ставкой; измените её, если знаете свою.",
+"Today": "Сегодня",
+"Underweight": "Недостаток веса",
 "Very high: most lenders will decline": "Очень высокий: большинство кредиторов откажут",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "Цель для похудения не опускается ниже {n} калорий в день — обычного минимума без медицинского контроля.",
 "With under 20% down, expect PMI on top.": "Если первоначальный взнос составляет менее 20 %, вам придется дополнительно оплачивать страховку PMI.",
+"You are in the healthy range": "Вы в пределах нормы",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "В некоторые годы сумма ваших взносов достигала годового лимита, установленного Налоговым управлением США (IRS), поэтому она была ограничена.",
 "Your current savings will reach the goal on their own with interest.": "Ваши текущие сбережения сами по себе, с учетом процентов, позволят достичь поставленной цели.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "При таком доходе ваши долги не оставляют возможности выплачивать ипотеку. Попробуйте сначала погасить долги.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "Ваш платеж не покрывает ежемесячные проценты в размере {amount}. Остаток по счету будет продолжать расти.",
 "{amount}/mo": "{amount} в месяц",
+"{cm} cm, {kg} kg": "{cm} см, {kg} кг",
+"{lo} to {hi} lb": "от {lo} до {hi} фунтов",
+"{n} cal": "{n} ккал",
+"{n} days": {
+"one": "{n} день",
+"few": "{n} дня",
+"many": "{n} дней",
+"other": "{n} дня"
+},
 "{n} mo": {
 "one": "{n} месяц",
 "few": "{n} месяца",
@@ -47,10 +79,18 @@ window.I18N = {
 "many": "{n} месяцев",
 "other": "{n} месяца"
 },
+"{n} years": {
+"one": "{n} год",
+"few": "{n} года",
+"many": "{n} лет",
+"other": "{n} года"
+},
 "{n} yr": {
 "one": "{n} год",
 "few": "{n} года",
 "many": "{n} лет",
 "other": "{n} года"
-}
+},
+"{w} weeks, {d} days": "{w} нед. {d} дн.",
+"{y} years, {m} months, {d} days": "{y} г. {m} мес. {d} дн."
 };
