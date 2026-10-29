@@ -14,7 +14,6 @@ SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = "ca-pub-5321511632415174"
 GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
-GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
 ROOT = Path(__file__).parent / "public"
 WRITTEN = set()  # pages produced by this run; anything else under public/*.html is stale
 
@@ -136,18 +135,11 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
-    # GA4 is loaded directly with gtag.js. The Tag Manager container is for extra tags only: a GA4
-    # config tag inside it would send every page view twice, because gtag already sends it here.
+    # GA4 loads directly with gtag.js; no Tag Manager container is used.
     analytics = (
-        (f'<script async src="https://www.googletagmanager.com/gtm.js?id={GTM_ID}"></script>\n' if GTM_ID else "")
-        + (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n' if GA_ID else "")
+        (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n' if GA_ID else "")
         + "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());"
         + (f"gtag('config','{GA_ID}');" if GA_ID else "") + "</script>"
-    )
-    # Standard GTM fallback for visitors without JavaScript.
-    gtm_noscript = (
-        f'<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n'
-        if GTM_ID else ""
     )
     path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
@@ -185,7 +177,6 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 {ld}
 </head>
 <body>
-{gtm_noscript}
 <header class="site-header"><div class="wrap">
 <a class="logo" href="./">Plain<span>Money</span></a>
 <nav class="site-nav" aria-label="{nav_label}">{nav}{switch}</nav>
