@@ -7,11 +7,13 @@ function limitFor(age) {
 
 Calc.bind("form", () => {
   const { num, money, set, areaChart, t } = Calc;
-  const age = Math.round(num("age")), retire = Math.round(num("retire"));
+  const age = Math.round(num("age"));
+  // Bound the horizon so a typo cannot run the projection (and its chart) for millions of years.
+  const retire = Math.min(Math.max(Math.round(num("retire")), age), age + 100);
   let salary = num("salary"), bal = num("balance");
   const pct = num("contrib") / 100, raise = num("raise") / 100, ret = num("ret") / 100;
   const matchRate = num("match") / 100, matchCap = num("matchCap") / 100;
-  const years = Math.max(0, retire - age);
+  const years = retire - age;
   const start = bal;
   let you = 0, emp = 0, capped = false;
   const xs = [age], sYou = [0], sEmp = [0], sStart = [start], sGrowth = [0];

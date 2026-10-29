@@ -8,10 +8,15 @@ Calc.bind("form", () => {
   set("front", income > 0 ? (housing / income * 100).toFixed(1) + "%" : "-");
   set("room", money(Math.max(0, income * 0.36 - total)));
   const v = document.getElementById("verdict");
-  const [text, cls] = dti <= 36 ? [t("Healthy: qualifies for most loans"), ""]
-    : dti <= 43 ? [t("Manageable: within most mortgage limits"), "mid"]
-    : dti < 50 ? [t("High: only some loan programs allow this"), "mid"]
-    : [t("Very high: most lenders will decline"), "bad"];
-  v.textContent = text; v.className = "verdict " + cls;
+  if (income <= 0) {
+    // Without income there is no ratio, so hide the verdict instead of calling it healthy.
+    v.textContent = ""; v.style.display = "none";
+  } else {
+    const [text, cls] = dti <= 36 ? [t("Healthy: qualifies for most loans"), ""]
+      : dti <= 43 ? [t("Manageable: within most mortgage limits"), "mid"]
+      : dti < 50 ? [t("High: only some loan programs allow this"), "mid"]
+      : [t("Very high: most lenders will decline"), "bad"];
+    v.textContent = text; v.className = "verdict " + cls; v.style.display = "";
+  }
   document.getElementById("marker").style.left = Math.min(dti, 60) / 60 * 100 + "%";
 });

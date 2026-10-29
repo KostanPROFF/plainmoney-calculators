@@ -5,10 +5,19 @@ const Calc = (() => {
   const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  function num(id) {
-    const el = document.getElementById(id);
-    const v = parseFloat(String(el.value).replace(/[^0-9.\-]/g, ""));
+  // Parse a typed amount. Accepts "425,000" and "6,5": a comma is a decimal separator unless it
+  // groups thousands, so visitors on es/ru keyboards get the number they meant.
+  function toNumber(text) {
+    let s = String(text).replace(/\s|[\u00a0\u202f]/g, "").replace(/[^\d.,+\-]/g, "");
+    if (s.includes(",")) {
+      if (s.includes(".")) s = s.replace(/,/g, "");
+      else s = /^[+-]?\d{1,3}(,\d{3})+$/.test(s) ? s.replace(/,/g, "") : s.replace(",", ".");
+    }
+    const v = parseFloat(s);
     return Number.isFinite(v) ? v : 0;
+  }
+  function num(id) {
+    return toNumber(document.getElementById(id).value);
   }
   const money = (v) => usd.format(Math.round(v));
   const money2 = (v) => usd2.format(v);

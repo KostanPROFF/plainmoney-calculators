@@ -32,14 +32,16 @@ def ad(kind, label="Advertisement"):
     return ""
 
 
-def field(id, label, value, pre="", post="", hint="", full=False, step="any", type_="number"):
+def field(id, label, value, pre="", post="", hint="", full=False):
+    """Text input with a decimal keyboard: the browser's number input rejects "6,5", which is how
+    most of the world types a decimal, so the value would silently become empty."""
     cls = "input-wrap" + (" has-pre" if pre else "") + (" has-post" if post else "")
     pre_html = f'<span class="pre">{pre}</span>' if pre else ""
     post_html = f'<span class="post">{post}</span>' if post else ""
     hint_html = f'<span class="hint">{hint}</span>' if hint else ""
     return (
         f'<div class="field{" full" if full else ""}"><label for="{id}">{label}</label>'
-        f'<div class="{cls}">{pre_html}<input id="{id}" type="{type_}" inputmode="decimal" step="{step}" value="{value}">{post_html}</div>{hint_html}</div>'
+        f'<div class="{cls}">{pre_html}<input id="{id}" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="{value}">{post_html}</div>{hint_html}</div>'
     )
 
 
@@ -454,8 +456,8 @@ page(
 <p class="lede">See how much your 401(k) could be worth when you retire, including your employer match.</p>
 <div class="calc">
 <form class="panel" id="form" novalidate><div class="fields">
-{field("age", "Current age", "30", step="1")}
-{field("retire", "Retirement age", "65", step="1")}
+{field("age", "Current age", "30")}
+{field("retire", "Retirement age", "65")}
 {field("salary", "Annual salary", "75000", pre="$")}
 {field("balance", "Current balance", "20000", pre="$")}
 {field("contrib", "Your contribution", "8", post="%")}
@@ -503,7 +505,7 @@ page(
 {field("initial", "Initial deposit", "10000", pre="$")}
 {field("monthly", "Monthly contribution", "500", pre="$")}
 {field("rate", "Annual interest rate", "7", post="%")}
-{field("years", "Years", "20", step="1")}
+{field("years", "Years", "20")}
 {select("comp", "Compounding", [("365","Daily"),("12","Monthly"),("4","Quarterly"),("1","Annually")], "12", full=True)}
 </div></form>
 <section class="panel" aria-live="polite">
@@ -768,7 +770,7 @@ page(
 <form class="panel" id="form" novalidate><div class="fields">
 {field("goal", "Savings goal", "30000", pre="$")}
 {field("current", "Already saved", "5000", pre="$")}
-{field("years", "Years to reach it", "4", step="0.5")}
+{field("years", "Years to reach it", "4")}
 {field("rate", "Interest rate (APY)", "4", post="%", hint="High-yield savings")}
 </div></form>
 <section class="panel" aria-live="polite">

@@ -1,7 +1,9 @@
 Calc.bind("form", () => {
   const { num, money, money2, set, areaChart, t } = Calc;
   const goal = num("goal"), current = num("current");
-  const n = Math.max(1, Math.round(num("years") * 12));
+  // Cap the horizon at 100 years (same as the compound interest page) so a huge value cannot hang the tab.
+  const years = Math.min(100, Math.max(0, num("years")));
+  const n = Math.max(1, Math.round(years * 12));
   const r = Math.pow(1 + num("rate") / 100, 1 / 12) - 1; // APY to monthly rate
   const grow = Math.pow(1 + r, n);
   const needed = goal - current * grow;
