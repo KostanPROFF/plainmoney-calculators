@@ -153,7 +153,9 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     if schema:
         schema = {**schema, "name": title.split(":")[0].split("(")[0].strip() if lang != "en" else schema["name"],
                   "description": description, "url": url(lang), "inLanguage": lang}
-    ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (schema, faq_schema) if s)
+    site_schema = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": url(lang),
+                   "inLanguage": lang, "description": description} if filename == "index.html" else None
+    ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (site_schema, schema, faq_schema) if s)
     js_files = ["common.js", *([f"i18n-{lang}.js"] if lang != "en" else []), *scripts]
     js = "".join(f'<script defer src="/assets/{s}?v={asset_version(s, lang)}"></script>' for s in js_files)
     html = f"""<!doctype html>
@@ -169,7 +171,13 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="{url(lang)}">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta property="og:image" content="{SITE_URL}/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="{LANGS[lang]['locale']}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/PublicSans-5-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Archivo-0-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -1133,7 +1141,7 @@ page(
 page(
     "about.html",
     f"About {SITE_NAME}",
-    "Who builds these calculators and how the numbers are sourced.",
+    "About Plain Money Calculators: who makes them, our sources for tax, loan, BMI and calorie formulas, and why every calculation stays private in your browser.",
     f"""<section class="prose"><h1>About</h1>
 <p>{SITE_NAME} builds free, fast and private calculators for money, health and everyday decisions. Every calculation runs in your browser, so the numbers you type are never sent to a server.</p>
 <p>Tax figures come from IRS and Social Security Administration publications for the 2026 tax year. Health calculators use the CDC adult BMI ranges, the Mifflin-St Jeor equation and the standard 280-day pregnancy rule. Results are estimates for planning and are not financial, tax, legal or medical advice.</p>
@@ -1142,7 +1150,7 @@ page(
 page(
     "privacy.html",
     "Privacy Policy",
-    f"Privacy policy for {SITE_NAME}.",
+    "How Plain Money Calculators handles your data: what you type stays in your browser, plus how we use cookies, Google AdSense ads and Google Analytics.",
     f"""<section class="prose"><h1>Privacy Policy</h1>
 <p>Last updated: October 2026.</p>
 <p>The numbers you enter in our calculators stay in your browser and are not collected or stored by us.</p>
