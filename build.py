@@ -184,7 +184,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0d6b4f">
+<meta name="theme-color" content="#070b09">
 <style>{CSS}</style>
 {adsense}
 {ld}
