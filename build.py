@@ -64,6 +64,7 @@ UI = {
     "about": "About",
     "privacy": "Privacy Policy",
     "nav_label": "Calculators",
+    "theme": "Switch between light and dark theme",
 }
 TR = {l: json.loads(f.read_text()) if (f := I18N_DIR / f"{l}.json").exists() else {} for l in LANGS if l != "en"}
 SOURCE = {}  # key -> English text, everything that needs a translation
@@ -102,13 +103,20 @@ def extras(filename, lang):
     return html_, schema
 
 
+THEME_ICONS = (
+    '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>'
+    '<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/>'
+    '<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+)
+
+
 def page(filename, title, description, body, scripts=(), schema=None, lang="en"):
     if lang == "en":
         PAGES.append((filename, title, description, body, scripts, schema))
     parts = [tr(x, lang) for x in (title, description, body, *UI.values(), *(t for _, t in NAV))]
     if any(x is None for x in parts):
         return False
-    title, description, body, footer, about, privacy, nav_label, *nav_texts = parts
+    title, description, body, footer, about, privacy, nav_label, theme_label, *nav_texts = parts
     extra, faq_schema = extras(filename, lang)
     if extra is None:
         return False
@@ -162,6 +170,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
+<script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 {analytics}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
@@ -184,7 +193,8 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0d6b4f">
+<meta name="theme-color" content="#070b09" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f4f8f6" media="(prefers-color-scheme: light)">
 <style>{CSS}</style>
 {adsense}
 {ld}
@@ -192,7 +202,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <body>
 <header class="site-header"><div class="wrap">
 <a class="logo" href="./">Plain<span>Money</span></a>
-<nav class="site-nav" aria-label="{nav_label}">{nav}{switch}</nav>
+<nav class="site-nav" aria-label="{nav_label}">{nav}{switch}<button class="theme-toggle" type="button" aria-label="{theme_label}" title="{theme_label}">{THEME_ICONS}</button></nav>
 </div></header>
 <main class="wrap">
 {body}
