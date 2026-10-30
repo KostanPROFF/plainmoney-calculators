@@ -117,3 +117,11 @@ const Calc = (() => {
 
   return { num, money, money2, fmt, set, payment, bind, areaChart, t, date, longDate, locale };
 })();
+
+// Header button flips between light and dark and remembers the choice; with no choice the system setting wins.
+document.querySelector(".theme-toggle")?.addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+});
