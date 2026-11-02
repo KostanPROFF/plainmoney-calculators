@@ -1,9 +1,12 @@
 // Shared helpers for every calculator page.
 const Calc = (() => {
   const lang = document.documentElement.lang || "en";
-  const locale = { es: "es-US", ru: "ru-RU" }[lang] || "en-US";
-  const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
-  const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const locale = {
+    es: "es-US", ru: "ru-RU", "zh-Hans": "zh-CN", ko: "ko-KR", vi: "vi-VN", "pt-BR": "pt-BR",
+    ar: "ar-u-nu-latn", tl: "fil-PH", uk: "uk-UA",
+  }[lang] || "en-US";
+  const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", currencyDisplay: "narrowSymbol", maximumFractionDigits: 0 });
+  const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", currencyDisplay: "narrowSymbol", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   function num(id) {
     const el = document.getElementById(id);
@@ -124,4 +127,10 @@ document.querySelector(".theme-toggle")?.addEventListener("click", () => {
   const dark = root.dataset.theme ? root.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
   root.dataset.theme = dark ? "light" : "dark";
   try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+});
+
+// The language menu closes when the visitor clicks anywhere else.
+document.addEventListener("click", (e) => {
+  const menu = document.querySelector(".lang-menu[open]");
+  if (menu && !menu.contains(e.target)) menu.open = false;
 });

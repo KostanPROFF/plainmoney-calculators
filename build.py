@@ -54,10 +54,18 @@ def select(id, label, options, selected=None, full=False, hint=""):
 # Translated copies of every page live under /es/ and /ru/. Translations come from i18n/{lang}.json, keyed by
 # a hash of the English text, so editing English copy marks that chunk as untranslated until the file is refreshed.
 I18N_DIR = Path(__file__).parent / "i18n"
+# hl is the BCP 47 tag used in <html lang> and hreflang; dir is the text direction.
 LANGS = {
-    "en": {"prefix": "", "locale": "en_US", "name": "English"},
-    "es": {"prefix": "es/", "locale": "es_US", "name": "Español"},
-    "ru": {"prefix": "ru/", "locale": "ru_RU", "name": "Русский"},
+    "en": {"prefix": "", "locale": "en_US", "name": "English", "hl": "en"},
+    "es": {"prefix": "es/", "locale": "es_US", "name": "Español", "hl": "es"},
+    "zh": {"prefix": "zh/", "locale": "zh_CN", "name": "简体中文", "hl": "zh-Hans"},
+    "tl": {"prefix": "tl/", "locale": "tl_PH", "name": "Tagalog", "hl": "tl"},
+    "vi": {"prefix": "vi/", "locale": "vi_VN", "name": "Tiếng Việt", "hl": "vi"},
+    "ar": {"prefix": "ar/", "locale": "ar_AR", "name": "العربية", "hl": "ar", "dir": "rtl"},
+    "ko": {"prefix": "ko/", "locale": "ko_KR", "name": "한국어", "hl": "ko"},
+    "ru": {"prefix": "ru/", "locale": "ru_RU", "name": "Русский", "hl": "ru"},
+    "pt": {"prefix": "pt/", "locale": "pt_BR", "name": "Português", "hl": "pt-BR"},
+    "uk": {"prefix": "uk/", "locale": "uk_UA", "name": "Українська", "hl": "uk"},
 }
 UI = {
     "footer": "Estimates only, not financial, tax or medical advice.",
@@ -98,7 +106,7 @@ def extras(filename, lang):
     items = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>\n" for q, a in faq)
     html_ = f'<section class="prose extras">\n<h2>{h_ex}</h2>\n{examples}\n<h2>{h_faq}</h2>\n<div class="faq">\n{items}</div>\n</section>'
     strip = lambda t: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)).replace("&amp;", "&").strip()
-    schema = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": lang, "mainEntity": [
+    schema = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": LANGS[lang]["hl"], "mainEntity": [
         {"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]}
     return html_, schema
 
@@ -132,9 +140,16 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'<a href="{href}"{" aria-current=\"page\"" if href == filename else ""}>{text}</a>'
         for (href, _), text in zip(NAV, nav_texts)
     )
-    switch = "".join(
-        f'<a class="lang-switch" href="{up}{LANGS[l]["prefix"]}{"" if filename == "index.html" else filename}" hreflang="{l}" lang="{l}">{LANGS[l]["name"]}</a>'
-        for l in LANGS if l != lang
+    switch = (
+        f'<details class="lang-menu"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/>'
+        f'<path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg>'
+        f'<span>{LANGS[lang]["name"]}</span></summary><div class="lang-list">'
+        + "".join(
+            f'<a href="{up}{LANGS[l]["prefix"]}{"" if filename == "index.html" else filename}" hreflang="{LANGS[l]["hl"]}" lang="{LANGS[l]["hl"]}"'
+            f'{" aria-current=\"true\"" if l == lang else ""}>{LANGS[l]["name"]}</a>'
+            for l in LANGS
+        )
+        + "</div></details>"
     )
     adsense = (
         f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>'
@@ -156,18 +171,18 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     ) if tags else ""
     path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
-    alternates = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l)}">' for l in LANGS)
+    alternates = "".join(f'<link rel="alternate" hreflang="{LANGS[l]["hl"]}" href="{url(l)}">' for l in LANGS)
     alternates += f'<link rel="alternate" hreflang="x-default" href="{url("en")}">'
     if schema:
-        schema = {**schema, "name": title.split(":")[0].split("(")[0].strip() if lang != "en" else schema["name"],
-                  "description": description, "url": url(lang), "inLanguage": lang}
+        schema = {**schema, "name": re.sub(r"(?<!401)\s*[(（][^()（）]*[)）]$", "", re.split(r"[:：]", title)[0]).strip() if lang != "en" else schema["name"],
+                  "description": description, "url": url(lang), "inLanguage": LANGS[lang]["hl"]}
     site_schema = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": url(lang),
-                   "inLanguage": lang, "description": description} if filename == "index.html" else None
+                   "inLanguage": LANGS[lang]["hl"], "description": description} if filename == "index.html" else None
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (site_schema, schema, faq_schema) if s)
     js_files = ["common.js", *([f"i18n-{lang}.js"] if lang != "en" else []), *scripts]
     js = "".join(f'<script defer src="/assets/{s}?v={asset_version(s, lang)}"></script>' for s in js_files)
     html = f"""<!doctype html>
-<html lang="{lang}">
+<html lang="{LANGS[lang]['hl']}"{' dir="rtl"' if LANGS[lang].get("dir") == "rtl" else ""}>
 <head>
 <meta charset="utf-8">
 <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
@@ -201,7 +216,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 </head>
 <body>
 <header class="site-header"><div class="wrap">
-<a class="logo" href="./">Plain<span>Money</span></a>
+<a class="logo" href="./" dir="ltr">Plain<span>Money</span></a>
 <nav class="site-nav" aria-label="{nav_label}">{nav}{switch}<button class="theme-toggle" type="button" aria-label="{theme_label}" title="{theme_label}">{THEME_ICONS}</button></nav>
 </div></header>
 <main class="wrap">
@@ -219,6 +234,10 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     out.parent.mkdir(parents=True, exist_ok=True)
     # Cloudflare serves foo.html at /foo (and redirects /foo.html there), so every link uses that form.
     html = re.sub(r'href="((?:\.\./)?(?:[a-z]{2}/)?)([a-z0-9-]+)\.html', lambda m: f'href="{m[1] or ""}{clean(m[2] + ".html")}' if m[2] != "index" else f'href="{m[1] or "./"}', html)
+    if LANGS[lang].get("dir") == "rtl":
+        # Keep "401(k)" reading left to right inside Arabic text (outside <head>, where markup is not allowed).
+        head, sep, body = html.partition("<body")
+        html = head + sep + re.sub(r">([^<]*)", lambda m: ">" + m[1].replace("401(k)", "<bdi>401(k)</bdi>"), body)
     out.write_text(html)
     return True
 
