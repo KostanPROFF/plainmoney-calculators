@@ -82,7 +82,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .logo::before {
   content: "P"; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px;
   background: linear-gradient(135deg, var(--accent-hi), var(--accent)); color: var(--accent-ink);
-  font-size: 0.95rem; margin-right: 10px; box-shadow: 0 4px 14px rgba(79, 199, 156, 0.35);
+  font-size: 0.95rem; margin-inline-end: 10px; box-shadow: 0 4px 14px rgba(79, 199, 156, 0.35);
 }
 .logo span { color: var(--accent); }
 .site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 0.92rem; }
@@ -157,16 +157,16 @@ main > .eyebrow:first-of-type { margin: 48px 0 -28px; }
 .field .hint { font-size: 0.76rem; color: var(--muted); }
 .input-wrap { position: relative; display: flex; align-items: center; }
 .input-wrap .pre, .input-wrap .post { position: absolute; color: var(--muted); font-size: 0.85rem; pointer-events: none; }
-.input-wrap .pre { left: 14px; }
-.input-wrap .post { right: 14px; }
-.input-wrap.has-pre input { padding-left: 30px; }
-.input-wrap.has-post input { padding-right: 44px; }
+.input-wrap .pre { inset-inline-start: 14px; }
+.input-wrap .post { inset-inline-end: 14px; }
+.input-wrap.has-pre input { padding-inline-start: 30px; }
+.input-wrap.has-post input { padding-inline-end: 44px; }
 input, select {
   width: 100%; min-height: 46px; font: 500 1rem/1.2 var(--font-body); color: var(--fg);
   background: var(--field); border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 14px;
   font-variant-numeric: tabular-nums; transition: border-color .15s, box-shadow .15s;
 }
-select { appearance: none; -webkit-appearance: none; padding-right: 36px; cursor: pointer;
+select { appearance: none; -webkit-appearance: none; padding-inline-end: 36px; cursor: pointer;
   background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
   background-position: calc(100% - 19px) 50%, calc(100% - 14px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
 input:hover, select:hover { border-color: var(--line-hover); }
@@ -178,10 +178,10 @@ input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px r
 .kv { display: grid; grid-template-columns: 1fr auto; gap: 0; margin: 16px 0 0; }
 .kv dt, .kv dd { padding: 10px 0; border-bottom: 1px solid var(--line); }
 .kv dt { color: var(--muted); font-size: 0.94rem; }
-.kv dd { margin: 0; text-align: right; font: 600 1rem var(--font-num); font-variant-numeric: tabular-nums; }
+.kv dd { margin: 0; text-align: end; font: 600 1rem var(--font-num); font-variant-numeric: tabular-nums; }
 .kv dt:last-of-type, .kv dd:last-of-type { border-bottom: 0; }
 .kv .total { font-weight: 700; color: var(--fg); border-top: 1px solid var(--line-strong); }
-.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 10px; vertical-align: 0; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-inline-end: 10px; vertical-align: 0; }
 .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 18px; background: var(--line); gap: 2px; }
 .bar span { display: block; height: 100%; }
 .note { font-size: 0.82rem; color: var(--muted); margin-top: 16px; }
@@ -193,8 +193,8 @@ input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px r
 .chart .grid { stroke: var(--line); }
 .table-scroll { overflow-x: auto; margin-top: 16px; border: 1px solid var(--line); border-radius: 12px; max-height: 420px; background: var(--field); }
 table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
-th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
-th:first-child, td:first-child { text-align: left; }
+th, td { padding: 8px 12px; text-align: end; white-space: nowrap; border-bottom: 1px solid var(--line); }
+th:first-child, td:first-child { text-align: start; }
 thead th { position: sticky; top: 0; background: var(--surface-2); font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
 tbody td { font-family: var(--font-num); }
 tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
@@ -219,9 +219,23 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 .scale-labels span:nth-child(4) { left: 83.33%; }
 .scale-labels span:nth-child(5) { right: 0; transform: none; }
 
-/* Language switch sits at the end of the nav */
-.site-nav .lang-switch { border: 1px solid var(--line-strong); border-radius: 9px; padding: 5px 11px; color: var(--fg); margin-left: 4px; }
-.site-nav .lang-switch:hover { border-color: var(--accent); }
+/* Language menu: a globe button in the nav that opens a list of every language */
+.lang-menu { position: relative; margin-inline-start: 4px; }
+.lang-menu summary {
+  display: flex; align-items: center; gap: 6px; list-style: none; cursor: pointer; padding: 5px 11px;
+  border: 1px solid var(--line-strong); border-radius: 9px; color: var(--fg);
+}
+.lang-menu summary::-webkit-details-marker { display: none; }
+.lang-menu summary:hover, .lang-menu[open] summary { border-color: var(--accent); }
+.lang-menu summary svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.lang-list {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 6px); z-index: 20; min-width: 180px; padding: 6px;
+  display: grid; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px;
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.45);
+}
+.site-nav .lang-list a { padding: 8px 12px; border-radius: 8px; color: var(--fg); border: 0; }
+.site-nav .lang-list a:hover { background: var(--surface-2); }
+.site-nav .lang-list a[aria-current] { color: var(--accent); font-weight: 600; }
 
 /* Worked examples + FAQ */
 .extras { margin-top: 40px; }
@@ -229,9 +243,9 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 .faq { margin-top: 12px; display: grid; gap: 10px; }
 .faq details { border: 1px solid var(--line); border-radius: 14px; padding: 4px 18px; background: var(--surface); }
 .faq details[open] { border-color: var(--line-strong); }
-.faq summary { cursor: pointer; font-weight: 600; padding: 10px 28px 10px 0; position: relative; list-style: none; }
+.faq summary { cursor: pointer; font-weight: 600; padding-block: 10px; padding-inline: 0 28px; position: relative; list-style: none; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; position: absolute; right: 0; top: 8px; font-size: 1.2rem; color: var(--accent); }
+.faq summary::after { content: "+"; position: absolute; inset-inline-end: 0; top: 8px; font-size: 1.2rem; color: var(--accent); }
 .faq details[open] summary::after { content: "\2212"; }
 .faq details p { margin: 0 0 12px; }
 
@@ -260,7 +274,7 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 .bmi-labels span:nth-child(4) { left: 60%; }
 
 /* Explanatory tables in the text wrap their cells instead of scrolling sideways; data tables get tighter on phones */
-.prose td, .prose th { white-space: normal; font-family: inherit; text-align: left; }
+.prose td, .prose th { white-space: normal; font-family: inherit; text-align: start; }
 @media (max-width: 480px) {
   th, td { padding: 6px 8px; font-size: 0.82rem; }
   th { white-space: normal; }
@@ -285,3 +299,8 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .theme-toggle .sun { display: block; } :root:not([data-theme="dark"]) .theme-toggle .moon { display: none; } }
 :root[data-theme="light"] .theme-toggle .sun { display: block; }
 :root[data-theme="light"] .theme-toggle .moon { display: none; }
+
+/* Right-to-left pages (Arabic): mirror the few things that point a direction */
+[dir="rtl"] .calc-card em::after { content: " \2190"; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .eyebrow { letter-spacing: 0; }
+[dir="rtl"] select { background-position: 19px 50%, 14px 50%; }
