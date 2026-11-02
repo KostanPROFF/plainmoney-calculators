@@ -9,12 +9,17 @@ import re
 
 from art import ART
 from content import CONTENT
+from guides import GUIDES
 
 SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = "ca-pub-5321511632415174"
 GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
 GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
+# Machine-translated pages stay online for visitors but are kept out of Google (noindex, no sitemap, no hreflang)
+# until AdSense approves the site. Set to False to let Google index them again.
+NOINDEX_TRANSLATIONS = True
+REVIEWED = "November 2026"
 ROOT = Path(__file__).parent / "public"
 
 NAV = [
@@ -104,7 +109,12 @@ def extras(filename, lang):
     h_ex, h_faq, examples, *qa = parts
     faq = list(zip(qa[::2], qa[1::2]))
     items = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>\n" for q, a in faq)
-    html_ = f'<section class="prose extras">\n<h2>{h_ex}</h2>\n{examples}\n<h2>{h_faq}</h2>\n<div class="faq">\n{items}</div>\n</section>'
+    # The in-depth guide is optional per language: translated pages show it only once it is translated.
+    guide = GUIDES.get(filename)
+    guide = guide and tr(guide.strip(), lang)
+    reviewed = tr(f"Last reviewed: {REVIEWED}.", lang) if guide else None
+    guide_html = f'<section class="prose guide">\n{guide}\n<p class="note">{reviewed}</p>\n</section>\n' if guide and reviewed else ""
+    html_ = guide_html + f'<section class="prose extras">\n<h2>{h_ex}</h2>\n{examples}\n<h2>{h_faq}</h2>\n<div class="faq">\n{items}</div>\n</section>'
     strip = lambda t: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)).replace("&amp;", "&").strip()
     schema = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": LANGS[lang]["hl"], "mainEntity": [
         {"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]}
@@ -145,7 +155,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'<path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg>'
         f'<span>{LANGS[lang]["name"]}</span></summary><div class="lang-list">'
         + "".join(
-            f'<a href="{up}{LANGS[l]["prefix"]}{"" if filename == "index.html" else filename}" hreflang="{LANGS[l]["hl"]}" lang="{LANGS[l]["hl"]}"'
+            f'<a href="{up}{LANGS[l]["prefix"]}{"" if filename in ("index.html", "about.html", "contact.html", "terms.html") and l != lang else "" if filename == "index.html" else filename}" hreflang="{LANGS[l]["hl"]}" lang="{LANGS[l]["hl"]}"'
             f'{" aria-current=\"true\"" if l == lang else ""}>{LANGS[l]["name"]}</a>'
             for l in LANGS
         )
@@ -173,6 +183,10 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
     alternates = "".join(f'<link rel="alternate" hreflang="{LANGS[l]["hl"]}" href="{url(l)}">' for l in LANGS)
     alternates += f'<link rel="alternate" hreflang="x-default" href="{url("en")}">'
+    robots = ""
+    if NOINDEX_TRANSLATIONS:
+        alternates = ""
+        robots = '<meta name="robots" content="noindex, follow">' if lang != "en" else ""
     if schema:
         schema = {**schema, "name": re.sub(r"(?<!401)\s*[(（][^()（）]*[)）]$", "", re.split(r"[:：]", title)[0]).strip() if lang != "en" else schema["name"],
                   "description": description, "url": url(lang), "inLanguage": LANGS[lang]["hl"]}
@@ -191,7 +205,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <title>{title}</title>
 <meta name="description" content="{description}">
 <link rel="canonical" href="{url(lang)}">
-{alternates}
+{robots}{alternates}
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
@@ -224,7 +238,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 </main>
 <footer class="site-footer"><div class="wrap">
 <span>&copy; 2026 {SITE_NAME}. {footer}</span>
-<nav><a href="about.html">{about}</a><a href="privacy.html">{privacy}</a></nav>
+<nav><a href="{up}about.html">{about}</a><a href="{up}contact.html">{tr("Contact", lang) or "Contact"}</a><a href="{up}terms.html">{tr("Terms of Use", lang) or "Terms of Use"}</a><a href="privacy.html">{privacy}</a></nav>
 </div></footer>
 {js}
 </body>
@@ -1170,11 +1184,80 @@ page(
 page(
     "about.html",
     f"About {SITE_NAME}",
-    "About Plain Money Calculators: who makes them, our sources for tax, loan, BMI and calorie formulas, and why every calculation stays private in your browser.",
-    f"""<section class="prose"><h1>About</h1>
-<p>{SITE_NAME} builds free, fast and private calculators for money, health and everyday decisions. Every calculation runs in your browser, so the numbers you type are never sent to a server.</p>
-<p>Tax figures come from IRS and Social Security Administration publications for the 2026 tax year. Health calculators use the CDC adult BMI ranges, the Mifflin-St Jeor equation and the standard 280-day pregnancy rule. Results are estimates for planning and are not financial, tax, legal or medical advice.</p>
-<p>Questions or corrections: <strong>hello@plainmoneycalc.com</strong></p></section>""",
+    "About Plain Money Calculators: who makes them, where our tax, loan and health figures come from, how we check them, and how the site is funded.",
+    f"""<section class="prose"><h1>About {SITE_NAME}</h1>
+<p>{SITE_NAME} is an independent website that makes free calculators for the money, health and everyday decisions people in the United States face most often: buying a home, paying off debt, understanding a paycheck, saving for retirement, checking a BMI, planning a pregnancy or working out a grade. Every calculator shows not just a result but how it was reached, with plain-English guides, worked examples and answers to common questions.</p>
+
+<h2>What we believe a calculator should do</h2>
+<ul>
+<li><strong>Show its work.</strong> Every page explains the formula it uses and lists the assumptions behind the result, so you can check it and adjust it to your situation.</li>
+<li><strong>Use current official figures.</strong> Tax brackets, contribution limits and health ranges change. We update them from the original sources rather than from other websites.</li>
+<li><strong>Respect your privacy.</strong> All calculations run in your browser. The numbers you type are never sent to us or stored anywhere.</li>
+<li><strong>Stay free and fast.</strong> No sign-up, no paywall and pages that load quickly on any phone.</li>
+</ul>
+
+<h2>Where our numbers come from</h2>
+<ul>
+<li><strong>Taxes and paychecks:</strong> IRS Publication 15-T and the 2026 inflation adjustments, Social Security Administration wage base, and state income tax rates compiled by the Tax Foundation.</li>
+<li><strong>Retirement:</strong> IRS 401(k) contribution and catch-up limits for 2026.</li>
+<li><strong>Loans and credit:</strong> standard amortization formulas, Consumer Financial Protection Bureau guidance, and Fannie Mae, FHA and VA underwriting guidelines for debt-to-income ratios.</li>
+<li><strong>Health:</strong> CDC adult BMI categories, the Mifflin-St Jeor equation for calorie needs and American College of Obstetricians and Gynecologists guidance on estimating due dates.</li>
+</ul>
+<p>Each calculator page lists the specific sources it relies on.</p>
+
+<h2>How we check our calculators</h2>
+<p>Before a calculator is published we test it against hand-worked examples and, where available, against official worksheets and published tables. The worked examples on each page are produced by the same code that runs the calculator. When tax laws, limits or guidelines change, we review the affected pages and note the date of the last review at the bottom of each guide.</p>
+
+<h2>Corrections</h2>
+<p>If you find a number that looks wrong, an outdated limit or a confusing explanation, please tell us through the <a href="contact.html">contact page</a>. We review every report and correct confirmed errors promptly.</p>
+
+<h2>How the site is funded</h2>
+<p>{SITE_NAME} is supported by advertising. Ads never influence the results of a calculator or the content of our guides, and we do not accept payment to recommend lenders, products or services.</p>
+
+<h2>Important note</h2>
+<p>Our calculators and guides provide estimates and general information for planning. They are not financial, tax, legal or medical advice. For decisions about your own situation, talk to a qualified professional such as a tax preparer, financial planner, lender or doctor.</p>
+</section>""",
+)
+page(
+    "contact.html",
+    "Contact Us",
+    "Contact Plain Money Calculators to report an error, suggest a new calculator or ask a question about how our calculators work.",
+    f"""<section class="prose"><h1>Contact us</h1>
+<p>We would like to hear from you. Email us at <a href="mailto:hello@plainmoneycalc.com"><strong>hello@plainmoneycalc.com</strong></a> and we will reply as soon as we can, usually within two business days.</p>
+<h2>What to write to us about</h2>
+<ul>
+<li><strong>Corrections.</strong> If a result, limit or explanation looks wrong, tell us which calculator, the numbers you entered and what you expected. We check every report.</li>
+<li><strong>Suggestions.</strong> Ideas for new calculators or features that would make an existing one more useful.</li>
+<li><strong>Questions.</strong> How a calculator works, what an input means or where a figure comes from.</li>
+<li><strong>Advertising and partnerships.</strong> General business inquiries.</li>
+</ul>
+<h2>What we cannot help with</h2>
+<p>We cannot give personal financial, tax, legal or medical advice, review your loan documents or tax return, or recommend specific lenders. For those, please contact a qualified professional.</p>
+<p>Please do not send sensitive personal information such as Social Security numbers, account numbers or medical records by email.</p>
+</section>""",
+)
+page(
+    "terms.html",
+    "Terms of Use",
+    "Terms of use for Plain Money Calculators: how you may use the site, the limits of our estimates, and our disclaimers.",
+    f"""<section class="prose"><h1>Terms of Use</h1>
+<p>Last updated: November 2026.</p>
+<p>By using plainmoneycalc.com (the "site") you agree to these terms. If you do not agree, please do not use the site.</p>
+<h2>Estimates, not advice</h2>
+<p>The calculators, guides and examples on this site are provided for general information and planning. Results are estimates based on the information you enter and on assumptions described on each page. They are not financial, investment, tax, legal or medical advice, and they are not an offer of credit. Actual loan terms, taxes, benefits and health outcomes depend on your full circumstances. Consult a qualified professional before making decisions.</p>
+<h2>Accuracy</h2>
+<p>We work to keep figures accurate and up to date, but laws, rates and guidelines change and errors can occur. The site is provided "as is" without warranties of any kind, express or implied, including accuracy, completeness or fitness for a particular purpose.</p>
+<h2>Limitation of liability</h2>
+<p>To the fullest extent permitted by law, {SITE_NAME} is not liable for any loss or damage arising from your use of the site or reliance on its results.</p>
+<h2>Acceptable use</h2>
+<p>You may use the site for personal and non-commercial purposes. You may not copy the site's content in bulk, scrape it automatically, interfere with its operation or use it for any unlawful purpose. You are welcome to link to any page.</p>
+<h2>Third-party links and advertising</h2>
+<p>The site shows ads served by Google and links to official sources such as the IRS and CDC. We are not responsible for the content or practices of third-party websites. See our <a href="privacy.html">Privacy Policy</a> for how advertising cookies are used.</p>
+<h2>Changes</h2>
+<p>We may update these terms. The date at the top shows when they last changed. Continued use of the site after a change means you accept the updated terms.</p>
+<h2>Contact</h2>
+<p>Questions about these terms: <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a>.</p>
+</section>""",
 )
 page(
     "privacy.html",
@@ -1222,12 +1305,12 @@ for lang in TR:
         todo.unlink()
 
 # ---------------------------------------------------------------- robots.txt / sitemap.xml
-pages = [p for p in ["", *(h for h, _, _ in CARDS), "about.html", "privacy.html"]]
+pages = [p for p in ["", *(h for h, _, _ in CARDS), "about.html", "contact.html", "terms.html", "privacy.html"]]
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{SITE_URL}/{p.removesuffix('.html')}</loc></url>\n" for p in pages)
     + "".join(f"  <url><loc>{SITE_URL}/{lang}/{clean(f)}</loc></url>\n"
-              for lang, files in built.items() for f in files)
+              for lang, files in built.items() for f in files if not NOINDEX_TRANSLATIONS)
     + "</urlset>\n"
 )
 if ADSENSE_CLIENT:
