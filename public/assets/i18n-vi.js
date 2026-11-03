@@ -4,38 +4,60 @@ window.I18N = {
 "1 yr": "1 năm",
 "Balance at age {age}": "Số dư ở tuổi {age}",
 "Detected from your location": "Được phát hiện từ vị trí của bạn",
+"First": "Tam cá nguyệt đầu tiên",
 "Flat-rate state: one rate applies to all taxable income.": "Thuế suất phẳng: một mức thuế suất áp dụng cho toàn bộ thu nhập chịu thuế.",
+"Gain {n} lb": "Tăng {n} lb",
+"Head of household is estimated with the single-filer brackets.": "Người đứng đầu hộ gia đình được tính theo các mức thuế dành cho người nộp thuế đơn lẻ.",
+"Healthy weight": "Cân nặng hợp lý",
 "Healthy: qualifies for most loans": "Khỏe mạnh: đủ điều kiện cho hầu hết các khoản vay",
 "High: only some loan programs allow this": "Cao: chỉ một số chương trình vay cho phép điều này",
 "Limited by the housing limit ({pct}% of income).": "Bị giới hạn theo giới hạn nhà ở ({pct}% thu nhập).",
 "Limited by your other debts (total debt capped at {pct}% of income).": "Bị giới hạn bởi các khoản nợ khác của bạn (tổng nợ được giới hạn ở mức {pct}% thu nhập).",
 "Local taxes are not included.": "Không bao gồm thuế địa phương.",
+"Lose {n} lb": "Giảm {n} lb",
 "Manageable: within most mortgage limits": "Có thể quản lý: trong giới hạn của hầu hết các khoản vay thế chấp nhà ở",
 "Never": "Không bao giờ",
 "No PMI: your down payment is 20% or more.": "Không có PMI: khoản trả đầu của bạn từ 20% trở lên.",
+"Obesity": "Béo phì",
+"Overweight": "Thừa cân",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
 "other": "năm"
 },
+"Past 42 weeks": "Mang thai hơn 42 tuần",
 "Payment to finish in {n} months": {
 "other": "tháng"
 },
+"Second": "Tam cá nguyệt thứ hai",
 "Starting balance is counted with your contributions.": "Số dư ban đầu được tính cùng với các khoản đóng góp của bạn.",
+"Third": "Tam cá nguyệt thứ ba",
 "This state has no income tax on wages.": "Tiểu bang này không đánh thuế thu nhập từ tiền lương.",
-"This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "Tiểu bang này áp dụng các khung thuế suất tăng dần. Mức thuế suất hiển thị là mức suất thực tế ước tính; hãy chỉnh sửa nếu bạn biết mức của mình.",
+"Today": "Hôm nay",
+"Underweight": "Thiếu cân",
+"Uses this state's 2026 tax brackets, standard deduction and exemptions.": "Áp dụng các mức thuế, khoản khấu trừ tiêu chuẩn và các khoản miễn trừ của tiểu bang này cho năm 2026.",
+"Using the state tax rate you entered.": "Dựa trên mức thuế tiểu bang mà bạn đã nhập.",
 "Very high: most lenders will decline": "Rất cao: hầu hết các bên cho vay sẽ từ chối",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "Mục tiêu giảm cân được đặt ở mức {n} calo mỗi ngày, đây là mức tối thiểu phổ biến khi không có sự giám sát y tế.",
 "With under 20% down, expect PMI on top.": "Với khoản trả trước dưới 20%, hãy dự kiến thêm PMI.",
+"You are in the healthy range": "Bạn đang nằm trong ngưỡng bình thường",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "Đóng góp của bạn đã đạt giới hạn hàng năm của IRS trong một số năm, nên đã được giới hạn.",
 "Your current savings will reach the goal on their own with interest.": "Khoản tiết kiệm hiện tại của bạn sẽ tự đạt được mục tiêu nhờ lãi suất.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "Nợ của bạn không còn khoản chi cho chi phí nhà ở ở mức thu nhập này. Hãy cân nhắc trả nợ trước.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "Khoản thanh toán của bạn không đủ để đảm bảo lãi suất hàng tháng đối với {amount}. Số dư sẽ tiếp tục tăng.",
 "{amount}/mo": "{amount}/tháng",
+"{cm} cm, {kg} kg": "{cm} cm, {kg} kg",
+"{lo} to {hi} lb": "{lo} đến {hi} lb",
+"{n} cal": "{n} cal",
+"{n} days": "{n} ngày",
 "{n} mo": {
 "other": "tháng"
 },
 "{n} months": {
 "other": "tháng {n}"
 },
+"{n} years": "{n} năm",
 "{n} yr": {
 "other": "năm"
-}
+},
+"{w} weeks, {d} days": "{w} tuần, {d} ngày",
+"{y} years, {m} months, {d} days": "{y} năm, {m} tháng, {d} ngày"
 };

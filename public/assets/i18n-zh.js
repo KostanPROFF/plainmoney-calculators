@@ -4,38 +4,60 @@ window.I18N = {
 "1 yr": "1 年",
 "Balance at age {age}": "{age} 岁时的余额",
 "Detected from your location": "根据您的位置检测",
+"First": "孕早期",
 "Flat-rate state: one rate applies to all taxable income.": "统一税率州：所有应税收入适用同一税率。",
+"Gain {n} lb": "增重 {n} 磅",
+"Head of household is estimated with the single-filer brackets.": "户主的税额按单身申报的税率表估算。",
+"Healthy weight": "健康体重",
 "Healthy: qualifies for most loans": "良好：符合大多数贷款的要求",
 "High: only some loan programs allow this": "较高：只有部分贷款项目允许这种情况",
 "Limited by the housing limit ({pct}% of income).": "受住房贷款上限限制（收入的 {pct}%）。",
 "Limited by your other debts (total debt capped at {pct}% of income).": "受您的其他债务限制（债务总额上限为收入的 {pct}%）。",
 "Local taxes are not included.": "不包含地方税。",
+"Lose {n} lb": "减重 {n} 磅",
 "Manageable: within most mortgage limits": "可负担：在大多数抵押贷款限额内",
 "Never": "从不",
 "No PMI: your down payment is 20% or more.": "无需 PMI：您的首付为 20% 或以上。",
+"Obesity": "肥胖",
+"Overweight": "超重",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
 "other": "{n}年"
 },
+"Past 42 weeks": "怀孕超过42周",
 "Payment to finish in {n} months": {
 "other": "{n}个月"
 },
+"Second": "孕中期",
 "Starting balance is counted with your contributions.": "计算起始余额时计入您的缴款。",
+"Third": "孕晚期",
 "This state has no income tax on wages.": "该州对工资不征收所得税。",
-"This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "该州采用累进税率。显示的税率是近似的实际有效税率；如果您知道自己的税率，可以进行编辑。",
+"Today": "今天",
+"Underweight": "体重不足",
+"Uses this state's 2026 tax brackets, standard deduction and exemptions.": "采用该州2026年的税率档次、标准扣除额和免税额。",
+"Using the state tax rate you entered.": "使用您输入的州税率。",
 "Very high: most lenders will decline": "非常高：大多数贷款机构都会拒绝",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "减肥目标定为每天{n}卡路里，这是在没有医疗监督的情况下常见的最低标准。",
 "With under 20% down, expect PMI on top.": "首付款低于 20% 时，预计还需支付 PMI。",
+"You are in the healthy range": "您的数值处于健康范围内",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "您的缴款在某些年份达到 IRS 年度上限，因此缴款被封顶。",
 "Your current savings will reach the goal on their own with interest.": "你目前的储蓄在计息后即可自行达到目标。",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "按此收入水平，你的债务负担已无法留出住房付款空间。可以先尝试偿还债务。",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "您的还款不足以支付 {amount}的月度利息。余额将持续增加。",
 "{amount}/mo": "{amount}/月",
+"{cm} cm, {kg} kg": "{cm} 厘米，{kg} 公斤",
+"{lo} to {hi} lb": "{lo} 至 {hi} 磅",
+"{n} cal": "{n} 卡路里",
+"{n} days": "{n} 天",
 "{n} mo": {
 "other": "{n}个月"
 },
 "{n} months": {
 "other": "{n}个月"
 },
+"{n} years": "{n}年",
 "{n} yr": {
 "other": "{n}年"
-}
+},
+"{w} weeks, {d} days": "{w} 周，{d} 天",
+"{y} years, {m} months, {d} days": "{y}年，{m}个月，{d}天"
 };

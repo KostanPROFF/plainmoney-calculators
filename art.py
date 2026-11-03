@@ -73,6 +73,49 @@ _ART = {
 <circle class="fl" cx="56" cy="54" r="7"/>
 <path class="ln" d="M56 54 L90 22"/>
 <path class="ln" d="M82 20 L91 21 L92 30"/>""",
+    "bmi-calculator.html": """
+<rect class="wh ln" x="28" y="34" width="64" height="46" rx="8"/>
+<path class="soft" d="M40 60 A20 20 0 0 1 80 60"/>
+<path class="arc" d="M40 60 A20 20 0 0 1 60 40"/>
+<path class="ln" d="M60 60 L70 47"/>
+<circle class="fl" cx="60" cy="60" r="4"/>
+<path class="ln" d="M40 72 H80"/>""",
+    "calorie-calculator.html": """
+<circle class="wh ln" cx="56" cy="54" r="26"/>
+<circle class="ln" cx="56" cy="54" r="16"/>
+<path class="ln" d="M20 30 V46 M16 30 V40 Q16 46 20 46 Q24 46 24 40 V30 M20 46 V80"/>
+<path class="ln" d="M94 30 Q102 40 94 52 V80"/>
+<circle class="fl" cx="90" cy="76" r="11"/>
+<path class="wl" d="M90 70 Q86 75 88 79 Q90 82 92 79 Q94 75 90 70 Z"/>""",
+    "due-date-calculator.html": """
+<rect class="wh ln" x="26" y="28" width="62" height="54" rx="6"/>
+<rect class="fl" x="26" y="28" width="62" height="12" rx="6"/>
+<path class="ln" d="M40 22 V32 M74 22 V32"/>
+<path class="ln" d="M36 52 H44 M52 52 H60 M68 52 H76 M36 66 H44 M52 66 H60"/>
+<circle class="fl" cx="90" cy="74" r="13"/>
+<path class="wl" d="M90 81 L84 75 Q81 70 85.5 68 Q88.5 67 90 71 Q91.5 67 94.5 68 Q99 70 96 75 Z"/>""",
+    "percentage-calculator.html": """
+<circle class="wh ln" cx="58" cy="50" r="30"/>
+<circle class="ln" cx="46" cy="38" r="7"/>
+<circle class="ln" cx="70" cy="62" r="7"/>
+<path class="ln" d="M74 32 L42 68"/>
+<circle class="fl" cx="92" cy="76" r="11"/>""",
+    "tip-calculator.html": """
+<path class="wh ln" d="M34 20 H82 V82 L76 77 L70 82 L64 77 L58 82 L52 77 L46 82 L40 77 L34 82 Z"/>
+<path class="ln" d="M44 34 H72 M44 44 H64 M44 54 H72"/>
+<circle class="fl" cx="88" cy="70" r="14"/>
+<path class="wl" d="M92 64 Q88 61 85 63.5 Q83 66.5 88 68.5 Q93 70.5 91 74.5 Q88 77 84 74 M88 59 V61 M88 77 V79"/>""",
+    "age-calculator.html": """
+<rect class="wh ln" x="30" y="50" width="56" height="30" rx="4"/>
+<path class="ln" d="M30 62 Q37 68 44 62 Q51 56 58 62 Q65 68 72 62 Q79 56 86 62"/>
+<path class="ln" d="M44 50 V38 M58 50 V38 M72 50 V38"/>
+<path class="fl" d="M44 28 Q48 33 44 35 Q40 33 44 28 Z M58 28 Q62 33 58 35 Q54 33 58 28 Z M72 28 Q76 33 72 35 Q68 33 72 28 Z"/>
+<path class="ln" d="M22 84 H98"/>""",
+    "gpa-calculator.html": """
+<path class="wh ln" d="M20 44 L60 28 L100 44 L60 60 Z"/>
+<path class="ln" d="M36 51 V66 Q60 78 84 66 V51"/>
+<path class="ln" d="M100 44 V62"/>
+<circle class="fl" cx="100" cy="66" r="4"/>""",
 }
 
 ART = {k: f'<svg class="art" viewBox="0 0 120 96" aria-hidden="true">{BG}{v}</svg>' for k, v in _ART.items()}

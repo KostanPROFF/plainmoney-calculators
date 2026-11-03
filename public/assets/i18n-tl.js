@@ -4,33 +4,52 @@ window.I18N = {
 "1 yr": "1 taon",
 "Balance at age {age}": "Balanse sa edad na {age}",
 "Detected from your location": "Natukoy mula sa iyong lokasyon",
+"First": "Unang trimester",
 "Flat-rate state: one rate applies to all taxable income.": "Flat-rate state: isang rate ang nalalapat sa lahat ng taxable income.",
+"Gain {n} lb": "Magdagdag ng {n} libra",
+"Head of household is estimated with the single-filer brackets.": "Ang pinuno ng sambahayan ay tinatayang nasa ilalim ng mga bracket para sa nag-iisang naghahain.",
+"Healthy weight": "Malusog na timbang",
 "Healthy: qualifies for most loans": "Healthy: kwalipikado para sa karamihan ng mga loan",
 "High: only some loan programs allow this": "High: ilang loan program lamang ang pinapayagan nito",
 "Limited by the housing limit ({pct}% of income).": "Limitado ng limitasyon sa pabahay ({pct}% ng kita).",
 "Limited by your other debts (total debt capped at {pct}% of income).": "Limitado ng iyong iba pang debt (kabuuang debt ay nakatakda sa {pct}% ng kita).",
 "Local taxes are not included.": "Hindi kasama ang lokal na buwis.",
+"Lose {n} lb": "Magbawas ng {n} libra",
 "Manageable: within most mortgage limits": "Kayang i manage: nasa loob ng karamihan ng mortgage limit",
 "Never": "Hindi kailanman",
 "No PMI: your down payment is 20% or more.": "Walang PMI: ang down payment mo ay 20% o higit pa.",
+"Obesity": "Labis na katabaan",
+"Overweight": "Labis na timbang",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
 "one": "isang {n} taon",
 "other": "{years} taon"
 },
+"Past 42 weeks": "Mahigit 42 linggo nang buntis",
 "Payment to finish in {n} months": {
 "one": "{n} buwan",
 "other": "{n} buwan"
 },
+"Second": "Ikalawang trimester",
 "Starting balance is counted with your contributions.": "Kasama sa bilang ang starting balance at iyong mga kontribusyon.",
+"Third": "Ikatlong trimester",
 "This state has no income tax on wages.": "Walang income tax sa sahod ang estadong ito.",
-"This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "Gumagamit ng graduated brackets ang estadong ito. Ang ipinapakita na rate ay approximate effective rate; i-edit ito kung alam mo ang iyong rate.",
+"Today": "Ngayon",
+"Underweight": "May kulang sa timbang",
+"Uses this state's 2026 tax brackets, standard deduction and exemptions.": "Gumagamit ng mga bracket ng buwis ng estado para sa 2026, ng karaniwang bawas, at ng mga eksepsiyon.",
+"Using the state tax rate you entered.": "Gamit ang rate ng buwis ng estado na inilagay mo.",
 "Very high: most lenders will decline": "Napakalaki: karamihan sa mga lender ang tatanggi",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "Ang mga target sa pagbabawas ng timbang ay itinakda sa {n} na kaloriya kada araw, isang karaniwang minimum na walang medikal na pangangasiwa.",
 "With under 20% down, expect PMI on top.": "Sa ilalim sa 20% na down payment, inaasahan ang PMI na karagdagan.",
+"You are in the healthy range": "Nasa malusog na saklaw ka.",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "Umabot sa taunang limit ng IRS ang iyong kontribusyon sa ilang taon, kaya may limitasyon ito.",
 "Your current savings will reach the goal on their own with interest.": "Dapat maabot ng iyong kasalukuyang savings ang target nang mag-isa lamang kasama ang interes.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "Walang puwang sa inyong mga utang para sa bayad sa pabahay sa ganitong kita. Subukang munang bayaran ang utang.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "Hindi sakop ng inyong bayarin ang buwanang interes ng {amount}. Lalo pang lalaki ang balanse.",
 "{amount}/mo": "{amount}/buwan",
+"{cm} cm, {kg} kg": "{cm} cm, {kg} kg",
+"{lo} to {hi} lb": "{lo} hanggang {hi} na libra",
+"{n} cal": "{n} kal",
+"{n} days": "{n} araw",
 "{n} mo": {
 "one": "{n} buwan",
 "other": "{n} buwan"
@@ -39,8 +58,11 @@ window.I18N = {
 "one": "isang buwan {n}",
 "other": "{n} buwan"
 },
+"{n} years": "{n} taon",
 "{n} yr": {
 "one": "{n} taon",
 "other": "{n} taon"
-}
+},
+"{w} weeks, {d} days": "{w} linggo, {d} araw",
+"{y} years, {m} months, {d} days": "{y} taon, {m} buwan, {d} araw"
 };

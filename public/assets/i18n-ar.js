@@ -4,63 +4,113 @@ window.I18N = {
 "1 yr": "1 سنة",
 "Balance at age {age}": "الرصيد عند سن {age}",
 "Detected from your location": "تم اكتشافه من موقعك",
+"First": "الثلث الأول من الحمل",
 "Flat-rate state: one rate applies to all taxable income.": "ح&lt;Class&gt;ولة ذات نسبة ثابتة: تنطبق نسبة واحدة على جميع الدخل الخاضع للضريبة.",
+"Gain {n} lb": {
+"zero": "زيادة {n} رطل",
+"one": "زيادة {n} رطل",
+"two": "زيادة {n} رطل",
+"few": "زيادة {n} أرطال",
+"many": "زيادة {n} رطلاً",
+"other": "زيادة {n} رطل"
+},
+"Head of household is estimated with the single-filer brackets.": "يتم تقدير دخل رب الأسرة وفقًا لشرائح الضرائب المخصصة للمُقدِّم الفردي.",
+"Healthy weight": "الوزن الصحي",
 "Healthy: qualifies for most loans": "جيدة: تتأهل لمعظم القروض",
 "High: only some loan programs allow this": "مرتفعة: تسمح بعض برامج القروض فقط بهذا",
 "Limited by the housing limit ({pct}% of income).": "محدودة بسبب حد السكن ({pct}% من الدخل).",
 "Limited by your other debts (total debt capped at {pct}% of income).": "محدودة بسبب ديونك الأخرى (يقترب إجمالي الدين من {pct}% من الدخل).",
 "Local taxes are not included.": "لا تشمل الضرائب المحلية.",
+"Lose {n} lb": {
+"zero": "إنقاص {n} رطل",
+"one": "إنقاص {n} رطل",
+"two": "إنقاص {n} رطل",
+"few": "إنقاص {n} أرطال",
+"many": "إنقاص {n} رطلاً",
+"other": "إنقاص {n} رطل"
+},
 "Manageable: within most mortgage limits": "قابلة للإدارة: ضمن معظم حدود الرهن العقاري",
 "Never": "أبدًا",
 "No PMI: your down payment is 20% or more.": "لا PMI: دفعة المقدمة التي تدفعها هي 20% أو أكثر.",
+"Obesity": "السمنة",
+"Overweight": "زيادة الوزن",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
-"zero": "{n} سنة",
-"one": "{n} سنة",
-"two": "{n} سنتان",
-"few": "{n} سنوات",
-"many": "{n} سنة",
-"other": "{n} سنة"
+"zero": "يُطبق برنامج PMI لأن دفعتك المقدمة تقل عن 20%. ويتم إلغاء هذا البرنامج بعد حوالي {years} سنة، عندما يصل مبلغ القرض إلى 80% من سعر المنزل.",
+"one": "يُطبق برنامج PMI لأن دفعتك المقدمة تقل عن 20%. ويتم إلغاء هذا البرنامج بعد حوالي عام واحد، عندما يصل قرضك إلى 80% من سعر المنزل.",
+"two": "يُطبق برنامج PMI لأن دفعتك المقدمة تقل عن 20%. ويتم إلغاء هذا البرنامج بعد حوالي سنتين، عندما يصل قرضك إلى 80% من سعر المنزل.",
+"few": "يُطبق برنامج PMI لأن دفعتك المقدمة تقل عن 20%. ويتم إلغاء هذا البرنامج بعد حوالي {years} سنوات، عندما يصل قرضك إلى 80% من سعر المنزل.",
+"many": "يُطبق برنامج PMI لأن دفعتك المقدمة تقل عن 20%. ويتم إلغاء هذا البرنامج بعد حوالي {years} عامًا، عندما يصل رصيد القرض إلى 80% من سعر المنزل.",
+"other": "يُطبق برنامج PMI لأن دفعتك المقدمة تقل عن 20%. ويُوقف هذا البرنامج بعد حوالي {years} عام، عندما يصل قرضك إلى 80% من سعر المنزل."
 },
+"Past 42 weeks": "الحمل في أسبوعه 42 أو أكثر",
 "Payment to finish in {n} months": {
-"zero": "{n} شهر",
-"one": "{n} شهر",
-"two": "{n} شهران",
-"few": "{n} أشهر",
-"many": "{n} شهرًا",
-"other": "{n} شهر"
+"zero": "سيتم سداد المبلغ بالكامل في غضون {n} أشهر",
+"one": "سيتم الانتهاء من السداد في غضون شهر واحد",
+"two": "سيتم الانتهاء من السداد في غضون شهرين",
+"few": "سيتم الانتهاء من السداد في غضون {n} أشهر",
+"many": "سيتم الانتهاء من السداد في غضون {n} شهراً",
+"other": "سيتم سداد المبلغ بالكامل في غضون {n} شهر"
 },
+"Second": "الثلث الثاني من الحمل",
 "Starting balance is counted with your contributions.": "يُحتسب الرصيد الافتتاحي مع مساهماتك.",
+"Third": "الثلث الثالث من الحمل",
 "This state has no income tax on wages.": "لا تفرض هذه الولاية ضريبة على الأجور.",
-"This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "تستخدم هذه الولاية شرائح متدرجة. النسبة المعروضة هي معدل فعلي تقريبي؛ عدّلها إذا كنت تعرف معدلك.",
+"Today": "اليوم",
+"Underweight": "نقص الوزن",
+"Uses this state's 2026 tax brackets, standard deduction and exemptions.": "يستخدم شرائح الضرائب والخصم القياسي والإعفاءات المعمول بها في هذه الولاية لعام 2026.",
+"Using the state tax rate you entered.": "باستخدام معدل الضريبة الولائية الذي أدخلته.",
 "Very high: most lenders will decline": "مرتفع جدًا: سترفض معظم جهات الإقراض الطلب",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "تُحدد أهداف إنقاص الوزن عند {n} سعرة حرارية يوميًا، وهو الحد الأدنى الشائع دون إشراف طبي.",
 "With under 20% down, expect PMI on top.": "مع دفعة أولى تقل عن 20%، توقع سداد قسط التأمين العقاري PMI إضافةً إلى ذلك.",
+"You are in the healthy range": "أنت ضمن النطاق الصحي",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "\\\"بلغ مساهمتك الحد السنوي لـ IRS في بعض السنوات، لذلك تم وضع سقف لها.\\\"",
 "Your current savings will reach the goal on their own with interest.": "ستصل مدخراتك الحالية إلى الهدف وحدها مع الفوائد.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "لا تترك ديونك أي مجال لسداد إيجار المنزل بهذا الدخل. جرّب سداد الديون أولًا.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "لا يغطي سدادك الفوائد الشهرية البالغة {amount}. سيستمر الرصيد في الزيادة.",
 "{amount}/mo": "{amount}/شهريًا",
+"{cm} cm, {kg} kg": "{cm} سم، {kg} كجم",
+"{lo} to {hi} lb": "من {lo} إلى {hi} رطل",
+"{n} cal": "{n} كال",
+"{n} days": {
+"zero": "{n} يومًا",
+"one": "يوم واحد",
+"two": "يومان",
+"few": "{n} أيام",
+"many": "{n} يومًا",
+"other": "{n} يوم"
+},
 "{n} mo": {
-"zero": "{n} شهر",
-"one": "{n} شهر",
-"two": "{n} شهران",
+"zero": "{n} شهرًا",
+"one": "شهر واحد",
+"two": "شهران",
 "few": "{n} أشهر",
 "many": "{n} شهرًا",
-"other": "{n} شهر"
+"other": "{n} شهرًا"
 },
 "{n} months": {
-"zero": "{n} شهر",
-"one": "{n} شهر",
-"two": "{n} شهران",
+"zero": "{n} شهرًا",
+"one": "شهر واحد",
+"two": "شهران",
 "few": "{n} أشهر",
 "many": "{n} شهرًا",
-"other": "{n} شهر"
+"other": "{n} شهرًا"
+},
+"{n} years": {
+"zero": "{n} سنة",
+"one": "سنة واحدة",
+"two": "سنتان",
+"few": "{n} سنوات",
+"many": "{n} سنة",
+"other": "{n} عام"
 },
 "{n} yr": {
 "zero": "{n} سنة",
-"one": "{n} سنة",
-"two": "{n} سنتان",
+"one": "سنة واحدة",
+"two": "سنتان",
 "few": "{n} سنوات",
 "many": "{n} سنة",
-"other": "{n} سنة"
-}
+"other": "{n} عام"
+},
+"{w} weeks, {d} days": "{w} أسبوعًا، {d} يومًا",
+"{y} years, {m} months, {d} days": "{y} سنة، {m} شهر، {d} يوم"
 };

@@ -4,33 +4,61 @@ window.I18N = {
 "1 yr": "1 ano",
 "Balance at age {age}": "Saldo na idade {age}",
 "Detected from your location": "Detectado pela sua localização",
+"First": "Primeiro trimestre",
 "Flat-rate state: one rate applies to all taxable income.": "Estado com alíquota fixa: uma taxa se aplica a toda a renda tributável.",
+"Gain {n} lb": {
+"one": "Engordar {n} libra",
+"other": "Engordar {n} libras"
+},
+"Head of household is estimated with the single-filer brackets.": "O valor referente ao chefe de família é calculado com base nas faixas de renda para contribuintes individuais.",
+"Healthy weight": "Peso saudável",
 "Healthy: qualifies for most loans": "Saudável: atende aos requisitos da maioria dos empréstimos",
 "High: only some loan programs allow this": "Alto: somente alguns programas de empréstimo permitem essa condição",
 "Limited by the housing limit ({pct}% of income).": "Limitado pelo limite de habitação ({pct}% da renda).",
 "Limited by your other debts (total debt capped at {pct}% of income).": "Limitado pelas suas outras dívidas (dívida total limitada a {pct}% da renda).",
 "Local taxes are not included.": "Impostos locais não estão incluídos.",
+"Lose {n} lb": {
+"one": "Perder {n} libra",
+"other": "Perder {n} libras"
+},
 "Manageable: within most mortgage limits": "Viável: dentro da maioria dos limites de mortgage",
 "Never": "Nunca",
 "No PMI: your down payment is 20% or more.": "Sem PMI: seu pagamento inicial é de 20% ou mais.",
+"Obesity": "Obesidade",
+"Overweight": "Excesso de peso",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
-"one": "{n} ano",
-"other": "{n} anos"
+"one": "O PMI se aplica porque seu pagamento inicial é inferior a 20%. Ele deixa de ser cobrado após cerca de {years} ano, quando o valor do seu empréstimo atingir 80% do preço do imóvel.",
+"other": "O PMI se aplica porque seu pagamento inicial é inferior a 20%. Ele deixa de ser cobrado após cerca de {years} anos, quando o valor do seu empréstimo atingir 80% do preço do imóvel."
 },
+"Past 42 weeks": "Mais de 42 semanas de gravidez",
 "Payment to finish in {n} months": {
-"one": "{n} mês",
-"other": "{n} meses"
+"one": "O pagamento será concluído em {n} mês",
+"other": "O pagamento será concluído em {n} meses"
 },
+"Second": "Segundo trimestre",
 "Starting balance is counted with your contributions.": "O saldo inicial entra no cálculo com suas contribuições.",
+"Third": "Terceiro trimestre",
 "This state has no income tax on wages.": "Este estado não cobra imposto de renda sobre salários.",
-"This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "Este estado usa faixas progressivas. A taxa apresentada é uma alíquota efetiva aproximada; edite-a se souber a sua.",
+"Today": "Hoje",
+"Underweight": "Abaixo do peso",
+"Uses this state's 2026 tax brackets, standard deduction and exemptions.": "Utiliza as faixas de imposto, a dedução padrão e as isenções deste estado para o ano de 2026.",
+"Using the state tax rate you entered.": "Utilizando a alíquota estadual que você inseriu.",
 "Very high: most lenders will decline": "Muito alto: a maioria dos financiadores recusará",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "As metas de perda de peso são fixadas em {n} calorias por dia, um mínimo comum sem supervisão médica.",
 "With under 20% down, expect PMI on top.": "Com menos de 20% de entrada, espere o PMI além do valor.",
+"You are in the healthy range": "Você está dentro da faixa saudável",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "Sua contribuição atingiu o limite anual do IRS em alguns anos, portanto foi limitada.",
 "Your current savings will reach the goal on their own with interest.": "Suas economias atuais alcançarão a meta por conta própria com os juros.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "Suas dívidas não deixam espaço para um pagamento de moradia com essa renda. Tente reduzir as dívidas primeiro.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "Seu pagamento não cobre os juros mensais de {amount}. O saldo continuará crescendo.",
 "{amount}/mo": "{amount}/mês",
+"{cm} cm, {kg} kg": "{cm} cm, {kg} kg",
+"{lo} to {hi} lb": "{lo} a {hi} lb",
+"{n} cal": "{n} cal",
+"{n} days": {
+"one": "{n} dia",
+"other": "{n} dias"
+},
 "{n} mo": {
 "one": "{n} mês",
 "other": "{n} meses"
@@ -39,8 +67,14 @@ window.I18N = {
 "one": "{n} mês",
 "other": "{n} meses"
 },
+"{n} years": {
+"one": "{n} ano",
+"other": "{n} anos"
+},
 "{n} yr": {
 "one": "{n} ano",
 "other": "{n} anos"
-}
+},
+"{w} weeks, {d} days": "{w} semanas, {d} dias",
+"{y} years, {m} months, {d} days": "{y} anos, {m} meses, {d} dias"
 };

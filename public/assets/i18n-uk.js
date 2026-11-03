@@ -4,37 +4,71 @@ window.I18N = {
 "1 yr": "1 рік",
 "Balance at age {age}": "Баланс у віці {age}",
 "Detected from your location": "Визначено за вашим місцезнаходженням",
+"First": "Перший триместр",
 "Flat-rate state: one rate applies to all taxable income.": "Фіксована ставка штату: одна ставка застосовується до всього оподатковуваного доходу.",
+"Gain {n} lb": {
+"one": "Набрати {n} фунт",
+"few": "Набрати {n} фунти",
+"many": "Набрати {n} фунтів",
+"other": "Набрати {n} фунта"
+},
+"Head of household is estimated with the single-filer brackets.": "Оподаткування голови домогосподарства здійснюється за ставками, встановленими для осіб, які подають податкову декларацію індивідуально.",
+"Healthy weight": "Здорова вага",
 "Healthy: qualifies for most loans": "Здоровий: відповідає вимогам для більшості позик",
 "High: only some loan programs allow this": "Високий: лише деякі кредитні програми дозволяють це",
 "Limited by the housing limit ({pct}% of income).": "Обмежено лімітом на житло ({pct}% від доходу).",
 "Limited by your other debts (total debt capped at {pct}% of income).": "Обмежено іншими вашими боргами (загальний борг обмежений {pct}% від доходу).",
 "Local taxes are not included.": "Місцеві податки не включені.",
+"Lose {n} lb": {
+"one": "Схуднути на {n} фунт",
+"few": "Схуднути на {n} фунти",
+"many": "Схуднути на {n} фунтів",
+"other": "Схуднути на {n} фунта"
+},
 "Manageable: within most mortgage limits": "Прийнятно: у межах більшості іпотечних лімітів",
 "Never": "Ніколи",
 "No PMI: your down payment is 20% or more.": "Без PMI: ваш початковий внесок становить 20% або більше.",
+"Obesity": "Ожиріння",
+"Overweight": "Надмірна вага",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
-"one": "{n} рік",
-"few": "{n} роки",
-"many": "{n} років",
-"other": "{n} року"
+"one": "Страхування PMI застосовується, оскільки ваш первинний внесок становить менше 20%. Воно припиняється приблизно через {years} рік, коли сума вашого кредиту досягне 80 % від вартості житла.",
+"few": "Страхування PMI застосовується, оскільки ваш первинний внесок становить менше 20 %. Воно припиняється приблизно через {years} роки, коли сума вашого кредиту досягне 80 % від вартості житла.",
+"many": "Страхування PMI застосовується, оскільки ваш первинний внесок становить менше 20%. Воно припиняється приблизно через {years} років, коли сума вашого кредиту досягне 80 % від вартості житла.",
+"other": "Страхування PMI застосовується, оскільки ваш первинний внесок становить менше 20%. Воно припиняється приблизно через {years} року, коли сума вашого кредиту досягне 80 % від вартості житла."
 },
+"Past 42 weeks": "Вагітність триває понад 42 тижні",
 "Payment to finish in {n} months": {
-"one": "{n} місяць",
-"few": "{n} місяці",
-"many": "{n} місяців",
-"other": "{n} місяця"
+"one": "Оплата має бути здійснена протягом {n} місяця",
+"few": "Оплата має бути здійснена протягом {n} місяців",
+"many": "Оплата має бути здійснена протягом {n} місяців",
+"other": "Оплата має бути здійснена через {n} місяця"
 },
+"Second": "Другий триместр",
 "Starting balance is counted with your contributions.": "Початковий баланс враховується разом із вашими внесками.",
+"Third": "Третій триместр",
 "This state has no income tax on wages.": "У цьому штаті немає прибуткового податку на заробітну плату.",
-"This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "У цьому штаті діють прогресивні податкові ставки. Відображена ставка є приблизною ефективною ставкою; змініть її, якщо ви знаєте свою.",
+"Today": "Сьогодні",
+"Underweight": "Недостатня вага",
+"Uses this state's 2026 tax brackets, standard deduction and exemptions.": "Використовує податкові ставки, стандартні відрахування та пільги цього штату на 2026 рік.",
+"Using the state tax rate you entered.": "З урахуванням введеної вами ставки державного податку.",
 "Very high: most lenders will decline": "Дуже високий: більшість кредиторів відмовлять",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "Цільові показники схуднення встановлюються на рівні {n} калорій на день — це загальноприйнятий мінімум без медичного нагляду.",
 "With under 20% down, expect PMI on top.": "Якщо перший внесок менше 20%, очікуйте додаткових витрат на PMI.",
+"You are in the healthy range": "Ваші показники знаходяться в межах норми",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "Ваш внесок у деякі роки досягав річного ліміту IRS, тому він був обмежений.",
 "Your current savings will reach the goal on their own with interest.": "Ваші поточні заощадження досягнуть мети самостійно завдяки відсоткам.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "Ваші борги не залишають можливості для виплати іпотеки при такому доході. Спробуйте спочатку погасити борги.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "Ваш платіж не покриває щомісячні відсотки у розмірі {amount}. Баланс продовжуватиме зростати.",
 "{amount}/mo": "{amount}/мо",
+"{cm} cm, {kg} kg": "{cm} см, {kg} кг",
+"{lo} to {hi} lb": "від {lo} до {hi} фунтів",
+"{n} cal": "{n} кал",
+"{n} days": {
+"one": "{n} день",
+"few": "{n} дні",
+"many": "{n} днів",
+"other": "{n} дня"
+},
 "{n} mo": {
 "one": "{n} місяць",
 "few": "{n} місяці",
@@ -47,10 +81,18 @@ window.I18N = {
 "many": "{n} місяців",
 "other": "{n} місяця"
 },
+"{n} years": {
+"one": "{n} рік",
+"few": "{n} роки",
+"many": "{n} років",
+"other": "{n} року"
+},
 "{n} yr": {
 "one": "{n} рік",
 "few": "{n} роки",
 "many": "{n} років",
 "other": "{n} року"
-}
+},
+"{w} weeks, {d} days": "{w} тижнів, {d} днів",
+"{y} years, {m} months, {d} days": "{y} років, {m} місяців, {d} днів"
 };

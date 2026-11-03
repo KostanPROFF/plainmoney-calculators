@@ -4,38 +4,60 @@ window.I18N = {
 "1 yr": "1년",
 "Balance at age {age}": "{age}세일 때의 잔액",
 "Detected from your location": "사용자 위치에서 감지됨",
+"First": "임신 초기",
 "Flat-rate state: one rate applies to all taxable income.": "평균 세율 주: 모든 과세소득에 동일한 세율이 적용됩니다.",
+"Gain {n} lb": "{n} 파운드 늘리기",
+"Head of household is estimated with the single-filer brackets.": "세대주는 단독 신고자 세율 구간을 적용하여 산정됩니다.",
+"Healthy weight": "건강한 체중",
 "Healthy: qualifies for most loans": "양호: 대부분의 대출 자격 요건 충족",
 "High: only some loan programs allow this": "높음: 일부 대출 프로그램에서만 허용",
 "Limited by the housing limit ({pct}% of income).": "주택 한도 제한 적용(소득의 {pct}%).",
 "Limited by your other debts (total debt capped at {pct}% of income).": "기타 부채로 제한 적용(총부채는 소득의 {pct}%까지 한도 설정).",
 "Local taxes are not included.": "지방세는 포함되지 않습니다.",
+"Lose {n} lb": "{n} 파운드 감량하기",
 "Manageable: within most mortgage limits": "관리 가능: 대부분의 모기지 한도 이내",
 "Never": "없음",
 "No PMI: your down payment is 20% or more.": "PMI 없음: 계약금은 20% 이상입니다.",
+"Obesity": "비만",
+"Overweight": "과체중",
 "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
 "other": "{n}년"
 },
+"Past 42 weeks": "임신 42주 이상",
 "Payment to finish in {n} months": {
 "other": "{n}개월"
 },
+"Second": "임신 중기",
 "Starting balance is counted with your contributions.": "초기 잔액은 기여액과 함께 계산됩니다.",
+"Third": "임신 후기",
 "This state has no income tax on wages.": "이 주는 급여에 대한 소득세가 없습니다.",
-"This state uses graduated brackets. The rate shown is an approximate effective rate; edit it if you know yours.": "이 주에서는 누진 세율이 적용됩니다. 표시된 세율은 대략적인 실효 세율이며, 본인의 세율을 알고 있다면 수정하십시오.",
+"Today": "오늘",
+"Underweight": "저체중",
+"Uses this state's 2026 tax brackets, standard deduction and exemptions.": "이 주의 2026년 세율 구간, 표준 공제액 및 공제 한도를 적용합니다.",
+"Using the state tax rate you entered.": "입력하신 주 세율을 적용합니다.",
 "Very high: most lenders will decline": "매우 높음: 대부분의 대출기관에서 거절될 것입니다",
+"Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "체중 감량 목표는 하루 {n} 칼로리로 정해지는데, 이는 의학적 감독 없이도 일반적으로 적용되는 최소 기준입니다.",
 "With under 20% down, expect PMI on top.": "계약금 20% 미만이면 PMI가 추가됩니다.",
+"You are in the healthy range": "귀하의 수치는 정상 범위 내에 있습니다.",
 "Your contribution hit the IRS annual limit in some years, so it was capped.": "몇몇 연도에는 귀하의 납입액이 IRS 연간 한도에 도달하여 상한이 적용되었습니다.",
 "Your current savings will reach the goal on their own with interest.": "현재 저축액은 이자로만 목표 금액에 도달할 수 있습니다.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "현재 소득으로는 부채 상환 외에 주택 비용을 낼 여유가 없습니다. 먼저 부채를 상환해 보세요.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "납부액이 {amount}의 월 이자를 충당하지 못합니다. 잔액은 계속 증가합니다.",
 "{amount}/mo": "{amount}/월",
+"{cm} cm, {kg} kg": "{cm} cm, {kg} kg",
+"{lo} to {hi} lb": "{lo} ~ {hi} 파운드",
+"{n} cal": "{n} 칼로리",
+"{n} days": "{n}일",
 "{n} mo": {
 "other": "{n}개월"
 },
 "{n} months": {
 "other": "{n}개월"
 },
+"{n} years": "{n}년",
 "{n} yr": {
 "other": "{n}년"
-}
+},
+"{w} weeks, {d} days": "{w} 주, {d} 일",
+"{y} years, {m} months, {d} days": "{y}년, {m}개월, {d}일"
 };

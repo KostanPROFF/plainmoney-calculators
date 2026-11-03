@@ -4,6 +4,8 @@
   // Static site from public/; src/worker.js only runs for paths with no matching file (e.g. /api/geo).
   "main": "src/worker.js",
   "assets": { "directory": "./public", "binding": "ASSETS" },
+  // Branch builds run `wrangler preview`, which needs this block; it can stay empty.
+  "previews": {},
   "routes": [
     { "pattern": "plainmoneycalc.com", "custom_domain": true },
     { "pattern": "www.plainmoneycalc.com", "custom_domain": true }

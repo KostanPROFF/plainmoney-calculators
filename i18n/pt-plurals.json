@@ -11,12 +11,28 @@
   "one": "{n} mês",
   "other": "{n} meses"
  },
- "Payment to finish in {n} months": {
-  "one": "{n} mês",
-  "other": "{n} meses"
- },
  "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
+  "one": "O PMI se aplica porque seu pagamento inicial é inferior a 20%. Ele deixa de ser cobrado após cerca de {years} ano, quando o valor do seu empréstimo atingir 80% do preço do imóvel.",
+  "other": "O PMI se aplica porque seu pagamento inicial é inferior a 20%. Ele deixa de ser cobrado após cerca de {years} anos, quando o valor do seu empréstimo atingir 80% do preço do imóvel."
+ },
+ "Payment to finish in {n} months": {
+  "one": "O pagamento será concluído em {n} mês",
+  "other": "O pagamento será concluído em {n} meses"
+ },
+ "{n} days": {
+  "one": "{n} dia",
+  "other": "{n} dias"
+ },
+ "{n} years": {
   "one": "{n} ano",
   "other": "{n} anos"
+ },
+ "Gain {n} lb": {
+  "one": "Engordar {n} libra",
+  "other": "Engordar {n} libras"
+ },
+ "Lose {n} lb": {
+  "one": "Perder {n} libra",
+  "other": "Perder {n} libras"
  }
 }

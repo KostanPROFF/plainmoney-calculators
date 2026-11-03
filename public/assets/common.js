@@ -1,15 +1,12 @@
 // Shared helpers for every calculator page.
 const Calc = (() => {
   const lang = document.documentElement.lang || "en";
-  // Arabic keeps the Latin digits: the site shows US dollars and US state tax
-  // rates, and a page that mixes Arabic-Indic digits with the Latin ones in
-  // its own text and formulas reads as two different sites.
   const locale = {
-    es: "es-US", ru: "ru-RU", zh: "zh-CN", pt: "pt-BR", vi: "vi-VN",
-    ko: "ko-KR", uk: "uk-UA", ar: "ar-AE-u-nu-latn", tl: "tl-PH",
+    es: "es-US", ru: "ru-RU", "zh-Hans": "zh-CN", ko: "ko-KR", vi: "vi-VN", "pt-BR": "pt-BR",
+    ar: "ar-u-nu-latn", tl: "fil-PH", uk: "uk-UA",
   }[lang] || "en-US";
-  const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
-  const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", currencyDisplay: "narrowSymbol", maximumFractionDigits: 0 });
+  const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", currencyDisplay: "narrowSymbol", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   // Parse a typed amount. Accepts "425,000" and "6,5": a comma is a decimal separator unless it
   // groups thousands, so visitors on es/ru keyboards get the number they meant.
@@ -23,10 +20,16 @@ const Calc = (() => {
     return Number.isFinite(v) ? v : 0;
   }
   function num(id) {
-    return toNumber(document.getElementById(id).value);
+    const el = document.getElementById(id);
+    const v = toNumber(el.value);
+    // A field that says how fine its figure may be (a whole year for an age) rounds to it.
+    const step = Number(el.dataset.step);
+    return Number.isFinite(step) && step > 0 ? Math.round(v / step) * step : v;
   }
   const money = (v) => usd.format(Math.round(v));
   const money2 = (v) => usd2.format(v);
+  // Plain number in the page language, with exactly `digits` decimals when given (up to 4 otherwise).
+  const fmt = (v, digits) => v.toLocaleString(locale, digits === undefined ? { maximumFractionDigits: 4 } : { minimumFractionDigits: digits, maximumFractionDigits: digits });
   const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
 
   // Standard amortized payment.
@@ -99,6 +102,7 @@ const Calc = (() => {
     return out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? (typeof vars[k] === "number" ? vars[k].toLocaleString(locale) : vars[k]) : m));
   }
   const date = (d) => d.toLocaleDateString(locale, { month: "short", year: "numeric" });
+  const longDate = (d) => d.toLocaleDateString(locale, { month: "long", day: "numeric", year: "numeric" });
 
   // Preselect the visitor's US state in #state from /api/geo (Cloudflare IP geolocation), unless they
   // already picked one. The lookup is cached for the session; any failure just keeps the default.
@@ -129,5 +133,19 @@ const Calc = (() => {
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", detectState);
   else setTimeout(detectState);
 
-  return { num, money, money2, set, payment, bind, areaChart, t, date };
+  return { num, money, money2, fmt, set, payment, bind, areaChart, t, date, longDate, locale };
 })();
+
+// Header button flips between light and dark and remembers the choice; with no choice the system setting wins.
+document.querySelector(".theme-toggle")?.addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+});
+
+// The language menu closes when the visitor clicks anywhere else.
+document.addEventListener("click", (e) => {
+  const menu = document.querySelector(".lang-menu[open]");
+  if (menu && !menu.contains(e.target)) menu.open = false;
+});
