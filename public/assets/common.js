@@ -1,7 +1,13 @@
 // Shared helpers for every calculator page.
 const Calc = (() => {
   const lang = document.documentElement.lang || "en";
-  const locale = { es: "es-US", ru: "ru-RU" }[lang] || "en-US";
+  // Arabic keeps the Latin digits: the site shows US dollars and US state tax
+  // rates, and a page that mixes Arabic-Indic digits with the Latin ones in
+  // its own text and formulas reads as two different sites.
+  const locale = {
+    es: "es-US", ru: "ru-RU", zh: "zh-CN", pt: "pt-BR", vi: "vi-VN",
+    ko: "ko-KR", uk: "uk-UA", ar: "ar-AE-u-nu-latn", tl: "tl-PH",
+  }[lang] || "en-US";
   const usd = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   const usd2 = new Intl.NumberFormat(locale, { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 

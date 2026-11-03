@@ -1,0 +1,22 @@
+{
+ "{n} yr": {
+  "one": "{n} taon",
+  "other": "{n} taon"
+ },
+ "{n} mo": {
+  "one": "{n} buwan",
+  "other": "{n} buwan"
+ },
+ "{n} months": {
+  "one": "isang buwan {n}",
+  "other": "{n} buwan"
+ },
+ "Payment to finish in {n} months": {
+  "one": "{n} buwan",
+  "other": "{n} buwan"
+ },
+ "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
+  "one": "isang {n} taon",
+  "other": "{years} taon"
+ }
+}

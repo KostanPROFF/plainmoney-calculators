@@ -1,0 +1,22 @@
+{
+ "{n} yr": {
+  "one": "{n} ano",
+  "other": "{n} anos"
+ },
+ "{n} mo": {
+  "one": "{n} mês",
+  "other": "{n} meses"
+ },
+ "{n} months": {
+  "one": "{n} mês",
+  "other": "{n} meses"
+ },
+ "Payment to finish in {n} months": {
+  "one": "{n} mês",
+  "other": "{n} meses"
+ },
+ "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
+  "one": "{n} ano",
+  "other": "{n} anos"
+ }
+}

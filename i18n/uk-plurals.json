@@ -1,0 +1,32 @@
+{
+ "{n} yr": {
+  "one": "{n} рік",
+  "few": "{n} роки",
+  "many": "{n} років",
+  "other": "{n} року"
+ },
+ "{n} mo": {
+  "one": "{n} місяць",
+  "few": "{n} місяці",
+  "many": "{n} місяців",
+  "other": "{n} місяця"
+ },
+ "{n} months": {
+  "one": "{n} місяць",
+  "few": "{n} місяці",
+  "many": "{n} місяців",
+  "other": "{n} місяця"
+ },
+ "Payment to finish in {n} months": {
+  "one": "{n} місяць",
+  "few": "{n} місяці",
+  "many": "{n} місяців",
+  "other": "{n} місяця"
+ },
+ "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
+  "one": "{n} рік",
+  "few": "{n} роки",
+  "many": "{n} років",
+  "other": "{n} року"
+ }
+}

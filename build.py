@@ -5,6 +5,7 @@ Run `python3 build.py`; it writes the site into public/. Edit content here, not 
 """
 from pathlib import Path
 import json
+import os
 import re
 
 from art import ART
@@ -57,9 +58,16 @@ def select(id, label, options, selected=None, full=False, hint=""):
 # a hash of the English text, so editing English copy marks that chunk as untranslated until the file is refreshed.
 I18N_DIR = Path(__file__).parent / "i18n"
 LANGS = {
-    "en": {"prefix": "", "locale": "en_US", "name": "English"},
-    "es": {"prefix": "es/", "locale": "es_US", "name": "Español"},
-    "ru": {"prefix": "ru/", "locale": "ru_RU", "name": "Русский"},
+    "en": {"prefix": "", "locale": "en_US", "name": "English", "dir": "ltr"},
+    "es": {"prefix": "es/", "locale": "es_US", "name": "Español", "dir": "ltr"},
+    "ru": {"prefix": "ru/", "locale": "ru_RU", "name": "Русский", "dir": "ltr"},
+    "zh": {"prefix": "zh/", "locale": "zh_CN", "name": "中文", "dir": "ltr"},
+    "pt": {"prefix": "pt/", "locale": "pt_BR", "name": "Português", "dir": "ltr"},
+    "vi": {"prefix": "vi/", "locale": "vi_VN", "name": "Tiếng Việt", "dir": "ltr"},
+    "ko": {"prefix": "ko/", "locale": "ko_KR", "name": "한국어", "dir": "ltr"},
+    "uk": {"prefix": "uk/", "locale": "uk_UA", "name": "Українська", "dir": "ltr"},
+    "ar": {"prefix": "ar/", "locale": "ar_AE", "name": "العربية", "dir": "rtl"},
+    "tl": {"prefix": "tl/", "locale": "tl_PH", "name": "Tagalog", "dir": "ltr"},
 }
 UI = {
     "footer": "Estimates only, not financial or tax advice.",
@@ -68,6 +76,8 @@ UI = {
     "nav_label": "Calculators",
 }
 TR = {l: json.loads(f.read_text()) if (f := I18N_DIR / f"{l}.json").exists() else {} for l in LANGS if l != "en"}
+# Languages whose English source is written out even when everything is translated.
+FORCE_TODO = {l for l in os.environ.get("I18N_FORCE_TODO", "").split(",") if l}
 SOURCE = {}  # key -> English text, everything that needs a translation
 PAGES = []  # English page args, replayed for each language
 
@@ -152,7 +162,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     js_files = ["common.js", *([f"i18n-{lang}.js"] if lang != "en" else []), *scripts]
     js = "".join(f'<script defer src="/assets/{s}?v={asset_version(s, lang)}"></script>' for s in js_files)
     html = f"""<!doctype html>
-<html lang="{lang}">
+<html lang="{lang}" dir="{LANGS[lang]['dir']}">
 <head>
 <meta charset="utf-8">
 {analytics}
@@ -851,6 +861,11 @@ for lang in TR:
     # todo-{lang}.html is what goes to DeepL; each block keeps its key so translations map back.
     missing = {k: v for k, v in SOURCE.items() if k not in TR[lang]}
     todo = I18N_DIR / f"todo-{lang}.html"
+    # I18N_FORCE_TODO writes the English source for a language even when every
+    # chunk is translated. It is what a translator needs to go over a language
+    # again, and what the translation script needs to pick a string up again.
+    if lang in FORCE_TODO:
+        missing = dict(SOURCE)
     if missing:
         todo.write_text(
             f'<!doctype html><html lang="en"><head><meta charset="utf-8"></head><body>\n'

@@ -1,0 +1,17 @@
+{
+ "{n} yr": {
+  "other": "năm"
+ },
+ "{n} mo": {
+  "other": "tháng"
+ },
+ "{n} months": {
+  "other": "tháng {n}"
+ },
+ "Payment to finish in {n} months": {
+  "other": "tháng"
+ },
+ "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
+  "other": "năm"
+ }
+}

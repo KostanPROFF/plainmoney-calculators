@@ -1,0 +1,17 @@
+{
+ "{n} yr": {
+  "other": "{n}年"
+ },
+ "{n} mo": {
+  "other": "{n}个月"
+ },
+ "{n} months": {
+  "other": "{n}个月"
+ },
+ "Payment to finish in {n} months": {
+  "other": "{n}个月"
+ },
+ "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
+  "other": "{n}年"
+ }
+}

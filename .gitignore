@@ -1,2 +1,8 @@
 __pycache__/
 .DS_Store
+
+# Pipeline intermediates: written and rewritten by scripts/translate_lang.py
+i18n/units-*.json
+i18n/translated-*.json
+i18n/done-*.html
+i18n/todo-*.html

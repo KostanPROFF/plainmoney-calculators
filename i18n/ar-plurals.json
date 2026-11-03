@@ -1,0 +1,42 @@
+{
+ "{n} yr": {
+  "zero": "{n} سنة",
+  "one": "{n} سنة",
+  "two": "{n} سنتان",
+  "few": "{n} سنوات",
+  "many": "{n} سنة",
+  "other": "{n} سنة"
+ },
+ "{n} mo": {
+  "zero": "{n} شهر",
+  "one": "{n} شهر",
+  "two": "{n} شهران",
+  "few": "{n} أشهر",
+  "many": "{n} شهرًا",
+  "other": "{n} شهر"
+ },
+ "{n} months": {
+  "zero": "{n} شهر",
+  "one": "{n} شهر",
+  "two": "{n} شهران",
+  "few": "{n} أشهر",
+  "many": "{n} شهرًا",
+  "other": "{n} شهر"
+ },
+ "Payment to finish in {n} months": {
+  "zero": "{n} شهر",
+  "one": "{n} شهر",
+  "two": "{n} شهران",
+  "few": "{n} أشهر",
+  "many": "{n} شهرًا",
+  "other": "{n} شهر"
+ },
+ "PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.": {
+  "zero": "{n} سنة",
+  "one": "{n} سنة",
+  "two": "{n} سنتان",
+  "few": "{n} سنوات",
+  "many": "{n} سنة",
+  "other": "{n} سنة"
+ }
+}
