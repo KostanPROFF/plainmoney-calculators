@@ -63,7 +63,7 @@ window.I18N = {
 "Weight-loss targets are held at {n} calories a day, a common minimum without medical supervision.": "تُحدد أهداف إنقاص الوزن عند {n} سعرة حرارية يوميًا، وهو الحد الأدنى الشائع دون إشراف طبي.",
 "With under 20% down, expect PMI on top.": "مع دفعة أولى تقل عن 20%، توقع سداد قسط التأمين العقاري PMI إضافةً إلى ذلك.",
 "You are in the healthy range": "أنت ضمن النطاق الصحي",
-"Your contribution hit the IRS annual limit in some years, so it was capped.": "\\\"بلغ مساهمتك الحد السنوي لـ IRS في بعض السنوات، لذلك تم وضع سقف لها.\\\"",
+"Your contribution hit the IRS annual limit in some years, so it was capped.": "\"بلغ مساهمتك الحد السنوي لـ IRS في بعض السنوات، لذلك تم وضع سقف لها.\"",
 "Your current savings will reach the goal on their own with interest.": "ستصل مدخراتك الحالية إلى الهدف وحدها مع الفوائد.",
 "Your debts leave no room for a housing payment at this income. Try paying down debt first.": "لا تترك ديونك أي مجال لسداد إيجار المنزل بهذا الدخل. جرّب سداد الديون أولًا.",
 "Your payment does not cover the monthly interest of {amount}. The balance will keep growing.": "لا يغطي سدادك الفوائد الشهرية البالغة {amount}. سيستمر الرصيد في الزيادة.",
