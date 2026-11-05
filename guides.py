@@ -29,19 +29,11 @@ GUIDES["mortgage-calculator.html"] = """
 <p>Any amount you pay above the required payment goes straight to principal, so the next month's interest is charged on a smaller balance. On a $360,000 loan at 6.75% for 30 years, the regular payment is $2,335 and total interest is about $480,600. Adding $200 a month pays the loan off in about 23 years and 10 months and cuts interest to about $364,700, a saving of nearly $116,000. Before you prepay, check that your loan has no prepayment penalty and that you already have an emergency fund and are getting any 401(k) match.</p>
 
 <h2>Costs this calculator does not include</h2>
-<ul>
-<li><strong>Closing costs.</strong> Lender fees, title insurance, appraisal and recording fees usually total 2% to 5% of the loan and are paid at closing.</li>
-<li><strong>Escrow cushion.</strong> Lenders may collect up to two months of taxes and insurance in advance, so your first payments can be a little higher.</li>
-<li><strong>Maintenance.</strong> Many owners budget 1% to 2% of the home's value a year for repairs, which is not part of the mortgage payment but matters for affordability.</li>
-<li><strong>Rate changes on adjustable loans.</strong> The calculator assumes a fixed rate. An ARM payment can rise after the initial period.</li>
-</ul>
+<p>Closing costs are paid separately at closing. Lender fees, title insurance, the appraisal and recording fees usually come to 2% to 5% of the loan. Your first few payments can also run a little high, because lenders may collect up to two months of taxes and insurance in advance as an escrow cushion.</p>
+<p>Repairs are the other cost owners tend to forget. Many budget 1% to 2% of the home's value a year for maintenance. It is not part of the mortgage payment, but it still comes out of the same budget. Finally, the calculator assumes a fixed rate; on an adjustable-rate loan the payment can rise after the initial period ends.</p>
 
-<h2>Common mistakes to avoid</h2>
-<ul>
-<li>Comparing loans by monthly payment alone. A longer term always lowers the payment and always raises total interest.</li>
-<li>Using the national average property tax. In states such as New Jersey or Illinois the tax can add several hundred dollars a month more than the average suggests.</li>
-<li>Forgetting that PMI ends. On a conventional loan PMI stops once you reach 20% to 22% equity, so it is a temporary cost, unlike FHA mortgage insurance on most loans.</li>
-</ul>
+<h2>Where mortgage estimates go wrong</h2>
+<p>The most common error is comparing loans by monthly payment alone. A longer term always lowers the payment and always raises total interest, so look at both numbers. The second is using a national average for property tax: in states such as New Jersey or Illinois, the real bill can add several hundred dollars a month more than the average suggests. And PMI is easy to overweight. On a conventional loan it stops once you reach 20% to 22% equity, so it is a temporary cost, unlike the mortgage insurance on most FHA loans.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -68,12 +60,8 @@ GUIDES["home-affordability-calculator.html"] = """
 <p>The <strong>front-end ratio</strong> is your housing payment divided by gross monthly income. The <strong>back-end ratio</strong> adds every other debt payment. Lenders look at both. With little other debt the 28% housing limit usually binds; with a car loan and student loans the 36% total limit often binds first. The calculator applies whichever is lower, and the result tells you which one is limiting you.</p>
 
 <h2>How to afford more house</h2>
-<ul>
-<li><strong>Pay down small debts.</strong> Clearing a $300 car payment frees $300 of the 36% limit, which can be worth $40,000 or more of home price.</li>
-<li><strong>Save a bigger down payment.</strong> It lowers the loan and can remove PMI once you reach 20%.</li>
-<li><strong>Improve your credit score.</strong> A higher score can lower your rate by a quarter to a half point.</li>
-<li><strong>Look at loan programs.</strong> FHA, VA and USDA loans and state first-time buyer programs have lower down payment requirements and sometimes higher debt limits.</li>
-</ul>
+<p>Small debts often matter more than income. Clearing a $300 car payment frees $300 of the 36% limit, which can be worth $40,000 or more of home price. A bigger down payment lowers the loan and can remove PMI once you reach 20%, and a better credit score can lower your rate by a quarter to a half point.</p>
+<p>It is also worth asking lenders about FHA, VA and USDA loans and your state's first-time buyer programs. They require smaller down payments and sometimes allow higher debt ratios.</p>
 
 <h2>Affordable for the lender versus affordable for you</h2>
 <p>The 28/36 rule uses gross income, but you live on take-home pay. A household earning $90,000 might take home about $5,800 a month after taxes and retirement savings, so a $2,100 housing payment is over a third of what actually reaches the bank account. Before you commit, add up your real monthly spending, keep three to six months of expenses in savings after closing and leave room for maintenance, which commonly runs 1% to 2% of the home's value a year.</p>
@@ -108,12 +96,8 @@ GUIDES["auto-loan-calculator.html"] = """
 <h2>Total cost of owning the car</h2>
 <p>The loan payment is only part of the cost. Insurance, fuel or charging, maintenance, registration and depreciation all add up. A common budgeting guideline is to keep all car costs, including the payment, under 10% to 15% of take-home pay, and to put at least 10% to 20% down so the loan does not exceed the car's value.</p>
 
-<h2>Common mistakes to avoid</h2>
-<ul>
-<li>Negotiating the monthly payment instead of the price. A dealer can hit any payment by stretching the term.</li>
-<li>Rolling add-ons such as extended warranties, paint protection or GAP coverage into the loan without comparing their price elsewhere.</li>
-<li>Choosing 84 months to afford a more expensive car. Long terms raise interest and keep you owing more than the car is worth.</li>
-</ul>
+<h2>Dealership traps</h2>
+<p>Negotiate the price of the car, not the monthly payment: a dealer can hit almost any payment by stretching the term. Add-ons such as extended warranties, paint protection and GAP coverage are often rolled into the loan, so check what they cost elsewhere before agreeing. And if you need 84 months to afford a car, it is probably too expensive, because long terms raise the interest and keep you owing more than the car is worth.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -137,11 +121,7 @@ GUIDES["personal-loan-calculator.html"] = """
 <p>The saving only holds if the cards stay paid off. Running the balances up again leaves you with both the loan and new card debt. Many people keep the cards open for their credit history but remove them from online wallets.</p>
 
 <h2>What lenders look at</h2>
-<ul>
-<li><strong>Credit score.</strong> The biggest factor in your rate. Scores above about 720 usually get the best offers.</li>
-<li><strong>Debt-to-income ratio.</strong> Many lenders want total debt payments, including the new loan, under 35% to 45% of gross income.</li>
-<li><strong>Income and employment.</strong> Steady income lowers the lender's risk.</li>
-</ul>
+<p>Your credit score has the biggest effect on the rate, and scores above about 720 usually get the best offers. Lenders also check your debt-to-income ratio; many want total debt payments, including the new loan, under 35% to 45% of gross income. Steady income and employment history lower their risk as well.</p>
 <p>Most online lenders let you check your rate with a soft credit pull that does not affect your score, so you can compare several offers before formally applying.</p>
 
 <h2>Fixed payments and early payoff</h2>
@@ -155,12 +135,8 @@ GUIDES["personal-loan-calculator.html"] = """
 <li>Nonprofit credit counseling and a debt management plan, which can lower card interest rates.</li>
 </ul>
 
-<h2>Common mistakes to avoid</h2>
-<ul>
-<li>Comparing interest rates instead of APRs when fees differ.</li>
-<li>Borrowing the exact amount you need when a fee will be deducted, and ending up short.</li>
-<li>Choosing the longest term for the lowest payment without looking at total interest.</li>
-</ul>
+<h2>Before you accept an offer</h2>
+<p>Compare APRs rather than interest rates whenever the fees differ. If a fee will be deducted from the loan, borrow enough to cover it so you are not left short. And check total interest before picking the longest term just because its payment is lowest.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -183,10 +159,7 @@ GUIDES["credit-card-payoff-calculator.html"] = """
 
 <h2>Avalanche or snowball for several cards</h2>
 <p>If you have more than one card, pay the minimum on all of them and put every extra dollar toward one card at a time.</p>
-<ul>
-<li><strong>Avalanche:</strong> target the card with the highest APR first. This costs the least interest.</li>
-<li><strong>Snowball:</strong> target the smallest balance first. You clear whole cards sooner, which helps many people stay motivated.</li>
-</ul>
+<p>The avalanche method targets the card with the highest APR first, which costs the least interest. The snowball method targets the smallest balance first instead. It costs a little more, but you clear whole cards sooner, and many people find that easier to stick with.</p>
 <p>When one card is paid off, add its whole payment to the next card. Run each card through this calculator to see when each will be gone.</p>
 
 <h2>When a balance transfer pays off</h2>
@@ -195,12 +168,8 @@ GUIDES["credit-card-payoff-calculator.html"] = """
 <h2>What paying down a card does for your credit</h2>
 <p>Credit utilization, the share of your card limits you are using, is one of the largest factors in credit scores. Keeping it under 30% helps, and under 10% is better. Paying down balances usually raises your score within a month or two as the new balances are reported, which can also help you qualify for lower rates on a mortgage or car loan.</p>
 
-<h2>Common mistakes to avoid</h2>
-<ul>
-<li>Paying only the minimum. Your statement's minimum payment warning shows how many years that would take.</li>
-<li>Closing paid-off cards right away, which lowers your total available credit and can raise utilization.</li>
-<li>Ignoring the APR on cash advances and penalty rates, which are often much higher than the purchase APR.</li>
-</ul>
+<h2>Habits that keep balances high</h2>
+<p>Paying only the minimum is the slowest route; the minimum payment warning on your statement shows how many years it would take. Closing cards as soon as they are paid off can backfire too, because it lowers your available credit and raises utilization. Also check the APR on cash advances and any penalty rate, which are often much higher than the purchase APR.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -234,12 +203,7 @@ GUIDES["debt-to-income-calculator.html"] = """
 <p>Utilities, phone bills, insurance premiums other than those in your mortgage payment, groceries, subscriptions and income taxes are not part of DTI, even though they come out of your budget. Student loans in deferment may still count: many lenders use a percentage of the balance, such as 0.5% or 1%, if no payment is reported.</p>
 
 <h2>How to lower your ratio</h2>
-<ul>
-<li><strong>Pay off small balances.</strong> Eliminating a loan removes its whole payment from the ratio, which helps more than paying down a large loan a little.</li>
-<li><strong>Avoid new debt before applying.</strong> A new car loan right before a mortgage application can push you over a limit.</li>
-<li><strong>Refinance or extend a loan.</strong> A lower payment lowers DTI, though it may cost more interest over time.</li>
-<li><strong>Add income.</strong> A co-borrower's income or documented side income can lower the ratio.</li>
-</ul>
+<p>Paying off a small loan entirely helps more than paying a little off a large one, because it removes the whole payment from the ratio. Avoid taking on new debt before you apply: a car loan taken out the month before a mortgage application can push you over a limit. Refinancing or extending a loan lowers the payment and the ratio, though it may cost more interest over time. A co-borrower's income or documented side income lowers it as well.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -262,19 +226,11 @@ GUIDES["paycheck-calculator.html"] = """
 <p>Tax brackets apply in layers. Only the income inside each bracket is taxed at that bracket's rate. A single filer with $50,000 of taxable income in 2026 pays 10% on the first $12,400 ($1,240) and 12% on the remaining $37,600 ($4,512), for $5,752 of federal income tax. The top rate reached is 12%, but the effective rate is about 11.5%. A raise that moves you into a higher bracket never lowers your take-home pay, because only the extra dollars are taxed at the higher rate.</p>
 
 <h2>Pre-tax and after-tax deductions</h2>
-<ul>
-<li><strong>Pre-tax:</strong> traditional 401(k) and 403(b) contributions, most employer health, dental and vision premiums, health savings account (HSA) and flexible spending account (FSA) contributions. These reduce federal income tax and, except for 401(k) contributions, usually FICA too.</li>
-<li><strong>After-tax:</strong> Roth 401(k) contributions, union dues, wage garnishments and some insurance. These come out after tax is calculated.</li>
-</ul>
+<p>Pre-tax deductions include traditional 401(k) and 403(b) contributions, most employer health, dental and vision premiums, and contributions to a health savings account (HSA) or flexible spending account (FSA). They reduce federal income tax, and all of them except 401(k) contributions usually reduce FICA too. After-tax deductions, such as Roth 401(k) contributions, union dues, wage garnishments and some insurance, come out after the tax is calculated.</p>
 <p>Because of the tax saving, contributing $200 per paycheck to a traditional 401(k) lowers take-home pay by less than $200, often by $150 to $170 depending on your bracket.</p>
 
 <h2>Why your actual paycheck may differ</h2>
-<ul>
-<li><strong>Your W-4.</strong> Extra withholding, dependents or a second job entered on Form W-4 change how much federal tax your employer withholds.</li>
-<li><strong>Local taxes.</strong> Some cities and counties, such as New York City and many in Ohio and Pennsylvania, add their own income tax, which is not included here.</li>
-<li><strong>Other state payroll taxes.</strong> A few states take disability or paid family leave contributions from wages.</li>
-<li><strong>Bonuses.</strong> Supplemental pay is often withheld at a flat 22% federal rate, which can differ from your regular rate.</li>
-</ul>
+<p>Your Form W-4 is the usual reason. Extra withholding, dependents or a second job entered there change how much federal tax your employer takes out. Local income taxes are another: some cities and counties, including New York City and many in Ohio and Pennsylvania, add their own, and this calculator leaves them out. A few states also take disability or paid family leave contributions from wages. Bonuses are often withheld at a flat 22% federal rate, which can differ from your regular rate.</p>
 
 <h2>Check your withholding once a year</h2>
 <p>Withholding is an estimate of your final tax bill. If too little is withheld you owe money in April; too much and you have given the government an interest-free loan. The IRS Tax Withholding Estimator compares your year-to-date pay stubs with your expected tax and tells you how to update your W-4. It is worth running after a raise, a new job, marriage or a new child.</p>
@@ -305,12 +261,8 @@ GUIDES["salary-to-hourly-calculator.html"] = """
 <h2>Comparing a salaried job with contract work</h2>
 <p>A salary of $75,000 works out to about $36 an hour over 2,080 hours. A contractor charging $36 an hour earns much less in practice, because employees also receive paid time off, the employer's half of Social Security and Medicare (7.65%), health insurance and retirement contributions. Benefits commonly add 25% to 40% to the cost of a salaried worker. To match the $75,000 job with benefits worth 30%, a contractor would need around $47 an hour for the same hours, before accounting for unpaid time between projects.</p>
 
-<h2>Common mistakes to avoid</h2>
-<ul>
-<li>Comparing a job offer's hourly rate with a salary without counting unpaid weeks or benefits.</li>
-<li>Confusing gross pay with take-home pay. Use the paycheck calculator to see what you keep after taxes.</li>
-<li>Assuming a salaried job pays for extra hours. Exempt employees earn the same salary however long they work, so a 50-hour week lowers the effective hourly rate.</li>
-</ul>
+<h2>Comparing offers fairly</h2>
+<p>When you compare an hourly offer with a salary, count unpaid weeks and benefits, not just the rate. Remember that both figures are gross pay; the paycheck calculator shows what you keep after taxes. Salaried jobs also do not pay for extra hours if you are exempt, so a 50-hour week lowers your effective hourly rate.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -334,10 +286,7 @@ GUIDES["401k-calculator.html"] = """
 <p>Time matters more than any other input. Saving $300 a month from age 25 to 65 at a 7% return grows to about $787,000, from $144,000 of contributions. Starting at 35 with the same $300 a month grows to about $366,000. Ten years of delay costs $36,000 in contributions but more than $420,000 in final balance, because the earliest dollars compound the longest.</p>
 
 <h2>Traditional or Roth 401(k)</h2>
-<ul>
-<li><strong>Traditional:</strong> contributions are pre-tax, lowering your taxable income now. Withdrawals in retirement are taxed as income.</li>
-<li><strong>Roth:</strong> contributions are made after tax. Qualified withdrawals, including all the growth, are tax-free.</li>
-</ul>
+<p>Traditional contributions go in before tax, which lowers your taxable income now, and withdrawals in retirement are taxed as income. Roth contributions go in after tax, and qualified withdrawals, growth included, are tax-free.</p>
 <p>A traditional account tends to win if you expect a lower tax rate in retirement than today; a Roth tends to win if you expect the same or higher rate, which is common early in a career. Many people split contributions to hedge. Employer matching contributions have traditionally gone into the pre-tax side, though plans may now offer Roth matching. The calculator's projection applies to either type; only the taxes differ.</p>
 
 <h2>Vesting</h2>
@@ -411,22 +360,13 @@ GUIDES["savings-goal-calculator.html"] = """
 <p>A common guideline is three to six months of essential expenses: housing, utilities, food, insurance, transportation and minimum debt payments. Aim for the higher end if your income is irregular, you are self-employed, you are the only earner in your household or you work in an industry with frequent layoffs. Build a starter fund of $1,000 to $2,000 first, then work toward the full amount.</p>
 
 <h2>Where to keep the money</h2>
-<ul>
-<li><strong>High-yield savings account.</strong> Easy access and FDIC or NCUA insurance up to $250,000 per depositor, per bank, per ownership category.</li>
-<li><strong>Certificates of deposit.</strong> A fixed rate for a set term. Useful when your deadline is certain; early withdrawal usually costs some interest.</li>
-<li><strong>Treasury bills.</strong> Short-term government debt, exempt from state income tax.</li>
-<li><strong>Investments.</strong> Only for goals more than about five years away, because prices can fall right when you need the money.</li>
-</ul>
+<p>For most short-term goals, a high-yield savings account is the simplest choice. You can withdraw at any time, and FDIC or NCUA insurance covers up to $250,000 per depositor, per bank, per ownership category. Certificates of deposit lock in a fixed rate for a set term, which suits a goal with a firm date, though early withdrawal usually costs some interest. Treasury bills are short-term government debt and are exempt from state income tax. Stocks and other investments only make sense for goals more than about five years away, because prices can fall right when you need the money.</p>
 
 <h2>Saving for several goals</h2>
 <p>Run the calculator once for each goal, then add up the monthly amounts. If the total is more than you can afford, push back the least urgent deadline or lower its target. Many banks let you open separate savings buckets for each goal, which makes progress easy to see.</p>
 
-<h2>Common mistakes to avoid</h2>
-<ul>
-<li>Keeping savings in a checking account that pays little or no interest.</li>
-<li>Investing money you need within a year or two in stocks.</li>
-<li>Saving whatever is left at the end of the month. An automatic transfer on payday is far more reliable.</li>
-</ul>
+<h2>Making the plan stick</h2>
+<p>Keep goal money out of checking, where it earns little or nothing, and out of stocks if you need it within a year or two. Saving whatever is left at the end of the month rarely works; an automatic transfer on payday is far more reliable.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -448,12 +388,7 @@ GUIDES["bmi-calculator.html"] = """
 
 <h2>What BMI does not tell you</h2>
 <p>BMI is a quick screening tool based only on height and weight. It does not measure body fat directly, so it has known limits:</p>
-<ul>
-<li><strong>Muscle.</strong> Athletes and people with a lot of muscle can have a high BMI with little body fat.</li>
-<li><strong>Age.</strong> Older adults tend to have more body fat than younger adults at the same BMI.</li>
-<li><strong>Sex and ancestry.</strong> At the same BMI, women generally have more body fat than men. Health risks for some groups, including many people of Asian descent, begin at a lower BMI, and some guidelines use lower cutoffs for them.</li>
-<li><strong>Fat distribution.</strong> Fat around the abdomen carries more risk than fat elsewhere.</li>
-</ul>
+<p>Athletes and other people with a lot of muscle can have a high BMI with little body fat. Older adults tend to carry more fat than younger adults at the same BMI, and women generally carry more than men. Ancestry matters too: health risks for some groups, including many people of Asian descent, start at a lower BMI, and some guidelines use lower cutoffs for them. BMI also says nothing about where fat sits, and fat around the abdomen carries more risk than fat elsewhere.</p>
 
 <h2>Waist size as a second check</h2>
 <p>Measuring your waist adds information BMI misses. Place a tape measure around your bare abdomen just above the hip bones and breathe out normally. A waist over 40 inches for men or over 35 inches for women, if you are not pregnant, is linked to a higher risk of type 2 diabetes and heart disease, even when BMI is in the healthy range.</p>
@@ -489,11 +424,7 @@ GUIDES["calorie-calculator.html"] = """
 <p>Losing 0.5 to 2 pounds a week is a common recommendation. Very low intake makes it hard to get enough protein, vitamins and minerals. Many health professionals advise not going below about 1,200 calories a day for women or 1,500 for men without medical supervision. People who are pregnant, breastfeeding, under 18 or managing a health condition should get advice from a doctor or registered dietitian.</p>
 
 <h2>What to eat, not just how much</h2>
-<ul>
-<li><strong>Protein.</strong> Helps preserve muscle while losing weight and keeps you full. Spread it across meals.</li>
-<li><strong>Fiber.</strong> Vegetables, fruit, beans and whole grains add volume for few calories.</li>
-<li><strong>Drinks.</strong> Sugary drinks, juice and alcohol add calories without making you feel full.</li>
-</ul>
+<p>Protein helps preserve muscle while you lose weight and keeps you full, so spread it across your meals. Vegetables, fruit, beans and whole grains add fiber and volume for few calories. Sugary drinks, juice and alcohol do the opposite, adding calories without making you feel full.</p>
 <p>The Dietary Guidelines for Americans suggest getting 10% to 35% of calories from protein, 45% to 65% from carbohydrates and 20% to 35% from fat.</p>
 
 <h2>How accurate is the estimate?</h2>
@@ -568,19 +499,10 @@ GUIDES["percentage-calculator.html"] = """
 <p>To find the original amount before tax or a markup was added, divide by one plus the rate. A receipt total of $54 with 8% sales tax had a pre-tax price of $54 / 1.08 = $50. To undo a discount, divide by one minus the rate: a $72 price after 10% off was originally $72 / 0.90 = $80. Taking 8% off $54 gives $49.68, which is a common mistake.</p>
 
 <h2>Everyday uses</h2>
-<ul>
-<li><strong>Raises:</strong> a raise from $62,000 to $65,000 is a 4.8% increase.</li>
-<li><strong>Grades:</strong> 42 correct out of 50 is 84%.</li>
-<li><strong>Budgets:</strong> $1,500 of rent on $5,000 of take-home pay is 30%.</li>
-<li><strong>Prices:</strong> a $4.00 item that now costs $4.60 rose 15%.</li>
-</ul>
+<p>A raise from $62,000 to $65,000 is a 4.8% increase. A test with 42 of 50 answers right scores 84%. Rent of $1,500 on $5,000 of take-home pay takes 30% of the budget, and a $4.00 item that now costs $4.60 has gone up 15%.</p>
 
-<h2>Common mistakes to avoid</h2>
-<ul>
-<li>Dividing by the new value instead of the old one when calculating percent change.</li>
-<li>Adding percentages that apply to different bases, such as stacked discounts.</li>
-<li>Confusing a percent change with a percentage point change when comparing rates.</li>
-</ul>
+<h2>Easy ways to get it wrong</h2>
+<p>For percent change, divide by the old value, not the new one. Percentages that apply to different bases, such as stacked discounts, cannot simply be added. And when comparing rates, keep percent changes and percentage point changes apart.</p>
 """
 
 GUIDES["tip-calculator.html"] = """
@@ -664,12 +586,7 @@ GUIDES["gpa-calculator.html"] = """
 <p>This calculator gives an unweighted GPA on the standard 4.0 scale, the scale most colleges use. Many high schools also report a weighted GPA that adds points for harder classes, often 0.5 for honors and 1.0 for AP or IB courses, so an A in an AP class counts as 5.0. Weighting rules differ by school, and many colleges recalculate GPA their own way when reviewing applications.</p>
 
 <h2>Pass/fail, withdrawals and retakes</h2>
-<ul>
-<li><strong>Pass/fail:</strong> a pass usually earns credit but no grade points and does not count in your GPA. A fail may count as an F at some schools.</li>
-<li><strong>Withdrawals:</strong> a W on your transcript normally does not affect GPA.</li>
-<li><strong>Retakes:</strong> many colleges replace the original grade with the new one, while others average both. Check your school's policy.</li>
-<li><strong>Plus and minus grades:</strong> some schools do not use A+ or count it as 4.0; others use 4.3.</li>
-</ul>
+<p>A pass in a pass/fail class usually earns credit but no grade points, so it does not count in your GPA, although some schools count a fail as an F. A withdrawal (W) normally has no effect. Retakes vary: many colleges replace the original grade with the new one, while others average the two. Schools also differ on plus grades; some do not use A+, some count it as 4.0 and others as 4.3.</p>
 
 <h2>Why GPA matters</h2>
 <p>Many scholarships require a minimum GPA, often 3.0 or higher, to keep the award. Federal financial aid requires satisfactory academic progress, which usually means at least a 2.0 cumulative GPA by the end of the second year. Graduate programs and some employers also set GPA cut-offs, commonly 3.0.</p>
