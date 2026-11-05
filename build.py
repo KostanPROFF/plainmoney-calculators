@@ -1207,21 +1207,11 @@ page(
     f"""<section class="prose"><h1>About {SITE_NAME}</h1>
 <p>{SITE_NAME} is an independent website that makes free calculators for the money, health and everyday decisions people in the United States face most often: buying a home, paying off debt, understanding a paycheck, saving for retirement, checking a BMI, planning a pregnancy or working out a grade. Every calculator shows not just a result but how it was reached, with plain-English guides, worked examples and answers to common questions.</p>
 
-<h2>What we believe a calculator should do</h2>
-<ul>
-<li><strong>Show its work.</strong> Every page explains the formula it uses and lists the assumptions behind the result, so you can check it and adjust it to your situation.</li>
-<li><strong>Use current official figures.</strong> Tax brackets, contribution limits and health ranges change. We update them from the original sources rather than from other websites.</li>
-<li><strong>Respect your privacy.</strong> All calculations run in your browser. The numbers you type are never sent to us or stored anywhere.</li>
-<li><strong>Stay free and fast.</strong> No sign-up, no paywall and pages that load quickly on any phone.</li>
-</ul>
+<h2>How we build our calculators</h2>
+<p>Every page explains the formula it uses and lists the assumptions behind the result, so you can check the math and adjust it to your own situation. Tax brackets, contribution limits and health ranges change from year to year, and we update them from the original sources rather than from other websites. All calculations run in your browser, so the numbers you type are never sent to us or stored anywhere. There is no sign-up and no paywall, and the pages are built to load quickly on a phone.</p>
 
 <h2>Where our numbers come from</h2>
-<ul>
-<li><strong>Taxes and paychecks:</strong> IRS Publication 15-T and the 2026 inflation adjustments, Social Security Administration wage base, and state income tax rates compiled by the Tax Foundation.</li>
-<li><strong>Retirement:</strong> IRS 401(k) contribution and catch-up limits for 2026.</li>
-<li><strong>Loans and credit:</strong> standard amortization formulas, Consumer Financial Protection Bureau guidance, and Fannie Mae, FHA and VA underwriting guidelines for debt-to-income ratios.</li>
-<li><strong>Health:</strong> CDC adult BMI categories, the Mifflin-St Jeor equation for calorie needs and American College of Obstetricians and Gynecologists guidance on estimating due dates.</li>
-</ul>
+<p>Tax and paycheck figures come from IRS Publication 15-T and the 2026 inflation adjustments, the Social Security Administration's wage base and state income tax rates compiled by the Tax Foundation. The 401(k) calculator uses the IRS contribution and catch-up limits for 2026. Loan and credit calculators use standard amortization formulas, Consumer Financial Protection Bureau guidance, and Fannie Mae, FHA and VA underwriting guidelines for debt-to-income ratios. The health calculators use the CDC's adult BMI categories, the Mifflin-St Jeor equation for calorie needs and the American College of Obstetricians and Gynecologists' guidance on estimating due dates.</p>
 <p>Each calculator page lists the specific sources it relies on.</p>
 
 <h2>How we check our calculators</h2>
