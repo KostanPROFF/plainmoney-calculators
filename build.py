@@ -19,7 +19,7 @@ GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
 GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
 # Machine-translated pages stay online for visitors but are kept out of Google (noindex, no sitemap, no hreflang)
 # until AdSense approves the site. Set to False to let Google index them again.
-NOINDEX_TRANSLATIONS = True
+NOINDEX_TRANSLATIONS = False
 REVIEWED = "November 2026"
 ROOT = Path(__file__).parent / "public"
 WRITTEN = set()  # pages produced by this run; anything else under public/*.html is stale
