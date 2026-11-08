@@ -11,6 +11,7 @@ import re
 from art import ART
 from content import CONTENT
 from guides import GUIDES
+from offers import DISCLOSURE, OFFERS, PARTNERS
 
 SITE_NAME = "Plain Money Calculators"
 SITE_URL = "https://plainmoneycalc.com"
@@ -115,6 +116,31 @@ def tr(text, lang):
     return TR[lang].get(key(text))
 
 
+# Mentioned in the Terms only once a partner link is live, so the translated Terms keep building until then.
+AFFILIATE_TERMS = (" Some pages link to partner offers, such as lenders or banks, and we may earn a commission when you"
+                   " use those links; partners do not change how our calculators work or what they show."
+                   if any(p["url"] for p in PARTNERS.values()) else "")
+
+
+def offers(filename, lang):
+    """Partner links under the result. Empty until an offer has a link, and on pages where it is untranslated."""
+    cards = []
+    for pid in OFFERS.get(filename, ()):
+        o = PARTNERS[pid]
+        if not o["url"]:
+            continue
+        t = [tr(o[k], lang) for k in ("title", "text", "cta")]
+        if any(x is None for x in t):
+            continue
+        cards.append(f'<a class="offer" href="{o["url"]}" rel="sponsored nofollow noopener" target="_blank">'
+                     f'<strong>{t[0]}</strong><span>{t[1]}</span><em>{t[2]}</em></a>')
+    head, note = tr("Compare rates", lang), tr(DISCLOSURE, lang)
+    if not cards or head is None or note is None:
+        return ""
+    return (f'<section class="offers" aria-labelledby="offers-h"><h2 id="offers-h">{head}</h2>'
+            f'<div class="offer-grid">{"".join(cards)}</div><p class="note">{note}</p></section>')
+
+
 def extras(filename, lang):
     """Worked examples and FAQ for a calculator page, plus FAQPage structured data. None if untranslated."""
     c = CONTENT.get(filename)
@@ -156,6 +182,10 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     extra, faq_schema = extras(filename, lang)
     if extra is None:
         return False
+    # Partner offers sit right under the calculator, where the result is.
+    offer_html = offers(filename, lang)
+    if offer_html:
+        body = re.sub(r'(<div class="calc">.*?</section>\n</div>\n)', lambda m: m[1] + offer_html + "\n", body, count=1, flags=re.S)
     body += "\n" + extra if extra else ""
     # Illustrations go in after translation so they never change the translated text.
     if filename in ART:
@@ -1261,7 +1291,7 @@ page(
 <h2>Acceptable use</h2>
 <p>You may use the site for personal and non-commercial purposes. You may not copy the site's content in bulk, scrape it automatically, interfere with its operation or use it for any unlawful purpose. You are welcome to link to any page.</p>
 <h2>Third-party links and advertising</h2>
-<p>The site shows ads served by Google and links to official sources such as the IRS and CDC. We are not responsible for the content or practices of third-party websites. See our <a href="privacy.html">Privacy Policy</a> for how advertising cookies are used.</p>
+<p>The site shows ads served by Google and links to official sources such as the IRS and CDC.{AFFILIATE_TERMS} We are not responsible for the content or practices of third-party websites. See our <a href="privacy.html">Privacy Policy</a> for how advertising cookies are used.</p>
 <h2>Changes</h2>
 <p>We may update these terms. The date at the top shows when they last changed. Continued use of the site after a change means you accept the updated terms.</p>
 <h2>Contact</h2>
