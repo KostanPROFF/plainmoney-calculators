@@ -378,7 +378,7 @@ cards = "".join(
 page(
     "index.html",
     "Free Online Calculators for Money, Health and Everyday Math",
-    "Free, fast calculators for mortgages, loans, take-home pay, 401(k), BMI, calories, due dates, percentages, tips, age and GPA. No sign-up.",
+    "Free calculators for mortgages, loans, take-home pay, 401(k), BMI, calories, due dates, tips and GPA. No sign-up.",
     f"""
 {ad("leaderboard")}
 <p class="eyebrow">Updated for 2026 tax year</p>
