@@ -94,5 +94,9 @@ window.I18N = {
 "other": "{n} року"
 },
 "{w} weeks, {d} days": "{w} тижнів, {d} днів",
-"{y} years, {m} months, {d} days": "{y} років, {m} місяців, {d} днів"
+"{y} years, {m} months, {d} days": "{y} років, {m} місяців, {d} днів",
+"Enter a number": "Введіть число",
+"Enter a positive number": "Введіть додатне число",
+"Switch to light theme": "Перемкнути на світлу тему",
+"Switch to dark theme": "Перемкнути на темну тему"
 };

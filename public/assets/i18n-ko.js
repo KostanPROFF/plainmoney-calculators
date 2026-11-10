@@ -59,5 +59,9 @@ window.I18N = {
 "other": "{n}년"
 },
 "{w} weeks, {d} days": "{w} 주, {d} 일",
-"{y} years, {m} months, {d} days": "{y}년, {m}개월, {d}일"
+"{y} years, {m} months, {d} days": "{y}년, {m}개월, {d}일",
+"Enter a number": "숫자를 입력하세요",
+"Enter a positive number": "양수를 입력하세요",
+"Switch to light theme": "밝은 테마로 전환",
+"Switch to dark theme": "어두운 테마로 전환"
 };

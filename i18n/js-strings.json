@@ -48,5 +48,9 @@
  "{n} years",
  "{n} yr",
  "{w} weeks, {d} days",
- "{y} years, {m} months, {d} days"
+ "{y} years, {m} months, {d} days",
+ "Enter a number",
+ "Enter a positive number",
+ "Switch to light theme",
+ "Switch to dark theme"
 ]

@@ -24,6 +24,28 @@
   --result-top: #14201b;
   --result-bot: #0e1613;
   --glow: rgba(79, 199, 156, 0.10);
+
+  /* The colours the charts and the legends use, one per series. The light theme repeats the same
+     hues a shade deeper, so a swatch keeps its contrast on white and the two themes still read
+     as the same site. */
+  --series-1: #4fc79c;
+  --series-2: #5b8def;
+  --series-3: #e0a64a;
+  --series-4: #c46b9a;
+  --series-5: #8a8f8c;
+  --series-6: #8a6fd1;
+
+  /* A figure that went wrong, and the tint it sits on. */
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.13);
+
+  /* The mark in the header: the letter sits on the gradient, so both are chosen together. */
+  --logo-from: #86e3be;
+  --logo-to: #4fc79c;
+  --logo-ink: #04140d;
+  --logo-shadow: rgba(79, 199, 156, 0.35);
+  --focus-ring: rgba(79, 199, 156, 0.18);
+
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-num: "Archivo", system-ui, sans-serif;
@@ -39,6 +61,25 @@
   --warn: #9a5b00; --ad: #eef3f0; --field: #ffffff;
   --header-bg: rgba(244, 248, 246, 0.85); --footer-top: #eaf1ed; --strong: #0f1a15; --h1-to: #0b7a55;
   --prose: #24342c; --result-top: #f1faf5; --result-bot: #ffffff; --glow: rgba(11, 122, 85, 0.08);
+
+  /* The same hues as the dark theme, a shade deeper: on a white card the bright versions wash
+     out and the swatches stop telling the series apart. */
+  --series-1: #0f7d5c;
+  --series-2: #2f6fd0;
+  --series-3: #9a6a00;
+  --series-4: #a83f6e;
+  --series-5: #5f6663;
+  --series-6: #6244b8;
+
+  --danger: #a3211f;
+  --danger-soft: rgba(163, 33, 31, 0.09);
+
+  /* White on the pale end of the old gradient was 2.7:1, so the light theme gets a deeper pair. */
+  --logo-from: #0b7a55;
+  --logo-to: #07513a;
+  --logo-ink: #ffffff;
+  --logo-shadow: rgba(11, 122, 85, 0.28);
+  --focus-ring: rgba(11, 122, 85, 0.18);
   color-scheme: light;
   }
 }
@@ -49,6 +90,25 @@
   --warn: #9a5b00; --ad: #eef3f0; --field: #ffffff;
   --header-bg: rgba(244, 248, 246, 0.85); --footer-top: #eaf1ed; --strong: #0f1a15; --h1-to: #0b7a55;
   --prose: #24342c; --result-top: #f1faf5; --result-bot: #ffffff; --glow: rgba(11, 122, 85, 0.08);
+
+  /* The same hues as the dark theme, a shade deeper: on a white card the bright versions wash
+     out and the swatches stop telling the series apart. */
+  --series-1: #0f7d5c;
+  --series-2: #2f6fd0;
+  --series-3: #9a6a00;
+  --series-4: #a83f6e;
+  --series-5: #5f6663;
+  --series-6: #6244b8;
+
+  --danger: #a3211f;
+  --danger-soft: rgba(163, 33, 31, 0.09);
+
+  /* White on the pale end of the old gradient was 2.7:1, so the light theme gets a deeper pair. */
+  --logo-from: #0b7a55;
+  --logo-to: #07513a;
+  --logo-ink: #ffffff;
+  --logo-shadow: rgba(11, 122, 85, 0.28);
+  --focus-ring: rgba(11, 122, 85, 0.18);
   color-scheme: light;
 }
 
@@ -77,15 +137,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* Header / footer */
 .site-header { position: sticky; top: 0; z-index: 10; background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 14px; }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding-block: 14px; }
+.header-tools { display: flex; align-items: center; gap: 4px; flex: none; order: 3; }
 .logo { display: inline-flex; align-items: center; font: 800 1.2rem/1 var(--font-display); color: var(--fg); text-decoration: none; letter-spacing: -0.01em; }
 .logo::before {
   content: "P"; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent-hi), var(--accent)); color: var(--accent-ink);
-  font-size: 0.95rem; margin-inline-end: 10px; box-shadow: 0 4px 14px rgba(79, 199, 156, 0.35);
+  background: linear-gradient(135deg, var(--logo-from), var(--logo-to)); color: var(--logo-ink);
+  font-size: 0.95rem; margin-inline-end: 10px; box-shadow: 0 4px 14px var(--logo-shadow);
 }
 .logo span { color: var(--accent); }
-.site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 0.92rem; }
+.site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 0.92rem; order: 2; flex: 1 1 auto; justify-content: flex-end; }
 .site-nav a { color: var(--muted); text-decoration: none; padding: 6px 12px; border-radius: 9px; border: 1px solid transparent; }
 .site-nav a:hover { color: var(--fg); }
 .site-nav a[aria-current="page"] { color: var(--fg); background: var(--surface-2); border-color: var(--line); }
@@ -170,7 +231,16 @@ select { appearance: none; -webkit-appearance: none; padding-inline-end: 36px; c
   background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
   background-position: calc(100% - 19px) 50%, calc(100% - 14px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
 input:hover, select:hover { border-color: var(--line-hover); }
-input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79, 199, 156, 0.18); outline: none; }
+input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--focus-ring); outline: none; }
+/* The focus ring everywhere else on the page is a 2px outline. The inputs cancelled it and showed
+   a border colour instead, which is one pixel wide and too little to point at a field. */
+input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* A field whose value cannot be read as a number. It says so underneath itself, and the figures
+   it feeds show a dash instead of a wrong number. */
+input.input--invalid { border-color: var(--danger); background: var(--danger-soft); }
+input.input--invalid:focus { border-color: var(--danger); box-shadow: 0 0 0 3px var(--danger-soft); }
+.field__error { font-size: 0.78rem; line-height: 1.45; color: var(--danger); }
 
 /* Results */
 .headline { display: flex; flex-direction: column; gap: 6px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
@@ -204,7 +274,7 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 /* DTI verdict + scale */
 .verdict { display: inline-block; margin: 12px 0 0; padding: 4px 10px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; background: var(--accent-soft); color: var(--accent); }
 .verdict.mid { background: color-mix(in srgb, var(--warn) 15%, transparent); color: color-mix(in srgb, var(--warn) 75%, var(--fg)); }
-.verdict.bad { background: color-mix(in srgb, #c0392b 15%, transparent); color: #d9534f; }
+.verdict.bad { background: var(--danger-soft); color: var(--danger); }
 .scale { position: relative; display: flex; height: 10px; border-radius: 5px; overflow: visible; margin-top: 20px; }
 .scale span:nth-child(1) { background: var(--accent); border-radius: 5px 0 0 5px; }
 .scale span:nth-child(2) { background: #e0c24a; }
@@ -233,9 +303,9 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
   display: grid; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px;
   box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.45);
 }
-.site-nav .lang-list a { padding: 8px 12px; border-radius: 8px; color: var(--fg); border: 0; }
-.site-nav .lang-list a:hover { background: var(--surface-2); }
-.site-nav .lang-list a[aria-current] { color: var(--accent); font-weight: 600; }
+.site-nav .lang-list a, .header-tools .lang-list a { padding: 8px 12px; border-radius: 8px; color: var(--fg); border: 0; }
+.site-nav .lang-list a:hover, .header-tools .lang-list a:hover { background: var(--surface-2); }
+.site-nav .lang-list a[aria-current], .header-tools .lang-list a[aria-current] { color: var(--accent); font-weight: 600; }
 
 /* Worked examples + FAQ */
 .extras { margin-top: 40px; }
@@ -280,10 +350,19 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
   th { white-space: normal; }
 }
 
-/* Phones: the header scrolls away so it never covers the form, and card art is shorter */
+/* Phones: the header scrolls away so it never covers the form, and card art is shorter.
+   The links move to a row of their own that scrolls sideways, so the header is two rows tall
+   instead of four, and the language button and the theme button stay on the logo row. */
 @media (max-width: 640px) {
   .site-header { position: static; }
-  .site-nav a { padding: 4px 10px; }
+  .header-tools { order: 2; margin-inline-start: auto; }
+  .site-nav {
+    order: 3; flex-basis: 100%; flex-wrap: nowrap; overflow-x: auto;
+    justify-content: flex-start;
+    scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 2px;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a { padding: 4px 10px; white-space: nowrap; }
   .calc-card .art { height: 96px; padding: 10px; }
   h1 { margin-top: 32px; }
 }
@@ -295,10 +374,12 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 }
 .theme-toggle:hover { border-color: var(--accent); }
 .theme-toggle svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-.theme-toggle .sun { display: none; }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .theme-toggle .sun { display: block; } :root:not([data-theme="dark"]) .theme-toggle .moon { display: none; } }
-:root[data-theme="light"] .theme-toggle .sun { display: block; }
-:root[data-theme="light"] .theme-toggle .moon { display: none; }
+/* The button shows the theme it switches to: a sun in a dark page, a moon in a light one. */
+.theme-toggle .sun { display: block; }
+.theme-toggle .moon { display: none; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .theme-toggle .sun { display: none; } :root:not([data-theme="dark"]) .theme-toggle .moon { display: block; } }
+:root[data-theme="light"] .theme-toggle .sun { display: none; }
+:root[data-theme="light"] .theme-toggle .moon { display: block; }
 
 /* Right-to-left pages (Arabic): mirror the few things that point a direction */
 [dir="rtl"] .calc-card em::after { content: " \2190"; }

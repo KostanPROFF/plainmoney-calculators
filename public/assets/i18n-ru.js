@@ -94,5 +94,9 @@ window.I18N = {
 "other": "{n} года"
 },
 "{w} weeks, {d} days": "{w} нед. {d} дн.",
-"{y} years, {m} months, {d} days": "{y} г. {m} мес. {d} дн."
+"{y} years, {m} months, {d} days": "{y} г. {m} мес. {d} дн.",
+"Enter a number": "Введите число",
+"Enter a positive number": "Введите положительное число",
+"Switch to light theme": "Переключить на светлую тему",
+"Switch to dark theme": "Переключить на тёмную тему"
 };

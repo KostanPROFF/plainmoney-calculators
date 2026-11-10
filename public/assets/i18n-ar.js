@@ -112,5 +112,9 @@ window.I18N = {
 "other": "{n} عام"
 },
 "{w} weeks, {d} days": "{w} أسبوعًا، {d} يومًا",
-"{y} years, {m} months, {d} days": "{y} سنة، {m} شهر، {d} يوم"
+"{y} years, {m} months, {d} days": "{y} سنة، {m} شهر، {d} يوم",
+"Enter a number": "أدخل رقمًا",
+"Enter a positive number": "أدخل رقمًا موجبًا",
+"Switch to light theme": "التبديل إلى السمة الفاتحة",
+"Switch to dark theme": "التبديل إلى السمة الداكنة"
 };

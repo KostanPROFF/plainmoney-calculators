@@ -38,7 +38,7 @@ Calc.bind("form", () => {
     ? t("PMI applies because your down payment is under 20%. It drops off after about {years} years, when your loan reaches 80% of the home price.", { years: Math.round(pmiMonths / 12 * 10) / 10 })
     : t("No PMI: your down payment is 20% or more."));
   document.getElementById("sched").innerHTML = rows;
-  const parts = [[pi, "var(--accent)"], [tax, "#5b8def"], [ins, "#e0a64a"], [pmi, "#c46b9a"], [hoa, "#8a8f8c"]];
+  const parts = [[pi, "var(--series-1)"], [tax, "var(--series-2)"], [ins, "var(--series-3)"], [pmi, "var(--series-4)"], [hoa, "var(--series-5)"]];
   document.getElementById("bar").innerHTML = total > 0
     ? parts.map(([v, c]) => `<span style="width:${(v / total) * 100}%;background:${c}"></span>`).join("") : "";
 });

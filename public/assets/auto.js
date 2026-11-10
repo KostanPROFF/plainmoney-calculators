@@ -16,7 +16,7 @@ Calc.bind("form", () => {
   set("totalCost", money(price + tax + fees + interest + owed));
   const sum = financed + interest;
   document.getElementById("bar").innerHTML = sum > 0
-    ? `<span style="width:${financed / sum * 100}%;background:var(--accent)"></span><span style="width:${interest / sum * 100}%;background:#e0a64a"></span>` : "";
+    ? `<span style="width:${financed / sum * 100}%;background:var(--series-1)"></span><span style="width:${interest / sum * 100}%;background:var(--series-3)"></span>` : "";
   document.getElementById("compare").innerHTML = [36, 48, 60, 72, 84].map((term_) => {
     const m = payment(financed, rate, term_);
     const cur = term_ === term ? ' style="font-weight:700"' : "";

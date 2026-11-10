@@ -58,5 +58,9 @@ window.I18N = {
 "{y} years, {m} months, {d} days": {
 "one": "{y} año, {m} meses y {d} días",
 "other": "{y} años, {m} meses y {d} días"
-}
+},
+"Enter a number": "Introduce un número",
+"Enter a positive number": "Introduce un número positivo",
+"Switch to light theme": "Cambiar al tema claro",
+"Switch to dark theme": "Cambiar al tema oscuro"
 };

@@ -19,7 +19,7 @@ Calc.bind("form", () => {
   set("int", money(bal - dep));
   document.getElementById("sched").innerHTML = rows;
   areaChart(document.getElementById("chart"), xs, [
-    { values: sDep, color: "#5b8def" },
-    { values: sInt, color: "var(--accent)" },
+    { values: sDep, color: "var(--series-2)" },
+    { values: sInt, color: "var(--series-1)" },
   ]);
 });

@@ -40,8 +40,8 @@ Calc.bind("form", () => {
     ? t("Your contribution hit the IRS annual limit in some years, so it was capped.")
     : t("Starting balance is counted with your contributions."));
   areaChart(document.getElementById("chart"), xs, [
-    { values: sStart.map((v, i) => v + sYou[i]), color: "#5b8def" },
-    { values: sEmp, color: "#e0a64a" },
-    { values: sGrowth, color: "var(--accent)" },
+    { values: sStart.map((v, i) => v + sYou[i]), color: "var(--series-2)" },
+    { values: sEmp, color: "var(--series-3)" },
+    { values: sGrowth, color: "var(--series-1)" },
   ]);
 });

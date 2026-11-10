@@ -241,7 +241,9 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     site_schema = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": url(lang),
                    "inLanguage": LANGS[lang]["hl"], "description": description} if filename == "index.html" else None
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (site_schema, schema, faq_schema) if s)
-    js_files = ["common.js", *([f"i18n-{lang}.js"] if lang != "en" else []), *scripts]
+    # The translations come first: the shared script asks them for the strings it shows, and it
+    # asks as soon as it runs.
+    js_files = [*([f"i18n-{lang}.js"] if lang != "en" else []), "common.js", *scripts]
     js = "".join(f'<script defer src="/assets/{s}?v={asset_version(s, lang)}"></script>' for s in js_files)
     html = f"""<!doctype html>
 <html lang="{LANGS[lang]['hl']}"{' dir="rtl"' if LANGS[lang].get("dir") == "rtl" else ""}>
@@ -279,7 +281,8 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <body>
 <header class="site-header"><div class="wrap">
 <a class="logo" href="./" dir="ltr">Plain<span>Money</span></a>
-<nav class="site-nav" aria-label="{nav_label}">{nav}{switch}<button class="theme-toggle" type="button" aria-label="{theme_label}" title="{theme_label}">{THEME_ICONS}</button></nav>
+<nav class="site-nav" aria-label="{nav_label}">{nav}</nav>
+<div class="header-tools">{switch}<button class="theme-toggle" type="button" aria-label="{theme_label}" title="{theme_label}">{THEME_ICONS}</button></div>
 </div></header>
 <main class="wrap">
 {body}
@@ -296,6 +299,13 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     out.parent.mkdir(parents=True, exist_ok=True)
     # Cloudflare serves foo.html at /foo (and redirects /foo.html there), so every link uses that form.
     html = re.sub(r'href="((?:\.\./)?(?:[a-z]{2}/)?)([a-z0-9-]+)\.html', lambda m: f'href="{m[1] or ""}{clean(m[2] + ".html")}' if m[2] != "index" else f'href="{m[1] or "./"}', html)
+    # The legend swatches carry their colour as an inline style. They point at the theme token
+    # instead, so the light theme gets its own set of shades. This runs after the translation, so
+    # every language gets it.
+    for old, new in (("#4fc79c", "var(--series-1)"), ("#5b8def", "var(--series-2)"), ("#e0a64a", "var(--series-3)"),
+                      ("#c46b9a", "var(--series-4)"), ("#8a8f8c", "var(--series-5)"), ("#8a6fd1", "var(--series-6)"),
+                      ("var(--accent)", "var(--series-1)")):
+        html = html.replace(f'<span class="swatch" style="background:{old}">', f'<span class="swatch" style="background:{new}">')
     if LANGS[lang].get("dir") == "rtl":
         # Keep "401(k)" reading left to right inside Arabic text (outside <head>, where markup is not allowed).
         head, sep, body = html.partition("<body")

@@ -76,5 +76,9 @@ window.I18N = {
 "other": "{n} anos"
 },
 "{w} weeks, {d} days": "{w} semanas, {d} dias",
-"{y} years, {m} months, {d} days": "{y} anos, {m} meses, {d} dias"
+"{y} years, {m} months, {d} days": "{y} anos, {m} meses, {d} dias",
+"Enter a number": "Digite um número",
+"Enter a positive number": "Digite um número positivo",
+"Switch to light theme": "Mudar para o tema claro",
+"Switch to dark theme": "Mudar para o tema escuro"
 };

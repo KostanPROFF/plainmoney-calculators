@@ -64,5 +64,9 @@ window.I18N = {
 "other": "{n} taon"
 },
 "{w} weeks, {d} days": "{w} linggo, {d} araw",
-"{y} years, {m} months, {d} days": "{y} taon, {m} buwan, {d} araw"
+"{y} years, {m} months, {d} days": "{y} taon, {m} buwan, {d} araw",
+"Enter a number": "Maglagay ng numero",
+"Enter a positive number": "Maglagay ng positibong numero",
+"Switch to light theme": "Lumipat sa light na tema",
+"Switch to dark theme": "Lumipat sa dark na tema"
 };

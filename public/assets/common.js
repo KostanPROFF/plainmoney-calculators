@@ -10,26 +10,34 @@ const Calc = (() => {
 
   // Parse a typed amount. Accepts "425,000" and "6,5": a comma is a decimal separator unless it
   // groups thousands, so visitors on es/ru keyboards get the number they meant.
+  // Text that is not a number comes back as NaN rather than as zero. A calculator that answers
+  // "0" for a mistyped amount shows a wrong figure that looks right, so the caller is told.
   function toNumber(text) {
-    let s = String(text).replace(/\s|[\u00a0\u202f]/g, "").replace(/[^\d.,+\-]/g, "");
+    let s = String(text).replace(/\s|[\u00a0\u202f]/g, "").replace(/[$\u20ac\u00a3\u00a5%]/g, "");
     if (s.includes(",")) {
       if (s.includes(".")) s = s.replace(/,/g, "");
       else s = /^[+-]?\d{1,3}(,\d{3})+$/.test(s) ? s.replace(/,/g, "") : s.replace(",", ".");
     }
+    if (!/^[+-]?(\d+(\.\d*)?|\.\d+)$/.test(s)) return NaN;
     const v = parseFloat(s);
-    return Number.isFinite(v) ? v : 0;
+    return Number.isFinite(v) ? v : NaN;
   }
   function num(id) {
     const el = document.getElementById(id);
     const v = toNumber(el.value);
+    // Money, rates and years are never below zero. A calculator that answers with a negative
+    // payment looks broken rather than wrong, so the figure is treated as unreadable.
+    if (Number.isFinite(v) && v < 0) return NaN;
     // A field that says how fine its figure may be (a whole year for an age) rounds to it.
     const step = Number(el.dataset.step);
     return Number.isFinite(step) && step > 0 ? Math.round(v / step) * step : v;
   }
-  const money = (v) => usd.format(Math.round(v));
-  const money2 = (v) => usd2.format(v);
+  const money = (v) => (Number.isFinite(v) ? usd.format(Math.round(v)) : "-");
+  const money2 = (v) => (Number.isFinite(v) ? usd2.format(v) : "-");
   // Plain number in the page language, with exactly `digits` decimals when given (up to 4 otherwise).
-  const fmt = (v, digits) => v.toLocaleString(locale, digits === undefined ? { maximumFractionDigits: 4 } : { minimumFractionDigits: digits, maximumFractionDigits: digits });
+  const fmt = (v, digits) => (Number.isFinite(v)
+    ? v.toLocaleString(locale, digits === undefined ? { maximumFractionDigits: 4 } : { minimumFractionDigits: digits, maximumFractionDigits: digits })
+    : "-");
   const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
 
   // Standard amortized payment.
@@ -40,13 +48,55 @@ const Calc = (() => {
     return (principal * r) / (1 - Math.pow(1 + r, -months));
   }
 
+  // Mark a field as unreadable and say why underneath it.
+  function markField(input, message) {
+    const field = input.closest(".field");
+    if (!field) return;
+    let error = field.querySelector(".field__error");
+    if (message) {
+      if (!error) {
+        error = document.createElement("span");
+        error.className = "field__error";
+        error.id = input.id + "-error";
+        const wrap = field.querySelector(".input-wrap");
+        if (wrap) wrap.insertAdjacentElement("afterend", error);
+        else field.appendChild(error);
+      }
+      error.textContent = message;
+      input.setAttribute("aria-invalid", "true");
+      input.setAttribute("aria-describedby", error.id);
+      input.classList.add("input--invalid");
+    } else if (error) {
+      error.remove();
+      input.removeAttribute("aria-invalid");
+      input.removeAttribute("aria-describedby");
+      input.classList.remove("input--invalid");
+    }
+  }
+
+  // Check every numeric field on each change. A field that cannot be read as a number is marked
+  // and says so underneath itself, and the figures it feeds show a dash rather than a wrong
+  // number. A field that started empty is optional: leaving it blank is a choice, not a mistake.
+  function validate(form) {
+    form.querySelectorAll('input[inputmode="decimal"]').forEach((input) => {
+      const raw = input.value.trim();
+      const optional = input.defaultValue.trim() === "";
+      const value = toNumber(raw);
+      if (raw === "" && optional) markField(input, null);
+      else if (!Number.isFinite(value)) markField(input, t("Enter a number"));
+      else if (value < 0) markField(input, t("Enter a positive number"));
+      else markField(input, null);
+    });
+  }
+
   // Re-run `fn` on every input change inside `form`, and once on load.
   function bind(form, fn) {
     const f = typeof form === "string" ? document.getElementById(form) : form;
-    f.addEventListener("input", fn);
-    f.addEventListener("change", fn);
-    f.addEventListener("submit", (e) => { e.preventDefault(); fn(); });
-    fn();
+    const run = () => { validate(f); fn(); };
+    f.addEventListener("input", run);
+    f.addEventListener("change", run);
+    f.addEventListener("submit", (e) => { e.preventDefault(); run(); });
+    run();
   }
 
   // Stacked-area chart. series: [{values:[], color:"css var or color", label}], x labels: []
@@ -136,13 +186,46 @@ const Calc = (() => {
   return { num, money, money2, fmt, set, payment, bind, areaChart, t, date, longDate, locale };
 })();
 
-// Header button flips between light and dark and remembers the choice; with no choice the system setting wins.
-document.querySelector(".theme-toggle")?.addEventListener("click", () => {
-  const root = document.documentElement;
-  const dark = root.dataset.theme ? root.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
-  root.dataset.theme = dark ? "light" : "dark";
-  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+// A result panel holds a dozen figures. Announcing all of them on every keystroke buries the one
+// that matters, so the live region moves to the headline figure and the panel goes quiet.
+document.querySelectorAll('section.panel[aria-live="polite"]').forEach((panel) => {
+  panel.removeAttribute("aria-live");
+  const headline = panel.querySelector(".headline .big");
+  if (headline) {
+    headline.setAttribute("aria-live", "polite");
+    headline.setAttribute("aria-atomic", "true");
+  }
 });
+
+// Header button flips between light and dark and remembers the choice; with no choice the system
+// setting wins. The button shows the theme it switches to, and its name says the same thing.
+const themeButton = document.querySelector(".theme-toggle");
+
+function currentTheme() {
+  const stored = document.documentElement.dataset.theme;
+  if (stored === "light" || stored === "dark") return stored;
+  return matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
+
+function nameThemeButton() {
+  if (!themeButton) return;
+  const label = currentTheme() === "dark" ? Calc.t("Switch to light theme") : Calc.t("Switch to dark theme");
+  themeButton.setAttribute("aria-label", label);
+  themeButton.setAttribute("title", label);
+}
+
+themeButton?.addEventListener("click", () => {
+  const next = currentTheme() === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("theme", next); } catch (e) {}
+  nameThemeButton();
+});
+
+// The system setting can change while the page is open, and the button has to keep naming the
+// theme it switches to.
+matchMedia("(prefers-color-scheme: light)").addEventListener("change", nameThemeButton);
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", nameThemeButton);
+else nameThemeButton();
 
 // The language menu closes when the visitor clicks anywhere else.
 document.addEventListener("click", (e) => {

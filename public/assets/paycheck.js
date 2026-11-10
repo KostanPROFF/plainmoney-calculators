@@ -133,7 +133,7 @@ Calc.bind("form", () => {
   set("eff", salary > 0 ? ((fed + ss + med + st) / salary * 100).toFixed(1) + "%" : "-");
   set("marg", (marg * 100).toFixed(0) + "%");
   set("stateNote", stateNote(stateSel.value, status) + " " + Calc.t("Local taxes are not included."));
-  const parts = [[net, "var(--accent)"], [fed, "#5b8def"], [ss, "#e0a64a"], [med, "#c46b9a"], [st, "#8a6fd1"], [pre, "#8a8f8c"]];
+  const parts = [[net, "var(--series-1)"], [fed, "var(--series-2)"], [ss, "var(--series-3)"], [med, "var(--series-4)"], [st, "var(--series-6)"], [pre, "var(--series-5)"]];
   document.getElementById("bar").innerHTML = salary > 0
     ? parts.map(([v, c]) => `<span style="width:${Math.max(v, 0) / salary * 100}%;background:${c}"></span>`).join("") : "";
 });

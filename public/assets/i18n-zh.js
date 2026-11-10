@@ -59,5 +59,9 @@ window.I18N = {
 "other": "{n}年"
 },
 "{w} weeks, {d} days": "{w} 周，{d} 天",
-"{y} years, {m} months, {d} days": "{y}年，{m}个月，{d}天"
+"{y} years, {m} months, {d} days": "{y}年，{m}个月，{d}天",
+"Enter a number": "请输入数字",
+"Enter a positive number": "请输入正数",
+"Switch to light theme": "切换到浅色主题",
+"Switch to dark theme": "切换到深色主题"
 };

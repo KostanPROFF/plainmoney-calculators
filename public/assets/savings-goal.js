@@ -23,7 +23,7 @@ Calc.bind("form", () => {
     if (m % step === 0 || m === n) { xs.push(m < 12 ? `${m}m` : `${(m / 12).toFixed(m % 12 ? 1 : 0)}y`); sDep.push(dep); sInt.push(bal - dep); }
   }
   areaChart(document.getElementById("chart"), xs, [
-    { values: sDep, color: "#5b8def" },
-    { values: sInt, color: "var(--accent)" },
+    { values: sDep, color: "var(--series-2)" },
+    { values: sInt, color: "var(--series-1)" },
   ]);
 });

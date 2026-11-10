@@ -21,5 +21,5 @@ Calc.bind("form", () => {
   set("apr", trueApr(amount - fee, monthly, n).toFixed(2) + "%");
   const sum = amount + interest + fee;
   document.getElementById("bar").innerHTML = sum > 0
-    ? [[amount, "var(--accent)"], [interest, "#e0a64a"], [fee, "#c46b9a"]].map(([v, c]) => `<span style="width:${v / sum * 100}%;background:${c}"></span>`).join("") : "";
+    ? [[amount, "var(--series-1)"], [interest, "var(--series-3)"], [fee, "var(--series-4)"]].map(([v, c]) => `<span style="width:${v / sum * 100}%;background:${c}"></span>`).join("") : "";
 });

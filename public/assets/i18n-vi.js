@@ -59,5 +59,9 @@ window.I18N = {
 "other": "năm"
 },
 "{w} weeks, {d} days": "{w} tuần, {d} ngày",
-"{y} years, {m} months, {d} days": "{y} năm, {m} tháng, {d} ngày"
+"{y} years, {m} months, {d} days": "{y} năm, {m} tháng, {d} ngày",
+"Enter a number": "Nhập một số",
+"Enter a positive number": "Nhập một số dương",
+"Switch to light theme": "Chuyển sang chế độ sáng",
+"Switch to dark theme": "Chuyển sang chế độ tối"
 };
