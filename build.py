@@ -14,6 +14,7 @@ from guides import GUIDES
 from offers import DISCLOSURE, OFFERS, PARTNERS
 
 SITE_NAME = "Plain Money Calculators"
+IMPACT_VERIFICATION = "55236ff4-1011-40bd-acce-fe5843df2921"
 SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = "ca-pub-5321511632415174"
 GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
@@ -214,6 +215,8 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'\n<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
         if ADSENSE_CLIENT else "<!-- AdSense script goes here once ADSENSE_CLIENT is set in build.py -->"
     )
+    # Impact.com (affiliate network) site ownership check.
+    adsense += f'\n<meta name="impact-site-verification" value="{IMPACT_VERIFICATION}">'
     # GA4 and Tag Manager share one dataLayer, initialised at once so nothing is lost. Their scripts load on the
     # visitor's first scroll, tap or key press, or 4 seconds after the page loads, so they stay off the critical
     # path that PageSpeed measures. The AdSense script is left as is.
