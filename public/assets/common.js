@@ -100,34 +100,47 @@ const Calc = (() => {
   }
 
   // Stacked-area chart. series: [{values:[], color:"css var or color", label}], x labels: []
+  // Built with DOM calls, not an HTML string, so no label or value can ever be parsed as markup.
   function areaChart(svg, xs, series) {
     const W = 640, H = 260, L = 64, R = 12, T = 12, B = 28;
+    const NS = "http://www.w3.org/2000/svg";
+    const el = (tag, attrs, text) => {
+      const e = document.createElementNS(NS, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      if (text !== undefined) e.textContent = text;
+      return e;
+    };
     const n = xs.length;
-    if (n < 2) { svg.innerHTML = ""; return; }
+    if (n < 2) { svg.replaceChildren(); return; }
     const totals = xs.map((_, i) => series.reduce((s, ser) => s + ser.values[i], 0));
     const maxV = niceMax(Math.max(...totals, 1));
     const x = (i) => L + (i / (n - 1)) * (W - L - R);
     const y = (v) => T + (1 - v / maxV) * (H - T - B);
-    let out = "";
+    const out = [];
     for (let k = 0; k <= 4; k++) {
       const v = (maxV / 4) * k;
-      out += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`;
-      out += `<text x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${short(v)}</text>`;
+      out.push(el("line", { class: "grid", x1: L, x2: W - R, y1: y(v), y2: y(v) }));
+      out.push(el("text", { x: L - 8, y: y(v) + 4, "text-anchor": "end" }, short(v)));
     }
     const step = Math.max(1, Math.ceil(n / 8));
-    for (let i = 0; i < n; i += step) out += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle">${xs[i]}</text>`;
+    for (let i = 0; i < n; i += step) out.push(el("text", { x: x(i), y: H - 8, "text-anchor": "middle" }, String(xs[i])));
     const base = new Array(n).fill(0);
     series.forEach((ser) => {
       const top = base.map((b, i) => b + ser.values[i]);
       let d = `M${x(0)},${y(top[0])}`;
       for (let i = 1; i < n; i++) d += `L${x(i)},${y(top[i])}`;
       for (let i = n - 1; i >= 0; i--) d += `L${x(i)},${y(base[i])}`;
-      out += `<path d="${d}Z" style="fill:${ser.color};fill-opacity:.85"/>`;
+      const path = el("path", { d: d + "Z" });
+      path.style.fill = ser.color;
+      path.style.fillOpacity = ".85";
+      out.push(path);
       top.forEach((v, i) => (base[i] = v));
     });
-    out += `<circle cx="${x(n - 1)}" cy="${y(totals[n - 1])}" r="4" style="fill:var(--fg)"/>`;
+    const dot = el("circle", { cx: x(n - 1), cy: y(totals[n - 1]), r: 4 });
+    dot.style.fill = "var(--fg)";
+    out.push(dot);
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    svg.innerHTML = out;
+    svg.replaceChildren(...out);
   }
   function niceMax(v) {
     const p = Math.pow(10, Math.floor(Math.log10(v)));
