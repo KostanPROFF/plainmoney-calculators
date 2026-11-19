@@ -11,6 +11,7 @@ import re
 from art import ART
 from content import CONTENT
 from guides import GUIDES
+from articles import ARTICLES
 from offers import DISCLOSURE, OFFERS, PARTNERS
 
 SITE_NAME = "Plain Money Calculators"
@@ -174,9 +175,12 @@ THEME_ICONS = (
 
 
 def page(filename, title, description, body, scripts=(), schema=None, lang="en"):
-    if lang == "en":
+    # Articles are English only: they are not replayed for other languages or sent for translation.
+    english_only = filename in ARTICLES
+    if lang == "en" and not english_only:
         PAGES.append((filename, title, description, body, scripts, schema))
-    parts = [tr(x, lang) for x in (title, description, body, *UI.values(), *(t for _, t in NAV))]
+    parts = [x if english_only and i < 3 else tr(x, lang)
+             for i, x in enumerate((title, description, body, *UI.values(), *(t for _, t in NAV)))]
     if any(x is None for x in parts):
         return False
     title, description, body, footer, about, privacy, nav_label, theme_label, *nav_texts = parts
@@ -188,6 +192,10 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     if offer_html:
         body = re.sub(r'(<div class="calc">.*?</section>\n</div>\n)', lambda m: m[1] + offer_html + "\n", body, count=1, flags=re.S)
     body += "\n" + extra if extra else ""
+    # English calculator pages link to the article written for them.
+    related = [(f, a["title"]) for f, a in ARTICLES.items() if a.get("related") == filename]
+    if lang == "en" and related:
+        body += "\n" + "".join(f'<p class="note related">Guide: <a href="{f}">{t}</a></p>' for f, t in related)
     # Illustrations go in after translation so they never change the translated text.
     if filename in ART:
         body = re.sub(r'<h1>(.*?)</h1>\s*<p class="lede">(.*?)</p>',
@@ -204,7 +212,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         f'<path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg>'
         f'<span>{LANGS[lang]["name"]}</span></summary><div class="lang-list">'
         + "".join(
-            f'<a href="{up}{LANGS[l]["prefix"]}{"" if filename in ("index.html", "about.html", "contact.html", "terms.html") and l != lang else "" if filename == "index.html" else filename}" hreflang="{LANGS[l]["hl"]}" lang="{LANGS[l]["hl"]}"'
+            f'<a href="{up}{LANGS[l]["prefix"]}{"" if (filename in ("index.html", "about.html", "contact.html", "terms.html") or english_only) and l != lang else "" if filename == "index.html" else filename}" hreflang="{LANGS[l]["hl"]}" lang="{LANGS[l]["hl"]}"'
             f'{" aria-current=\"true\"" if l == lang else ""}>{LANGS[l]["name"]}</a>'
             for l in LANGS
         )
@@ -235,10 +243,10 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     alternates = "".join(f'<link rel="alternate" hreflang="{LANGS[l]["hl"]}" href="{url(l)}">' for l in LANGS)
     alternates += f'<link rel="alternate" hreflang="x-default" href="{url("en")}">'
     robots = ""
-    if NOINDEX_TRANSLATIONS:
+    if NOINDEX_TRANSLATIONS or english_only:
         alternates = ""
         robots = '<meta name="robots" content="noindex, follow">' if lang != "en" else ""
-    if schema:
+    if schema and not english_only:
         schema = {**schema, "name": re.sub(r"(?<!401)\s*[(（][^()（）]*[)）]$", "", re.split(r"[:：]", title)[0]).strip() if lang != "en" else schema["name"],
                   "description": description, "url": url(lang), "inLanguage": LANGS[lang]["hl"]}
     site_schema = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": url(lang),
@@ -1338,6 +1346,18 @@ page(
 )
 
 
+# ---------------------------------------------------------------- Articles (English only)
+for filename, a in ARTICLES.items():
+    faq_html = "".join(f"<details><summary>{q}</summary><p>{ans}</p></details>\n" for q, ans in a["faq"])
+    page(filename, a["title"], a["description"], a["body"].replace("{faq}", faq_html), schema={
+        "@context": "https://schema.org", "@graph": [
+            {"@type": "Article", "headline": a["title"], "description": a["description"], "inLanguage": "en",
+             "url": f"{SITE_URL}/{clean(filename)}", "dateModified": "2026-11-19",
+             "publisher": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL}},
+            {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q,
+                                                  "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]},
+        ]})
+
 # ---------------------------------------------------------------- translated pages + script strings
 # Strings the calculator scripts show; they call Calc.t() with these exact English templates.
 JS_STRINGS = json.loads((I18N_DIR / "js-strings.json").read_text())
@@ -1372,7 +1392,7 @@ for lang in TR:
         todo.unlink()
 
 # ---------------------------------------------------------------- robots.txt / sitemap.xml
-pages = [p for p in ["", *(h for h, _, _ in CARDS), "about.html", "contact.html", "terms.html", "privacy.html"]]
+pages = [p for p in ["", *(h for h, _, _ in CARDS), *ARTICLES, "about.html", "contact.html", "terms.html", "privacy.html"]]
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{SITE_URL}/{p.removesuffix('.html')}</loc></url>\n" for p in pages)
