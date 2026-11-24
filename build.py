@@ -25,6 +25,8 @@ GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
 # (AdSense flagged the site for low value content on 2026-11-24). Add a language code here to index it again.
 INDEXED_LANGS = {"en", "es"}
 REVIEWED = "November 2026"
+# The site owner's name for the About page. Leave empty to describe the owner without a name.
+OWNER_NAME = ""
 ROOT = Path(__file__).parent / "public"
 WRITTEN = set()  # pages produced by this run; anything else under public/*.html is stale
 
@@ -175,6 +177,16 @@ THEME_ICONS = (
 )
 
 
+OWNER_SECTION = {
+    "en": f"""<h2>Who runs this site</h2>
+<p>Plain Money Calculators is built and run by {OWNER_NAME + ", " if OWNER_NAME else "one person, "}an independent site owner in the United States. It is not a bank, a lender or a media company. The site started from a simple frustration: many calculators online hide their assumptions or ask for an email address before they show a number, and it should be possible to check the math yourself.</p>
+<p>I decide which calculators to build, check each one against hand-worked examples and official tables, and keep the guides up to date when rates, limits or tax rules change. AI tools help with drafting and code, and every figure is checked before it goes up. I am not a licensed financial adviser, tax preparer or doctor, so the guides rely on official sources such as the IRS, the CFPB and the CDC, and each page lists the ones it uses. If something looks wrong, write to <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a> and I will look at it myself.</p>""",
+    "es": f"""<h2>Quién está detrás de este sitio</h2>
+<p>Plain Money Calculators lo crea y lo mantiene {OWNER_NAME + ", " if OWNER_NAME else "una sola persona, "}un propietario independiente que vive en Estados Unidos. No es un banco, un prestamista ni una empresa de medios. El sitio nació de una frustración sencilla: muchas calculadoras en internet ocultan sus supuestos o piden un correo electrónico antes de mostrar un resultado, y debería ser posible comprobar las cuentas uno mismo.</p>
+<p>Decido qué calculadoras crear, compruebo cada una con ejemplos resueltos a mano y tablas oficiales, y actualizo las guías cuando cambian las tasas, los límites o las reglas fiscales. Uso herramientas de inteligencia artificial para redactar y programar, y reviso cada cifra antes de publicarla. No soy asesor financiero, preparador de impuestos ni médico con licencia, así que las guías se basan en fuentes oficiales como el IRS, la CFPB y los CDC, y cada página indica las que utiliza. Si algo parece incorrecto, escriba a <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a> y lo revisaré personalmente.</p>""",
+}
+
+
 def long_date(iso):
     from datetime import date
     d = date.fromisoformat(iso)
@@ -217,6 +229,10 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     # The English home page lists the newest articles, so they are one click from the front door.
     if lang == "en" and filename == "index.html" and ARTICLES:
         body += "\n" + article_list(3, "Latest guides")
+    # "Who runs this site" is written per language rather than through the translation files, so it can
+    # change without taking the translated About pages offline. Languages without a version skip it.
+    if filename == "about.html" and lang in OWNER_SECTION:
+        body = re.sub(r"(<h1>.*?</h1>\s*<p>.*?</p>)", lambda m: m[1] + "\n" + OWNER_SECTION[lang], body, count=1, flags=re.S)
     # Illustrations go in after translation so they never change the translated text.
     if filename in ART:
         body = re.sub(r'<h1>(.*?)</h1>\s*<p class="lede">(.*?)</p>',
