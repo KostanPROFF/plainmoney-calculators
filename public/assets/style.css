@@ -401,3 +401,16 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 .offer em { margin-top: auto; padding-top: 8px; font-style: normal; font-weight: 700; color: var(--accent); font-size: 0.9rem; }
 .offer em::after { content: " \2197"; }
 .offers .note { margin-top: 10px; }
+
+/* Guides list (home page and /articles) and the article date line */
+.article-list { margin: 36px 0 8px; }
+.article-list h2 { font: 700 1.3rem/1.3 var(--font-display); margin: 0 0 12px; }
+.article-list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.article-list li {
+  display: flex; flex-direction: column; gap: 4px; padding: 16px 20px; border-radius: 16px;
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--line);
+}
+.article-list li a { font: 700 1.05rem/1.3 var(--font-display); color: var(--fg); }
+.article-list li span { color: var(--muted); font-size: 0.92rem; }
+.article-list li small { color: var(--muted); font-size: 0.8rem; }
+.byline { color: var(--muted); font-size: 0.9rem; margin-top: -4px; }
