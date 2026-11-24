@@ -5,6 +5,7 @@ ARTICLES = {
         "title": "How to Choose an Online Mortgage Calculator",
         "description": "What a good mortgage calculator should include, how simple and advanced tools differ, and the mistakes that make a payment estimate too low.",
         "related": "mortgage-calculator.html",
+        "published": "2026-11-19",
         "body": """<article class="prose">
 <h1>How to choose an online mortgage calculator</h1>
 <p class="lede">Most mortgage calculators give you a number in seconds. The question is whether that number is close to what you will actually pay each month.</p>
@@ -85,6 +86,173 @@ ARTICLES = {
              "Looking only at principal and interest. Property tax, homeowners insurance and PMI can add several hundred dollars a month, so an estimate without them comes out too low."),
             ("When should I start using a mortgage calculator?",
              "Before you start looking at homes. Knowing the payment for different prices and down payments early helps you set a budget, decide how much to save, and compare lender offers when they arrive."),
+        ],
+    },
+    "how-much-house-can-i-afford-on-my-salary.html": {
+        "title": "How Much House Can I Afford on My Salary? A 2026 Table",
+        "description": "The home price lenders' 28/36 rule allows at salaries from $40,000 to $200,000, and how debts, rates and the down payment move that number.",
+        "related": "home-affordability-calculator.html",
+        "published": "2026-11-24",
+        "body": """<article class="prose">
+<h1>How much house can I afford on my salary?</h1>
+<p class="lede">Lenders do not look at the price of the house first. They look at how much of your income the monthly payment would take, and work backward from there.</p>
+
+<p>The rule most lenders start with is called 28/36. Your housing payment, meaning principal, interest, property tax, insurance and mortgage insurance, should stay under 28% of your gross monthly income. All of your debt payments together, housing included, should stay under 36%. Whichever limit is lower decides how big a payment you qualify for, and the payment decides the price.</p>
+<p>We ran that rule through our <a href="home-affordability-calculator.html">home affordability calculator</a> for a range of salaries. The table below is the result, followed by what changes it the most.</p>
+
+<h2>The assumptions behind the table</h2>
+<p>Every figure below uses the same starting point, so you can compare rows. It is a 30-year fixed loan at 6.5%, 10% down, property tax of 1.1% of the price a year, homeowners insurance of $1,800 a year and private mortgage insurance at 0.5% of the loan a year. We also assumed $400 a month of other debt, roughly a car payment or a student loan, because few buyers have none.</p>
+
+<h2>Home price by salary</h2>
+<div class="table-scroll"><table>
+<thead><tr><th>Gross salary</th><th>Max housing payment</th><th>Home price</th><th>Which limit applies</th></tr></thead>
+<tbody>
+<tr><td>$40,000</td><td>$800</td><td>$93,000</td><td>36% (total debt)</td></tr>
+<tr><td>$50,000</td><td>$1,100</td><td>$136,000</td><td>36% (total debt)</td></tr>
+<tr><td>$60,000</td><td>$1,400</td><td>$179,000</td><td>36% (total debt)</td></tr>
+<tr><td>$75,000</td><td>$1,750</td><td>$229,000</td><td>28% (housing)</td></tr>
+<tr><td>$90,000</td><td>$2,100</td><td>$279,000</td><td>28% (housing)</td></tr>
+<tr><td>$100,000</td><td>$2,333</td><td>$313,000</td><td>28% (housing)</td></tr>
+<tr><td>$125,000</td><td>$2,917</td><td>$396,000</td><td>28% (housing)</td></tr>
+<tr><td>$150,000</td><td>$3,500</td><td>$480,000</td><td>28% (housing)</td></tr>
+<tr><td>$175,000</td><td>$4,083</td><td>$563,000</td><td>28% (housing)</td></tr>
+<tr><td>$200,000</td><td>$4,667</td><td>$647,000</td><td>28% (housing)</td></tr>
+</tbody></table></div>
+<p>A rough shortcut falls out of the table: with these rates and costs, the price works out to a little over three times salary once income passes about $75,000. Below that, the $400 of other debt eats a bigger share of income, and the 36% limit pulls the price down faster. At $40,000 a year, that one car payment takes 12% of gross income before housing is counted at all.</p>
+
+<h2>Debts cut the price faster than most people expect</h2>
+<p>Here is the same calculation at an $80,000 salary, changing only the monthly debt payments.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Other monthly debts</th><th>Home price</th></tr></thead>
+<tbody>
+<tr><td>$0</td><td>$246,000</td></tr>
+<tr><td>$300</td><td>$246,000</td></tr>
+<tr><td>$600</td><td>$236,000</td></tr>
+<tr><td>$900</td><td>$193,000</td></tr>
+<tr><td>$1,200</td><td>$150,000</td></tr>
+</tbody></table></div>
+<p>Up to about $530 a month, debts make no difference, because the 28% housing limit is the tighter one. Past that point every extra $100 of monthly payments removes about $14,000 from the price you qualify for. Paying off a $350 car loan before applying can be worth more than saving another $10,000 for the down payment.</p>
+
+<h2>What a rate change does</h2>
+<p>At a $100,000 salary with the same debts and down payment:</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Interest rate</th><th>Home price</th></tr></thead>
+<tbody>
+<tr><td>5.5%</td><td>$341,000</td></tr>
+<tr><td>6.0%</td><td>$326,000</td></tr>
+<tr><td>6.5%</td><td>$313,000</td></tr>
+<tr><td>7.0%</td><td>$300,000</td></tr>
+<tr><td>7.5%</td><td>$288,000</td></tr>
+</tbody></table></div>
+<p>Each full point of interest moves the price by roughly $26,000, about 8%. A better credit score, a rate quote from more than one lender and, sometimes, paying for discount points all show up here.</p>
+
+<h2>What the down payment changes</h2>
+<p>Still at $100,000 a year:</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Down payment</th><th>Home price</th><th>Cash needed for the down payment</th></tr></thead>
+<tbody>
+<tr><td>3.5%</td><td>$294,000</td><td>$10,300</td></tr>
+<tr><td>5%</td><td>$298,000</td><td>$14,900</td></tr>
+<tr><td>10%</td><td>$313,000</td><td>$31,300</td></tr>
+<tr><td>20%</td><td>$366,000</td><td>$73,100</td></tr>
+</tbody></table></div>
+<p>Going from 3.5% to 10% down only adds about $19,000 to the price, because the payment limit stays the same. The jump at 20% is bigger because mortgage insurance disappears, which frees up about $120 a month for principal and interest. Remember that closing costs, usually 2% to 5% of the loan, come on top of the down payment. FHA loans, the usual route for 3.5% down, also charge an upfront mortgage insurance premium of 1.75% of the loan, which is normally added to the balance.</p>
+
+<h2>When the 28/36 rule is too strict, or not strict enough</h2>
+<p>Many lenders approve higher ratios. Conventional loans often go to a 45% total debt ratio and FHA loans can go higher with strong credit or savings, which is why the calculator also offers a 31/43 option. Approval is a ceiling, though, not advice. The 28/36 rule leaves room for things a lender does not count: childcare, retirement saving, commuting and the 1% to 2% of the home's value a year that maintenance tends to cost.</p>
+<p>Property tax matters as much as the rate in some places. The table uses 1.1%, close to the national average. In New Jersey or Illinois, where effective rates run above 2%, the same salary buys noticeably less. In Hawaii or Alabama, where they are well under 1%, it buys more. The calculator fills in your state's average when you pick it.</p>
+
+<h2>Run it for yourself</h2>
+<p>The figures here are a starting point. Put in your own income, debts, savings and a real rate quote in the <a href="home-affordability-calculator.html">home affordability calculator</a>, then check the payment on a specific listing with the <a href="mortgage-calculator.html">mortgage calculator</a>. If debts are what holds you back, the <a href="debt-to-income-calculator.html">debt-to-income calculator</a> shows how much each one counts.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+{faq}
+</div>
+<p class="note">Last reviewed: November 2026. Figures are estimates for planning, not a loan offer or financial advice.</p>
+</article>""",
+        "faq": [
+            ("How much house can I afford on a $100,000 salary?",
+             "About $313,000 with 10% down, a 6.5% rate, average property tax and insurance and $400 a month of other debt. That keeps the full housing payment near $2,333, or 28% of gross income. Less debt or a lower rate raises the figure; higher local taxes lower it."),
+            ("What is the 28/36 rule?",
+             "A lending guideline that keeps housing costs under 28% of gross monthly income and all debt payments, housing included, under 36%. The lower of the two limits sets the largest payment, and so the largest price, a lender is comfortable with."),
+            ("Does the 28/36 rule use gross or take-home pay?",
+             "Gross pay, before taxes and deductions. That is why the payment it allows can feel tight on a take-home budget, especially with high state taxes or large 401(k) contributions."),
+            ("Is it better to pay off debt or save a bigger down payment?",
+             "If your debts are above the point where the 36% limit applies, paying them off usually raises the price you qualify for more than the same money added to the down payment. Below that point, extra down payment helps more, especially if it gets you to 20% and removes mortgage insurance."),
+            ("Why is the price so low at $40,000 to $60,000 a year?",
+             "At lower incomes a fixed debt like a $400 car payment takes a larger share of income, so the 36% total debt limit is reached before the 28% housing limit. Property tax and insurance also take a fixed bite out of a smaller payment."),
+        ],
+    },
+    "how-long-to-pay-off-credit-card-debt.html": {
+        "title": "How Long Does It Take to Pay Off Credit Card Debt?",
+        "description": "Payoff times and total interest for $2,000 to $20,000 of card debt at 22% APR, paying the minimum or a fixed amount, plus what a balance transfer saves.",
+        "related": "credit-card-payoff-calculator.html",
+        "published": "2026-11-24",
+        "body": """<article class="prose">
+<h1>How long does it take to pay off credit card debt?</h1>
+<p class="lede">Paying only the minimum keeps a card in good standing, but it is designed to take a very long time. A fixed monthly amount changes the picture completely.</p>
+
+<p>Your statement already shows one version of this answer, in the box that says how long payoff takes at the minimum. What it does not show is how fast the number drops when you pay a little more. We ran the same balances through our <a href="credit-card-payoff-calculator.html">credit card payoff calculator</a> at several payment levels to show both.</p>
+
+<h2>The assumptions</h2>
+<p>All examples use a 22% APR, close to the average the Federal Reserve reports for card accounts that are charged interest. The minimum payment follows a formula many large issuers use: 1% of the balance plus that month's interest, with a floor of $25. Your card's formula may differ, so check the minimum payment section of your cardholder agreement. We also assume no new purchases go on the card while you pay it down.</p>
+
+<h2>Payoff time and interest by balance</h2>
+<div class="table-scroll"><table>
+<thead><tr><th>Balance</th><th>Minimum payment only</th><th>$200 a month</th><th>$300 a month</th><th>$500 a month</th></tr></thead>
+<tbody>
+<tr><td>$2,000</td><td>11 yr 7 mo, $2,600 interest</td><td>12 mo, $230</td><td>8 mo, $153</td><td>5 mo, $97</td></tr>
+<tr><td>$5,000</td><td>19 yr 2 mo, $8,100</td><td>2 yr 10 mo, $1,750</td><td>1 yr 9 mo, $1,022</td><td>1 yr, $574</td></tr>
+<tr><td>$10,000</td><td>24 yr 11 mo, $17,266</td><td>11 yr 5 mo, $17,356</td><td>4 yr 4 mo, $5,596</td><td>2 yr 2 mo, $2,571</td></tr>
+<tr><td>$20,000</td><td>30 yr 8 mo, $35,600</td><td>Never</td><td>Never</td><td>6 yr 1 mo, $16,378</td></tr>
+</tbody></table></div>
+<p>Two things stand out. At the minimum, the interest on a $5,000 balance ends up larger than the balance itself. And on a $20,000 balance, $200 or $300 a month never pays it off, because the interest alone is about $367 a month at 22%. Any payment below the monthly interest lets the balance grow.</p>
+
+<h2>Why the minimum takes so long</h2>
+<p>The minimum is a percentage of what you owe, so it shrinks as the balance shrinks. On $5,000 the first minimum is about $142. A year later it is about $127, and three years in it is about $100, with almost two thirds of that still going to interest. The payment keeps stepping down, so the balance never falls as fast as it did in the first month.</p>
+<p>The simplest fix is to keep paying that first minimum as a fixed amount. Paying $142 every month on the same $5,000 clears it in 4 years and 10 months with about $3,100 of interest, instead of 19 years and $8,100. On $10,000, a fixed $283 does it in the same 4 years and 10 months for about $6,300 of interest. You do not need a bigger budget, only a payment that stops shrinking.</p>
+
+<h2>How much the APR matters</h2>
+<p>For a $5,000 balance paid at $200 a month:</p>
+<div class="table-scroll"><table>
+<thead><tr><th>APR</th><th>Time to pay off</th><th>Total interest</th></tr></thead>
+<tbody>
+<tr><td>0%</td><td>2 yr 1 mo</td><td>$0</td></tr>
+<tr><td>15%</td><td>2 yr 7 mo</td><td>$1,033</td></tr>
+<tr><td>20%</td><td>2 yr 9 mo</td><td>$1,522</td></tr>
+<tr><td>25%</td><td>3 yr</td><td>$2,137</td></tr>
+<tr><td>29.99%</td><td>3 yr 4 mo</td><td>$2,943</td></tr>
+</tbody></table></div>
+<p>It is worth calling your issuer and asking for a lower rate, particularly if you have paid on time for a year or more. A few points off the APR saves a few hundred dollars here, more on a larger balance.</p>
+
+<h2>Does a balance transfer help?</h2>
+<p>A balance transfer card moves the debt to a 0% introductory rate for a set period, usually 12 to 21 months, in exchange for a fee, usually 3% to 5% of the amount moved. Take the same $5,000 with a 3% fee ($150) and an 18-month 0% period, still paying $200 a month. After 18 months, $1,550 is left. If the rate then goes to 22%, the rest is gone nine months later with about $138 of interest. Total cost: roughly $290, against $1,750 on the original card, and seven months sooner.</p>
+<p>The catch is discipline. It only works if the old card does not fill up again, and if you plan to finish, or nearly finish, before the intro period ends. Check whether the transfer fee and the rate after the intro period make the numbers work for your balance before you apply.</p>
+
+<h2>Which card to pay first</h2>
+<p>If you carry balances on several cards, pay the minimum on all of them and put every extra dollar on one. Paying the highest APR first, often called the avalanche method, costs the least interest. Paying the smallest balance first, the snowball method, clears whole accounts sooner, which some people find easier to stick with. The difference in interest is often smaller than the difference between sticking with a plan and dropping it, so pick the one you will keep doing.</p>
+
+<h2>Run your own numbers</h2>
+<p>Enter your balance, APR and payment in the <a href="credit-card-payoff-calculator.html">credit card payoff calculator</a>. It shows the payoff date, the total interest, the payment needed to be debt-free by a date you choose, and how much a bigger payment saves. If you are thinking about consolidating with a loan instead, compare the cost in the <a href="personal-loan-calculator.html">personal loan calculator</a>, including any origination fee.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+{faq}
+</div>
+<p class="note">Last reviewed: November 2026. Figures are estimates for planning, not financial advice.</p>
+</article>""",
+        "faq": [
+            ("How long does it take to pay off $5,000 on a credit card?",
+             "At 22% APR, about 19 years with only the minimum payment, about 2 years and 10 months at $200 a month and about a year at $500 a month. Interest ranges from about $8,100 at the minimum to under $600 at $500 a month."),
+            ("Why does my balance barely go down when I pay the minimum?",
+             "Most of a minimum payment covers that month's interest. On a 22% card, interest is about 1.8% of the balance each month, and a common minimum is only 1% of the balance on top of that, so principal falls slowly."),
+            ("What happens if my payment is less than the interest?",
+             "The unpaid interest is added to the balance, so you owe more each month even though you are paying. On $20,000 at 22%, any payment below about $367 a month never pays the card off."),
+            ("Is a balance transfer worth the fee?",
+             "Usually, if you can pay most of the balance during the 0% period. On $5,000 paid at $200 a month, a 3% fee and 18 months at 0% cost about $290 in total, against about $1,750 of interest on a 22% card."),
+            ("Should I pay off the highest interest or the smallest balance first?",
+             "The highest interest rate first saves the most money. The smallest balance first closes accounts sooner and can be easier to keep going. Either works if you keep paying the extra amount every month."),
         ],
     },
 }

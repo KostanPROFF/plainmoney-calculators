@@ -20,9 +20,10 @@ SITE_URL = "https://plainmoneycalc.com"
 ADSENSE_CLIENT = "ca-pub-5321511632415174"
 GA_ID = "G-NDSEJCQ08E"  # Google Analytics 4
 GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
-# Machine-translated pages stay online for visitors but are kept out of Google (noindex, no sitemap, no hreflang)
-# until AdSense approves the site. Set to False to let Google index them again.
-NOINDEX_TRANSLATIONS = False
+# Languages Google may index. The other translations stay online for visitors but get noindex and are left out of
+# the sitemap and hreflang, so the index holds the original English text rather than nine copies of it
+# (AdSense flagged the site for low value content on 2026-11-24). Add a language code here to index it again.
+INDEXED_LANGS = {"en"}
 REVIEWED = "November 2026"
 ROOT = Path(__file__).parent / "public"
 WRITTEN = set()  # pages produced by this run; anything else under public/*.html is stale
@@ -174,9 +175,26 @@ THEME_ICONS = (
 )
 
 
+def long_date(iso):
+    from datetime import date
+    d = date.fromisoformat(iso)
+    return f"{d:%B} {d.day}, {d.year}"
+
+
+def article_list(limit, heading):
+    """Cards for the newest articles first; `limit` None lists them all."""
+    items = sorted(ARTICLES.items(), key=lambda kv: kv[1]["published"], reverse=True)[:limit]
+    cards = "".join(
+        f'<li><a href="{f}">{a["title"]}</a><span>{a["description"]}</span>'
+        f'<small>{long_date(a.get("updated", a["published"]))}</small></li>' for f, a in items)
+    head = f'<h2>{heading}</h2>' if heading else ""
+    more = '<p><a href="articles.html">All guides</a></p>' if limit and len(ARTICLES) > limit else ""
+    return f'<section class="article-list">{head}<ul>{cards}</ul>{more}</section>'
+
+
 def page(filename, title, description, body, scripts=(), schema=None, lang="en"):
     # Articles are English only: they are not replayed for other languages or sent for translation.
-    english_only = filename in ARTICLES
+    english_only = filename in ARTICLES or filename == "articles.html"
     if lang == "en" and not english_only:
         PAGES.append((filename, title, description, body, scripts, schema))
     parts = [x if english_only and i < 3 else tr(x, lang)
@@ -196,6 +214,9 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     related = [(f, a["title"]) for f, a in ARTICLES.items() if a.get("related") == filename]
     if lang == "en" and related:
         body += "\n" + "".join(f'<p class="note related">Guide: <a href="{f}">{t}</a></p>' for f, t in related)
+    # The English home page lists the newest articles, so they are one click from the front door.
+    if lang == "en" and filename == "index.html" and ARTICLES:
+        body += "\n" + article_list(3, "Latest guides")
     # Illustrations go in after translation so they never change the translated text.
     if filename in ART:
         body = re.sub(r'<h1>(.*?)</h1>\s*<p class="lede">(.*?)</p>',
@@ -240,12 +261,12 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     ) if tags else ""
     path = clean(filename)
     url = lambda l: f"{SITE_URL}/{LANGS[l]['prefix']}{path}"
-    alternates = "".join(f'<link rel="alternate" hreflang="{LANGS[l]["hl"]}" href="{url(l)}">' for l in LANGS)
+    indexed = [l for l in LANGS if l in INDEXED_LANGS]
+    alternates = "".join(f'<link rel="alternate" hreflang="{LANGS[l]["hl"]}" href="{url(l)}">' for l in indexed)
     alternates += f'<link rel="alternate" hreflang="x-default" href="{url("en")}">'
-    robots = ""
-    if NOINDEX_TRANSLATIONS or english_only:
+    robots = "" if lang in INDEXED_LANGS else '<meta name="robots" content="noindex, follow">'
+    if english_only or len(indexed) < 2:
         alternates = ""
-        robots = '<meta name="robots" content="noindex, follow">' if lang != "en" else ""
     if schema and not english_only:
         schema = {**schema, "name": re.sub(r"(?<!401)\s*[(（][^()（）]*[)）]$", "", re.split(r"[:：]", title)[0]).strip() if lang != "en" else schema["name"],
                   "description": description, "url": url(lang), "inLanguage": LANGS[lang]["hl"]}
@@ -300,7 +321,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 </main>
 <footer class="site-footer"><div class="wrap">
 <span>&copy; 2026 {SITE_NAME}. {footer}</span>
-<nav><a href="{up}about.html">{about}</a><a href="{up}contact.html">{tr("Contact", lang) or "Contact"}</a><a href="{up}terms.html">{tr("Terms of Use", lang) or "Terms of Use"}</a><a href="privacy.html">{privacy}</a></nav>
+<nav>{'<a href="articles.html">Guides</a>' if lang == "en" else ""}<a href="{up}about.html">{about}</a><a href="{up}contact.html">{tr("Contact", lang) or "Contact"}</a><a href="{up}terms.html">{tr("Terms of Use", lang) or "Terms of Use"}</a><a href="privacy.html">{privacy}</a></nav>
 </div></footer>
 {js}
 </body>
@@ -1347,12 +1368,27 @@ page(
 
 
 # ---------------------------------------------------------------- Articles (English only)
+page(
+    "articles.html",
+    "Money Guides: Mortgages, Debt and Budgeting",
+    "Plain-English guides with worked numbers: how much house you can afford, how long credit card debt takes to repay and how to read a mortgage estimate.",
+    f"""<section class="prose"><h1>Guides</h1>
+<p class="lede">Longer reads that go with the calculators. Each one works through real numbers, explains the assumptions behind them and links to the calculator that produced them, so you can rerun the figures for your own situation.</p>
+{article_list(None, None)}
+<p>We add a new guide most weeks and recheck the figures in older ones when rates, limits or tax rules change. Spotted something out of date? <a href="contact.html">Tell us</a>.</p>
+</section>""",
+)
 for filename, a in ARTICLES.items():
     faq_html = "".join(f"<details><summary>{q}</summary><p>{ans}</p></details>\n" for q, ans in a["faq"])
-    page(filename, a["title"], a["description"], a["body"].replace("{faq}", faq_html), schema={
+    dates = f'<p class="byline">Published {long_date(a["published"])}' + (
+        f' · Updated {long_date(a["updated"])}' if a.get("updated", a["published"]) != a["published"] else "") + "</p>"
+    body = re.sub(r"(</h1>)", r"\1\n" + dates, a["body"], count=1).replace("{faq}", faq_html)
+    page(filename, a["title"], a["description"], body, schema={
         "@context": "https://schema.org", "@graph": [
             {"@type": "Article", "headline": a["title"], "description": a["description"], "inLanguage": "en",
-             "url": f"{SITE_URL}/{clean(filename)}", "dateModified": "2026-11-19",
+             "url": f"{SITE_URL}/{clean(filename)}", "datePublished": a["published"],
+             "dateModified": a.get("updated", a["published"]),
+             "author": {"@type": "Organization", "name": SITE_NAME, "url": f"{SITE_URL}/about"},
              "publisher": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL}},
             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q,
                                                   "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]},
@@ -1392,12 +1428,12 @@ for lang in TR:
         todo.unlink()
 
 # ---------------------------------------------------------------- robots.txt / sitemap.xml
-pages = [p for p in ["", *(h for h, _, _ in CARDS), *ARTICLES, "about.html", "contact.html", "terms.html", "privacy.html"]]
+pages = [p for p in ["", *(h for h, _, _ in CARDS), "articles.html", *ARTICLES, "about.html", "contact.html", "terms.html", "privacy.html"]]
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{SITE_URL}/{p.removesuffix('.html')}</loc></url>\n" for p in pages)
     + "".join(f"  <url><loc>{SITE_URL}/{lang}/{clean(f)}</loc></url>\n"
-              for lang, files in built.items() for f in files if not NOINDEX_TRANSLATIONS)
+              for lang, files in built.items() for f in files if lang in INDEXED_LANGS)
     + "</urlset>\n"
 )
 if ADSENSE_CLIENT:
