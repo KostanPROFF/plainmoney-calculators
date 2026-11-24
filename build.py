@@ -23,7 +23,7 @@ GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
 # Languages Google may index. The other translations stay online for visitors but get noindex and are left out of
 # the sitemap and hreflang, so the index holds the original English text rather than nine copies of it
 # (AdSense flagged the site for low value content on 2026-11-24). Add a language code here to index it again.
-INDEXED_LANGS = {"en"}
+INDEXED_LANGS = {"en", "es"}
 REVIEWED = "November 2026"
 ROOT = Path(__file__).parent / "public"
 WRITTEN = set()  # pages produced by this run; anything else under public/*.html is stale
