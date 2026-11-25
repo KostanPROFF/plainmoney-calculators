@@ -414,3 +414,6 @@ tbody tr:hover td { background: rgba(79, 199, 156, 0.05); }
 .article-list li span { color: var(--muted); font-size: 0.92rem; }
 .article-list li small { color: var(--muted); font-size: 0.8rem; }
 .byline { color: var(--muted); font-size: 0.9rem; margin-top: -4px; }
+.byline a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.author-note { margin: 32px 0 8px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); font-size: 0.92rem; }
+.author-note p { margin: 0; }
