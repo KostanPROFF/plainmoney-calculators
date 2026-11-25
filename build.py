@@ -25,8 +25,24 @@ GTM_ID = "GTM-K9KBMGKN"  # Google Tag Manager container
 # (AdSense flagged the site for low value content on 2026-11-24). Add a language code here to index it again.
 INDEXED_LANGS = {"en", "es"}
 REVIEWED = "November 2026"
-# The site owner's name for the About page. Leave empty to describe the owner without a name.
-OWNER_NAME = ""
+# The site's author. The byline under each calculator and guide title, the short note at the end of those pages,
+# the About bio and the JSON-LD author all come from here. Facts only: no invented degrees or titles.
+AUTHOR = {"name": "Kostan PROFF", "full_name": "Kostiantyn Kozulko", "url": f"{SITE_URL}/about",
+          "company": "Constantine Commerce Solutions LLC"}
+# Calculator pages: first published (the commit that added the page, from git history) and last updated.
+# Bump CALC_UPDATED (or one page in CALC_MODIFIED) whenever rates, tax figures or limits change.
+CALC_UPDATED = "2026-11-24"
+CALC_MODIFIED = {}
+CALC_PUBLISHED = {
+    **dict.fromkeys(["mortgage-calculator.html", "auto-loan-calculator.html", "paycheck-calculator.html",
+                     "401k-calculator.html", "compound-interest-calculator.html"], "2026-10-19"),
+    **dict.fromkeys(["home-affordability-calculator.html", "personal-loan-calculator.html",
+                     "credit-card-payoff-calculator.html", "debt-to-income-calculator.html",
+                     "salary-to-hourly-calculator.html", "savings-goal-calculator.html"], "2026-10-20"),
+    **dict.fromkeys(["bmi-calculator.html", "calorie-calculator.html", "due-date-calculator.html",
+                     "percentage-calculator.html", "tip-calculator.html", "age-calculator.html",
+                     "gpa-calculator.html"], "2026-10-29"),
+}
 ROOT = Path(__file__).parent / "public"
 WRITTEN = set()  # pages produced by this run; anything else under public/*.html is stale
 
@@ -179,12 +195,40 @@ THEME_ICONS = (
 
 OWNER_SECTION = {
     "en": f"""<h2>Who runs this site</h2>
-<p>Plain Money Calculators is built and run by {OWNER_NAME + ", " if OWNER_NAME else "one person, "}an independent site owner in the United States. It is not a bank, a lender or a media company. The site started from a simple frustration: many calculators online hide their assumptions or ask for an email address before they show a number, and it should be possible to check the math yourself.</p>
-<p>I decide which calculators to build, check each one against hand-worked examples and official tables, and keep the guides up to date when rates, limits or tax rules change. AI tools help with drafting and code, and every figure is checked before it goes up. I am not a licensed financial adviser, tax preparer or doctor, so the guides rely on official sources such as the IRS, the CFPB and the CDC, and each page lists the ones it uses. If something looks wrong, write to <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a> and I will look at it myself.</p>""",
+<p><strong>{AUTHOR["full_name"]} ({AUTHOR["name"]})</strong> runs Plain Money Calculators. He is the founder of {AUTHOR["company"]} and works with business finance every day: pricing, taxes, cash flow, and retirement planning for a small e-commerce business. He builds these calculators the way he uses them himself: every formula shown, every assumption stated, and every number traceable to its source.</p>
+<p>The site is independent. It is not a bank, a lender or a media company. It started from a simple frustration: many calculators online hide their assumptions or ask for an email address before they show a number, and it should be possible to check the math yourself.</p>
+<p>He decides which calculators to build, checks each one against hand-worked examples and official tables, and keeps the guides up to date when rates, limits or tax rules change. AI tools help with drafting and code, and every figure is checked before it goes up. He is not a licensed financial adviser, tax preparer or doctor, so the guides rely on official sources such as the IRS, the CFPB and the CDC, and each page lists the ones it uses. If something looks wrong, write to <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a> and he will look at it himself.</p>""",
     "es": f"""<h2>Quién está detrás de este sitio</h2>
-<p>Plain Money Calculators lo crea y lo mantiene {OWNER_NAME + ", " if OWNER_NAME else "una sola persona, "}un propietario independiente que vive en Estados Unidos. No es un banco, un prestamista ni una empresa de medios. El sitio nació de una frustración sencilla: muchas calculadoras en internet ocultan sus supuestos o piden un correo electrónico antes de mostrar un resultado, y debería ser posible comprobar las cuentas uno mismo.</p>
-<p>Decido qué calculadoras crear, compruebo cada una con ejemplos resueltos a mano y tablas oficiales, y actualizo las guías cuando cambian las tasas, los límites o las reglas fiscales. Uso herramientas de inteligencia artificial para redactar y programar, y reviso cada cifra antes de publicarla. No soy asesor financiero, preparador de impuestos ni médico con licencia, así que las guías se basan en fuentes oficiales como el IRS, la CFPB y los CDC, y cada página indica las que utiliza. Si algo parece incorrecto, escriba a <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a> y lo revisaré personalmente.</p>""",
+<p><strong>{AUTHOR["full_name"]} ({AUTHOR["name"]})</strong> dirige Plain Money Calculators. Es el fundador de {AUTHOR["company"]} y trabaja con finanzas de empresa todos los días: precios, impuestos, flujo de caja y planificación de la jubilación para un pequeño negocio de comercio electrónico. Crea estas calculadoras tal como las usa él mismo: cada fórmula a la vista, cada supuesto explicado y cada cifra con su fuente.</p>
+<p>El sitio es independiente. No es un banco, un prestamista ni una empresa de medios. Nació de una frustración sencilla: muchas calculadoras en internet ocultan sus supuestos o piden un correo electrónico antes de mostrar un resultado, y debería ser posible comprobar las cuentas uno mismo.</p>
+<p>Él decide qué calculadoras crear, comprueba cada una con ejemplos resueltos a mano y tablas oficiales, y actualiza las guías cuando cambian las tasas, los límites o las reglas fiscales. Usa herramientas de inteligencia artificial para redactar y programar, y revisa cada cifra antes de publicarla. No es asesor financiero, preparador de impuestos ni médico con licencia, así que las guías se basan en fuentes oficiales como el IRS, la CFPB y los CDC, y cada página indica las que utiliza. Si algo parece incorrecto, escriba a <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a> y él mismo lo revisará.</p>""",
 }
+
+# Byline and short author note for the indexed languages. Other translations are noindex and stay as they are.
+MONTHS_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
+             "noviembre", "diciembre"]
+AUTHOR_TEXT = {
+    "en": {"by": "By", "updated": "Last updated:",
+           "date": lambda d: f"{d:%B} {d.day}, {d.year}",
+           "note": f'<a href="about.html">{AUTHOR["name"]}</a> is the founder of {AUTHOR["company"]}. He builds free calculators that show every formula and source behind the result.'},
+    "es": {"by": "Por", "updated": "Última actualización:",
+           "date": lambda d: f"{d.day} de {MONTHS_ES[d.month - 1]} de {d.year}",
+           "note": f'<a href="about.html">{AUTHOR["name"]}</a> es el fundador de {AUTHOR["company"]}. Crea calculadoras gratuitas que muestran cada fórmula y cada fuente detrás del resultado.'},
+}
+
+
+def page_dates(filename):
+    """(datePublished, dateModified) for a calculator or article page, else None."""
+    if filename in ARTICLES:
+        a = ARTICLES[filename]
+        return a["published"], a.get("updated", a["published"])
+    if filename in CALC_PUBLISHED:
+        return CALC_PUBLISHED[filename], CALC_MODIFIED.get(filename, CALC_UPDATED)
+    return None
+
+
+def person():
+    return {"@type": "Person", "name": AUTHOR["name"], "url": AUTHOR["url"]}
 
 
 def long_date(iso):
@@ -238,6 +282,16 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
         body = re.sub(r'<h1>(.*?)</h1>\s*<p class="lede">(.*?)</p>',
                       lambda m: f'<header class="calc-hero"><div><h1>{m[1]}</h1><p class="lede">{m[2]}</p></div>{ART[filename]}</header>',
                       body, count=1, flags=re.S)
+    # Author byline under the H1 and a short author note at the end, on calculator and guide pages.
+    dates = page_dates(filename)
+    if dates and lang in AUTHOR_TEXT:
+        from datetime import date
+        t = AUTHOR_TEXT[lang]
+        modified = date.fromisoformat(dates[1])
+        byline = (f'<p class="byline">{t["by"]} <a href="about.html" rel="author">{AUTHOR["name"]}</a> · '
+                  f'{t["updated"]} <time datetime="{dates[1]}">{t["date"](modified)}</time></p>')
+        body = body.replace("</h1>", "</h1>" + byline, 1)
+        body += f'\n<aside class="author-note"><p>{t["note"]}</p></aside>'
     body = re.sub(r'(<a class="calc-card" href="([^"]+)">)', lambda m: m[1] + ART.get(m[2], ""), body)
     up = "" if lang == "en" else "../"
     nav = "".join(
@@ -286,6 +340,12 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     if schema and not english_only:
         schema = {**schema, "name": re.sub(r"(?<!401)\s*[(（][^()（）]*[)）]$", "", re.split(r"[:：]", title)[0]).strip() if lang != "en" else schema["name"],
                   "description": description, "url": url(lang), "inLanguage": LANGS[lang]["hl"]}
+    if dates and lang in AUTHOR_TEXT and schema and "@graph" not in schema:
+        schema = {**schema, "author": person(), "datePublished": dates[0], "dateModified": dates[1]}
+    if filename == "about.html" and lang in AUTHOR_TEXT:
+        schema = {"@context": "https://schema.org", "@type": "AboutPage", "url": url(lang), "inLanguage": LANGS[lang]["hl"],
+                  "mainEntity": {**person(), "alternateName": AUTHOR["full_name"],
+                                 "worksFor": {"@type": "Organization", "name": AUTHOR["company"]}}}
     site_schema = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": url(lang),
                    "inLanguage": LANGS[lang]["hl"], "description": description} if filename == "index.html" else None
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (site_schema, schema, faq_schema) if s)
@@ -1396,15 +1456,13 @@ page(
 )
 for filename, a in ARTICLES.items():
     faq_html = "".join(f"<details><summary>{q}</summary><p>{ans}</p></details>\n" for q, ans in a["faq"])
-    dates = f'<p class="byline">Published {long_date(a["published"])}' + (
-        f' · Updated {long_date(a["updated"])}' if a.get("updated", a["published"]) != a["published"] else "") + "</p>"
-    body = re.sub(r"(</h1>)", r"\1\n" + dates, a["body"], count=1).replace("{faq}", faq_html)
+    body = a["body"].replace("{faq}", faq_html)
     page(filename, a["title"], a["description"], body, schema={
         "@context": "https://schema.org", "@graph": [
             {"@type": "Article", "headline": a["title"], "description": a["description"], "inLanguage": "en",
              "url": f"{SITE_URL}/{clean(filename)}", "datePublished": a["published"],
              "dateModified": a.get("updated", a["published"]),
-             "author": {"@type": "Organization", "name": SITE_NAME, "url": f"{SITE_URL}/about"},
+             "author": person(),
              "publisher": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL}},
             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q,
                                                   "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]},
