@@ -255,4 +255,102 @@ ARTICLES = {
              "The highest interest rate first saves the most money. The smallest balance first closes accounts sooner and can be easier to keep going. Either works if you keep paying the extra amount every month."),
         ],
     },
+    "how-long-should-a-car-loan-be.html": {
+        "title": "How Long Should a Car Loan Be? 36 to 84 Months Compared",
+        "description": "Monthly payment, total interest and how long you owe more than the car is worth on a $30,000 auto loan at 36, 48, 60, 72 and 84 months.",
+        "related": "auto-loan-calculator.html",
+        "published": "2026-11-24",
+        "body": """<article class="prose">
+<h1>How long should a car loan be?</h1>
+<p class="lede">A longer loan makes the monthly payment smaller. It also makes the car cost more and keeps you owing more than it is worth for longer. The question is how much of each you are trading.</p>
+
+<p>Dealers rarely start with the loan term. They start with the payment you want, then find a term that reaches it. That is why 72 and 84 month loans have become an ordinary part of buying a car. We ran one loan through the same formula our <a href="auto-loan-calculator.html">auto loan calculator</a> uses, at every common term, to show what the extra years actually cost.</p>
+
+<h2>The assumptions</h2>
+<p>Every example uses $30,000 borrowed at a 7% APR, with equal monthly payments and no prepayment penalty. That amount is meant to cover the car plus the sales tax and fees that are often rolled into the loan. Your own rate depends on your credit, the lender, whether the car is new or used and the term itself, so treat 7% as a round number for comparison, not a forecast.</p>
+
+<h2>Payment and interest by loan term</h2>
+<div class="table-scroll"><table>
+<thead><tr><th>Term</th><th>Payment</th><th>Total interest</th><th>Owed after 3 years</th></tr></thead>
+<tbody>
+<tr><td>36 months</td><td>$926</td><td>$3,347</td><td>$0</td></tr>
+<tr><td>48 months</td><td>$718</td><td>$4,483</td><td>$8,302</td></tr>
+<tr><td>60 months</td><td>$594</td><td>$5,642</td><td>$13,268</td></tr>
+<tr><td>72 months</td><td>$511</td><td>$6,826</td><td>$16,565</td></tr>
+<tr><td>84 months</td><td>$453</td><td>$8,034</td><td>$18,908</td></tr>
+</tbody></table></div>
+<p>Going from 60 to 84 months lowers the payment by $141 a month and adds about $2,400 of interest. That is the visible cost. The last column shows a less visible one. Three years in, the 84-month borrower still owes almost $19,000, about $5,600 more than the 60-month borrower, on a car that is now three years old.</p>
+<p>The payment savings also shrink as the term grows. Stretching from 36 to 48 months saves $208 a month. Stretching from 72 to 84 saves only $59, while still adding more than $1,200 of interest.</p>
+
+<h2>Longer terms often come with higher rates</h2>
+<p>The table above gives every term the same 7% rate, which flatters the long loans. Many lenders charge more for longer terms because the loan carries more risk for them. Here is what happens if the 72-month loan costs one point more and the 84-month loan two points more, a spread we picked for illustration.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Term and rate</th><th>Monthly payment</th><th>Total interest</th></tr></thead>
+<tbody>
+<tr><td>60 months at 7%</td><td>$594</td><td>$5,642</td></tr>
+<tr><td>72 months at 8%</td><td>$526</td><td>$7,872</td></tr>
+<tr><td>84 months at 9%</td><td>$483</td><td>$10,544</td></tr>
+</tbody></table></div>
+<p>With a higher rate the 84-month loan almost doubles the interest of the 60-month one, and the payment is only $111 lower. Ask each lender for a quote at two or three terms, not just the one you think you want, so you can see whether they price the terms differently.</p>
+<p>The rate matters more on a long loan, too. At 5%, the 84-month version of this loan costs $5,617 in interest. At 12%, which borrowers with weaker credit can see, it costs $14,485, against $10,040 for 60 months at the same rate.</p>
+
+<h2>How long you stay underwater</h2>
+<p>Being underwater, or upside down, means you owe more on the loan than the car would sell for. It does not matter while you keep the car and keep paying. It matters a great deal if the car is totaled, stolen or needs to be sold early, because the insurance check or the sale price may not cover the loan. Any shortfall is still yours to pay, or it gets rolled into the next loan.</p>
+<p>To see how term affects this, we assumed a car worth $28,000, with the other $2,000 of the loan being tax and fees and nothing put down. We then assumed it loses 20% of its value in the first year and 15% a year after that. Real depreciation varies a lot by model and mileage, so take these as an illustration, not a prediction for your car.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>End of year</th><th>Car value</th><th>Owed, 60 months</th><th>Owed, 72 months</th><th>Owed, 84 months</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>$22,400</td><td>$24,807</td><td>$25,830</td><td>$26,558</td></tr>
+<tr><td>2</td><td>$19,040</td><td>$19,239</td><td>$21,359</td><td>$22,866</td></tr>
+<tr><td>3</td><td>$16,184</td><td>$13,268</td><td>$16,565</td><td>$18,908</td></tr>
+<tr><td>4</td><td>$13,756</td><td>$6,865</td><td>$11,424</td><td>$14,664</td></tr>
+<tr><td>5</td><td>$11,693</td><td>$0</td><td>$5,911</td><td>$10,113</td></tr>
+</tbody></table></div>
+<p>Under these assumptions the 60-month loan climbs above water after about 2 years. The 72-month loan takes a little over 3 years and the 84-month loan almost 4 and a half. A 48-month loan, not shown in the table, gets there in about 15 months. A down payment of 10% to 20% shortens all of these, because you start with some equity instead of a gap.</p>
+<p>If you do take a long loan with little down, GAP coverage pays the difference between the insurance payout and the loan balance after a total loss. Dealers often add it to the loan. Your own auto insurer or credit union may sell it for less, so compare before you sign.</p>
+
+<h2>Turning the question around: what the payment buys</h2>
+<p>Most people shop with a monthly budget in mind. Here is how much you could borrow for $550 a month at 7%, depending on the term.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Term</th><th>Amount you can borrow</th><th>Interest you pay</th></tr></thead>
+<tbody>
+<tr><td>36 months</td><td>$17,813</td><td>$1,987</td></tr>
+<tr><td>48 months</td><td>$22,968</td><td>$3,432</td></tr>
+<tr><td>60 months</td><td>$27,776</td><td>$5,224</td></tr>
+<tr><td>72 months</td><td>$32,260</td><td>$7,340</td></tr>
+<tr><td>84 months</td><td>$36,442</td><td>$9,758</td></tr>
+</tbody></table></div>
+<p>This is how a $550 payment ends up on a car that costs twice as much as the 36-month figure. The same payment for longer reaches a bigger loan, and a bigger loan on a longer term pays the most interest of all. Settling the price of the car first, and only then talking about financing, keeps the term from being used to make an expensive car look affordable. The Consumer Financial Protection Bureau makes a similar point in its auto loan guides: compare the total cost of the loan, not only the monthly payment.</p>
+
+<h2>A middle path: a longer term, paid like a shorter one</h2>
+<p>Some buyers take a longer term for the lower required payment, as a cushion in case money gets tight, and then pay more each month. On the 72-month loan above, paying $100 a month over the required $511 clears it in 58 months with $5,444 of interest, about $1,380 less than paying the minimum. That is close to what the 60-month loan costs.</p>
+<p>This only works if you actually make the extra payments and the lender applies them to principal. Check that the loan has no prepayment penalty, and if the lender offers a lower rate for the shorter term, the shorter term is usually still the better deal.</p>
+
+<h2>The new car loan interest deduction</h2>
+<p>For tax years 2025 through 2028, federal law lets many buyers deduct interest on a loan for a new car, SUV, van, pickup or motorcycle whose final assembly took place in the United States. According to the IRS, the deduction is capped at $10,000 a year, phases out for modified adjusted gross income above $100,000 ($200,000 on a joint return), and is available whether or not you itemize. Used cars and leases do not qualify.</p>
+<p>It helps, but it does not change the math much. In the first year of the 60-month loan above you would pay about $1,935 of interest. In the 22% tax bracket that deduction is worth roughly $426. Paying more interest to get a bigger deduction still leaves you paying more. Check the IRS rules for your vehicle and income before counting on it.</p>
+
+<h2>So how long should it be?</h2>
+<p>If the payment fits your budget at 48 or 60 months, that range usually balances the payment against interest and the time spent underwater. Going beyond 60 months makes sense mainly when the rate is low, you put a solid amount down and you plan to keep the car well past the end of the loan. If 84 months is the only way the payment works, the problem is usually the price of the car rather than the term.</p>
+<p>Try your own numbers in the <a href="auto-loan-calculator.html">auto loan calculator</a>, which shows every term from 36 to 84 months side by side. To see how a car payment fits with your other debts, run it through the <a href="debt-to-income-calculator.html">debt-to-income calculator</a>, and if you are deciding between a car loan and saving up first, the <a href="savings-goal-calculator.html">savings goal calculator</a> shows how long that would take.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+{faq}
+</div>
+<p class="note">Last reviewed: November 2026. Figures are estimates for planning, not a loan offer or financial advice.</p>
+</article>""",
+        "faq": [
+            ("Is a 72-month car loan a bad idea?",
+             "Not always, but it is expensive. On $30,000 at 7%, a 72-month loan costs about $1,180 more in interest than 60 months and keeps you owing more than a typical car is worth for about a year longer. It is more reasonable with a low rate, a solid down payment and a plan to keep the car for many years."),
+            ("How much does an 84-month car loan cost compared with 60 months?",
+             "At 7% on $30,000, the payment drops from $594 to $453, and interest rises from $5,642 to $8,034. If the lender charges 9% for 84 months, interest reaches $10,544."),
+            ("What is the most common car loan length?",
+             "Five and six year loans are common for new cars, and many lenders also offer seven years. A common term is not the same as a good one, so compare the total interest at two or three terms before choosing."),
+            ("Can I pay off a car loan early?",
+             "Most auto loans let you pay early without a penalty, but check your contract. Extra payments that go to principal cut the interest. Paying $100 a month extra on a $30,000, 72-month loan at 7% finishes it 14 months early and saves about $1,380."),
+            ("How do I avoid being upside down on a car loan?",
+             "Put at least 10% to 20% down, avoid rolling old loan balances into the new one, choose a shorter term and pick a car that holds its value. If you still start with a gap, GAP coverage protects you if the car is totaled."),
+        ],
+    },
 }
