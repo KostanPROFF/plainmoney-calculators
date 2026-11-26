@@ -1,0 +1,60 @@
+# Plain Money Calculators
+
+> Free, no-sign-up calculators for US personal finance (mortgages, loans, credit card payoff, take-home pay, 401(k), savings), plus health and everyday math, with plain-English guides that work through real numbers. Calculations run in the browser; each page states its formula, assumptions and sources.
+
+Run by Kostiantyn Kozulko (Kostan PROFF), founder of Constantine Commerce Solutions LLC. Independent: not a bank, lender or media company. Figures are 2026 US values from official sources such as the IRS, SSA, CFPB and CDC. Results are estimates, not financial, tax or medical advice. A Spanish version of every calculator is under /es/.
+
+## Home & loans
+
+- [Mortgage Calculator](https://plainmoneycalc.com/mortgage-calculator): Monthly payment with taxes, insurance, PMI and HOA, plus a full amortization schedule.
+- [Home Affordability Calculator](https://plainmoneycalc.com/home-affordability-calculator): How much house you can afford on your income, using the 28/36 rule lenders apply.
+- [Auto Loan Calculator](https://plainmoneycalc.com/auto-loan-calculator): Car payment after trade-in, down payment and sales tax, with total interest.
+- [Personal Loan Calculator](https://plainmoneycalc.com/personal-loan-calculator): Monthly payment, total interest and the true APR after origination fees.
+- [Credit Card Payoff Calculator](https://plainmoneycalc.com/credit-card-payoff-calculator): How long it takes to clear a balance, and the payment needed to be debt-free by a date.
+- [Debt-to-Income Calculator](https://plainmoneycalc.com/debt-to-income-calculator): The DTI ratio lenders check before approving a mortgage or loan.
+
+## Income & taxes
+
+- [Paycheck Calculator](https://plainmoneycalc.com/paycheck-calculator): Take-home pay after 2026 federal income tax, Social Security, Medicare and state tax.
+- [Salary to Hourly Calculator](https://plainmoneycalc.com/salary-to-hourly-calculator): Convert any pay rate between hourly, daily, weekly, biweekly, monthly and yearly.
+
+## Saving & retirement
+
+- [401(k) Calculator](https://plainmoneycalc.com/401k-calculator): Retirement balance with employer match, salary growth and 2026 contribution limits.
+- [Compound Interest Calculator](https://plainmoneycalc.com/compound-interest-calculator): How savings grow with monthly deposits and different compounding schedules.
+- [Savings Goal Calculator](https://plainmoneycalc.com/savings-goal-calculator): The monthly amount you need to save to reach a target by a deadline.
+
+## Health & fitness
+
+- [BMI Calculator](https://plainmoneycalc.com/bmi-calculator): Body mass index from height and weight, with the healthy weight range for your height.
+- [Calorie Calculator](https://plainmoneycalc.com/calorie-calculator): Daily calories to maintain, lose or gain weight, based on your size, age and activity.
+- [Due Date Calculator](https://plainmoneycalc.com/due-date-calculator): Estimated due date, current week of pregnancy and trimester dates from your last period.
+
+## Everyday math
+
+- [Percentage Calculator](https://plainmoneycalc.com/percentage-calculator): Percent of a number, what percent one number is of another, and percent change.
+- [Tip Calculator](https://plainmoneycalc.com/tip-calculator): Tip and total for any bill, split between any number of people.
+- [Age Calculator](https://plainmoneycalc.com/age-calculator): Exact age in years, months and days, plus the days until your next birthday.
+- [GPA Calculator](https://plainmoneycalc.com/gpa-calculator): Semester and cumulative GPA on the 4.0 scale from your grades and credit hours.
+
+## Guides
+
+- [How Much House Can I Afford on My Salary? A 2026 Table](https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary): The home price lenders' 28/36 rule allows at salaries from $40,000 to $200,000, and how debts, rates and the down payment move that number.
+- [How Long Does It Take to Pay Off Credit Card Debt?](https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt): Payoff times and total interest for $2,000 to $20,000 of card debt at 22% APR, paying the minimum or a fixed amount, plus what a balance transfer saves.
+- [How Long Should a Car Loan Be? 36 to 84 Months Compared](https://plainmoneycalc.com/how-long-should-a-car-loan-be): Monthly payment, total interest and how long you owe more than the car is worth on a $30,000 auto loan at 36, 48, 60, 72 and 84 months.
+- [How to Choose an Online Mortgage Calculator](https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator): What a good mortgage calculator should include, how simple and advanced tools differ, and the mistakes that make a payment estimate too low.
+
+## About the site
+
+- [About](https://plainmoneycalc.com/about): who runs the site, how calculators are built and checked, where figures come from
+- [Privacy Policy](https://plainmoneycalc.com/privacy): what is collected (the numbers you enter are not)
+- [Terms of Use](https://plainmoneycalc.com/terms)
+- [Contact](https://plainmoneycalc.com/contact): corrections and questions
+
+## Optional
+
+- [Site summary (JSON)](https://plainmoneycalc.com/ai/summary.json)
+- [Calculators and capabilities (JSON)](https://plainmoneycalc.com/ai/service.json)
+- [All FAQs (JSON)](https://plainmoneycalc.com/ai/faq.json)
+- [RSS feed of guides](https://plainmoneycalc.com/feed.xml)
+- [Sitemap](https://plainmoneycalc.com/sitemap.xml)

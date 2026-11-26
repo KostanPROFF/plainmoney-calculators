@@ -28,7 +28,10 @@ REVIEWED = "November 2026"
 # The site's author. The byline under each calculator and guide title, the short note at the end of those pages,
 # the About bio and the JSON-LD author all come from here. Facts only: no invented degrees or titles.
 AUTHOR = {"name": "Kostan PROFF", "full_name": "Kostiantyn Kozulko", "url": f"{SITE_URL}/about",
-          "company": "Constantine Commerce Solutions LLC"}
+          "company": "Constantine Commerce Solutions LLC",
+          # Public profiles of the author (LinkedIn, company site, social accounts), published as schema.org sameAs.
+          # Real profile URLs only; leave it empty rather than guess.
+          "same_as": ["https://github.com/KostanPROFF"]}
 # Calculator pages: first published (the commit that added the page, from git history) and last updated.
 # Bump CALC_UPDATED (or one page in CALC_MODIFIED) whenever rates, tax figures or limits change.
 CALC_UPDATED = "2026-11-24"
@@ -180,10 +183,18 @@ def extras(filename, lang):
     reviewed = tr(f"Last reviewed: {REVIEWED}.", lang) if guide else None
     guide_html = f'<section class="prose guide">\n{guide}\n<p class="note">{reviewed}</p>\n</section>\n' if guide and reviewed else ""
     html_ = guide_html + f'<section class="prose extras">\n<h2>{h_ex}</h2>\n{examples}\n<h2>{h_faq}</h2>\n<div class="faq">\n{items}</div>\n</section>'
-    strip = lambda t: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)).replace("&amp;", "&").strip()
-    schema = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": LANGS[lang]["hl"], "mainEntity": [
-        {"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]}
-    return html_, schema
+    return html_, faq_ld(faq, lang)
+
+
+def plain(t):
+    """HTML snippet as plain text, for structured data and the /ai files."""
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)).replace("&amp;", "&").strip()
+
+
+def faq_ld(faq, lang):
+    """FAQPage structured data for questions that are shown on the page."""
+    return {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": LANGS[lang]["hl"], "mainEntity": [
+        {"@type": "Question", "name": plain(q), "acceptedAnswer": {"@type": "Answer", "text": plain(a)}} for q, a in faq]}
 
 
 THEME_ICONS = (
@@ -203,6 +214,40 @@ OWNER_SECTION = {
 <p>El sitio es independiente. No es un banco, un prestamista ni una empresa de medios. Nació de una frustración sencilla: muchas calculadoras en internet ocultan sus supuestos o piden un correo electrónico antes de mostrar un resultado, y debería ser posible comprobar las cuentas uno mismo.</p>
 <p>Él decide qué calculadoras crear, comprueba cada una con ejemplos resueltos a mano y tablas oficiales, y actualiza las guías cuando cambian las tasas, los límites o las reglas fiscales. Usa herramientas de inteligencia artificial para redactar y programar, y revisa cada cifra antes de publicarla. No es asesor financiero, preparador de impuestos ni médico con licencia, así que las guías se basan en fuentes oficiales como el IRS, la CFPB y los CDC, y cada página indica las que utiliza. Si algo parece incorrecto, escriba a <a href="mailto:hello@plainmoneycalc.com">hello@plainmoneycalc.com</a> y él mismo lo revisará.</p>""",
 }
+
+# Short FAQ at the end of the home page, for the indexed languages, with matching FAQPage structured data.
+# Every answer restates what the site already says elsewhere (About, Privacy, the calculator pages).
+HOME_FAQ = {
+    "en": ("Common questions", [
+        ("Are these tools free?",
+         "Yes. Every calculator and guide on the site is free to use, with no account, no email address and no limit on how many times you run the numbers. The site is paid for by ads."),
+        ("Do you see or store the numbers I enter?",
+         "No. The math runs in your browser, so the amounts you type are never sent to us. Google Analytics and AdSense set their own cookies, which our <a href=\"privacy.html\">Privacy Policy</a> explains."),
+        ("Where do the figures come from?",
+         "Tax brackets, contribution limits and health ranges come from official sources such as the IRS and the CDC, and payments use the standard published formulas. Each page states its assumptions, so you can check how a result was reached."),
+        ("How current are the results?",
+         "The money tools use 2026 figures. Each calculator and guide shows the date it was last updated, and we recheck the numbers when rates, limits or tax rules change."),
+        ("Who runs the site?",
+         f"{AUTHOR['full_name']} ({AUTHOR['name']}), founder of {AUTHOR['company']}. The site is independent: it is not a bank, a lender or a media company. Read more on the <a href=\"about.html\">About</a> page."),
+        ("Is this financial advice?",
+         "No. Results are estimates for planning and comparison. Confirm important decisions with your lender, a tax professional or your doctor, who can look at your full situation."),
+    ]),
+    "es": ("Preguntas frecuentes", [
+        ("¿Estas herramientas son gratuitas?",
+         "Sí. Todas las calculadoras y guías del sitio son gratuitas, sin cuenta, sin correo electrónico y sin límite de cálculos. El sitio se financia con anuncios."),
+        ("¿Ven o guardan los números que introduzco?",
+         "No. Los cálculos se hacen en su navegador, así que las cantidades que escribe nunca nos llegan. Google Analytics y AdSense usan sus propias cookies, como explica nuestra <a href=\"privacy.html\">Política de privacidad</a>."),
+        ("¿De dónde salen las cifras?",
+         "Los tramos de impuestos, los límites de aportación y los rangos de salud proceden de fuentes oficiales como el IRS y los CDC, y los pagos usan las fórmulas estándar publicadas. Cada página indica sus supuestos, para que pueda comprobar cómo se llegó al resultado."),
+        ("¿Qué tan actuales son los resultados?",
+         "Las herramientas financieras usan las cifras de 2026. Cada calculadora y guía muestra la fecha de su última actualización, y revisamos los números cuando cambian las tasas, los límites o las reglas fiscales."),
+        ("¿Quién está detrás del sitio?",
+         f"{AUTHOR['full_name']} ({AUTHOR['name']}), fundador de {AUTHOR['company']}. El sitio es independiente: no es un banco, un prestamista ni una empresa de medios. Más información en la página <a href=\"about.html\">Acerca de</a>."),
+        ("¿Esto es asesoramiento financiero?",
+         "No. Los resultados son estimaciones para planificar y comparar. Confirme las decisiones importantes con su prestamista, un profesional de impuestos o su médico, que pueden ver su situación completa."),
+    ]),
+}
+FEED_LINK = f'<link rel="alternate" type="application/rss+xml" title="{SITE_NAME}: guides" href="{SITE_URL}/feed.xml">'
 
 # Byline and short author note for the indexed languages. Other translations are noindex and stay as they are.
 MONTHS_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
@@ -228,7 +273,8 @@ def page_dates(filename):
 
 
 def person():
-    return {"@type": "Person", "name": AUTHOR["name"], "url": AUTHOR["url"]}
+    p = {"@type": "Person", "name": AUTHOR["name"], "url": AUTHOR["url"]}
+    return {**p, "sameAs": AUTHOR["same_as"]} if AUTHOR["same_as"] else p
 
 
 def long_date(iso):
@@ -261,6 +307,12 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     extra, faq_schema = extras(filename, lang)
     if extra is None:
         return False
+    # The home page has its own short FAQ, written per language like the About owner section.
+    if filename == "index.html" and lang in HOME_FAQ:
+        h, faq = HOME_FAQ[lang]
+        extra = (f'<section class="prose home-faq"><h2>{h}</h2>\n'
+                 + "".join(f"<h3>{q}</h3>\n<p>{a}</p>\n" for q, a in faq) + "</section>")
+        faq_schema = faq_ld(faq, lang)
     # Partner offers sit right under the calculator, where the result is.
     offer_html = offers(filename, lang)
     if offer_html:
@@ -379,7 +431,7 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="manifest" href="/site.webmanifest">{FEED_LINK if lang == "en" else ""}
 <meta name="theme-color" content="#070b09" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f8f6" media="(prefers-color-scheme: light)">
 <style>{CSS}</style>
@@ -489,7 +541,7 @@ GROUPS = [
 CARDS = [c for _, cs in GROUPS for c in cs]
 cards = "".join(
     f'<h2>{g}</h2><div class="calc-grid">'
-    + "".join(f'<a class="calc-card" href="{h}"><strong>{t}</strong><span>{d}</span><em>Open calculator</em></a>' for h, t, d in cs)
+    + "".join(f'<a class="calc-card" href="{h}"><strong>{t}</strong><span>{d}</span><em>Open</em></a>' for h, t, d in cs)
     + "</div>"
     for g, cs in GROUPS
 )
@@ -1450,7 +1502,7 @@ page(
     "Plain-English guides with worked numbers: how much house you can afford, how long credit card debt takes to repay and how to read a mortgage estimate.",
     f"""<section class="prose"><h1>Guides</h1>
 <p class="lede">Longer reads that go with the calculators. Each one works through real numbers, explains the assumptions behind them and links to the calculator that produced them, so you can rerun the figures for your own situation.</p>
-{article_list(None, None)}
+{article_list(None, "All guides, newest first")}
 <p>We add a new guide most weeks and recheck the figures in older ones when rates, limits or tax rules change. Spotted something out of date? <a href="contact.html">Tell us</a>.</p>
 </section>""",
 )
@@ -1513,6 +1565,94 @@ pages = [p for p in ["", *(h for h, _, _ in CARDS), "articles.html", *ARTICLES, 
 if ADSENSE_CLIENT:
     (ROOT / "ads.txt").write_text(f"google.com, {ADSENSE_CLIENT.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0\n")
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+
+# ---------------------------------------------------------------- files for AI search and feed readers
+# llms.txt, ai.txt, /ai/*.json and the RSS feed are built from the same data as the pages, so they never drift
+# from what the site shows. They describe the English pages, the site's primary version.
+from datetime import date as _date
+from email.utils import format_datetime
+from datetime import datetime, timezone
+from html import unescape, escape
+
+CATEGORY = {h: unescape(g) for g, cs in GROUPS for h, _, _ in cs}
+abs_url = lambda f: f"{SITE_URL}/{clean(f)}".rstrip("/") if f != "index.html" else SITE_URL + "/"
+SUMMARY = ("Free, no-sign-up calculators for US personal finance (mortgages, loans, credit card payoff, take-home pay, "
+           "401(k), savings), plus health and everyday math, with plain-English guides that work through real numbers. "
+           "Calculations run in the browser; each page states its formula, assumptions and sources.")
+latest = max([CALC_UPDATED, *CALC_MODIFIED.values(), *(a.get("updated", a["published"]) for a in ARTICLES.values())])
+
+llms = [f"# {SITE_NAME}", "", f"> {SUMMARY}", "",
+        f"Run by {AUTHOR['full_name']} ({AUTHOR['name']}), founder of {AUTHOR['company']}. Independent: not a bank, "
+        "lender or media company. Figures are 2026 US values from official sources such as the IRS, SSA, CFPB and CDC. "
+        "Results are estimates, not financial, tax or medical advice. A Spanish version of every calculator is under /es/.", ""]
+for g, cs in GROUPS:
+    llms += [f"## {unescape(g)}", ""] + [f"- [{t}]({abs_url(h)}): {d}" for h, t, d in cs] + [""]
+llms += ["## Guides", ""] + [f"- [{a['title']}]({abs_url(f)}): {a['description']}"
+                              for f, a in sorted(ARTICLES.items(), key=lambda kv: kv[1]["published"], reverse=True)] + [""]
+llms += ["## About the site", "",
+         f"- [About]({SITE_URL}/about): who runs the site, how calculators are built and checked, where figures come from",
+         f"- [Privacy Policy]({SITE_URL}/privacy): what is collected (the numbers you enter are not)",
+         f"- [Terms of Use]({SITE_URL}/terms)", f"- [Contact]({SITE_URL}/contact): corrections and questions", "",
+         "## Optional", "",
+         f"- [Site summary (JSON)]({SITE_URL}/ai/summary.json)", f"- [Calculators and capabilities (JSON)]({SITE_URL}/ai/service.json)",
+         f"- [All FAQs (JSON)]({SITE_URL}/ai/faq.json)", f"- [RSS feed of guides]({SITE_URL}/feed.xml)",
+         f"- [Sitemap]({SITE_URL}/sitemap.xml)", ""]
+(ROOT / "llms.txt").write_text("\n".join(llms))
+
+# ai.txt: the site welcomes AI crawlers and assistants to read, cite and link to it, the same as robots.txt.
+ai_txt = (f"# ai.txt for {SITE_URL}\n# AI crawlers and assistants may read, summarize and cite this site.\n"
+          "# Please link to the page you quote and keep figures with their stated year and assumptions.\n\n"
+          "User-Agent: *\nAllow: /\n\n"
+          f"# Overview for language models: {SITE_URL}/llms.txt\n# Structured summary: {SITE_URL}/ai/summary.json\n"
+          f"# Contact: hello@plainmoneycalc.com\n")
+(ROOT / "ai.txt").write_text(ai_txt)
+(ROOT / ".well-known").mkdir(exist_ok=True)
+(ROOT / ".well-known" / "ai.txt").write_text(ai_txt)
+
+(ROOT / "ai").mkdir(exist_ok=True)
+dump = lambda name, data: (ROOT / "ai" / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+author = {"name": AUTHOR["name"], "full_name": AUTHOR["full_name"], "url": AUTHOR["url"],
+          "organization": AUTHOR["company"], **({"same_as": AUTHOR["same_as"]} if AUTHOR["same_as"] else {})}
+dump("summary.json", {
+    "name": SITE_NAME, "url": SITE_URL + "/", "description": SUMMARY, "audience": "United States",
+    "languages": {"primary": "en", "also_indexed": sorted(INDEXED_LANGS - {"en"}),
+                  "machine_translated_noindex": sorted(set(LANGS) - INDEXED_LANGS)},
+    "topics": [unescape(g) for g, _ in GROUPS], "author": author,
+    "price": "free", "account_required": False, "data_handling": "Calculations run in the browser; entered numbers are not sent to the server.",
+    "disclaimer": "Estimates only, not financial, tax, legal or medical advice.",
+    "last_updated": latest, "contact": "hello@plainmoneycalc.com",
+    "links": {"llms_txt": f"{SITE_URL}/llms.txt", "service": f"{SITE_URL}/ai/service.json", "faq": f"{SITE_URL}/ai/faq.json",
+              "feed": f"{SITE_URL}/feed.xml", "sitemap": f"{SITE_URL}/sitemap.xml", "about": f"{SITE_URL}/about"},
+})
+dump("service.json", {
+    "name": SITE_NAME, "url": SITE_URL + "/", "type": "Free online calculators and guides",
+    "price": "free", "account_required": False, "runs_in": "browser",
+    "calculators": [{"name": t, "url": abs_url(h), "category": CATEGORY[h], "description": d,
+                     "spanish_url": f"{SITE_URL}/es/{clean(h)}",
+                     "published": CALC_PUBLISHED.get(h), "updated": CALC_MODIFIED.get(h, CALC_UPDATED)} for h, t, d in CARDS],
+    "guides": [{"title": a["title"], "url": abs_url(f), "description": a["description"], "published": a["published"],
+                "updated": a.get("updated", a["published"]), "related_calculator": abs_url(a["related"]) if a.get("related") else None}
+               for f, a in ARTICLES.items()],
+})
+faqs = [{"question": plain(q), "answer": plain(a), "url": SITE_URL + "/"} for q, a in HOME_FAQ["en"][1]]
+faqs += [{"question": plain(q), "answer": plain(a), "url": abs_url(f)} for f, c in CONTENT.items() for q, a in c["faq"]]
+faqs += [{"question": plain(q), "answer": plain(a), "url": abs_url(f)} for f, a in ARTICLES.items() for q, a in a["faq"]]
+dump("faq.json", {"name": f"{SITE_NAME} FAQ", "url": SITE_URL + "/", "language": "en",
+                  "note": "Each question also appears, with the same answer, on the page in its url field.", "faqs": faqs})
+
+# RSS 2.0 feed of the guides, newest first. Dates are the guides' own, so a rebuild does not change the feed.
+rfc822 = lambda iso: format_datetime(datetime.combine(_date.fromisoformat(iso), datetime.min.time(), timezone.utc))
+items = sorted(ARTICLES.items(), key=lambda kv: kv[1].get("updated", kv[1]["published"]), reverse=True)
+(ROOT / "feed.xml").write_text(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">\n<channel>\n'
+    f"<title>{escape(SITE_NAME)}: guides</title>\n<link>{SITE_URL}/articles</link>\n"
+    f'<atom:link href="{SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n'
+    "<description>Plain-English money guides that work through real numbers, written by the author of the calculators.</description>\n"
+    f"<language>en-us</language>\n<lastBuildDate>{rfc822(latest)}</lastBuildDate>\n"
+    + "".join(f"<item>\n<title>{escape(a['title'])}</title>\n<link>{abs_url(f)}</link>\n<guid isPermaLink=\"true\">{abs_url(f)}</guid>\n"
+              f"<pubDate>{rfc822(a['published'])}</pubDate>\n<dc:creator>{escape(AUTHOR['name'])}</dc:creator>\n"
+              f"<description>{escape(a['description'])}</description>\n</item>\n" for f, a in items)
+    + "</channel>\n</rss>\n")
 
 # Drop pages this run did not produce: renamed or deleted pages, and translations that no longer exist.
 for stale in sorted(ROOT.rglob("*.html")):
