@@ -1,0 +1,49 @@
+{
+  "name": "Plain Money Calculators",
+  "url": "https://plainmoneycalc.com/",
+  "description": "Free, no-sign-up calculators for US personal finance (mortgages, loans, credit card payoff, take-home pay, 401(k), savings), plus health and everyday math, with plain-English guides that work through real numbers. Calculations run in the browser; each page states its formula, assumptions and sources.",
+  "audience": "United States",
+  "languages": {
+    "primary": "en",
+    "also_indexed": [
+      "es"
+    ],
+    "machine_translated_noindex": [
+      "ar",
+      "ko",
+      "pt",
+      "ru",
+      "tl",
+      "uk",
+      "vi",
+      "zh"
+    ]
+  },
+  "topics": [
+    "Home & loans",
+    "Income & taxes",
+    "Saving & retirement",
+    "Health & fitness",
+    "Everyday math"
+  ],
+  "author": {
+    "name": "Kostan PROFF",
+    "full_name": "Kostiantyn Kozulko",
+    "url": "https://plainmoneycalc.com/about",
+    "organization": "Constantine Commerce Solutions LLC"
+  },
+  "price": "free",
+  "account_required": false,
+  "data_handling": "Calculations run in the browser; entered numbers are not sent to the server.",
+  "disclaimer": "Estimates only, not financial, tax, legal or medical advice.",
+  "last_updated": "2026-11-24",
+  "contact": "hello@plainmoneycalc.com",
+  "links": {
+    "llms_txt": "https://plainmoneycalc.com/llms.txt",
+    "service": "https://plainmoneycalc.com/ai/service.json",
+    "faq": "https://plainmoneycalc.com/ai/faq.json",
+    "feed": "https://plainmoneycalc.com/feed.xml",
+    "sitemap": "https://plainmoneycalc.com/sitemap.xml",
+    "about": "https://plainmoneycalc.com/about"
+  }
+}

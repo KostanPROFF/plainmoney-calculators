@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>Plain Money Calculators: guides</title>
+<link>https://plainmoneycalc.com/articles</link>
+<atom:link href="https://plainmoneycalc.com/feed.xml" rel="self" type="application/rss+xml"/>
+<description>Plain-English money guides that work through real numbers, written by the author of the calculators.</description>
+<language>en-us</language>
+<lastBuildDate>Tue, 24 Nov 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>How Much House Can I Afford on My Salary? A 2026 Table</title>
+<link>https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary</link>
+<guid isPermaLink="true">https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary</guid>
+<pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+<dc:creator>Kostan PROFF</dc:creator>
+<description>The home price lenders&#x27; 28/36 rule allows at salaries from $40,000 to $200,000, and how debts, rates and the down payment move that number.</description>
+</item>
+<item>
+<title>How Long Does It Take to Pay Off Credit Card Debt?</title>
+<link>https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt</link>
+<guid isPermaLink="true">https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt</guid>
+<pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+<dc:creator>Kostan PROFF</dc:creator>
+<description>Payoff times and total interest for $2,000 to $20,000 of card debt at 22% APR, paying the minimum or a fixed amount, plus what a balance transfer saves.</description>
+</item>
+<item>
+<title>How Long Should a Car Loan Be? 36 to 84 Months Compared</title>
+<link>https://plainmoneycalc.com/how-long-should-a-car-loan-be</link>
+<guid isPermaLink="true">https://plainmoneycalc.com/how-long-should-a-car-loan-be</guid>
+<pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+<dc:creator>Kostan PROFF</dc:creator>
+<description>Monthly payment, total interest and how long you owe more than the car is worth on a $30,000 auto loan at 36, 48, 60, 72 and 84 months.</description>
+</item>
+<item>
+<title>How to Choose an Online Mortgage Calculator</title>
+<link>https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator</link>
+<guid isPermaLink="true">https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator</guid>
+<pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+<dc:creator>Kostan PROFF</dc:creator>
+<description>What a good mortgage calculator should include, how simple and advanced tools differ, and the mistakes that make a payment estimate too low.</description>
+</item>
+</channel>
+</rss>

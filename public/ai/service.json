@@ -1,0 +1,206 @@
+{
+  "name": "Plain Money Calculators",
+  "url": "https://plainmoneycalc.com/",
+  "type": "Free online calculators and guides",
+  "price": "free",
+  "account_required": false,
+  "runs_in": "browser",
+  "calculators": [
+    {
+      "name": "Mortgage Calculator",
+      "url": "https://plainmoneycalc.com/mortgage-calculator",
+      "category": "Home & loans",
+      "description": "Monthly payment with taxes, insurance, PMI and HOA, plus a full amortization schedule.",
+      "spanish_url": "https://plainmoneycalc.com/es/mortgage-calculator",
+      "published": "2026-10-19",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Home Affordability Calculator",
+      "url": "https://plainmoneycalc.com/home-affordability-calculator",
+      "category": "Home & loans",
+      "description": "How much house you can afford on your income, using the 28/36 rule lenders apply.",
+      "spanish_url": "https://plainmoneycalc.com/es/home-affordability-calculator",
+      "published": "2026-10-20",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Auto Loan Calculator",
+      "url": "https://plainmoneycalc.com/auto-loan-calculator",
+      "category": "Home & loans",
+      "description": "Car payment after trade-in, down payment and sales tax, with total interest.",
+      "spanish_url": "https://plainmoneycalc.com/es/auto-loan-calculator",
+      "published": "2026-10-19",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Personal Loan Calculator",
+      "url": "https://plainmoneycalc.com/personal-loan-calculator",
+      "category": "Home & loans",
+      "description": "Monthly payment, total interest and the true APR after origination fees.",
+      "spanish_url": "https://plainmoneycalc.com/es/personal-loan-calculator",
+      "published": "2026-10-20",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Credit Card Payoff Calculator",
+      "url": "https://plainmoneycalc.com/credit-card-payoff-calculator",
+      "category": "Home & loans",
+      "description": "How long it takes to clear a balance, and the payment needed to be debt-free by a date.",
+      "spanish_url": "https://plainmoneycalc.com/es/credit-card-payoff-calculator",
+      "published": "2026-10-20",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Debt-to-Income Calculator",
+      "url": "https://plainmoneycalc.com/debt-to-income-calculator",
+      "category": "Home & loans",
+      "description": "The DTI ratio lenders check before approving a mortgage or loan.",
+      "spanish_url": "https://plainmoneycalc.com/es/debt-to-income-calculator",
+      "published": "2026-10-20",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Paycheck Calculator",
+      "url": "https://plainmoneycalc.com/paycheck-calculator",
+      "category": "Income & taxes",
+      "description": "Take-home pay after 2026 federal income tax, Social Security, Medicare and state tax.",
+      "spanish_url": "https://plainmoneycalc.com/es/paycheck-calculator",
+      "published": "2026-10-19",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Salary to Hourly Calculator",
+      "url": "https://plainmoneycalc.com/salary-to-hourly-calculator",
+      "category": "Income & taxes",
+      "description": "Convert any pay rate between hourly, daily, weekly, biweekly, monthly and yearly.",
+      "spanish_url": "https://plainmoneycalc.com/es/salary-to-hourly-calculator",
+      "published": "2026-10-20",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "401(k) Calculator",
+      "url": "https://plainmoneycalc.com/401k-calculator",
+      "category": "Saving & retirement",
+      "description": "Retirement balance with employer match, salary growth and 2026 contribution limits.",
+      "spanish_url": "https://plainmoneycalc.com/es/401k-calculator",
+      "published": "2026-10-19",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Compound Interest Calculator",
+      "url": "https://plainmoneycalc.com/compound-interest-calculator",
+      "category": "Saving & retirement",
+      "description": "How savings grow with monthly deposits and different compounding schedules.",
+      "spanish_url": "https://plainmoneycalc.com/es/compound-interest-calculator",
+      "published": "2026-10-19",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Savings Goal Calculator",
+      "url": "https://plainmoneycalc.com/savings-goal-calculator",
+      "category": "Saving & retirement",
+      "description": "The monthly amount you need to save to reach a target by a deadline.",
+      "spanish_url": "https://plainmoneycalc.com/es/savings-goal-calculator",
+      "published": "2026-10-20",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "BMI Calculator",
+      "url": "https://plainmoneycalc.com/bmi-calculator",
+      "category": "Health & fitness",
+      "description": "Body mass index from height and weight, with the healthy weight range for your height.",
+      "spanish_url": "https://plainmoneycalc.com/es/bmi-calculator",
+      "published": "2026-10-29",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Calorie Calculator",
+      "url": "https://plainmoneycalc.com/calorie-calculator",
+      "category": "Health & fitness",
+      "description": "Daily calories to maintain, lose or gain weight, based on your size, age and activity.",
+      "spanish_url": "https://plainmoneycalc.com/es/calorie-calculator",
+      "published": "2026-10-29",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Due Date Calculator",
+      "url": "https://plainmoneycalc.com/due-date-calculator",
+      "category": "Health & fitness",
+      "description": "Estimated due date, current week of pregnancy and trimester dates from your last period.",
+      "spanish_url": "https://plainmoneycalc.com/es/due-date-calculator",
+      "published": "2026-10-29",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Percentage Calculator",
+      "url": "https://plainmoneycalc.com/percentage-calculator",
+      "category": "Everyday math",
+      "description": "Percent of a number, what percent one number is of another, and percent change.",
+      "spanish_url": "https://plainmoneycalc.com/es/percentage-calculator",
+      "published": "2026-10-29",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Tip Calculator",
+      "url": "https://plainmoneycalc.com/tip-calculator",
+      "category": "Everyday math",
+      "description": "Tip and total for any bill, split between any number of people.",
+      "spanish_url": "https://plainmoneycalc.com/es/tip-calculator",
+      "published": "2026-10-29",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "Age Calculator",
+      "url": "https://plainmoneycalc.com/age-calculator",
+      "category": "Everyday math",
+      "description": "Exact age in years, months and days, plus the days until your next birthday.",
+      "spanish_url": "https://plainmoneycalc.com/es/age-calculator",
+      "published": "2026-10-29",
+      "updated": "2026-11-24"
+    },
+    {
+      "name": "GPA Calculator",
+      "url": "https://plainmoneycalc.com/gpa-calculator",
+      "category": "Everyday math",
+      "description": "Semester and cumulative GPA on the 4.0 scale from your grades and credit hours.",
+      "spanish_url": "https://plainmoneycalc.com/es/gpa-calculator",
+      "published": "2026-10-29",
+      "updated": "2026-11-24"
+    }
+  ],
+  "guides": [
+    {
+      "title": "How to Choose an Online Mortgage Calculator",
+      "url": "https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator",
+      "description": "What a good mortgage calculator should include, how simple and advanced tools differ, and the mistakes that make a payment estimate too low.",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "related_calculator": "https://plainmoneycalc.com/mortgage-calculator"
+    },
+    {
+      "title": "How Much House Can I Afford on My Salary? A 2026 Table",
+      "url": "https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary",
+      "description": "The home price lenders' 28/36 rule allows at salaries from $40,000 to $200,000, and how debts, rates and the down payment move that number.",
+      "published": "2026-11-24",
+      "updated": "2026-11-24",
+      "related_calculator": "https://plainmoneycalc.com/home-affordability-calculator"
+    },
+    {
+      "title": "How Long Does It Take to Pay Off Credit Card Debt?",
+      "url": "https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt",
+      "description": "Payoff times and total interest for $2,000 to $20,000 of card debt at 22% APR, paying the minimum or a fixed amount, plus what a balance transfer saves.",
+      "published": "2026-11-24",
+      "updated": "2026-11-24",
+      "related_calculator": "https://plainmoneycalc.com/credit-card-payoff-calculator"
+    },
+    {
+      "title": "How Long Should a Car Loan Be? 36 to 84 Months Compared",
+      "url": "https://plainmoneycalc.com/how-long-should-a-car-loan-be",
+      "description": "Monthly payment, total interest and how long you owe more than the car is worth on a $30,000 auto loan at 36, 48, 60, 72 and 84 months.",
+      "published": "2026-11-24",
+      "updated": "2026-11-24",
+      "related_calculator": "https://plainmoneycalc.com/auto-loan-calculator"
+    }
+  ]
+}

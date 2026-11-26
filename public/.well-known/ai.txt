@@ -1,0 +1,10 @@
+# ai.txt for https://plainmoneycalc.com
+# AI crawlers and assistants may read, summarize and cite this site.
+# Please link to the page you quote and keep figures with their stated year and assumptions.
+
+User-Agent: *
+Allow: /
+
+# Overview for language models: https://plainmoneycalc.com/llms.txt
+# Structured summary: https://plainmoneycalc.com/ai/summary.json
+# Contact: hello@plainmoneycalc.com

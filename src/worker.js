@@ -10,6 +10,10 @@ export default {
         { headers: { "cache-control": "private, no-store" } },
       );
     }
+    // /.well-known/ai.txt is a static file too; this only answers if a deploy ever leaves the dot folder out.
+    if (url.pathname === "/.well-known/ai.txt") {
+      return env.ASSETS.fetch(new Request(new URL("/ai.txt", url), request));
+    }
     return env.ASSETS.fetch(request);
   },
 };

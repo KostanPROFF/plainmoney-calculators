@@ -1,0 +1,513 @@
+{
+  "name": "Plain Money Calculators FAQ",
+  "url": "https://plainmoneycalc.com/",
+  "language": "en",
+  "note": "Each question also appears, with the same answer, on the page in its url field.",
+  "faqs": [
+    {
+      "question": "Are these tools free?",
+      "answer": "Yes. Every calculator and guide on the site is free to use, with no account, no email address and no limit on how many times you run the numbers. The site is paid for by ads.",
+      "url": "https://plainmoneycalc.com/"
+    },
+    {
+      "question": "Do you see or store the numbers I enter?",
+      "answer": "No. The math runs in your browser, so the amounts you type are never sent to us. Google Analytics and AdSense set their own cookies, which our Privacy Policy explains.",
+      "url": "https://plainmoneycalc.com/"
+    },
+    {
+      "question": "Where do the figures come from?",
+      "answer": "Tax brackets, contribution limits and health ranges come from official sources such as the IRS and the CDC, and payments use the standard published formulas. Each page states its assumptions, so you can check how a result was reached.",
+      "url": "https://plainmoneycalc.com/"
+    },
+    {
+      "question": "How current are the results?",
+      "answer": "The money tools use 2026 figures. Each calculator and guide shows the date it was last updated, and we recheck the numbers when rates, limits or tax rules change.",
+      "url": "https://plainmoneycalc.com/"
+    },
+    {
+      "question": "Who runs the site?",
+      "answer": "Kostiantyn Kozulko (Kostan PROFF), founder of Constantine Commerce Solutions LLC. The site is independent: it is not a bank, a lender or a media company. Read more on the About page.",
+      "url": "https://plainmoneycalc.com/"
+    },
+    {
+      "question": "Is this financial advice?",
+      "answer": "No. Results are estimates for planning and comparison. Confirm important decisions with your lender, a tax professional or your doctor, who can look at your full situation.",
+      "url": "https://plainmoneycalc.com/"
+    },
+    {
+      "question": "What is included in a mortgage payment?",
+      "answer": "Most payments include principal, interest, property tax and homeowners insurance, often shortened to PITI. If you put down less than 20% on a conventional loan you also pay PMI, and condos or planned communities may add HOA dues.",
+      "url": "https://plainmoneycalc.com/mortgage-calculator"
+    },
+    {
+      "question": "How much should my down payment be?",
+      "answer": "Twenty percent avoids PMI on a conventional loan, but many buyers put down 3% to 10%. FHA loans allow 3.5% down with a credit score of 580 or higher. A smaller down payment means a larger loan, a higher payment and PMI until you reach 20% equity.",
+      "url": "https://plainmoneycalc.com/mortgage-calculator"
+    },
+    {
+      "question": "How do I remove PMI?",
+      "answer": "On conventional loans you can ask your lender to cancel PMI once your balance reaches 80% of the home's original value, and it ends automatically at 78%. Extra principal payments or a new appraisal after your home gains value can get you there sooner.",
+      "url": "https://plainmoneycalc.com/mortgage-calculator"
+    },
+    {
+      "question": "Is a 15-year or 30-year mortgage better?",
+      "answer": "A 15-year loan has a lower rate and far less total interest, but a higher monthly payment. A 30-year loan keeps the payment lower and leaves room in your budget. You can also take a 30-year loan and make extra payments when you can.",
+      "url": "https://plainmoneycalc.com/mortgage-calculator"
+    },
+    {
+      "question": "Why is my estimate different from my lender's quote?",
+      "answer": "Lenders use your actual property tax bill, insurance quote, credit score and loan program. Closing costs, points and escrow cushions can also change the first payments. Use this calculator to compare scenarios, then confirm numbers with a Loan Estimate.",
+      "url": "https://plainmoneycalc.com/mortgage-calculator"
+    },
+    {
+      "question": "How much house can I afford on my salary?",
+      "answer": "A common guideline is a home price of about 3 to 4 times your annual income, but your debts, down payment and interest rate matter more. This calculator applies the 28/36 rule lenders use to turn your actual numbers into a price.",
+      "url": "https://plainmoneycalc.com/home-affordability-calculator"
+    },
+    {
+      "question": "What is the 28/36 rule?",
+      "answer": "Lenders prefer that housing costs stay under 28% of your gross monthly income and that all debt payments, including housing, stay under 36%. Some programs allow a total of 43% or more with strong credit or cash reserves.",
+      "url": "https://plainmoneycalc.com/home-affordability-calculator"
+    },
+    {
+      "question": "Does the calculator include closing costs?",
+      "answer": "No. Closing costs usually run 2% to 5% of the price and are paid in cash at closing, separate from the down payment. Keep that money aside, along with an emergency fund, before you settle on a price.",
+      "url": "https://plainmoneycalc.com/home-affordability-calculator"
+    },
+    {
+      "question": "Should I buy at the top of my budget?",
+      "answer": "Not necessarily. The maximum a lender approves leaves little room for repairs, savings or a change in income. Many buyers aim below the limit so the payment stays comfortable.",
+      "url": "https://plainmoneycalc.com/home-affordability-calculator"
+    },
+    {
+      "question": "What is a good interest rate on a car loan?",
+      "answer": "Rates depend on your credit score, the loan term and whether the car is new or used. Borrowers with excellent credit often get rates under 7% on new cars, while fair or poor credit can mean rates well above 12%. Credit unions and manufacturer offers are worth checking.",
+      "url": "https://plainmoneycalc.com/auto-loan-calculator"
+    },
+    {
+      "question": "How long should a car loan be?",
+      "answer": "Sixty months or less is a common target. Longer terms lower the payment but cost more interest, and the car may be worth less than you owe for years. If you need 72 or 84 months to afford the payment, consider a less expensive car.",
+      "url": "https://plainmoneycalc.com/auto-loan-calculator"
+    },
+    {
+      "question": "Is sales tax included in the loan?",
+      "answer": "Often, yes. Many buyers roll sales tax and fees into the loan, which this calculator does. Paying them in cash lowers the amount financed and the interest you pay.",
+      "url": "https://plainmoneycalc.com/auto-loan-calculator"
+    },
+    {
+      "question": "How does a trade-in lower my cost?",
+      "answer": "The trade-in value is subtracted from the price, and in most states sales tax is charged only on the difference. If you still owe money on the trade-in, that balance is added to the new loan.",
+      "url": "https://plainmoneycalc.com/auto-loan-calculator"
+    },
+    {
+      "question": "What is an origination fee?",
+      "answer": "It is a one-time fee, usually 1% to 10% of the loan, that many online lenders charge. It is normally subtracted from the money you receive, so you repay the full loan amount while getting less cash.",
+      "url": "https://plainmoneycalc.com/personal-loan-calculator"
+    },
+    {
+      "question": "What is the difference between interest rate and APR?",
+      "answer": "The interest rate determines your monthly payment. The APR also includes fees, so it shows the real yearly cost of borrowing. Use the APR to compare offers from different lenders.",
+      "url": "https://plainmoneycalc.com/personal-loan-calculator"
+    },
+    {
+      "question": "How much should I borrow if there is a fee?",
+      "answer": "If you need a specific amount in hand, divide it by one minus the fee rate. To receive $10,000 with a 6% fee, you would borrow about $10,640.",
+      "url": "https://plainmoneycalc.com/personal-loan-calculator"
+    },
+    {
+      "question": "Does paying off a personal loan early save money?",
+      "answer": "Yes, because interest is charged on the remaining balance. Most personal lenders do not charge prepayment penalties, but check your loan agreement first.",
+      "url": "https://plainmoneycalc.com/personal-loan-calculator"
+    },
+    {
+      "question": "Why does my balance go down so slowly?",
+      "answer": "At a high APR, a large part of each payment goes to interest. On a $5,000 balance at 24%, interest is about $100 in the first month, so a $150 payment reduces the balance by only $50.",
+      "url": "https://plainmoneycalc.com/credit-card-payoff-calculator"
+    },
+    {
+      "question": "Should I pay off the highest interest card first?",
+      "answer": "Paying the highest APR first, called the avalanche method, saves the most money. Paying the smallest balance first, the snowball method, gives quicker wins and can help you stay motivated. Both work if you keep paying more than the minimum.",
+      "url": "https://plainmoneycalc.com/credit-card-payoff-calculator"
+    },
+    {
+      "question": "Is a balance transfer worth it?",
+      "answer": "It can be. A 0% intro APR card stops interest for 12 to 21 months, usually for a 3% to 5% fee. Divide the balance by the number of intro months to see the payment needed to clear it before the regular rate starts.",
+      "url": "https://plainmoneycalc.com/credit-card-payoff-calculator"
+    },
+    {
+      "question": "How is credit card interest calculated?",
+      "answer": "Card issuers divide the APR by 365 to get a daily rate and apply it to your average daily balance. This calculator uses a monthly rate of APR divided by 12, which gives very close results.",
+      "url": "https://plainmoneycalc.com/credit-card-payoff-calculator"
+    },
+    {
+      "question": "What DTI do I need for a mortgage?",
+      "answer": "Most conventional loans look for 36% or less and accept up to about 45% with strong credit. FHA loans can allow up to 50% in some cases. Lower is always better for approval and rates.",
+      "url": "https://plainmoneycalc.com/debt-to-income-calculator"
+    },
+    {
+      "question": "Does DTI affect my credit score?",
+      "answer": "No. Credit scores do not use income, so DTI is not part of your score. Lenders calculate it separately when you apply. Credit card utilization, which compares balances to limits, does affect your score.",
+      "url": "https://plainmoneycalc.com/debt-to-income-calculator"
+    },
+    {
+      "question": "Should I use gross or net income?",
+      "answer": "Use gross income, before taxes and deductions. That is what lenders use. If you are self-employed, lenders usually average your net business income from the last two tax returns.",
+      "url": "https://plainmoneycalc.com/debt-to-income-calculator"
+    },
+    {
+      "question": "How can I lower my DTI quickly?",
+      "answer": "Pay off small loans entirely, since that removes a whole payment. Paying down credit cards lowers the minimum payment. Adding income, such as a co-borrower's salary, also lowers the ratio.",
+      "url": "https://plainmoneycalc.com/debt-to-income-calculator"
+    },
+    {
+      "question": "Why is my paycheck different from this estimate?",
+      "answer": "Your employer withholds based on your Form W-4, which may differ from your actual tax. Health, dental and other benefit deductions, local taxes and state disability insurance can also reduce your check.",
+      "url": "https://plainmoneycalc.com/paycheck-calculator"
+    },
+    {
+      "question": "What is the 2026 standard deduction?",
+      "answer": "It is $16,100 for single filers, $32,200 for married couples filing jointly and $24,150 for heads of household. It is subtracted from your income before federal tax brackets apply.",
+      "url": "https://plainmoneycalc.com/paycheck-calculator"
+    },
+    {
+      "question": "Do 401(k) contributions reduce my taxes?",
+      "answer": "Traditional 401(k) contributions reduce federal and most state income tax, but not Social Security or Medicare tax. Roth 401(k) contributions are taxed now and come out tax-free in retirement.",
+      "url": "https://plainmoneycalc.com/paycheck-calculator"
+    },
+    {
+      "question": "What is the difference between marginal and effective tax rate?",
+      "answer": "Your marginal rate is the rate on your last dollar of income. Your effective rate is total tax divided by total income, which is always lower because the first dollars are taxed at lower rates.",
+      "url": "https://plainmoneycalc.com/paycheck-calculator"
+    },
+    {
+      "question": "Which states have no income tax?",
+      "answer": "Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington and Wyoming do not tax wages. Washington taxes some capital gains.",
+      "url": "https://plainmoneycalc.com/paycheck-calculator"
+    },
+    {
+      "question": "How many work hours are in a year?",
+      "answer": "A full-time schedule of 40 hours a week for 52 weeks is 2,080 hours. With two weeks of unpaid time off it is 2,000 hours. Paid holidays and vacation still count as paid hours.",
+      "url": "https://plainmoneycalc.com/salary-to-hourly-calculator"
+    },
+    {
+      "question": "Is biweekly the same as twice a month?",
+      "answer": "No. Biweekly pay comes every two weeks, which is 26 paychecks a year, so two months each year have three paydays. Twice-monthly pay is 24 paychecks, usually on the 15th and the last day of the month.",
+      "url": "https://plainmoneycalc.com/salary-to-hourly-calculator"
+    },
+    {
+      "question": "How do I compare a salary job with an hourly job?",
+      "answer": "Convert both to an annual figure, then add the value of benefits such as health insurance, retirement match and paid time off. Hourly jobs may also pay overtime at 1.5 times the regular rate after 40 hours a week.",
+      "url": "https://plainmoneycalc.com/salary-to-hourly-calculator"
+    },
+    {
+      "question": "Are these amounts before or after taxes?",
+      "answer": "They are gross amounts before taxes and deductions. Use the paycheck calculator to estimate take-home pay.",
+      "url": "https://plainmoneycalc.com/salary-to-hourly-calculator"
+    },
+    {
+      "question": "How much can I contribute to a 401(k) in 2026?",
+      "answer": "The employee limit is $24,500. Workers aged 50 and older can add $8,000, and those aged 60 to 63 can add $11,250 instead. Employer contributions do not count toward your personal limit.",
+      "url": "https://plainmoneycalc.com/401k-calculator"
+    },
+    {
+      "question": "What return should I assume?",
+      "answer": "Many planners use 5% to 7% a year for a diversified stock and bond portfolio before inflation. Returns vary a lot from year to year, so it helps to test a lower rate as well.",
+      "url": "https://plainmoneycalc.com/401k-calculator"
+    },
+    {
+      "question": "What does an employer match mean?",
+      "answer": "Your employer adds money based on what you contribute. A 50% match up to 6% of pay means that if you put in 6%, your employer adds 3%. Contributing less than the match limit leaves free money on the table.",
+      "url": "https://plainmoneycalc.com/401k-calculator"
+    },
+    {
+      "question": "Should I choose a traditional or Roth 401(k)?",
+      "answer": "Traditional contributions lower your taxes now and are taxed when you withdraw. Roth contributions are taxed now and are tax-free in retirement. If you expect a higher tax rate later, Roth often makes sense.",
+      "url": "https://plainmoneycalc.com/401k-calculator"
+    },
+    {
+      "question": "What does today's dollars mean?",
+      "answer": "It adjusts the future balance for 2.5% yearly inflation, showing what that amount would buy at today's prices.",
+      "url": "https://plainmoneycalc.com/401k-calculator"
+    },
+    {
+      "question": "What is compound interest?",
+      "answer": "It is interest earned on both your deposits and on interest already earned. Over time the interest itself grows, so balances rise faster the longer money stays invested.",
+      "url": "https://plainmoneycalc.com/compound-interest-calculator"
+    },
+    {
+      "question": "Does compounding frequency matter?",
+      "answer": "A little. Daily compounding earns slightly more than monthly or yearly at the same rate, but the difference is small. The rate, the amount you add and the number of years matter far more.",
+      "url": "https://plainmoneycalc.com/compound-interest-calculator"
+    },
+    {
+      "question": "What is the difference between APR and APY?",
+      "answer": "APR is the simple yearly rate. APY includes the effect of compounding, so it is slightly higher. Savings accounts usually advertise APY.",
+      "url": "https://plainmoneycalc.com/compound-interest-calculator"
+    },
+    {
+      "question": "Where can I earn compound interest?",
+      "answer": "High-yield savings accounts, certificates of deposit, money market funds and bonds pay interest. Stock investments grow when dividends are reinvested and prices rise, which works in a similar way over the long term.",
+      "url": "https://plainmoneycalc.com/compound-interest-calculator"
+    },
+    {
+      "question": "How much should I keep in an emergency fund?",
+      "answer": "A common target is three to six months of essential expenses. People with irregular income or a single household income often aim for more.",
+      "url": "https://plainmoneycalc.com/savings-goal-calculator"
+    },
+    {
+      "question": "Where should I keep money for a short-term goal?",
+      "answer": "For goals under five years, a high-yield savings account, money market account or CDs keep the money safe and earn interest. Stocks can fall right when you need the money.",
+      "url": "https://plainmoneycalc.com/savings-goal-calculator"
+    },
+    {
+      "question": "What if I cannot save the full monthly amount?",
+      "answer": "Extend the deadline, lower the goal, or start with a smaller amount and raise it when your income grows. Saving something every month builds the habit.",
+      "url": "https://plainmoneycalc.com/savings-goal-calculator"
+    },
+    {
+      "question": "Does the calculator account for taxes on interest?",
+      "answer": "No. Interest from savings accounts is taxable income, so your real growth will be slightly lower. The difference is small at typical savings rates.",
+      "url": "https://plainmoneycalc.com/savings-goal-calculator"
+    },
+    {
+      "question": "What is a healthy BMI?",
+      "answer": "For adults, the CDC defines a BMI from 18.5 to 24.9 as a healthy weight. Below 18.5 is underweight, 25 to 29.9 is overweight, and 30 or higher is obesity.",
+      "url": "https://plainmoneycalc.com/bmi-calculator"
+    },
+    {
+      "question": "Is BMI accurate?",
+      "answer": "BMI is a useful screening tool for groups of people, but it can mislead for individuals. It cannot tell muscle from fat, so muscular people may show a high BMI, and older adults with little muscle may show a normal BMI with excess fat.",
+      "url": "https://plainmoneycalc.com/bmi-calculator"
+    },
+    {
+      "question": "Is BMI different for men and women?",
+      "answer": "No. Adults use the same formula and the same categories regardless of sex. Women tend to carry more body fat than men at the same BMI, which is one of the limits of the measure.",
+      "url": "https://plainmoneycalc.com/bmi-calculator"
+    },
+    {
+      "question": "Can children use this calculator?",
+      "answer": "No. For children and teens aged 2 to 19, BMI is compared with others of the same age and sex using growth charts, so the adult categories do not apply.",
+      "url": "https://plainmoneycalc.com/bmi-calculator"
+    },
+    {
+      "question": "How many calories should I eat to lose weight?",
+      "answer": "Start from the calories that maintain your weight and subtract 250 to 500 a day. That usually leads to a loss of about half a pound to 1 pound a week, a pace that is easier to keep up and preserves more muscle.",
+      "url": "https://plainmoneycalc.com/calorie-calculator"
+    },
+    {
+      "question": "What is the difference between BMR and TDEE?",
+      "answer": "BMR, basal metabolic rate, is what your body burns at complete rest to keep you alive. TDEE, total daily energy expenditure, adds digestion and every kind of movement, from walking around the house to workouts. Your diet should be planned around TDEE.",
+      "url": "https://plainmoneycalc.com/calorie-calculator"
+    },
+    {
+      "question": "Which activity level should I choose?",
+      "answer": "Pick the level that matches a typical week, not your best week. Most people with desk jobs who exercise a few times a week fit the light or moderate level. Overestimating activity is the most common reason weight loss stalls.",
+      "url": "https://plainmoneycalc.com/calorie-calculator"
+    },
+    {
+      "question": "How accurate is the Mifflin-St Jeor equation?",
+      "answer": "Studies find it is the most accurate of the common formulas for most adults, usually within about 10% of measured values. Treat the result as a starting point and adjust after two to three weeks based on how your weight actually changes.",
+      "url": "https://plainmoneycalc.com/calorie-calculator"
+    },
+    {
+      "question": "How is my due date calculated?",
+      "answer": "Your due date is 280 days, or 40 weeks, after the first day of your last menstrual period. If your cycle is longer or shorter than 28 days, the date moves by the same number of days.",
+      "url": "https://plainmoneycalc.com/due-date-calculator"
+    },
+    {
+      "question": "Why am I counted as pregnant before conception?",
+      "answer": "Doctors count from your last period because that date is usually known, while the exact day of conception rarely is. So in the first two weeks of the 40 you are not yet pregnant.",
+      "url": "https://plainmoneycalc.com/due-date-calculator"
+    },
+    {
+      "question": "Can my due date change?",
+      "answer": "Yes. An early ultrasound is the most accurate way to date a pregnancy, especially if your cycles are irregular or you are unsure of your last period. Your provider may update the due date after the first scan.",
+      "url": "https://plainmoneycalc.com/due-date-calculator"
+    },
+    {
+      "question": "What if I conceived through IVF?",
+      "answer": "With IVF the transfer date is known, so the due date is counted from it instead: about 261 days after a 5-day embryo transfer or 263 days after a 3-day transfer. Ask your clinic for your exact date.",
+      "url": "https://plainmoneycalc.com/due-date-calculator"
+    },
+    {
+      "question": "How do I calculate a percentage of a number?",
+      "answer": "Convert the percent to a decimal by dividing by 100, then multiply. For 20% of 150, multiply 150 by 0.20 to get 30.",
+      "url": "https://plainmoneycalc.com/percentage-calculator"
+    },
+    {
+      "question": "How do I calculate percent increase?",
+      "answer": "Subtract the original value from the new value, divide by the original value and multiply by 100. A price that goes from $40 to $50 rose by 10 / 40 &times; 100 = 25%.",
+      "url": "https://plainmoneycalc.com/percentage-calculator"
+    },
+    {
+      "question": "Why does a 50% drop need a 100% gain to recover?",
+      "answer": "Percent change is measured from the starting value. If $100 falls 50% to $50, getting back to $100 means adding $50, which is 100% of the new $50 base.",
+      "url": "https://plainmoneycalc.com/percentage-calculator"
+    },
+    {
+      "question": "How do I add a percentage to a number?",
+      "answer": "Multiply by 1 plus the percent as a decimal. To add 8% sales tax to $25, multiply 25 by 1.08 to get $27.",
+      "url": "https://plainmoneycalc.com/percentage-calculator"
+    },
+    {
+      "question": "Should I tip on the bill before or after tax?",
+      "answer": "Etiquette guides say to tip on the pre-tax amount, which is what this calculator expects. Tipping on the total after tax is also common and simply adds a little more for the server.",
+      "url": "https://plainmoneycalc.com/tip-calculator"
+    },
+    {
+      "question": "How much should I tip at a restaurant?",
+      "answer": "In the US, 15% to 20% is standard for sit-down service, with 20% now common for good service. Servers often earn a lower base wage and rely on tips for most of their income.",
+      "url": "https://plainmoneycalc.com/tip-calculator"
+    },
+    {
+      "question": "Do I need to tip if a service charge is included?",
+      "answer": "Check the receipt. Many restaurants add an automatic gratuity of about 18% for large groups. If it is there, no additional tip is expected unless the service was exceptional.",
+      "url": "https://plainmoneycalc.com/tip-calculator"
+    },
+    {
+      "question": "How do I split a bill with a different tip for each person?",
+      "answer": "Run the calculator once for each person's share of the bill with their chosen tip and a party size of one. For equal shares, enter the full bill and the number of people.",
+      "url": "https://plainmoneycalc.com/tip-calculator"
+    },
+    {
+      "question": "How do I calculate my age?",
+      "answer": "Subtract your birth year from the current year, then subtract one if your birthday has not happened yet this year. For months and days, count the full months since your last birthday and then the remaining days.",
+      "url": "https://plainmoneycalc.com/age-calculator"
+    },
+    {
+      "question": "How many days old am I?",
+      "answer": "Enter your date of birth and the calculator shows your age in days, counting leap years. Someone who has just turned 30 has lived about 10,957 days.",
+      "url": "https://plainmoneycalc.com/age-calculator"
+    },
+    {
+      "question": "Can I find someone's age on a past or future date?",
+      "answer": "Yes. Change the second date to any day, such as a wedding date or a future retirement date, to see the age on that day.",
+      "url": "https://plainmoneycalc.com/age-calculator"
+    },
+    {
+      "question": "What day of the week was I born?",
+      "answer": "The calculator shows it under the results. It uses the standard Gregorian calendar used in the US since 1752.",
+      "url": "https://plainmoneycalc.com/age-calculator"
+    },
+    {
+      "question": "What is a good GPA?",
+      "answer": "A 3.0 is a common minimum for scholarships and many graduate programs, and 3.5 or higher is considered strong. Competitive programs and employers in some fields look for 3.7 and up.",
+      "url": "https://plainmoneycalc.com/gpa-calculator"
+    },
+    {
+      "question": "How do I raise my GPA?",
+      "answer": "Classes with more credit hours move your GPA the most, so focus on doing well in them. The more credits you have already completed, the more slowly your cumulative GPA changes, so early semesters matter a lot.",
+      "url": "https://plainmoneycalc.com/gpa-calculator"
+    },
+    {
+      "question": "Does a pass/fail class count toward GPA?",
+      "answer": "Usually not. Pass, credit or satisfactory grades give credit hours but no grade points, so leave those classes out. A failed pass/fail class may count as an F at some schools.",
+      "url": "https://plainmoneycalc.com/gpa-calculator"
+    },
+    {
+      "question": "What if my school uses a different scale?",
+      "answer": "Some schools count an A+ as 4.3 or do not use minus grades. Check your registrar's grading table and adjust the grades you enter, since this calculator uses the most common 4.0 scale.",
+      "url": "https://plainmoneycalc.com/gpa-calculator"
+    },
+    {
+      "question": "What should a good mortgage calculator include?",
+      "answer": "At a minimum: home price, down payment, interest rate and loan term, plus fields for property tax, homeowners insurance, PMI and HOA dues. A breakdown of the payment and an amortization schedule make the result much easier to understand.",
+      "url": "https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator"
+    },
+    {
+      "question": "What is the difference between a simple and an advanced mortgage calculator?",
+      "answer": "A simple calculator returns principal and interest from the price, down payment, rate and term. An advanced one adds taxes, insurance, PMI and HOA dues, and may let you choose a loan type or enter a credit score, so it shows the full monthly payment.",
+      "url": "https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator"
+    },
+    {
+      "question": "Why does my lender's payment differ from the calculator?",
+      "answer": "Lenders use your actual rate, which depends on your credit score and loan type, plus local tax and insurance figures and their own fees. A calculator is only as close as the numbers you enter, so use a rate quote and local costs when you can.",
+      "url": "https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator"
+    },
+    {
+      "question": "What is the most common mistake people make with mortgage calculators?",
+      "answer": "Looking only at principal and interest. Property tax, homeowners insurance and PMI can add several hundred dollars a month, so an estimate without them comes out too low.",
+      "url": "https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator"
+    },
+    {
+      "question": "When should I start using a mortgage calculator?",
+      "answer": "Before you start looking at homes. Knowing the payment for different prices and down payments early helps you set a budget, decide how much to save, and compare lender offers when they arrive.",
+      "url": "https://plainmoneycalc.com/how-to-choose-a-mortgage-calculator"
+    },
+    {
+      "question": "How much house can I afford on a $100,000 salary?",
+      "answer": "About $313,000 with 10% down, a 6.5% rate, average property tax and insurance and $400 a month of other debt. That keeps the full housing payment near $2,333, or 28% of gross income. Less debt or a lower rate raises the figure; higher local taxes lower it.",
+      "url": "https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary"
+    },
+    {
+      "question": "What is the 28/36 rule?",
+      "answer": "A lending guideline that keeps housing costs under 28% of gross monthly income and all debt payments, housing included, under 36%. The lower of the two limits sets the largest payment, and so the largest price, a lender is comfortable with.",
+      "url": "https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary"
+    },
+    {
+      "question": "Does the 28/36 rule use gross or take-home pay?",
+      "answer": "Gross pay, before taxes and deductions. That is why the payment it allows can feel tight on a take-home budget, especially with high state taxes or large 401(k) contributions.",
+      "url": "https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary"
+    },
+    {
+      "question": "Is it better to pay off debt or save a bigger down payment?",
+      "answer": "If your debts are above the point where the 36% limit applies, paying them off usually raises the price you qualify for more than the same money added to the down payment. Below that point, extra down payment helps more, especially if it gets you to 20% and removes mortgage insurance.",
+      "url": "https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary"
+    },
+    {
+      "question": "Why is the price so low at $40,000 to $60,000 a year?",
+      "answer": "At lower incomes a fixed debt like a $400 car payment takes a larger share of income, so the 36% total debt limit is reached before the 28% housing limit. Property tax and insurance also take a fixed bite out of a smaller payment.",
+      "url": "https://plainmoneycalc.com/how-much-house-can-i-afford-on-my-salary"
+    },
+    {
+      "question": "How long does it take to pay off $5,000 on a credit card?",
+      "answer": "At 22% APR, about 19 years with only the minimum payment, about 2 years and 10 months at $200 a month and about a year at $500 a month. Interest ranges from about $8,100 at the minimum to under $600 at $500 a month.",
+      "url": "https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt"
+    },
+    {
+      "question": "Why does my balance barely go down when I pay the minimum?",
+      "answer": "Most of a minimum payment covers that month's interest. On a 22% card, interest is about 1.8% of the balance each month, and a common minimum is only 1% of the balance on top of that, so principal falls slowly.",
+      "url": "https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt"
+    },
+    {
+      "question": "What happens if my payment is less than the interest?",
+      "answer": "The unpaid interest is added to the balance, so you owe more each month even though you are paying. On $20,000 at 22%, any payment below about $367 a month never pays the card off.",
+      "url": "https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt"
+    },
+    {
+      "question": "Is a balance transfer worth the fee?",
+      "answer": "Usually, if you can pay most of the balance during the 0% period. On $5,000 paid at $200 a month, a 3% fee and 18 months at 0% cost about $290 in total, against about $1,750 of interest on a 22% card.",
+      "url": "https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt"
+    },
+    {
+      "question": "Should I pay off the highest interest or the smallest balance first?",
+      "answer": "The highest interest rate first saves the most money. The smallest balance first closes accounts sooner and can be easier to keep going. Either works if you keep paying the extra amount every month.",
+      "url": "https://plainmoneycalc.com/how-long-to-pay-off-credit-card-debt"
+    },
+    {
+      "question": "Is a 72-month car loan a bad idea?",
+      "answer": "Not always, but it is expensive. On $30,000 at 7%, a 72-month loan costs about $1,180 more in interest than 60 months and keeps you owing more than a typical car is worth for about a year longer. It is more reasonable with a low rate, a solid down payment and a plan to keep the car for many years.",
+      "url": "https://plainmoneycalc.com/how-long-should-a-car-loan-be"
+    },
+    {
+      "question": "How much does an 84-month car loan cost compared with 60 months?",
+      "answer": "At 7% on $30,000, the payment drops from $594 to $453, and interest rises from $5,642 to $8,034. If the lender charges 9% for 84 months, interest reaches $10,544.",
+      "url": "https://plainmoneycalc.com/how-long-should-a-car-loan-be"
+    },
+    {
+      "question": "What is the most common car loan length?",
+      "answer": "Five and six year loans are common for new cars, and many lenders also offer seven years. A common term is not the same as a good one, so compare the total interest at two or three terms before choosing.",
+      "url": "https://plainmoneycalc.com/how-long-should-a-car-loan-be"
+    },
+    {
+      "question": "Can I pay off a car loan early?",
+      "answer": "Most auto loans let you pay early without a penalty, but check your contract. Extra payments that go to principal cut the interest. Paying $100 a month extra on a $30,000, 72-month loan at 7% finishes it 14 months early and saves about $1,380.",
+      "url": "https://plainmoneycalc.com/how-long-should-a-car-loan-be"
+    },
+    {
+      "question": "How do I avoid being upside down on a car loan?",
+      "answer": "Put at least 10% to 20% down, avoid rolling old loan balances into the new one, choose a shorter term and pick a car that holds its value. If you still start with a gap, GAP coverage protects you if the car is totaled.",
+      "url": "https://plainmoneycalc.com/how-long-should-a-car-loan-be"
+    }
+  ]
+}
