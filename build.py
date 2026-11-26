@@ -31,7 +31,12 @@ AUTHOR = {"name": "Kostan PROFF", "full_name": "Kostiantyn Kozulko", "url": f"{S
           "company": "Constantine Commerce Solutions LLC",
           # Public profiles of the author (LinkedIn, company site, social accounts), published as schema.org sameAs.
           # Real profile URLs only; leave it empty rather than guess.
-          "same_as": ["https://github.com/KostanPROFF"]}
+          "same_as": ["https://github.com/KostanPROFF",
+                      "https://www.linkedin.com/in/kostanproff",
+                      "https://www.crunchbase.com/person/kostiantyn-kozulko"],
+          "company_same_as": ["https://www.crunchbase.com/organization/constantine-commerce-solutions"]}
+# Public profiles of the site itself (Plain Money Calculators), published as the publisher's schema.org sameAs.
+SITE_SAME_AS = ["https://www.crunchbase.com/organization/plain-money-calculators"]
 # Calculator pages: first published (the commit that added the page, from git history) and last updated.
 # Bump CALC_UPDATED (or one page in CALC_MODIFIED) whenever rates, tax figures or limits change.
 CALC_UPDATED = "2026-11-24"
@@ -397,7 +402,8 @@ def page(filename, title, description, body, scripts=(), schema=None, lang="en")
     if filename == "about.html" and lang in AUTHOR_TEXT:
         schema = {"@context": "https://schema.org", "@type": "AboutPage", "url": url(lang), "inLanguage": LANGS[lang]["hl"],
                   "mainEntity": {**person(), "alternateName": AUTHOR["full_name"],
-                                 "worksFor": {"@type": "Organization", "name": AUTHOR["company"]}}}
+                                 "worksFor": {"@type": "Organization", "name": AUTHOR["company"],
+                                              **({"sameAs": AUTHOR["company_same_as"]} if AUTHOR["company_same_as"] else {})}}}
     site_schema = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": url(lang),
                    "inLanguage": LANGS[lang]["hl"], "description": description} if filename == "index.html" else None
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (site_schema, schema, faq_schema) if s)
@@ -1515,7 +1521,8 @@ for filename, a in ARTICLES.items():
              "url": f"{SITE_URL}/{clean(filename)}", "datePublished": a["published"],
              "dateModified": a.get("updated", a["published"]),
              "author": person(),
-             "publisher": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL}},
+             "publisher": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL,
+                           **({"sameAs": SITE_SAME_AS} if SITE_SAME_AS else {})}},
             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q,
                                                   "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]},
         ]})
