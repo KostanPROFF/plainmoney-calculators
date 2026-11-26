@@ -1,9 +1,10 @@
 {
   "name": "plainmoney-calculators",
   "compatibility_date": "2026-10-01",
-  // Static site from public/; src/worker.js only runs for paths with no matching file (e.g. /api/geo).
+  // Static site from public/. The worker runs first on every request so it can 301 www.plainmoneycalc.com
+  // to the bare domain; everything else goes straight to the static files (or /api/geo).
   "main": "src/worker.js",
-  "assets": { "directory": "./public", "binding": "ASSETS" },
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": true },
   // Branch builds run `wrangler preview`, which needs this block; it can stay empty.
   "previews": {},
   "routes": [
