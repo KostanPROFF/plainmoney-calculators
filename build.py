@@ -31,7 +31,7 @@ AUTHOR = {"name": "Kostan PROFF", "full_name": "Kostiantyn Kozulko", "url": f"{S
           "company": "Constantine Commerce Solutions LLC",
           # Public profiles of the author (LinkedIn, company site, social accounts), published as schema.org sameAs.
           # Real profile URLs only; leave it empty rather than guess.
-          "same_as": []}
+          "same_as": ["https://github.com/KostanPROFF"]}
 # Calculator pages: first published (the commit that added the page, from git history) and last updated.
 # Bump CALC_UPDATED (or one page in CALC_MODIFIED) whenever rates, tax figures or limits change.
 CALC_UPDATED = "2026-11-24"

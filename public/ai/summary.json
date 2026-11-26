@@ -30,7 +30,10 @@
     "name": "Kostan PROFF",
     "full_name": "Kostiantyn Kozulko",
     "url": "https://plainmoneycalc.com/about",
-    "organization": "Constantine Commerce Solutions LLC"
+    "organization": "Constantine Commerce Solutions LLC",
+    "same_as": [
+      "https://github.com/KostanPROFF"
+    ]
   },
   "price": "free",
   "account_required": false,
