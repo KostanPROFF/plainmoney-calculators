@@ -353,4 +353,104 @@ ARTICLES = {
              "Put at least 10% to 20% down, avoid rolling old loan balances into the new one, choose a shorter term and pick a car that holds its value. If you still start with a gap, GAP coverage protects you if the car is totaled."),
         ],
     },
+    "how-much-should-i-contribute-to-my-401k.html": {
+        "title": "How Much Should I Contribute to My 401(k)? 3% to 15% Compared",
+        "description": "What contributing 3%, 6%, 10% or 15% of pay to a 401(k) could grow to by 67, what it costs per paycheck, and how much starting age and returns change the result.",
+        "related": "401k-calculator.html",
+        "published": "2026-11-27",
+        "body": """<article class="prose">
+<h1>How much should I contribute to my 401(k)?</h1>
+<p class="lede">The percent you pick on your enrollment form is one of the few money decisions that keeps working for decades without any further effort. Small differences in that number turn into large differences at retirement.</p>
+
+<p>Many people choose a contribution rate once, often whatever the plan suggested at sign-up, and never look at it again. To show what that choice is worth, we ran the same worker through the formula our <a href="401k-calculator.html">401(k) calculator</a> uses at every common contribution rate, then looked at what it costs per paycheck and what happens if you start later or the market does worse than hoped.</p>
+
+<h2>The assumptions</h2>
+<p>Our example worker is 30 years old, earns $60,000 a year, gets a 3% raise every year and plans to retire at 67. They start with nothing in the account. Their employer matches 50 cents on the dollar up to 6% of pay, a common formula, so contributing 6% brings in another 3%.</p>
+<p>We assume a 6% average yearly return after fund fees. That is a middle-of-the-road planning figure for a diversified mix of stock and bond funds, not a promise. Contributions are spread through the year, so each year's deposits earn about half a year of growth, as in the calculator. Every balance is shown in future dollars and also in today's dollars, using 2.5% yearly inflation. The 2026 IRS limits are applied, though none of the examples reaches them.</p>
+
+<h2>What each contribution rate grows to</h2>
+<div class="table-scroll"><table>
+<thead><tr><th>You contribute</th><th>Your deposits</th><th>Employer match</th><th>Balance at 67</th><th>In today's dollars</th></tr></thead>
+<tbody>
+<tr><td>3%</td><td>$119,114</td><td>$59,557</td><td>$523,835</td><td>$210,093</td></tr>
+<tr><td>4%</td><td>$158,818</td><td>$79,409</td><td>$698,446</td><td>$280,124</td></tr>
+<tr><td>6%</td><td>$238,227</td><td>$119,114</td><td>$1,047,670</td><td>$420,186</td></tr>
+<tr><td>8%</td><td>$317,636</td><td>$119,114</td><td>$1,280,485</td><td>$513,560</td></tr>
+<tr><td>10%</td><td>$397,045</td><td>$119,114</td><td>$1,513,300</td><td>$606,935</td></tr>
+<tr><td>12%</td><td>$476,454</td><td>$119,114</td><td>$1,746,116</td><td>$700,310</td></tr>
+<tr><td>15%</td><td>$595,568</td><td>$119,114</td><td>$2,095,339</td><td>$840,371</td></tr>
+</tbody></table></div>
+<p>The jump from 3% to 6% is the largest in the table. It doubles the balance, from about $524,000 to about $1.05 million, because it doubles both your deposits and your employer's. Above 6% the match stops growing, so each extra point adds roughly $116,000 instead of the $175,000 or so that each point below 6% adds.</p>
+<p>The million-dollar figures look large partly because they are 37 years away. Our worker's salary also grows, to about $174,000 in the final year. The right-hand column is the fairer comparison: a 10% saver ends up with about $607,000 of today's buying power, or roughly 8.7 times their final salary.</p>
+
+<h2>Get the full match first</h2>
+<p>If there is one rule nearly everyone agrees on, it is to contribute at least enough to collect the whole employer match. In our example the worker who stays at 3% gives up about $59,600 of matching money over their career, and moving up to 6% leaves them about $524,000 ahead at 67, counting their own extra deposits and the growth on both. No investment choice reliably makes up for skipping an instant 50% return on part of your pay.</p>
+<p>Match formulas differ. Some employers match dollar for dollar up to 3% or 4%, others 50% up to 6% or 8%, and some add a flat contribution whether you save or not. Your plan's summary plan description spells out the formula and any vesting schedule, which decides how much of the match you keep if you leave early.</p>
+
+<h2>What it costs you per paycheck</h2>
+<p>A traditional 401(k) contribution comes out before federal income tax, so your take-home pay drops by less than the amount you save. Here is what each rate costs on $60,000 a year paid every two weeks, before any state tax effect.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>You contribute</th><th>Saved per paycheck</th><th>Take-home drop, 12% bracket</th><th>Take-home drop, 22% bracket</th></tr></thead>
+<tbody>
+<tr><td>3%</td><td>$69</td><td>$61</td><td>$54</td></tr>
+<tr><td>6%</td><td>$138</td><td>$122</td><td>$108</td></tr>
+<tr><td>10%</td><td>$231</td><td>$203</td><td>$180</td></tr>
+<tr><td>15%</td><td>$346</td><td>$305</td><td>$270</td></tr>
+</tbody></table></div>
+<p>A single filer earning $60,000 sits in the 12% federal bracket after the standard deduction, so moving from 3% to 6% costs about $61 more per paycheck while putting $69 more of your own money and $35 of your employer's into the account. Social Security and Medicare tax still apply to 401(k) contributions, and most states with an income tax also exempt them, which shrinks the take-home drop a little further. Roth 401(k) contributions work differently: they come out after tax, so the paycheck drop equals the full amount, in exchange for tax-free withdrawals later. The <a href="paycheck-calculator.html">paycheck calculator</a> shows the exact effect with your state and filing status.</p>
+
+<h2>Starting age matters as much as the rate</h2>
+<p>Here is the same worker saving 10% with the same match and return, but starting at different ages. Everyone retires at 67, and everyone starts at $60,000 a year, so the only difference is time.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Start at</th><th>Your deposits</th><th>Employer match</th><th>Balance at 67</th><th>In today's dollars</th></tr></thead>
+<tbody>
+<tr><td>25</td><td>$492,139</td><td>$147,642</td><td>$2,168,199</td><td>$768,594</td></tr>
+<tr><td>30</td><td>$397,045</td><td>$119,114</td><td>$1,513,300</td><td>$606,935</td></tr>
+<tr><td>35</td><td>$315,017</td><td>$94,505</td><td>$1,038,610</td><td>$471,291</td></tr>
+<tr><td>40</td><td>$244,258</td><td>$73,277</td><td>$696,563</td><td>$357,615</td></tr>
+<tr><td>45</td><td>$183,221</td><td>$54,966</td><td>$451,895</td><td>$262,490</td></tr>
+<tr><td>50</td><td>$130,570</td><td>$39,171</td><td>$278,492</td><td>$183,024</td></tr>
+</tbody></table></div>
+<p>Each five years of delay costs roughly a third of the final balance. The 25-year-old and the 35-year-old deposit about $177,000 apart, yet end up about $1.13 million apart, because the earliest dollars have the most years to compound. If you are starting late, a higher rate is the main lever you have. The IRS lets workers 50 and older add catch-up contributions on top of the regular limit for exactly this reason.</p>
+
+<h2>If returns come in lower</h2>
+<p>A 6% average is an assumption, and real returns arrive unevenly. This table shows how much the balance at 67 depends on that one input, for the same 30-year-old.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Average return</th><th>6% contribution</th><th>10% contribution</th><th>15% contribution</th></tr></thead>
+<tbody>
+<tr><td>4%</td><td>$706,601</td><td>$1,020,646</td><td>$1,413,202</td></tr>
+<tr><td>5%</td><td>$856,868</td><td>$1,237,698</td><td>$1,713,736</td></tr>
+<tr><td>6%</td><td>$1,047,670</td><td>$1,513,300</td><td>$2,095,339</td></tr>
+<tr><td>7%</td><td>$1,290,834</td><td>$1,864,538</td><td>$2,581,668</td></tr>
+</tbody></table></div>
+<p>One useful way to read it: saving 10% at a 4% return ends up close to saving 6% at 6%. A higher savings rate is something you control, and it protects you against a weak market in a way that hoping for higher returns cannot. Fund fees come straight out of the return, so a plan with expensive funds pushes you toward the lower rows.</p>
+
+<h2>Raising your rate a little at a time</h2>
+<p>If 10% feels out of reach today, you do not have to get there at once. Many plans offer automatic increases, and under SECURE 2.0 most new 401(k) plans set up after 2022 must enroll workers automatically and raise their rate by one point a year until it reaches at least 10%.</p>
+<p>We modeled that path for our worker: start at 3%, add one point each year, and stop at 10% in year eight. The balance at 67 comes to about $1,365,000, compared with $524,000 for staying at 3% and $1,513,000 for starting at 10% right away. Because each step lines up with a 3% raise, take-home pay keeps growing in most years even as the savings rate climbs. Timing the increase with your raise is an easy way to save more without feeling a pay cut.</p>
+
+<h2>So how much should you contribute?</h2>
+<p>Start with enough to get the full employer match, because nothing else in your finances pays back as fast. From there, a target in the range of 10% to 15% of pay, counting the match, is a common rule of thumb for someone starting around 30. Starting later, or hoping to retire earlier, points to the higher end or above. If you also carry high-interest credit card debt, paying that down beside the match can be the better use of extra money, since a card charging over 20% costs more than most investments earn.</p>
+<p>The IRS caps your own 401(k) contributions at $24,500 for 2026, with an extra $8,000 for workers 50 and older and $11,250 for ages 60 to 63. Most people never get close, so the limit is rarely the thing holding a savings rate down.</p>
+<p>Run your own salary, match and balance in the <a href="401k-calculator.html">401(k) calculator</a>, which applies the current limits and shows how much of the result comes from you, your employer and growth. To see how money saved outside the plan could grow, try the <a href="compound-interest-calculator.html">compound interest calculator</a>.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+{faq}
+</div>
+<p class="note">Last reviewed: November 2026. Projections are estimates based on the stated assumptions, not a guarantee of future returns or financial advice.</p>
+</article>""",
+        "faq": [
+            ("What percent should I put in my 401(k)?",
+             "At least enough to get your full employer match, then aim for 10% to 15% of pay including the match if you can. In our example, a 30-year-old earning $60,000 who saves 10% with a 50% match up to 6% could reach about $1.5 million at 67 at a 6% return, or about $607,000 in today's dollars."),
+            ("Is 6% enough for a 401(k)?",
+             "It is often enough to get the full match, which is the most valuable step. On its own it may fall short for retirement. In our example, 6% grows to about $420,000 in today's dollars by 67, against about $607,000 at 10%."),
+            ("How much does a 401(k) contribution reduce my paycheck?",
+             "Less than the amount you save, because traditional contributions are taken before federal income tax. On $60,000 paid every two weeks, a 6% contribution puts $138 into the account and lowers take-home pay by about $122 in the 12% bracket."),
+            ("Is it too late to start a 401(k) at 45?",
+             "No, but you will need a higher rate. Saving 10% from 45 to 67 in our example grows to about $452,000, a third of what starting at 30 produces. Catch-up contributions after 50 let you put in more than the regular limit."),
+            ("What is the 401(k) contribution limit for 2026?",
+             "The IRS limit for employee contributions is $24,500. Workers 50 and older can add $8,000, and those aged 60 to 63 can add $11,250 instead. Employer matching contributions do not count toward your personal limit."),
+        ],
+    },
 }

@@ -41,7 +41,7 @@
   "account_required": false,
   "data_handling": "Calculations run in the browser; entered numbers are not sent to the server.",
   "disclaimer": "Estimates only, not financial, tax, legal or medical advice.",
-  "last_updated": "2026-11-24",
+  "last_updated": "2026-11-27",
   "contact": "hello@plainmoneycalc.com",
   "links": {
     "llms_txt": "https://plainmoneycalc.com/llms.txt",
