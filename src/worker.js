@@ -1,14 +1,18 @@
 // Serves the static site from public/, redirects www to the bare domain, and one small endpoint: /api/geo reports the visitor's
 // country and US state from Cloudflare's IP geolocation, so calculators can preselect a state.
+const CANONICAL_ORIGIN = "https://plainmoneycalc.com";
+const WWW_HOST = "www.plainmoneycalc.com";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     // One host for search engines: www.plainmoneycalc.com used to serve the same pages as the bare domain,
     // so Google crawled both copies. Send it to the bare domain with a permanent redirect.
-    if (url.hostname.startsWith("www.")) {
-      url.hostname = url.hostname.slice(4);
-      url.protocol = "https:";
-      return Response.redirect(url.toString(), 301);
+    // The target is built from a fixed origin, never from the request's Host header, so the redirect can only
+    // ever point at our own site. Leading slashes are collapsed so a path like "//evil.com" stays a path.
+    if (url.hostname === WWW_HOST) {
+      const path = url.pathname.replace(/^\/+/, "/");
+      return Response.redirect(CANONICAL_ORIGIN + path + url.search, 301);
     }
     if (url.pathname === "/api/geo") {
       const cf = request.cf || {};
